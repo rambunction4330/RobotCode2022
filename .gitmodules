@@ -1,0 +1,6 @@
+[submodule "lib/src/rambunctionRobot/rambunctionRobot"]
+	path = lib/src/rambunctionRobot/rambunctionRobot
+	url = https://github.com/rambunction4330/rambunctionRobot.git
+[submodule "lib/src/rambunctionRobot"]
+	path = lib/src/rambunctionRobot
+	url = https://github.com/rambunction4330/rambunctionRobot.git
