@@ -58,9 +58,12 @@ model {
                 source {
                     srcDir 'src/main/cpp'
                     include '**/*.cpp', '**/*.cc'
+
+                    srcDir 'lib/src/rambunctionRobot/src' 
                 }
                 exportedHeaders {
                     srcDir 'src/main/include'
+                    srcDir 'lib/src/rambunctionRobot/include'
                 }
             }
 
@@ -85,6 +88,8 @@ model {
                 source {
                     srcDir 'src/test/cpp'
                     include '**/*.cpp'
+
+                    srcDir 'lib/src/rambunctionRobot/src' 
                 }
             }
 
