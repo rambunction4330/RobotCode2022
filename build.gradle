@@ -59,11 +59,11 @@ model {
                     srcDir 'src/main/cpp'
                     include '**/*.cpp', '**/*.cc'
 
-                    srcDir 'lib/src/rambunctionRobot/src' 
+                    srcDir 'lib/src/' 
                 }
                 exportedHeaders {
                     srcDir 'src/main/include'
-                    srcDir 'lib/src/rambunctionRobot/include'
+                    srcDir 'lib/include'
                 }
             }
 
