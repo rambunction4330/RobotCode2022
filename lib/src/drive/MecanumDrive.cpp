@@ -7,7 +7,7 @@ namespace rmb {
                              VelocityController<units::meters>& rr,
                              frc::MecanumDriveKinematics k,
                              units::meters_per_second_t maxVel,
-                             units::meters_per_second_t maxRotVel) :
+                             units::radians_per_second_t maxRotVel) :
                              frontLeft(fl), frontRight(fr), rearLeft(rl), rearRight(rr),
                              kinematics(k), maxVelocity(maxVel), maxRotVelocity(maxRotVel) {}
 
@@ -20,7 +20,7 @@ namespace rmb {
   }
 
   void MecanumDrive::driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds, 
-                                        frc::Translation2d centerofRotation = frc::Translation2d()) {
+                                        frc::Translation2d centerofRotation) {
     // Get wheel speeds from kinematics
     frc::MecanumDriveWheelSpeeds wheelSpeeds = kinematics.ToWheelSpeeds(chassisSpeeds, centerofRotation);
     driveWheelSpeeds(wheelSpeeds);
