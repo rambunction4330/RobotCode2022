@@ -2,6 +2,7 @@
 #pragma once
 
 #include <units/base.h>
+#include <units/time.h>
 
 namespace rmb {
   template<typename DistanceUnit>
@@ -15,6 +16,10 @@ namespace rmb {
 
     virtual void setVelocity(Velocity_t velocity) = 0;
     virtual Velocity_t getVelocity() = 0;
-    virtual Acceleration_t getAcceleration() = 0;
+
+    virtual void setInverted(bool invetred) = 0;
+    virtual bool getInverted() const = 0;
+    virtual void disable() = 0;
+    virtual void stopMotor() = 0;
   };
 } // rmb namespace
