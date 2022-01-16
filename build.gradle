@@ -58,6 +58,7 @@ model {
                 source {
                     srcDir 'src/main/cpp'
                     include '**/*.cpp', '**/*.cc'
+
                     srcDir 'lib/src' 
                 }
                 exportedHeaders {
