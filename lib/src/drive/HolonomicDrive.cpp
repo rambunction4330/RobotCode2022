@@ -1,4 +1,3 @@
-
 #include "rmb/drive/HolonomicDrive.h"
 
 #include <algorithm>
