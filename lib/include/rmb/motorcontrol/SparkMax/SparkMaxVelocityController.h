@@ -11,7 +11,7 @@
 namespace rmb {
   // an abstraction over the SparkMax motor controller
   template <typename DistanceUnit>
-  class SparkMaxVelocityController : public VelocityController<DistanceUnit>, public frc::MotorSafety{
+  class SparkMaxVelocityController : public VelocityController<DistanceUnit> {
   public:
 
     using Distance_t   = typename VelocityController<DistanceUnit>::Distance_t;
@@ -45,7 +45,13 @@ namespace rmb {
     void setVelocity(Velocity_t velocity) override;
     Velocity_t getVelocity() override;
 
+    inline void setInverted(bool inverted) override { sparkMax.SetInverted(inverted) };
+    inline bool getInverted() override { return sparkMax.GetInverted() };
+    inline void disable() override { sparkMax.Disable(); }
+    inline void stopMotor() override { sparkMax.StopMotor(); };
+
   private:
+
     rev::CANSparkMax sparkMax;
     rev::SparkMaxRelativeEncoder sparkMaxEncoder;
     rev::SparkMaxPIDController sparkMaxPIDController;
