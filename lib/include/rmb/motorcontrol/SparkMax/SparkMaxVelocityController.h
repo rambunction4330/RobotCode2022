@@ -29,7 +29,7 @@ namespace rmb {
     // raw velocity is in rpm. 1 rotation * 2pi rad = 2pi rad
     using RawUnit   = typename units::unit<std::ratio<2>, units::radians, std::ratio<1>>;
     using RawUnit_t = typename units::unit_t<RawUnit>;
-    using RawVelocity   = typename units::compound_unit<RawUnit, units::inverse<units::seconds>>;
+    using RawVelocity   = typename units::compound_unit<RawUnit, units::inverse<units::minutes>>;
     using RawVelocity_t = typename units::unit_t<RawVelocity>;
     
     struct PIDConfig {
