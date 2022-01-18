@@ -10,7 +10,7 @@
 
 namespace rmb {
   template<typename DistanceUnit>
-  class TalonSRXVelocityController: public VelocityController<DistanceUnit>, public frc::MotorSafety {
+  class TalonSRXVelocityController: public VelocityController<DistanceUnit> {
     public:
       using Distance_t =   typename VelocityController<DistanceUnit>::Distance_t;
       using VelocityUnit = typename VelocityController<DistanceUnit>::VelocityUnit;
@@ -40,21 +40,8 @@ namespace rmb {
       void setVelocity(Velocity_t velocity) override;
       Velocity_t getVelocity() override;
 
-      inline void setInverted(bool invetred) override { talonSRX.SetInverted(invetred); }
+      inline void setInverted(bool inverted) override { talonSRX.SetInverted(invetred); }
       inline bool getInverted() override { return talonSRX.GetInverted(); }
-      inline void disable() override { talonSRX.Disable(); }
-      inline void stopMotor() override { talonSRX.StopMotor(); }
-
-
-      inline void Feed() override { talonSRX.Feed(); }
-      inline void SetExpiration(units::second_t expirationTime) override { talonSRX.SetExpiration(expirationTime); }
-      inline units::second_t GetExpiration() const override { return talonSRX.GetExpiration(); }
-      inline bool IsAlive() const override { return talonSRX.IsAlive(); }
-      inline void SetSafetyEnabled(bool enabled) override { talonSRX.SetSafetyEnabled(enabled); }
-      inline bool IsSafetyEnabled() const override { return talonSRX.IsSafetyEnabled(); }
-      inline void Check() override { talonSRX.Check(); }
-      inline void StopMotor() override { talonSRX.StopMotor(); }
-      inline std::string GetDescription() override { return talonSRX.GetDescription(); }
 
     private:
       ctre::phoenix::motorcontrol::can::WPI_TalonSRX talonSRX;
