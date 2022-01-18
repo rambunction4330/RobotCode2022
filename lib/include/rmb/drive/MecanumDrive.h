@@ -28,6 +28,11 @@ namespace rmb {
       units::meters_per_second_t getMaxVel() { return maxVelocity; };
       units::radians_per_second_t getMaxRotVel() { return maxRotVelocity; };
 
+      // Functions dealing with odometry
+      const frc::Pose2d& getPose();
+      const frc::Pose2d& updatePose();
+      void resetPose();
+
     private:
       // Variables for wheels and kinematics (locations)
       VelocityController<units::meters>& frontLeft;

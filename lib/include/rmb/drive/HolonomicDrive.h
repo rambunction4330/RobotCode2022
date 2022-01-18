@@ -5,6 +5,7 @@
 
 #include <frc/kinematics/ChassisSpeeds.h>
 #include <frc/geometry/Translation2d.h>
+#include <frc/geometry/Pose2d.h>
 
 namespace rmb {
   class HolonomicDrive {
@@ -17,5 +18,9 @@ namespace rmb {
 
     virtual units::meters_per_second_t getMaxVel() = 0;
     virtual units::radians_per_second_t getMaxRotVel() = 0;
+
+    virtual const frc::Pose2d& getPose() = 0;
+    virtual const frc::Pose2d& updatePose() = 0;
+    virtual void resetPose() = 0;
   };
 } // rmb namespace
