@@ -40,7 +40,7 @@ namespace rmb {
       void setVelocity(Velocity_t velocity) override;
       Velocity_t getVelocity() override;
 
-      inline void setInverted(bool inverted) override { talonSRX.SetInverted(invetred); }
+      inline void setInverted(bool inverted) override { talonSRX.SetInverted(inverted); }
       inline bool getInverted() override { return talonSRX.GetInverted(); }
 
     private:
