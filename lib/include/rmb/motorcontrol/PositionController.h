@@ -26,7 +26,7 @@ namespace rmb {
       virtual Distance_t getPosition() = 0;
       virtual Velocity_t getVelocity() = 0;
 
-      virtual void setInverted(bool invetred) = 0;
+      virtual void setInverted(bool inverted) = 0;
       virtual bool getInverted() const = 0;
       virtual void disable() = 0;
       virtual void stopMotor() = 0;
