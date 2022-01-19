@@ -18,7 +18,7 @@ namespace rmb {
 
       virtual void restRefrence(Distance_t position) = 0;
       virtual void setMaxPositon(Distance_t max) = 0;
-      virtual Distance_t getMaxPositon() = 0;
+      virtual Distance_t getMaxPosition() = 0;
       virtual void setMinPosition(Distance_t min) = 0;
       virtual Distance_t getMinPosition() = 0;
 
