@@ -10,7 +10,7 @@
 
 
 namespace rmb {
-  class HolonomicTrajectoryCommand : frc2::CommandHelper<frc2::CommandBase, HolonomicTrajectoryCommand> {
+  class HolonomicTrajectoryCommand : public frc2::CommandHelper<frc2::CommandBase, HolonomicTrajectoryCommand> {
       public:
         HolonomicTrajectoryCommand(frc::Trajectory trajectory, HolonomicDrive& drive, frc::HolonomicDriveController driveController);
         void Initialize();
