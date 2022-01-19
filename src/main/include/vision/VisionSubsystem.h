@@ -3,19 +3,35 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #pragma once
-
 #include <frc2/command/SubsystemBase.h>
+#include <networktables/NetworkTable.h>
+#include <networktables/NetworkTableEntry.h>
+#include <networktables/NetworkTableInstance.h>
+#include <units/angle.h>
+#include <units/length.h>
+#include <units/math.h>
+using namespace units;//we are lazy
+
+
+
+template <typename T>
+class Vector3 {
+  public:
+  T x, y, z;
+};
+
+
 
 class VisionSubsystem : public frc2::SubsystemBase {
  public:
-  VisionSubsystem();
+  VisionSubsystem(std::function<radian_t()> fnBaseRotation, std::function<radian_t()> fnShooterAngle) : getBaseRotation(fnBaseRotation), getShooterAngle(fnShooterAngle){};
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
   void Periodic() override;
+  bool IsHubInView();
+  Vector3<float> GetHubPosition();
 
  private:
-  // Components (e.g. motor controllers and sensors) should generally be
-  // declared private and exposed only through public methods.
+  nt::NetworkTableEntry baseRotation, shooterAngle;
+  std::function<radian_t()> getBaseRotation, getShooterAngle;
+  nt::NetworkTableInstance networkInstance;
 };
