@@ -40,7 +40,7 @@ namespace rmb {
     };
 
     SparkMaxVelocityController(int deviceID);
-    SparkMaxVelocityController(int deviceID, const PIDConfig& config, ConversionUnit_t conversionUnit);
+    SparkMaxVelocityController(int deviceID, const PIDConfig& config, ConversionUnit_t conversionUnit = 1);
 
     void setVelocity(Velocity_t velocity) override;
     Velocity_t getVelocity() override;
