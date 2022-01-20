@@ -21,6 +21,8 @@ namespace rmb {
                                                                     rev::CANSparkMax::MotorType::kBrushless
                                                                     ), conversion(conversionUnit) {
     
+    sparkMax.RestoreFactoryDefaults();
+
     sparkMaxEncoder = sparkMax.GetEncoder();
     sparkMaxPIDController = sparkMax.GetPIDController();
 
@@ -30,10 +32,22 @@ namespace rmb {
     sparkMaxPIDController.SetFF(config.f);
     sparkMaxPIDController.SetIZone(config.iZone);
     sparkMaxPIDController.SetIMaxAccum(config.iMaxAccumulator);
-    // still need to implement closed loop error
-    sparkMaxPIDController.SetOutputRange(config.minOutput);
+    sparkMaxPIDController.SetOutputRange(config.minOutput, config.maxOutput);
     
-  }
+    if(config.usingSmartMotion) {
+      sparkMaxPIDController.SetSmartMotionAllowedClosedLoopError(
+        RawUnit_t(config.allowedErr / conversion).to<double>()
+      );
+      sparkMaxPIDController.SetSmartMotionMaxVelocity(
+        RawVelocity_t(config.maxVelocity / conversion).to<double>()
+      );
+      sparkMaxPIDController.SetSmartMotionMaxAccel(
+        RawAccel_t(config.maxAccel / conversion).to<double>()
+      );
+      sparkMaxPIDController.SetSmartMotionAccelStrategy(config.accelStrategy);
+      sparkMaxPIDController.SetSmartMotionMinOutputVelocity(RawVelocity_t(config.minVelocity / conversion).to<double>());
+    }
+}
 
   template <typename U>
   void SparkMaxVelocityController<U>::setVelocity(Velocity_t velocity) {
