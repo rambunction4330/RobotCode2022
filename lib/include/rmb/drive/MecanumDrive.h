@@ -6,7 +6,7 @@
 #include <frc/kinematics/MecanumDriveOdometry.h>
 #include <AHRS.h>
 
-#include "HolonomicDrive.h"
+#include "rmb/drive/HolonomicDrive.h"
 #include "rmb/motorcontrol/VelocityController.h"
 
 namespace rmb {
@@ -17,25 +17,23 @@ namespace rmb {
                    VelocityController<units::meters>& frontRight,
                    VelocityController<units::meters>& rearLeft,
                    VelocityController<units::meters>& rearRight,
-                   frc::MecanumDriveKinematics kinematics,
-                   frc::Gyro& gyro,
+                   const frc::MecanumDriveKinematics& kinematics,
                    units::meters_per_second_t maxVelocity,
                    units::radians_per_second_t maxRotVelocity);
 
       // Functions for moving the robot
-      void driveWheelSpeeds(frc::MecanumDriveWheelSpeeds wheelSpeeds);
-      void driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds, 
-                              frc::Translation2d centerofRotation = frc::Translation2d());
-      frc::MecanumDriveWheelSpeeds getWheelSpeeds();
+      void driveWheelSpeeds(const frc::MecanumDriveWheelSpeeds& wheelSpeeds);
+
+      frc::MecanumDriveWheelSpeeds getWheelSpeeds() const;
+
+      void driveChassisSpeeds(const frc::ChassisSpeeds& chassisSpeeds, 
+                              const frc::Translation2d& centerofRotation = frc::Translation2d());
+  
+      frc::ChassisSpeeds getChassisSpeeds() const;
       
       // Functions for getting velocity values
-      units::meters_per_second_t getMaxVel() { return maxVelocity; };
-      units::radians_per_second_t getMaxRotVel() { return maxRotVelocity; };
-
-      // Functions dealing with odometry
-      const frc::Pose2d& getPose();
-      const frc::Pose2d& updatePose();
-      void resetPose();
+      units::meters_per_second_t getMaxVel() const { return maxVelocity; };
+      units::radians_per_second_t getMaxRotVel() const { return maxRotVelocity; };
 
     private:
       // Variables for wheels and kinematics (locations)
@@ -43,10 +41,10 @@ namespace rmb {
       VelocityController<units::meters>& frontRight;
       VelocityController<units::meters>& rearLeft;
       VelocityController<units::meters>& rearRight;
-      frc::MecanumDriveKinematics kinematics;
-      frc::Gyro& gyro;
-      frc::MecanumDriveOdometry odometry;
+      const frc::MecanumDriveKinematics& kinematics;
       units::meters_per_second_t maxVelocity;
       units::radians_per_second_t maxRotVelocity;
+
+      friend class MecanumEncoderOdometry;
   };
 } // rmb namespace
