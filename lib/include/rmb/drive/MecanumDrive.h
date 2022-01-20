@@ -18,9 +18,9 @@ namespace rmb {
                    VelocityController<units::meters>& rearLeft,
                    VelocityController<units::meters>& rearRight,
                    frc::MecanumDriveKinematics kinematics,
+                   frc::Gyro& gyro,
                    units::meters_per_second_t maxVelocity,
-                   units::radians_per_second_t maxRotVelocity,
-                   frc::Gyro& gyro);
+                   units::radians_per_second_t maxRotVelocity);
 
       // Functions for moving the robot
       void driveWheelSpeeds(frc::MecanumDriveWheelSpeeds wheelSpeeds);

@@ -6,12 +6,13 @@ namespace rmb {
                              VelocityController<units::meters>& rl,
                              VelocityController<units::meters>& rr,
                              frc::MecanumDriveKinematics k,
+                             frc::Gyro& g,
                              units::meters_per_second_t maxVel,
-                             units::radians_per_second_t maxRotVel,
-                             frc::Gyro& g) :
-                             frontLeft(fl), frontRight(fr), rearLeft(rl), rearRight(rr),
-                             kinematics(k), maxVelocity(maxVel), maxRotVelocity(maxRotVel),
-                             gyro(g), odometry(kinematics, gyro.GetRotation2d()) {}
+                             units::radians_per_second_t maxRotVel) :
+                             frontLeft(fl), frontRight(fr), rearLeft(rl),
+                             rearRight(rr), kinematics(k), gyro(g),
+                             odometry(kinematics, gyro.GetRotation2d()),
+                             maxVelocity(maxVel), maxRotVelocity(maxRotVel) {}
 
   void MecanumDrive::driveWheelSpeeds(frc::MecanumDriveWheelSpeeds wheelSpeeds) {
     // Set velocity for each individual wheel
