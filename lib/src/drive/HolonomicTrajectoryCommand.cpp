@@ -3,11 +3,12 @@
 #include "rmb/drive/HolonomicTrajectoryCommand.h"
 
 namespace rmb {
-    HolonomicTrajectoryCommand::HolonomicTrajectoryCommand(frc::Trajectory t,
+    HolonomicTrajectoryCommand::HolonomicTrajectoryCommand(const frc::Trajectory& t,
                                                            HolonomicDrive& d,
-                                                           frc::HolonomicDriveController dc) :
-                                                           trajectory(t), drive(d),
-                                                           driveController(dc) {}
+                                                           const HolonomicDriveOdometry& o,
+                                                           frc::HolonomicDriveController& dc) :
+                                                           trajectory(t), drive(d), 
+                                                           odometry(o), driveController(dc) {}
     
     void HolonomicTrajectoryCommand::Initialize() {
         timer.Reset();
@@ -17,7 +18,7 @@ namespace rmb {
     void HolonomicTrajectoryCommand::Execute() {
         units::time::second_t currentTime = units::second_t(timer.Get());
         frc::Trajectory::State desiredState = trajectory.Sample(currentTime);
-        auto targetChassisSpeeds = driveController.Calculate(drive.getPose(), desiredState, trajectory.States().back().pose.Rotation());
+        auto targetChassisSpeeds = driveController.Calculate(odometry.getPose(), desiredState, trajectory.States().back().pose.Rotation());
         drive.driveChassisSpeeds(targetChassisSpeeds);
     }
 

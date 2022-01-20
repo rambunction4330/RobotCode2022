@@ -1,3 +1,4 @@
+
 #include "rmb/drive/MecanumDrive.h"
 
 namespace rmb {
@@ -5,16 +6,14 @@ namespace rmb {
                              VelocityController<units::meters>& fr,
                              VelocityController<units::meters>& rl,
                              VelocityController<units::meters>& rr,
-                             frc::MecanumDriveKinematics k,
-                             frc::Gyro& g,
+                             const frc::MecanumDriveKinematics& k,
                              units::meters_per_second_t maxVel,
                              units::radians_per_second_t maxRotVel) :
                              frontLeft(fl), frontRight(fr), rearLeft(rl),
-                             rearRight(rr), kinematics(k), gyro(g),
-                             odometry(kinematics, gyro.GetRotation2d()),
+                             rearRight(rr), kinematics(k),
                              maxVelocity(maxVel), maxRotVelocity(maxRotVel) {}
 
-  void MecanumDrive::driveWheelSpeeds(frc::MecanumDriveWheelSpeeds wheelSpeeds) {
+  void MecanumDrive::driveWheelSpeeds(const frc::MecanumDriveWheelSpeeds& wheelSpeeds) {
     // Set velocity for each individual wheel
     frontLeft.setVelocity(wheelSpeeds.frontLeft);
     frontRight.setVelocity(wheelSpeeds.frontRight);
@@ -22,14 +21,7 @@ namespace rmb {
     rearRight.setVelocity(wheelSpeeds.rearRight);
   }
 
-  void MecanumDrive::driveChassisSpeeds(frc::ChassisSpeeds chassisSpeeds, 
-                                        frc::Translation2d centerofRotation) {
-    // Get wheel speeds from kinematics
-    frc::MecanumDriveWheelSpeeds wheelSpeeds = kinematics.ToWheelSpeeds(chassisSpeeds, centerofRotation);
-    driveWheelSpeeds(wheelSpeeds);
-  }
-
-  frc::MecanumDriveWheelSpeeds MecanumDrive::getWheelSpeeds() {
+  frc::MecanumDriveWheelSpeeds MecanumDrive::getWheelSpeeds() const {
     // Return a struct with velocities
     return {
       frontLeft.getVelocity(),
@@ -39,15 +31,14 @@ namespace rmb {
     };
   }
 
-  const frc::Pose2d& MecanumDrive::getPose() {
-    return odometry.GetPose();
+  void MecanumDrive::driveChassisSpeeds(const frc::ChassisSpeeds& chassisSpeeds, 
+                                        const frc::Translation2d& centerofRotation) {
+    // Get wheel speeds from kinematics
+    frc::MecanumDriveWheelSpeeds wheelSpeeds = kinematics.ToWheelSpeeds(chassisSpeeds, centerofRotation);
+    driveWheelSpeeds(wheelSpeeds);
   }
 
-  const frc::Pose2d& MecanumDrive::updatePose() {
-    return odometry.Update(gyro.GetRotation2d(), getWheelSpeeds());
-  }
-
-  void MecanumDrive::resetPose() {
-    odometry.ResetPosition(getPose(), gyro.GetRotation2d());
+  frc::ChassisSpeeds MecanumDrive::getChassisSpeeds() const {
+    return kinematics.ToChassisSpeeds(getWheelSpeeds());
   }
 }
