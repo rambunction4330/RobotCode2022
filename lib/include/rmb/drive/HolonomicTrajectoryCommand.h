@@ -19,8 +19,8 @@ namespace rmb {
         bool IsFinished();
       private:
         frc::Trajectory trajectory;
-        frc::HolonomicDriveController driveController;
         HolonomicDrive& drive;
+        frc::HolonomicDriveController driveController;
         frc::Timer timer;
   };
 }
