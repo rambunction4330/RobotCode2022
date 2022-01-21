@@ -20,6 +20,8 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
   sparkMaxEncoder = sparkMax.GetEncoder();
   sparkMaxPIDController = sparkMax.GetPIDController();
 
+  sparkMax.RestoreFactoryDefaults();
+
   //configure pid consts
   sparkMaxPIDController.SetP(config.p);
   sparkMaxPIDController.SetI(config.i);
@@ -28,13 +30,31 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
   sparkMaxPIDController.SetIZone(config.iZone);
   sparkMaxPIDController.SetIMaxAccum(config.iMaxAccumulator);
   sparkMaxPIDController.SetOutputRange(config.minOutput);
+
+  if(config.usingSmartMotion) {
+    sparkMaxPIDController.SetSmartMotionAllowedClosedLoopError(
+      RawUnit_t(config.allowedErr / conversion).to<double>()
+    );
+    sparkMaxPIDController.SetSmartMotionMaxVelocity(
+      RawVelocity_t(config.maxVelocity / conversion).to<double>()
+    );
+    sparkMaxPIDController.SetSmartMotionMaxAccel(
+      RawAccel_t(config.maxAccel / conversion).to<double>()
+    );
+    sparkMaxPIDController.SetSmartMotionAccelStrategy(config.accelStrategy);
+    sparkMaxPIDController.SetSmartMotionMinOutputVelocity(RawVelocity_t(config.minVelocity / conversion).to<double>());
+
+    controlType = rev::ControlType::kSmartMotion;
+  } else {
+    controlType = rev::ControlType::kPosition;
+  }
 }
 
 template <typename U>
 void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
   double setPoint = RawUnit_t(position / conversion).to<double>;
   std::clamp<double>(setPoint, minPosition.to<double>(), maxPosition.to<double>());
-  sparkMaxPIDController.SetReference(setPoint, rev::ControlType::kPosition);
+  sparkMaxPIDController.SetReference(setPoint, controlType);
 }
 
 template <typename U>
