@@ -1,3 +1,5 @@
+#pragma once
+
 #include <units/base.h>
 #include <units/angle.h>
 #include <units/time.h>
