@@ -14,7 +14,7 @@ namespace rmb {
     using Acceleration_t = units::unit_t<AccelerationUnit>;
 
     virtual void setVelocity(Velocity_t velocity) = 0;
-    virtual Velocity_t getVelocity() = 0;
+    virtual Velocity_t getVelocity() const = 0;
 
     virtual void setInverted(bool inverted) = 0;
     virtual bool getInverted() const = 0;

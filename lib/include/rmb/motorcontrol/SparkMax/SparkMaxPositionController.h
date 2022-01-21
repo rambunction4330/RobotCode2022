@@ -44,14 +44,12 @@ namespace rmb
 
     inline void setInverted(bool inverted) override { sparkMax.SetInverted(inverted); };
     inline bool getInverted() const override { return sparkMax.GetInverted(); };
-    inline void disable() override { sparkMax.Disable(); };
-    inline void stopMotor() override { sparkMax.StopMotor(); };
 
     void resetRefrence(Distance_t position) override;
     void setMaxPosition(Distance_t max) override;
-    Distance_t getMaxPosition() override;
+    Distance_t getMaxPosition() const override;
     void setMinPosition(Distance_t min) override;
-    Distance_t getMinPosition() override;
+    Distance_t getMinPosition() const override;
 
   private:
     rev::CANSparkMax sparkMax;

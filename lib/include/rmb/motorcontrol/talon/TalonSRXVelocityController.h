@@ -38,10 +38,10 @@ namespace rmb {
       TalonSRXVelocityController(int deviceNumber, const PIDConfig& config, ConversionUnit_t conversion = 1);
 
       void setVelocity(Velocity_t velocity) override;
-      Velocity_t getVelocity() override;
+      Velocity_t getVelocity() const override;
 
       inline void setInverted(bool inverted) override { talonSRX.SetInverted(inverted); }
-      inline bool getInverted() override { return talonSRX.GetInverted(); }
+      inline bool getInverted() const override { return talonSRX.GetInverted(); }
 
     private:
       ctre::phoenix::motorcontrol::can::WPI_TalonSRX talonSRX;

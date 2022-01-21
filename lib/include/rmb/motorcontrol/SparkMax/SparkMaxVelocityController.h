@@ -43,15 +43,12 @@ namespace rmb {
     SparkMaxVelocityController(int deviceID, const PIDConfig& config, ConversionUnit_t conversionUnit = 1);
 
     void setVelocity(Velocity_t velocity) override;
-    Velocity_t getVelocity() override;
+    Velocity_t getVelocity() const override;
 
     inline void setInverted(bool inverted) override { sparkMax.SetInverted(inverted); };
-    inline bool getInverted() override { return sparkMax.GetInverted(); };
-    inline void disable() override { sparkMax.Disable(); }
-    inline void stopMotor() override { sparkMax.StopMotor(); };
+    inline bool getInverted() const override { return sparkMax.GetInverted(); };
 
   private:
-
     rev::CANSparkMax sparkMax;
     rev::SparkMaxRelativeEncoder sparkMaxEncoder;
     rev::SparkMaxPIDController sparkMaxPIDController;
