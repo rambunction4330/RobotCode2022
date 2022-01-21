@@ -4,10 +4,16 @@
 
 #pragma once
 
+#include <frc/SPI.h>
 #include <frc2/command/SubsystemBase.h>
+#include <units/length.h>
+
+#include <rmb/drive/MecanumDrive.h>
+#include <rmb/drive/MecanumEncoderOdometry.h>
+#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
 
 class DriveSubsystem : public frc2::SubsystemBase {
- public:
+public:
   DriveSubsystem();
 
   /**
@@ -15,7 +21,15 @@ class DriveSubsystem : public frc2::SubsystemBase {
    */
   void Periodic() override;
 
- private:
+private:
+  rmb::SparkMaxVelocityController<units::meters> frontLeft;
+  rmb::SparkMaxVelocityController<units::meters> frontRight;
+  rmb::SparkMaxVelocityController<units::meters> rearLeft;
+  rmb::SparkMaxVelocityController<units::meters> rearRight;
+  frc::MecanumDriveKinematics kinematics;
+  rmb::MecanumDrive drive;
+  AHRS gyro;
+  rmb::MecanumEncoderOdometry odometry;
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };
