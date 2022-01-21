@@ -17,6 +17,6 @@ namespace rmb {
     virtual Velocity_t getVelocity() = 0;
 
     virtual void setInverted(bool inverted) = 0;
-    virtual bool getInverted() const = 0;
+    virtual bool getInverted() = 0;
   };
 } // rmb namespace
