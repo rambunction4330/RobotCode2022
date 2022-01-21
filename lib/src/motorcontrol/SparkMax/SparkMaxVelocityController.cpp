@@ -45,7 +45,9 @@ namespace rmb {
         RawAccel_t(config.maxAccel / conversion).to<double>()
       );
       sparkMaxPIDController.SetSmartMotionAccelStrategy(config.accelStrategy);
-      sparkMaxPIDController.SetSmartMotionMinOutputVelocity(RawVelocity_t(config.minVelocity / conversion).to<double>());
+      sparkMaxPIDController.SetSmartMotionMinOutputVelocity(
+        RawVelocity_t(config.minVelocity / conversion).to<double>()
+      );
     }
 }
 
