@@ -35,18 +35,18 @@ bool VisionSubsystem::IsHubInView() {
     return 0;
 }
 
-Vector3<float> VisionSubsystem::GetHubPosition() {//Rotation to hub, horoz distance to hub, hub height
+Vector3<float> VisionSubsystem::GetHubPosition() { //Rotation to hub, horizontal distance to hub, hub height
     Vector3<float> ret;
     
     if(this->networkInstance.IsConnected())  {
         auto table = this->networkInstance.GetTable("HubData");
         auto rotationToHub = table->GetEntry("RotationToHub");
-        auto horozonalDistance = table->GetEntry("horozontalDistanceToHub");
+        auto horizontalDistance = table->GetEntry("HorizontalDistanceToHub");
         auto hubHeight = table->GetEntry("HeightToHub");
 
         ret.x = float(rotationToHub.GetDouble(0));
-        ret.y = float(horozonalDistance.GetDouble(0));
-        ret.z = float(horozonalDistance.GetDouble(0));
+        ret.y = float(horizontalDistance.GetDouble(0));
+        ret.z = float(hubHeight.GetDouble(0));
 
         return ret;
     }
