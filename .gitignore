@@ -171,4 +171,7 @@ bin/
 *.swo
 
 # Doxygen-generated HTML docs
-docs/
+docs/*
+!docs/mainpage.md
+!docs/doxygen-awesome.css
+!docs/Doxyfile
