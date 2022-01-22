@@ -11,3 +11,6 @@
  <img src="https://img.shields.io/github/license/rambunction4330/RobotCode2022" />
 </p>
 
+# Credits
+- FRC WPILib recursively
+- @jothepro for Doxygen Awesome CSS
