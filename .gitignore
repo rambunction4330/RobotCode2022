@@ -169,3 +169,6 @@ bin/
 *~
 *.swp
 *.swo
+
+# Doxygen-generated HTML docs
+docs/
