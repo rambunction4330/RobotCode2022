@@ -46,7 +46,7 @@ Vector3<float> VisionSubsystem::GetHubPosition() {//Rotation to hub, horoz dista
 
         ret.x = float(rotationToHub.GetDouble(0));
         ret.y = float(horozonalDistance.GetDouble(0));
-        ret.z = float(horozonalDistance.GetDouble(0));
+        ret.z = float(hubHeight.GetDouble(0));
 
         return ret;
     }
