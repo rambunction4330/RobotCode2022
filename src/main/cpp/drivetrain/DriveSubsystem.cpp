@@ -10,7 +10,7 @@ DriveSubsystem::DriveSubsystem()
                  frc::Translation2d(), frc::Translation2d()),
       drive(frontLeft, frontRight, rearLeft, rearRight, kinematics,
             units::meters_per_second_t(0), units::radians_per_second_t(0)),
-      gyro(frc::SPI::kMXP), odometry(drive, gyro){};
+      gyro(frc::SPI::kMXP), odometry(drive, gyro) {}
 
 // This method will be called once per scheduler run
 void DriveSubsystem::Periodic() { odometry.updatePose(); }
