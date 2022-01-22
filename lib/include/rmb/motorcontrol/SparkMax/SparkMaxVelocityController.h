@@ -31,12 +31,20 @@ namespace rmb {
     using RawUnit_t = typename units::unit_t<RawUnit>;
     using RawVelocity   = typename units::compound_unit<RawUnit, units::inverse<units::minutes>>;
     using RawVelocity_t = typename units::unit_t<RawVelocity>;
-    
+    using RawAccel = typename units::compound_unit<RawVelocity, units::inverse<units::seconds>>;
+    using RawAccel_t = typename units::unit_t<RawAccel>;
+
     struct PIDConfig {
       double p, i, d, f;
       double iZone, iMaxAccumulator;
-      Velocity_t allowableError;
       double maxOutput, minOutput;
+
+      // SmartMotion config
+      bool usingSmartMotion;
+      Velocity_t maxVelocity, minVelocity;
+      Acceleration_t maxAccel;
+      Distance_t allowedErr;
+      rev::SparkMaxPIDController::AccelStrategy accelStrategy;
     };
 
     SparkMaxVelocityController(int deviceID);
@@ -47,8 +55,6 @@ namespace rmb {
 
     inline void setInverted(bool inverted) override { sparkMax.SetInverted(inverted); };
     inline bool getInverted() override { return sparkMax.GetInverted(); };
-    inline void disable() override { sparkMax.Disable(); }
-    inline void stopMotor() override { sparkMax.StopMotor(); };
 
   private:
 

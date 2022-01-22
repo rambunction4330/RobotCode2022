@@ -29,10 +29,10 @@ namespace rmb {
     talonFX.Config_kI(0, config.i);
     talonFX.Config_kD(0, config.d);
     talonFX.Config_kF(0, config.f);
-    talonFX.Config_IntegralZone(0, config.izone);
+    talonFX.Config_IntegralZone(0, config.iZone);
     talonFX.ConfigMaxIntegralAccumulator(0, config.iMaxAccumulator);
     talonFX.ConfigAllowableClosedloopError(0, RawVelocity_t(config.allowableError / conversion).to<double>());
-    talonFX.ConfigClosedLoopPeakOutput(config.maxOutput);
+    talonFX.ConfigClosedLoopPeakOutput(0, config.maxOutput);
     talonFX.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::FeedbackDevice::IntegratedSensor, 0);
   }
 
@@ -46,4 +46,7 @@ namespace rmb {
   typename TalonFXVelocityController<U>::Velocity_t TalonFXVelocityController<U>::getVelocity() {
     return RawVelocity_t(talonFX.GetSelectedSensorVelocity()) * conversion;
   }
+
+  template class TalonFXVelocityController<units::meters>;
+  template class TalonFXVelocityController<units::radians>;
 }
