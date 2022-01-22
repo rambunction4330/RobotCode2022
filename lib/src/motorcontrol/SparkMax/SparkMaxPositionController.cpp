@@ -2,26 +2,22 @@
 #include <rmb/motorcontrol/SparkMax/SparkMaxError.h>
 #include <rmb/motorcontrol/SparkMax/SparkMaxPositionController.h>
 
-template <typename U>
-rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID) {
-  sparkMax = rev::CANSparkMax{deviceID, rev::CANSparkMax::MotorType::kBrushless};
-  sparkMaxEncoder = sparkMax.GetEncoder();
-  sparkMaxPIDController = sparkMax.GetPIDController();
-
-}
+#include <units/length.h>
+#include <units/angle.h>
 
 template <typename U>
-rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
-                                                              int deviceID, 
-                                                              const PIDConfig& config, 
-                                                              ConversionUnit_t conversionFactor
-                                                              ) : conversion(conversionFactor) {
-  
+rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID) :
+  sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
+  sparkMaxEncoder(sparkMax.GetEncoder()),
+  sparkMaxPIDController(sparkMax.GetPIDController()),
+  conversion(Distance_t(1) / units::radian_t(1)) {}
 
-                                                          
-  sparkMax = rev::CANSparkMax{deviceID, rev::CANSparkMax::MotorType::kBrushless};
-  sparkMaxEncoder = sparkMax.GetEncoder();
-  sparkMaxPIDController = sparkMax.GetPIDController();
+template <typename U>
+rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID, const PIDConfig& config, ConversionUnit_t conversionFactor) : 
+                                                               sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
+                                                               sparkMaxEncoder(sparkMax.GetEncoder()),
+                                                               sparkMaxPIDController(sparkMax.GetPIDController()), 
+                                                               conversion(conversionFactor) {
 
   sparkMax.RestoreFactoryDefaults();
 
@@ -32,7 +28,7 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFF(config.f));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetIZone(config.iZone));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetIMaxAccum(config.iMaxAccumulator));
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetOutputRange(config.minOutput));
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetOutputRange(config.minOutput, config.maxOutput));
 
   if(config.usingSmartMotion) {
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionAllowedClosedLoopError(
@@ -49,15 +45,15 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
       RawVelocity_t(config.minVelocity / conversion).to<double>()
     ));
 
-    controlType = rev::ControlType::kSmartMotion;
+    controlType = rev::CANSparkMax::ControlType::kSmartMotion;
   } else {
-    controlType = rev::ControlType::kPosition;
+    controlType = rev::CANSparkMax::ControlType::kPosition;
   }
 }
 
 template <typename U>
 void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
-  double setPoint = RawUnit_t(position / conversion).to<double>;
+  double setPoint = RawUnit_t(position / conversion).to<double>();
   std::clamp<double>(setPoint, minPosition.to<double>(), maxPosition.to<double>());
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(setPoint, controlType));
 }
@@ -66,7 +62,7 @@ template <typename U>
 typename rmb::SparkMaxPositionController<U>::Distance_t rmb::SparkMaxPositionController<U>::getPosition() {
   RawUnit_t val = RawUnit_t(sparkMaxEncoder.GetPosition());
   std::clamp<RawUnit_t>(val, minPosition, maxPosition);
-  return Velocity_t(val * conversion);
+  return Distance_t(val * conversion);
 }
 
 template <typename U>
@@ -100,3 +96,6 @@ template <typename U>
 typename rmb::SparkMaxPositionController<U>::Distance_t rmb::SparkMaxPositionController<U>::getMinPosition() {
   return Distance_t(minPosition * conversion);  
 }
+
+template class rmb::SparkMaxPositionController<units::meters>;
+template class rmb::SparkMaxPositionController<units::radians>;

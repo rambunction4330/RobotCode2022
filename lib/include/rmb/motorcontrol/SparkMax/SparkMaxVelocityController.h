@@ -55,8 +55,6 @@ namespace rmb {
 
     inline void setInverted(bool inverted) override { sparkMax.SetInverted(inverted); };
     inline bool getInverted() override { return sparkMax.GetInverted(); };
-    inline void disable() override { sparkMax.Disable(); }
-    inline void stopMotor() override { sparkMax.StopMotor(); };
 
   private:
 
