@@ -1,23 +1,24 @@
 #include <rmb/motorcontrol/SparkMax/SparkMaxError.h>
 #include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
 
-#include <units/length.h>
 #include <units/angle.h>
+#include <units/length.h>
 
 namespace rmb {
 
 template <typename U>
-SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID) : 
-    sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-    sparkMaxEncoder(sparkMax.GetEncoder()),
-    sparkMaxPIDController(sparkMax.GetPIDController()) {}
+SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
+    : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
+      sparkMaxEncoder(sparkMax.GetEncoder()),
+      sparkMaxPIDController(sparkMax.GetPIDController()) {}
 
 template <typename U>
-SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit) :
-                                                          sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-                                                          sparkMaxEncoder(sparkMax.GetEncoder()),
-                                                          sparkMaxPIDController(sparkMax.GetPIDController()),
-                                                          conversion(conversionUnit) {
+SparkMaxVelocityController<U>::SparkMaxVelocityController(
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit)
+    : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
+      sparkMaxEncoder(sparkMax.GetEncoder()),
+      sparkMaxPIDController(sparkMax.GetPIDController()),
+      conversion(conversionUnit) {
 
   sparkMax.RestoreFactoryDefaults();
 
@@ -26,8 +27,10 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID, const PI
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetD(config.d));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFF(config.f));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetIZone(config.iZone));
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetIMaxAccum(config.iMaxAccumulator));
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetOutputRange(config.minOutput, config.maxOutput));
+  CHECK_REVLIB_ERROR(
+      sparkMaxPIDController.SetIMaxAccum(config.iMaxAccumulator));
+  CHECK_REVLIB_ERROR(
+      sparkMaxPIDController.SetOutputRange(config.minOutput, config.maxOutput));
 
   if (config.usingSmartMotion) {
     CHECK_REVLIB_ERROR(
@@ -57,7 +60,7 @@ SparkMaxVelocityController<U>::getVelocity() {
   return Velocity_t(RawVelocity_t(sparkMaxEncoder.GetVelocity()) * conversion);
 }
 
-  template class SparkMaxVelocityController<units::meters>;
-  template class SparkMaxVelocityController<units::radians>;
+template class SparkMaxVelocityController<units::meters>;
+template class SparkMaxVelocityController<units::radians>;
 
 } // namespace rmb

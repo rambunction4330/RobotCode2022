@@ -2,48 +2,49 @@
 #include <rmb/motorcontrol/SparkMax/SparkMaxError.h>
 #include <rmb/motorcontrol/SparkMax/SparkMaxPositionController.h>
 
-#include <units/length.h>
 #include <units/angle.h>
+#include <units/length.h>
 
 template <typename U>
-rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID) :
-  sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-  sparkMaxEncoder(sparkMax.GetEncoder()),
-  sparkMaxPIDController(sparkMax.GetPIDController()),
-  conversion(Distance_t(1) / units::radian_t(1)) {}
+rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
+    : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
+      sparkMaxEncoder(sparkMax.GetEncoder()),
+      sparkMaxPIDController(sparkMax.GetPIDController()),
+      conversion(Distance_t(1) / units::radian_t(1)) {}
 
 template <typename U>
-rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID, const PIDConfig& config, ConversionUnit_t conversionFactor) : 
-                                                               sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-                                                               sparkMaxEncoder(sparkMax.GetEncoder()),
-                                                               sparkMaxPIDController(sparkMax.GetPIDController()), 
-                                                               conversion(conversionFactor) {
+rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor)
+    : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
+      sparkMaxEncoder(sparkMax.GetEncoder()),
+      sparkMaxPIDController(sparkMax.GetPIDController()),
+      conversion(conversionFactor) {
 
   sparkMax.RestoreFactoryDefaults();
 
-  //configure pid consts
+  // configure pid consts
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetI(config.i));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetD(config.d));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFF(config.f));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetIZone(config.iZone));
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetIMaxAccum(config.iMaxAccumulator));
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetOutputRange(config.minOutput, config.maxOutput));
+  CHECK_REVLIB_ERROR(
+      sparkMaxPIDController.SetIMaxAccum(config.iMaxAccumulator));
+  CHECK_REVLIB_ERROR(
+      sparkMaxPIDController.SetOutputRange(config.minOutput, config.maxOutput));
 
-  if(config.usingSmartMotion) {
-    CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionAllowedClosedLoopError(
-      RawUnit_t(config.allowedErr / conversion).to<double>()
-    ));
+  if (config.usingSmartMotion) {
+    CHECK_REVLIB_ERROR(
+        sparkMaxPIDController.SetSmartMotionAllowedClosedLoopError(
+            RawUnit_t(config.allowedErr / conversion).to<double>()));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMaxVelocity(
-      RawVelocity_t(config.maxVelocity / conversion).to<double>()
-    ));
+        RawVelocity_t(config.maxVelocity / conversion).to<double>()));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMaxAccel(
-      RawAccel_t(config.maxAccel / conversion).to<double>()
-    ));
-    CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionAccelStrategy(config.accelStrategy));
+        RawAccel_t(config.maxAccel / conversion).to<double>()));
+    CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionAccelStrategy(
+        config.accelStrategy));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMinOutputVelocity(
-      RawVelocity_t(config.minVelocity / conversion).to<double>()
-    ));
+        RawVelocity_t(config.minVelocity / conversion).to<double>()));
 
     controlType = rev::CANSparkMax::ControlType::kSmartMotion;
   } else {
@@ -54,27 +55,29 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID, con
 template <typename U>
 void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
   double setPoint = RawUnit_t(position / conversion).to<double>();
-  std::clamp<double>(setPoint, minPosition.to<double>(), maxPosition.to<double>());
+  std::clamp<double>(setPoint, minPosition.to<double>(),
+                     maxPosition.to<double>());
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(setPoint, controlType));
 }
 
 template <typename U>
-typename rmb::SparkMaxPositionController<U>::Distance_t rmb::SparkMaxPositionController<U>::getPosition() {
+typename rmb::SparkMaxPositionController<U>::Distance_t
+rmb::SparkMaxPositionController<U>::getPosition() {
   RawUnit_t val = RawUnit_t(sparkMaxEncoder.GetPosition());
   std::clamp<RawUnit_t>(val, minPosition, maxPosition);
   return Distance_t(val * conversion);
 }
 
 template <typename U>
-typename rmb::SparkMaxPositionController<U>::Velocity_t rmb::SparkMaxPositionController<U>::getVelocity() {
+typename rmb::SparkMaxPositionController<U>::Velocity_t
+rmb::SparkMaxPositionController<U>::getVelocity() {
   return Velocity_t(RawVelocity_t(sparkMaxEncoder.GetVelocity()) * conversion);
 }
 
 template <typename U>
 void rmb::SparkMaxPositionController<U>::resetRefrence(Distance_t distance) {
   CHECK_REVLIB_ERROR(sparkMaxEncoder.SetPosition(
-    RawUnit_t(distance / conversion).to<double>()
-  ));
+      RawUnit_t(distance / conversion).to<double>()));
 }
 
 template <typename U>
@@ -83,7 +86,8 @@ void rmb::SparkMaxPositionController<U>::setMaxPosition(Distance_t max) {
 }
 
 template <typename U>
-typename rmb::SparkMaxPositionController<U>::Distance_t rmb::SparkMaxPositionController<U>::getMaxPosition() {
+typename rmb::SparkMaxPositionController<U>::Distance_t
+rmb::SparkMaxPositionController<U>::getMaxPosition() {
   return Distance_t(maxPosition * conversion);
 }
 
@@ -93,8 +97,9 @@ void rmb::SparkMaxPositionController<U>::setMinPosition(Distance_t min) {
 }
 
 template <typename U>
-typename rmb::SparkMaxPositionController<U>::Distance_t rmb::SparkMaxPositionController<U>::getMinPosition() {
-  return Distance_t(minPosition * conversion);  
+typename rmb::SparkMaxPositionController<U>::Distance_t
+rmb::SparkMaxPositionController<U>::getMinPosition() {
+  return Distance_t(minPosition * conversion);
 }
 
 template class rmb::SparkMaxPositionController<units::meters>;
