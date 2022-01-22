@@ -175,3 +175,4 @@ docs/*
 !docs/mainpage.md
 !docs/doxygen-awesome.css
 !docs/Doxyfile
+!docs/favicon.png
