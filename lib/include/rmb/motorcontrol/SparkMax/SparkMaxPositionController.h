@@ -51,16 +51,14 @@ namespace rmb
     };
 
     SparkMaxPositionController(int deviceID);
-    SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig, ConversionUnit_t conversion = 1);
+    SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig, ConversionUnit_t conversion = ConversionUnit_t(1));
 
     void setPosition(Distance_t position) override;
     Distance_t getPosition() override;
     Velocity_t getVelocity() override;
 
     inline void setInverted(bool inverted) override { sparkMax.SetInverted(inverted); };
-    inline bool getInverted() const override { return sparkMax.GetInverted(); };
-    inline void disable() override { sparkMax.Disable(); };
-    inline void stopMotor() override { sparkMax.StopMotor(); };
+    inline bool getInverted() override { return sparkMax.GetInverted(); };
 
     void resetRefrence(Distance_t position) override;
     void setMaxPosition(Distance_t max) override;
@@ -70,13 +68,13 @@ namespace rmb
 
   private:
     rev::CANSparkMax sparkMax;
-    rev::RelativeEncoder sparkMaxEncoder;
+    rev::SparkMaxRelativeEncoder sparkMaxEncoder;
     rev::SparkMaxPIDController sparkMaxPIDController;
 
     ConversionUnit_t conversion;
 
-    RawUnit_t maxPosition = 1;
-    RawUnit_t minPosition = -1;
+    RawUnit_t maxPosition = RawUnit_t(1);
+    RawUnit_t minPosition = RawUnit_t(-1);
 
     rev::CANSparkMax::ControlType controlType;
     
