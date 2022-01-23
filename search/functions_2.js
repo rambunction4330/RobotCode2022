@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['updatepose_0',['updatePose',['../classrmb_1_1_holonomic_drive_odometry.html#a9a62e87296eae70264beb5a4ba27e594',1,'rmb::HolonomicDriveOdometry::updatePose()'],['../classrmb_1_1_mecanum_encoder_odometry.html#aba41698ad0971a1b0cd4e000524fb7f0',1,'rmb::MecanumEncoderOdometry::updatePose()']]]
+  ['resetpose_0',['resetPose',['../classrmb_1_1_holonomic_drive_odometry.html#afc3e7adc8e61d0a3cc609397a41c741e',1,'rmb::HolonomicDriveOdometry::resetPose()'],['../classrmb_1_1_mecanum_encoder_odometry.html#a769facf9189f524a0602ceea3ad2a361',1,'rmb::MecanumEncoderOdometry::resetPose()']]]
 ];

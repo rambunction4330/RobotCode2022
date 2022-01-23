@@ -25,6 +25,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RobotCode2022<span id="projectnumber">&#160;0.0</span>
    </div>
@@ -97,22 +98,30 @@ $(document).ready(function(){initNavTree('_holonomic_drive_8h_source.html',''); 
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;frc/kinematics/ChassisSpeeds.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>rmb {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_holonomic_drive.html">HolonomicDrive</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> driveChassisSpeeds(</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>      <span class="keyword">const</span> frc::ChassisSpeeds &amp;chassisSpeeds,</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>      <span class="keyword">const</span> frc::Translation2d &amp;centerofRotation = frc::Translation2d()) = 0;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">virtual</span> frc::ChassisSpeeds getChassisSpeeds() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> driveCartesian(<span class="keywordtype">double</span> ySpeed, <span class="keywordtype">double</span> xSpeed, <span class="keywordtype">double</span> zRotation);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> drivePolar(<span class="keywordtype">double</span> magnitude, <span class="keywordtype">double</span> angle, <span class="keywordtype">double</span> zRotation);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keyword">virtual</span> units::meters_per_second_t getMaxVel() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keyword">virtual</span> units::radians_per_second_t getMaxRotVel() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>} <span class="comment">// namespace rmb</span></div>
-<div class="ttc" id="aclassrmb_1_1_holonomic_drive_html"><div class="ttname"><a href="classrmb_1_1_holonomic_drive.html">rmb::HolonomicDrive</a></div><div class="ttdef"><b>Definition:</b> HolonomicDrive.h:11</div></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_holonomic_drive.html">HolonomicDrive</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">   29</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">driveChassisSpeeds</a>(</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>      <span class="keyword">const</span> frc::ChassisSpeeds &amp;chassisSpeeds,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>      <span class="keyword">const</span> frc::Translation2d &amp;centerofRotation = frc::Translation2d()) = 0;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive.html#a82fc55b0ee436c537cda7fff1c7f7e14">   40</a></span>  <span class="keyword">virtual</span> frc::ChassisSpeeds <a class="code hl_function" href="classrmb_1_1_holonomic_drive.html#a82fc55b0ee436c537cda7fff1c7f7e14">getChassisSpeeds</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">   54</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">driveCartesian</a>(<span class="keywordtype">double</span> ySpeed, <span class="keywordtype">double</span> xSpeed, <span class="keywordtype">double</span> zRotation);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">   68</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">drivePolar</a>(<span class="keywordtype">double</span> magnitude, <span class="keywordtype">double</span> angle, <span class="keywordtype">double</span> zRotation);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive.html#a8c6687fefdfb22d6922b7a5b0708588b">   76</a></span>  <span class="keyword">virtual</span> units::meters_per_second_t <a class="code hl_function" href="classrmb_1_1_holonomic_drive.html#a8c6687fefdfb22d6922b7a5b0708588b">getMaxVel</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive.html#ace175ff6094c4b267af49418233e8879">   84</a></span>  <span class="keyword">virtual</span> units::radians_per_second_t <a class="code hl_function" href="classrmb_1_1_holonomic_drive.html#ace175ff6094c4b267af49418233e8879">getMaxRotVel</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>} <span class="comment">// namespace rmb</span></div>
+<div class="ttc" id="aclassrmb_1_1_holonomic_drive_html"><div class="ttname"><a href="classrmb_1_1_holonomic_drive.html">rmb::HolonomicDrive</a></div><div class="ttdef"><b>Definition:</b> HolonomicDrive.h:16</div></div>
+<div class="ttc" id="aclassrmb_1_1_holonomic_drive_html_a2c0f6447113e5ed7d62f6f557fda293f"><div class="ttname"><a href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">rmb::HolonomicDrive::driveCartesian</a></div><div class="ttdeci">virtual void driveCartesian(double ySpeed, double xSpeed, double zRotation)</div></div>
+<div class="ttc" id="aclassrmb_1_1_holonomic_drive_html_a82fc55b0ee436c537cda7fff1c7f7e14"><div class="ttname"><a href="classrmb_1_1_holonomic_drive.html#a82fc55b0ee436c537cda7fff1c7f7e14">rmb::HolonomicDrive::getChassisSpeeds</a></div><div class="ttdeci">virtual frc::ChassisSpeeds getChassisSpeeds() const =0</div></div>
+<div class="ttc" id="aclassrmb_1_1_holonomic_drive_html_a8c6687fefdfb22d6922b7a5b0708588b"><div class="ttname"><a href="classrmb_1_1_holonomic_drive.html#a8c6687fefdfb22d6922b7a5b0708588b">rmb::HolonomicDrive::getMaxVel</a></div><div class="ttdeci">virtual units::meters_per_second_t getMaxVel() const =0</div></div>
+<div class="ttc" id="aclassrmb_1_1_holonomic_drive_html_ace175ff6094c4b267af49418233e8879"><div class="ttname"><a href="classrmb_1_1_holonomic_drive.html#ace175ff6094c4b267af49418233e8879">rmb::HolonomicDrive::getMaxRotVel</a></div><div class="ttdeci">virtual units::radians_per_second_t getMaxRotVel() const =0</div></div>
+<div class="ttc" id="aclassrmb_1_1_holonomic_drive_html_acebb3573e15172c8eaccb07c35449aba"><div class="ttname"><a href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">rmb::HolonomicDrive::drivePolar</a></div><div class="ttdeci">virtual void drivePolar(double magnitude, double angle, double zRotation)</div></div>
+<div class="ttc" id="aclassrmb_1_1_holonomic_drive_html_aed5c311f6adefbdac5f10a6df48470a4"><div class="ttname"><a href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">rmb::HolonomicDrive::driveChassisSpeeds</a></div><div class="ttdeci">virtual void driveChassisSpeeds(const frc::ChassisSpeeds &amp;chassisSpeeds, const frc::Translation2d &amp;centerofRotation=frc::Translation2d())=0</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

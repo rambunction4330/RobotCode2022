@@ -25,6 +25,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RobotCode2022<span id="projectnumber">&#160;0.0</span>
    </div>
@@ -121,11 +122,9 @@ frc::MecanumDriveWheelSpeeds&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memitem:a30e4d0731a01f20fb2df27237d28b490"><td class="memItemLeft" align="right" valign="top">units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_mecanum_drive.html#a30e4d0731a01f20fb2df27237d28b490">getMaxRotVel</a> () const</td></tr>
 <tr class="separator:a30e4d0731a01f20fb2df27237d28b490"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classrmb_1_1_holonomic_drive"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classrmb_1_1_holonomic_drive')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classrmb_1_1_holonomic_drive.html">rmb::HolonomicDrive</a></td></tr>
-<tr class="memitem:a2c0f6447113e5ed7d62f6f557fda293f inherit pub_methods_classrmb_1_1_holonomic_drive"><td class="memItemLeft" align="right" valign="top"><a id="a2c0f6447113e5ed7d62f6f557fda293f" name="a2c0f6447113e5ed7d62f6f557fda293f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>driveCartesian</b> (double ySpeed, double xSpeed, double zRotation)</td></tr>
+<tr class="memitem:a2c0f6447113e5ed7d62f6f557fda293f inherit pub_methods_classrmb_1_1_holonomic_drive"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">driveCartesian</a> (double ySpeed, double xSpeed, double zRotation)</td></tr>
 <tr class="separator:a2c0f6447113e5ed7d62f6f557fda293f inherit pub_methods_classrmb_1_1_holonomic_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acebb3573e15172c8eaccb07c35449aba inherit pub_methods_classrmb_1_1_holonomic_drive"><td class="memItemLeft" align="right" valign="top"><a id="acebb3573e15172c8eaccb07c35449aba" name="acebb3573e15172c8eaccb07c35449aba"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>drivePolar</b> (double magnitude, double angle, double zRotation)</td></tr>
+<tr class="memitem:acebb3573e15172c8eaccb07c35449aba inherit pub_methods_classrmb_1_1_holonomic_drive"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">drivePolar</a> (double magnitude, double angle, double zRotation)</td></tr>
 <tr class="separator:acebb3573e15172c8eaccb07c35449aba inherit pub_methods_classrmb_1_1_holonomic_drive"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -168,8 +167,20 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdomet
   </tr>
 </table>
 </div><div class="memdoc">
+<p >A pure virtual member that drives using chassis speeds. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chassisSpeeds</td><td>The chassis speeds to drive at. </td></tr>
+    <tr><td class="paramname">centerOfRotation</td><td>Translation2d that provides the center pivot point for the robot. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#a4450c6fef0e61fdeb7311f1a00ddd703">getChassisSpeeds()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">driveCartesian()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">drivePolar()</a> </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html">rmb::HolonomicDrive</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">rmb::HolonomicDrive</a>.</p>
 
 </div>
 </div>
@@ -195,8 +206,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdomet
   </tr>
 </table>
 </div><div class="memdoc">
+<p >A pure virtual member that returns the current chassis speeds. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#a34a2f8602f4a8b6be38849d58e232386">driveChassisSpeeds()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_mecanum_drive.html#a4eae098944bb080bba9629f06a583664">getMaxVel()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_mecanum_drive.html#a30e4d0731a01f20fb2df27237d28b490">getMaxRotVel()</a> </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html">rmb::HolonomicDrive</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html#a82fc55b0ee436c537cda7fff1c7f7e14">rmb::HolonomicDrive</a>.</p>
 
 </div>
 </div>
@@ -222,8 +238,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdomet
   </tr>
 </table>
 </div><div class="memdoc">
+<p >A pure virtual member that returns the maximum rotational velocity as specified. </p><dl class="section return"><dt>Returns</dt><dd>The maximum rotational velocity in radians per second </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html">rmb::HolonomicDrive</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html#ace175ff6094c4b267af49418233e8879">rmb::HolonomicDrive</a>.</p>
 
 </div>
 </div>
@@ -249,8 +266,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdomet
   </tr>
 </table>
 </div><div class="memdoc">
+<p >A pure virtual member that returns the maximum linear velocity as specified. </p><dl class="section return"><dt>Returns</dt><dd>The maximum velocity in meters per second </dd></dl>
 
-<p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html">rmb::HolonomicDrive</a>.</p>
+<p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html#a8c6687fefdfb22d6922b7a5b0708588b">rmb::HolonomicDrive</a>.</p>
 
 </div>
 </div>

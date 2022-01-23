@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "fghmprstuv",
+  0: "dfghmprstuv",
   1: "fhmpstv",
-  2: "gru",
+  2: "dgru",
   3: "r"
 };
 

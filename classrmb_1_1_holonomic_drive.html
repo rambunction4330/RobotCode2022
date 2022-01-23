@@ -25,6 +25,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="favicon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RobotCode2022<span id="projectnumber">&#160;0.0</span>
    </div>
@@ -90,6 +91,8 @@ $(document).ready(function(){initNavTree('classrmb_1_1_holonomic_drive.html','')
   <div class="headertitle"><div class="title">rmb::HolonomicDrive Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_holonomic_drive_8h_source.html">HolonomicDrive.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for rmb::HolonomicDrive:</div>
 <div class="dyncontent">
@@ -102,25 +105,266 @@ Inheritance diagram for rmb::HolonomicDrive:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aed5c311f6adefbdac5f10a6df48470a4"><td class="memItemLeft" align="right" valign="top"><a id="aed5c311f6adefbdac5f10a6df48470a4" name="aed5c311f6adefbdac5f10a6df48470a4"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>driveChassisSpeeds</b> (const frc::ChassisSpeeds &amp;chassisSpeeds, const frc::Translation2d &amp;centerofRotation=frc::Translation2d())=0</td></tr>
+<tr class="memitem:aed5c311f6adefbdac5f10a6df48470a4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">driveChassisSpeeds</a> (const frc::ChassisSpeeds &amp;chassisSpeeds, const frc::Translation2d &amp;centerofRotation=frc::Translation2d())=0</td></tr>
 <tr class="separator:aed5c311f6adefbdac5f10a6df48470a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82fc55b0ee436c537cda7fff1c7f7e14"><td class="memItemLeft" align="right" valign="top"><a id="a82fc55b0ee436c537cda7fff1c7f7e14" name="a82fc55b0ee436c537cda7fff1c7f7e14"></a>
-virtual frc::ChassisSpeeds&#160;</td><td class="memItemRight" valign="bottom"><b>getChassisSpeeds</b> () const =0</td></tr>
+<tr class="memitem:a82fc55b0ee436c537cda7fff1c7f7e14"><td class="memItemLeft" align="right" valign="top">virtual frc::ChassisSpeeds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_holonomic_drive.html#a82fc55b0ee436c537cda7fff1c7f7e14">getChassisSpeeds</a> () const =0</td></tr>
 <tr class="separator:a82fc55b0ee436c537cda7fff1c7f7e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c0f6447113e5ed7d62f6f557fda293f"><td class="memItemLeft" align="right" valign="top"><a id="a2c0f6447113e5ed7d62f6f557fda293f" name="a2c0f6447113e5ed7d62f6f557fda293f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>driveCartesian</b> (double ySpeed, double xSpeed, double zRotation)</td></tr>
+<tr class="memitem:a2c0f6447113e5ed7d62f6f557fda293f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">driveCartesian</a> (double ySpeed, double xSpeed, double zRotation)</td></tr>
 <tr class="separator:a2c0f6447113e5ed7d62f6f557fda293f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acebb3573e15172c8eaccb07c35449aba"><td class="memItemLeft" align="right" valign="top"><a id="acebb3573e15172c8eaccb07c35449aba" name="acebb3573e15172c8eaccb07c35449aba"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>drivePolar</b> (double magnitude, double angle, double zRotation)</td></tr>
+<tr class="memitem:acebb3573e15172c8eaccb07c35449aba"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">drivePolar</a> (double magnitude, double angle, double zRotation)</td></tr>
 <tr class="separator:acebb3573e15172c8eaccb07c35449aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c6687fefdfb22d6922b7a5b0708588b"><td class="memItemLeft" align="right" valign="top"><a id="a8c6687fefdfb22d6922b7a5b0708588b" name="a8c6687fefdfb22d6922b7a5b0708588b"></a>
-virtual units::meters_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxVel</b> () const =0</td></tr>
+<tr class="memitem:a8c6687fefdfb22d6922b7a5b0708588b"><td class="memItemLeft" align="right" valign="top">virtual units::meters_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_holonomic_drive.html#a8c6687fefdfb22d6922b7a5b0708588b">getMaxVel</a> () const =0</td></tr>
 <tr class="separator:a8c6687fefdfb22d6922b7a5b0708588b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace175ff6094c4b267af49418233e8879"><td class="memItemLeft" align="right" valign="top"><a id="ace175ff6094c4b267af49418233e8879" name="ace175ff6094c4b267af49418233e8879"></a>
-virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxRotVel</b> () const =0</td></tr>
+<tr class="memitem:ace175ff6094c4b267af49418233e8879"><td class="memItemLeft" align="right" valign="top">virtual units::radians_per_second_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_holonomic_drive.html#ace175ff6094c4b267af49418233e8879">getMaxRotVel</a> () const =0</td></tr>
 <tr class="separator:ace175ff6094c4b267af49418233e8879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >The Holonomic Drive class. Manages movement and the retrieval of certain values such as velocity from the robot. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2c0f6447113e5ed7d62f6f557fda293f" name="a2c0f6447113e5ed7d62f6f557fda293f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c0f6447113e5ed7d62f6f557fda293f">&#9670;&nbsp;</a></span>driveCartesian()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rmb::HolonomicDrive::driveCartesian </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>ySpeed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>xSpeed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zRotation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >A pure virtual member that drives using cartesian coordinates. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ySpeed</td><td>Double that gives the speed in the y-direction. </td></tr>
+    <tr><td class="paramname">xSpeed</td><td>Double that gives the speed in the x-direction. </td></tr>
+    <tr><td class="paramname">zRotation</td><td>Double that gives the rotation along the z-axis. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">driveChassisSpeeds()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">drivePolar()</a> </dd></dl>
+
+</div>
+</div>
+<a id="aed5c311f6adefbdac5f10a6df48470a4" name="aed5c311f6adefbdac5f10a6df48470a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed5c311f6adefbdac5f10a6df48470a4">&#9670;&nbsp;</a></span>driveChassisSpeeds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rmb::HolonomicDrive::driveChassisSpeeds </td>
+          <td>(</td>
+          <td class="paramtype">const frc::ChassisSpeeds &amp;&#160;</td>
+          <td class="paramname"><em>chassisSpeeds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const frc::Translation2d &amp;&#160;</td>
+          <td class="paramname"><em>centerofRotation</em> = <code>frc::Translation2d()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >A pure virtual member that drives using chassis speeds. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chassisSpeeds</td><td>The chassis speeds to drive at. </td></tr>
+    <tr><td class="paramname">centerOfRotation</td><td>Translation2d that provides the center pivot point for the robot. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_holonomic_drive.html#a82fc55b0ee436c537cda7fff1c7f7e14">getChassisSpeeds()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">driveCartesian()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">drivePolar()</a> </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_mecanum_drive.html#a34a2f8602f4a8b6be38849d58e232386">rmb::MecanumDrive</a>.</p>
+
+</div>
+</div>
+<a id="acebb3573e15172c8eaccb07c35449aba" name="acebb3573e15172c8eaccb07c35449aba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acebb3573e15172c8eaccb07c35449aba">&#9670;&nbsp;</a></span>drivePolar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void rmb::HolonomicDrive::drivePolar </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>magnitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zRotation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >A pure virtual member that drives using cartesian coordinates. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">magnitude</td><td>Double that gives the magnitude in the direction specified by the angle parameter. </td></tr>
+    <tr><td class="paramname">angle</td><td>Double that gives the angle for the direction to travel in. </td></tr>
+    <tr><td class="paramname">zRotation</td><td>Double that gives the rotation along the z-axis. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">driveChassisSpeeds()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">driveCartesian()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a82fc55b0ee436c537cda7fff1c7f7e14" name="a82fc55b0ee436c537cda7fff1c7f7e14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82fc55b0ee436c537cda7fff1c7f7e14">&#9670;&nbsp;</a></span>getChassisSpeeds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual frc::ChassisSpeeds rmb::HolonomicDrive::getChassisSpeeds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >A pure virtual member that returns the current chassis speeds. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">driveChassisSpeeds()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_holonomic_drive.html#a8c6687fefdfb22d6922b7a5b0708588b">getMaxVel()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_holonomic_drive.html#ace175ff6094c4b267af49418233e8879">getMaxRotVel()</a> </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_mecanum_drive.html#a4450c6fef0e61fdeb7311f1a00ddd703">rmb::MecanumDrive</a>.</p>
+
+</div>
+</div>
+<a id="ace175ff6094c4b267af49418233e8879" name="ace175ff6094c4b267af49418233e8879"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace175ff6094c4b267af49418233e8879">&#9670;&nbsp;</a></span>getMaxRotVel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::radians_per_second_t rmb::HolonomicDrive::getMaxRotVel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >A pure virtual member that returns the maximum rotational velocity as specified. </p><dl class="section return"><dt>Returns</dt><dd>The maximum rotational velocity in radians per second </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_mecanum_drive.html#a30e4d0731a01f20fb2df27237d28b490">rmb::MecanumDrive</a>.</p>
+
+</div>
+</div>
+<a id="a8c6687fefdfb22d6922b7a5b0708588b" name="a8c6687fefdfb22d6922b7a5b0708588b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c6687fefdfb22d6922b7a5b0708588b">&#9670;&nbsp;</a></span>getMaxVel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::meters_per_second_t rmb::HolonomicDrive::getMaxVel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >A pure virtual member that returns the maximum linear velocity as specified. </p><dl class="section return"><dt>Returns</dt><dd>The maximum velocity in meters per second </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_mecanum_drive.html#a4eae098944bb080bba9629f06a583664">rmb::MecanumDrive</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/include/rmb/drive/<a class="el" href="_holonomic_drive_8h_source.html">HolonomicDrive.h</a></li>
 </ul>
