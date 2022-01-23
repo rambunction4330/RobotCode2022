@@ -2,9 +2,10 @@ name: doxygen-publish
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    # Change to main once the PR is merged
+    branches: [ doxygen ]
+#  pull_request:
+#    branches: [ main ]
 
 jobs:
   build:
