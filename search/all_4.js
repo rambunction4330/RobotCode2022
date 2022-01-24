@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['mecanumdrive_0',['MecanumDrive',['../classrmb_1_1_mecanum_drive.html',1,'rmb']]],
-  ['mecanumencoderodometry_1',['MecanumEncoderOdometry',['../classrmb_1_1_mecanum_encoder_odometry.html',1,'rmb']]]
+  ['holonomicdrive_0',['HolonomicDrive',['../classrmb_1_1_holonomic_drive.html',1,'rmb']]],
+  ['holonomicdriveodometry_1',['HolonomicDriveOdometry',['../classrmb_1_1_holonomic_drive_odometry.html',1,'rmb']]],
+  ['holonomictrajectorycommand_2',['HolonomicTrajectoryCommand',['../classrmb_1_1_holonomic_trajectory_command.html',1,'rmb']]]
 ];
