@@ -44,6 +44,10 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
         config.accelStrategy));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMinOutputVelocity(
         RawVelocity_t(config.minVelocity / conversion).to<double>()));
+
+    controlType = rev::CANSparkMax::ControlType::kSmartVelocity;
+  } else {
+      controlType = rev::CANSparkMax::ControlType::kVelocity;
   }
 }
 
@@ -51,7 +55,7 @@ template <typename U>
 void SparkMaxVelocityController<U>::setVelocity(Velocity_t velocity) {
   double setPoint = RawVelocity_t(velocity / conversion).to<double>();
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
-      setPoint, rev::CANSparkMax::ControlType::kSmartVelocity));
+      setPoint, controlType));
 }
 
 template <typename U>
