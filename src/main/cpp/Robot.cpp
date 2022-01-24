@@ -58,7 +58,7 @@ void Robot::TeleopPeriodic() {
   else
   {
     this->pMotorController.Set(0);
-    this->smMotorController.setVelocity(1_rpm);
+    this->smMotorController.setVelocity(0_rpm);
   }
 
 }

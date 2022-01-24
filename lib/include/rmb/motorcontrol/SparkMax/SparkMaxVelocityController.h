@@ -47,16 +47,15 @@ public:
     double maxOutput, minOutput;
 
     // SmartMotion config
-    bool usingSmartMotion;
-    Velocity_t maxVelocity, minVelocity;
-    Acceleration_t maxAccel;
-    Distance_t allowedErr;
-    rev::SparkMaxPIDController::AccelStrategy accelStrategy;
+    bool usingSmartMotion = bool(true);
+    Velocity_t maxVelocity = Velocity_t(4000), minVelocity = Velocity_t(NULL);
+    Acceleration_t maxAccel = Acceleration_t(1000);
+    Distance_t allowedErr = Distance_t(10);
+    rev::SparkMaxPIDController::AccelStrategy accelStrategy = rev::SparkMaxPIDController::AccelStrategy::kSCurve;
   };
 
-  SparkMaxVelocityController(int deviceID);
   SparkMaxVelocityController(int deviceID, const PIDConfig &config,
-                             ConversionUnit_t conversionUnit = 1);
+                             ConversionUnit_t conversionUnit = ConversionUnit_t(1));
 
   void setVelocity(Velocity_t velocity) override;
   Velocity_t getVelocity() override;
