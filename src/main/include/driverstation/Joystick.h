@@ -50,6 +50,9 @@ class Joystick : public frc2::SubsystemBase {
     return (joystick.GetTwist() >= 0) ? twist : -twist;
   }
 
+  double getThrotle() {
+    return joystick.GetThrottle();
+  }
   private:
     frc::Joystick joystick;
     float deadZone = 0.2f;
