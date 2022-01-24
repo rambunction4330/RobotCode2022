@@ -4,10 +4,13 @@
 
 #include "Robot.h"
 
-#include <frc/smartdashboard/SmartDashboard.h>
+
 #include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() {
+
+  throttle = this->shuffleBoardTab.Add("Throttle Speed", 0.2f).WithWidget(frc::BuiltInWidgets::kNumberSlider).GetEntry();
+}
 
 /**
  * This function is called every robot packet, no matter the mode. Use
@@ -19,6 +22,7 @@ void Robot::RobotInit() {}
  */
 void Robot::RobotPeriodic() {
   frc2::CommandScheduler::GetInstance().Run();
+  
 }
 
 /**
@@ -43,7 +47,21 @@ void Robot::TeleopInit() {}
 /**
  * This function is called periodically during operator control.
  */
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+
+  const auto JSX = this->joystick.getX();
+  if(JSX)
+  {
+    this->pMotorController.Set(throttle.GetDouble(0.0));
+    this->smMotorController.setVelocity(4000_rpm);
+  }
+  else
+  {
+    this->pMotorController.Set(0);
+    this->smMotorController.setVelocity(1_rpm);
+  }
+
+}
 
 /**
  * This function is called periodically during test mode.

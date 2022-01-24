@@ -129,5 +129,7 @@ private:
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
   ConversionUnit_t conversion;
+
+   rev::CANSparkMax::ControlType controlType;
 };
 } // namespace rmb
