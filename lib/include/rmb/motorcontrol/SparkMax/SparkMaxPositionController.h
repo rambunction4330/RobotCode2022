@@ -9,6 +9,10 @@
 #include <rmb/motorcontrol/PositionController.h>
 
 namespace rmb {
+/**
+ * A wrapper around the SparkMax motorcontroller that allows for the user to set and get the position of the motor
+ * accurately through PID functionallity
+ */
 template <typename DistanceUnit>
 class SparkMaxPositionController : PositionController<DistanceUnit> {
 public:
@@ -22,28 +26,40 @@ public:
   using Acceleration_t =
       typename PositionController<DistanceUnit>::Acceleration_t;
 
-  // position functions for the spark max take in rotations
-  // 1 rotation * 2pi = 2pi rad
+  /**
+   * The distance units that the SparkMax takes in by default is rotations. The conversion here
+   * is one rotation to 2pi radians.   
+   */
   using RawUnit =
       typename units::unit<std::ratio<2>, units::radians, std::ratio<1>>;
   using RawUnit_t = typename units::unit_t<RawUnit>;
-  // velocity is in rpm
+
+  /**
+   * The velocity units that the SparkMaxes use are done in rotations/minute.
+   */
   using RawVelocity =
       typename units::compound_unit<RawUnit, units::inverse<units::minutes>>;
   using RawVelocity_t = typename units::unit_t<RawVelocity>;
-  // acceleration is in rpm / sec, or at least that's what the documentation
-  // says
+  
+  /**
+   * The SparkMax takes in acceleration in rpm/second. 
+   */
   using RawAccel =
       typename units::compound_unit<RawVelocity,
                                     units::inverse<units::seconds>>;
   using RawAccel_t = typename units::unit_t<RawAccel>;
 
-  // user defined conversion unit
+  /**
+   * The conversion unit from the user defined DistanceUnit to radians. See SparkMaxVelocityController<DistanceUnit>::ConversionUnit.
+   */
   using ConversionUnit =
       typename units::compound_unit<DistanceUnit,
                                     units::inverse<units::radians>>;
   using ConversionUnit_t = typename units::unit_t<ConversionUnit>;
 
+  /**
+   * Configuration constants for the SparkMax's PID controller.
+   */
   struct PIDConfig {
     double p, i, d, f;
     double iZone, iMaxAccumulator;
@@ -57,23 +73,87 @@ public:
     rev::SparkMaxPIDController::AccelStrategy accelStrategy;
   };
 
+  /** \deprecated
+   * Creates a SparkMaxPositionController with the specified deviceID
+   */
   SparkMaxPositionController(int deviceID);
+
+  /**
+   * Creates a SparkMaxPositionController with the specified SparkMax ID, PID configuration, and unit configuration
+   * @param deviceID The ID of the target SparkMax motorcontroller
+   * @param pidConfig configuration constants for the SparkMax PID controller. These constants will help you tune
+   *                  your motor such that it runs smooth within the desired bounds.
+   * @param conversion The conversion from the user provided DistanceUnits to radians. 
+   *                   See SparkMaxPositionController<DistanceUnit>::ConversionUnit
+   */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
                              ConversionUnit_t conversion = ConversionUnit_t(1));
 
+  /**
+   * Sets the position of the motor.
+   * @param position The distance from the reference, or "zero" point to set the motor to in user provided Distance_t. \n 
+   *                 See SparkMaxPositionController<DistanceUnit>::resetReference(Distance_t position)
+   */
   void setPosition(Distance_t position) override;
+
+  /**
+   * Gets the position of the motor according to the SparkMax encoder
+   * @return the distance from the reference point in the user defined Distance. The reference point can be set with 
+   *         SparkMaxPositionController<DistanceUnit>::resetReference(Distance_t position)
+   */
   Distance_t getPosition() override;
+
+  /**
+   * Gets the velocity of the motor according to the SparkMax encoder
+   */
   Velocity_t getVelocity() override;
 
+  /**
+   * Toggles motor inversion based on inverted parameter
+   * @param inverted Desired motor inversion status. If this is true, the motor will be inverted.
+   */
   inline void setInverted(bool inverted) override {
     sparkMax.SetInverted(inverted);
   };
+
+  /**
+   * Gets the inversion status of the motor
+   * @return Motor inversion status. If this is true, the motor is inverted.
+   */
   inline bool getInverted() override { return sparkMax.GetInverted(); };
 
+  /**
+   * Resets the reference point to the provided postiion.
+   * @param position The desired reference point. This point will be treated as the 
+   *                 "0" for the SparkMaxPositionController<DistanceUnit>::getPosition() 
+   *                 and SparkMaxPositionController<DistanceUnit>::setPosition(Distance_t position) calls
+   */
   void resetRefrence(Distance_t position) override;
+
+  /**
+   * Sets the max allowed position of the motor. If the user attempts to move the motor beyond the maximum position, 
+   * the motor will be set to the maximum position.
+   * @param max The maximum position in user defined DistanceUnits
+   */
   void setMaxPosition(Distance_t max) override;
+
+  /**
+   * Get the maximum allowed position of the motor
+   * @return The maximum postition in user defined distance units
+   */
   Distance_t getMaxPosition() override;
+
+  /**
+   * Sets the minimum allowed position of the motor. If the user attempts to move the motor beyond the maximum position, 
+   * the motor will be set to the minimum position.
+   * @param min The minimum position in user defined distance units
+   */
   void setMinPosition(Distance_t min) override;
+
+  /**
+   * Get the minimum allowed position of the motor
+   * @return The minimum postition in user defined distance units
+   */
   Distance_t getMinPosition() override;
 
 private:
