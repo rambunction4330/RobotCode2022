@@ -29,6 +29,7 @@ public:
    * A pure virtual member that resets the pose.
    * @see getPose()
    * @see updatePose()
+   * @return The pose as a Pose2d
    */
   virtual void resetPose(const frc::Pose2d &pose) = 0;
 };
