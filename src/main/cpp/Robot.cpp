@@ -52,13 +52,11 @@ void Robot::TeleopPeriodic() {
   const auto JSX = this->joystick.getX();
   if(JSX)
   {
-    this->pMotorController.Set(throttle.GetDouble(0.0));
-    this->smMotorController.setVelocity(4000_rpm);
+    this->smMotorControllerFL.setVelocity(5_mps);
   }
   else
   {
-    this->pMotorController.Set(0);
-    this->smMotorController.setVelocity(1_rpm);
+    this->smMotorControllerFL.setVelocity(0_mps);
   }
 
 }
