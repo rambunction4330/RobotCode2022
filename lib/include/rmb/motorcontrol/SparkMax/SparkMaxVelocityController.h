@@ -42,13 +42,13 @@ public:
   using RawAccel_t = typename units::unit_t<RawAccel>;
 
   struct PIDConfig {
-    double p, i, d, f;
-    double iZone, iMaxAccumulator;
-    double maxOutput, minOutput;
+    double p = 0.0005, i = 0, d = 0, f = 0.000017;
+    double iZone = 0, iMaxAccumulator = 0;
+    double maxOutput = 1, minOutput = -1;
 
     // SmartMotion config
     bool usingSmartMotion = bool(true);
-    Velocity_t maxVelocity = Velocity_t(4000), minVelocity = Velocity_t(NULL);
+    Velocity_t maxVelocity = Velocity_t(4000), minVelocity = Velocity_t(0);
     Acceleration_t maxAccel = Acceleration_t(1000);
     Distance_t allowedErr = Distance_t(10);
     rev::SparkMaxPIDController::AccelStrategy accelStrategy = rev::SparkMaxPIDController::AccelStrategy::kSCurve;

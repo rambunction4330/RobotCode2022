@@ -31,7 +31,9 @@ class Robot : public frc::TimedRobot {
   RobotContainer container;
   Joystick joystick{};
   frc::ShuffleboardTab& shuffleBoardTab  = frc::Shuffleboard::GetTab("RobotData");
-  ctre::phoenix::motorcontrol::can::WPI_TalonSRX pMotorController{2};
-  rmb::SparkMaxVelocityController<units::radians> smMotorController{ 42, smConfig };
+  rmb::SparkMaxVelocityController<units::radians> smMotorControllerFL{ 1, smConfig };
+  rmb::SparkMaxVelocityController<units::radians> smMotorControllerFR{ 2, smConfig };
+  rmb::SparkMaxVelocityController<units::radians> smMotorControllerBL{ 3, smConfig };
+  rmb::SparkMaxVelocityController<units::radians> smMotorControllerBR{ 4, smConfig };
   nt::NetworkTableEntry throttle;
 };

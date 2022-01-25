@@ -6,11 +6,7 @@
 
 namespace rmb {
 
-template <typename U>
-SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
-    : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-      sparkMaxEncoder(sparkMax.GetEncoder()),
-      sparkMaxPIDController(sparkMax.GetPIDController()) {}
+
 
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(

@@ -23,6 +23,7 @@ void Robot::RobotInit() {
 void Robot::RobotPeriodic() {
   frc2::CommandScheduler::GetInstance().Run();
   
+  
 }
 
 /**
@@ -52,13 +53,17 @@ void Robot::TeleopPeriodic() {
   const auto JSX = this->joystick.getX();
   if(JSX)
   {
-    this->pMotorController.Set(throttle.GetDouble(0.0));
-    this->smMotorController.setVelocity(4000_rpm);
+    this->smMotorControllerFL.setVelocity(4000_rpm);
+    this->smMotorControllerFR.setVelocity(4000_rpm);
+    this->smMotorControllerBL.setVelocity(4000_rpm);
+    this->smMotorControllerBR.setVelocity(4000_rpm);
   }
   else
   {
-    this->pMotorController.Set(0);
-    this->smMotorController.setVelocity(0_rpm);
+    this->smMotorControllerFL.setVelocity(0_rpm);
+    this->smMotorControllerFR.setVelocity(0_rpm);
+    this->smMotorControllerBL.setVelocity(0_rpm);
+    this->smMotorControllerBR.setVelocity(0_rpm);
   }
 
 }
