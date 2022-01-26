@@ -10,15 +10,17 @@ template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
-      sparkMaxPIDController(sparkMax.GetPIDController()) {}
+      sparkMaxPIDController(sparkMax.GetPIDController()),
+      feedforward(noFeedforward<U>) {}
 
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
-    int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit)
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit, const Feedforward<U>& ff)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
-      conversion(conversionUnit) {
+      conversion(conversionUnit),
+      feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
 

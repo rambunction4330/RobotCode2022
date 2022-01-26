@@ -4,6 +4,8 @@
 #include <units/base.h>
 
 #include "rmb/motorcontrol/VelocityController.h"
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
+
 #include <rev/CANSparkMax.h>
 
 #include <frc/MotorSafety.h>
@@ -56,7 +58,8 @@ public:
 
   SparkMaxVelocityController(int deviceID);
   SparkMaxVelocityController(int deviceID, const PIDConfig &config,
-                             ConversionUnit_t conversionUnit = ConversionUnit_t(1));
+                             ConversionUnit_t conversionUnit = ConversionUnit_t(1),
+                             const Feedforward<DistanceUnit>& feedforward = noFeedforward<DistanceUnit>);
 
   void setVelocity(Velocity_t velocity) override;
   Velocity_t getVelocity() override;
@@ -71,6 +74,7 @@ private:
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
   ConversionUnit_t conversion;
+  const Feedforward<DistanceUnit>& feedforward;
 
    rev::CANSparkMax::ControlType controlType;
 };
