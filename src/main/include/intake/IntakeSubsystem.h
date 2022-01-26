@@ -10,21 +10,14 @@
 #include <units/length.h>
 #include <units/velocity.h>
 
-
 class IntakeSubsystem : public frc2::SubsystemBase {
  public:
-  IntakeSubsystem();
+  IntakeSubsystem() : intakeMotorVel(-1), intakeMotorPos(-1) {}
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
-
- private:
-  // Components (e.g. motor controllers and sensors) should generally be
-  // declared private and exposed only through public methods.
-  rmb::SparkMaxVelocityController<units::meters> intakeMotorVel;
-  rmb::SparkMaxPositionController<units::meters> intakeMotorPos;
 
   void deployIntake() { //moves intake out from starting pos 
     intakeMotorPos.setPosition(100_m);
@@ -42,8 +35,9 @@ class IntakeSubsystem : public frc2::SubsystemBase {
     intakeMotorVel.setVelocity(100_mps);
   }
 
-
-
-
-
+ private:
+  // Components (e.g. motor controllers and sensors) should generally be
+  // declared private and exposed only through public methods.
+  rmb::SparkMaxVelocityController<units::meters> intakeMotorVel;
+  rmb::SparkMaxPositionController<units::meters> intakeMotorPos;
 };
