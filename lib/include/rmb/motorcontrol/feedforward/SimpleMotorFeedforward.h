@@ -30,8 +30,9 @@ public:
 
   SimpleMotorFeedforward(Ks_t ks, Kv_t kv, Ka_t ka) : feedforward(ks, kv, ka) {}
 
-  units::volt_t calculate(Velocity_t velocity, Distance_t distance,
-                          Acceleration_t acceleration) const {
+  units::volt_t
+  calculate(Velocity_t velocity, Distance_t distance = Distance_t(0.0),
+            Acceleration_t acceleration = Acceleration_t(0.0)) const {
     return feedforward.Calculate(velocity, acceleration);
   }
 

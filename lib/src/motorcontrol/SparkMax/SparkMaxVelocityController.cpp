@@ -56,7 +56,9 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
 template <typename U>
 void SparkMaxVelocityController<U>::setVelocity(Velocity_t velocity) {
   double setPoint = RawVelocity_t(velocity / conversion).to<double>();
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(setPoint, controlType));
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
+      setPoint, controlType, 0,
+      units::volt_t(feedforward.calculate(velocity)).to<double>()));
 }
 
 template <typename U>

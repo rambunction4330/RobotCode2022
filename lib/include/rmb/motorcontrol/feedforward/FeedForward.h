@@ -15,7 +15,8 @@ public:
       units::compound_unit<VelocityUnit, units::inverse<units::seconds>>;
   using Acceleration_t = units::unit_t<AccelerationUnit>;
 
-  virtual units::volt_t calculate(Velocity_t velocity, Distance_t distance,
-                                  Acceleration_t acceleration) const = 0;
+  virtual units::volt_t
+  calculate(Velocity_t velocity, Distance_t distance = Distance_t(0.0),
+            Acceleration_t acceleration = Acceleration_t(0.0)) const = 0;
 };
 } // namespace rmb
