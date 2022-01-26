@@ -30,10 +30,26 @@ public:
 
   SimpleMotorFeedforward(Ks_t ks, Kv_t kv, Ka_t ka) : feedforward(ks, kv, ka) {}
 
-  units::volt_t
+  inline units::volt_t
   calculate(Velocity_t velocity, Distance_t distance = Distance_t(0.0),
-            Acceleration_t acceleration = Acceleration_t(0.0)) const {
+            Acceleration_t acceleration = Acceleration_t(0.0)) override {
     return feedforward.Calculate(velocity, acceleration);
+  }
+
+  inline Velocity_t maxAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position = Distance_t(0.0)) override {
+    return feedforward.MaxAchievableVelocity(maxVoltage, acceleration);
+  }
+
+  inline Velocity_t minAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position = Distance_t(0.0)) override{
+    return feedforward.MinAchievableVelocity(maxVoltage, acceleration);
+  }
+
+  inline Acceleration_t maxAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position = Distance_t(0.0)) override{
+    return feedforward.MaxAchievableAcceleration(maxVoltage, velocity);
+  }
+
+  inline Acceleration_t minAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position = Distance_t(0.0)) override {
+    return feedforward.MinAchievableAcceleration(maxVoltage, velocity);
   }
 
 private:
@@ -41,7 +57,7 @@ private:
 };
 
 template <typename DistanceUnit>
-const SimpleMotorFeedforward<DistanceUnit>
+SimpleMotorFeedforward<DistanceUnit>
     noFeedforward(typename SimpleMotorFeedforward<DistanceUnit>::Ks_t(0.0),
                   typename SimpleMotorFeedforward<DistanceUnit>::Kv_t(0.0),
                   typename SimpleMotorFeedforward<DistanceUnit>::Ka_t(0.0));
