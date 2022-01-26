@@ -6,7 +6,7 @@ var classrmb_1_1_spark_max_velocity_controller =
     [ "RawUnit", "classrmb_1_1_spark_max_velocity_controller.html#a0421c166263788f0d6b996a1c8202684", null ],
     [ "RawVelocity", "classrmb_1_1_spark_max_velocity_controller.html#a27a85b4840275a072e9ce22f31e44b1f", null ],
     [ "SparkMaxVelocityController", "classrmb_1_1_spark_max_velocity_controller.html#a774260dfcb78054b40c1723550a65d61", null ],
-    [ "SparkMaxVelocityController", "classrmb_1_1_spark_max_velocity_controller.html#a9b93f4f4d9c73b57a577b9c84d81822d", null ],
+    [ "SparkMaxVelocityController", "classrmb_1_1_spark_max_velocity_controller.html#a7384246613e1d3eac3e7dcd8ac88b97b", null ],
     [ "getInverted", "classrmb_1_1_spark_max_velocity_controller.html#a1ec761427197654dbede306bc90c040a", null ],
     [ "getVelocity", "classrmb_1_1_spark_max_velocity_controller.html#a8184fafcf6b0d12865bc87cc2663f708", null ],
     [ "setInverted", "classrmb_1_1_spark_max_velocity_controller.html#a92342213fd1c8d33064b64c6c24da82f", null ],
