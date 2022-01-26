@@ -66,16 +66,16 @@ public:
    * The PID constants used by the constructor of SparkMaxVelocityController. 
    */
   struct PIDConfig {
-    double p, i, d, f;
-    double iZone, iMaxAccumulator;
-    double maxOutput, minOutput;
+    double p = 0.0057181, i = 0.0, d = 0.0, f = 0.0;
+    double iZone = 0.0, iMaxAccumulator = 0.0;
+    double maxOutput = 1.0, minOutput = -1.0;
 
     // SmartMotion config
-    bool usingSmartMotion;
-    Velocity_t maxVelocity, minVelocity;
-    Acceleration_t maxAccel;
-    Distance_t allowedErr;
-    rev::SparkMaxPIDController::AccelStrategy accelStrategy;
+    bool usingSmartMotion = true;
+    Velocity_t maxVelocity = Velocity_t(25), minVelocity = Velocity_t(0);
+    Acceleration_t maxAccel = Acceleration_t(10);
+    Distance_t allowedErr = Distance_t(0.9);
+    rev::SparkMaxPIDController::AccelStrategy accelStrategy = rev::SparkMaxPIDController::AccelStrategy::kSCurve;
   };
 
   /** \deprecated
@@ -99,7 +99,7 @@ public:
    *                       
    */
   SparkMaxVelocityController(int deviceID, const PIDConfig &config,
-                             ConversionUnit_t conversionUnit = 1);
+                             ConversionUnit_t conversionUnit = ConversionUnit_t(1));
 
   /**
    * Sets the target velocity of the motorcontroller
