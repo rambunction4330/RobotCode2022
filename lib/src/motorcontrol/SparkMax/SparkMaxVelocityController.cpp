@@ -15,12 +15,12 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
 
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
-    int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit, const Feedforward<U>& ff)
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit,
+    const Feedforward<U> &ff)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
-      conversion(conversionUnit),
-      feedforward(ff) {
+      conversion(conversionUnit), feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
 
@@ -49,15 +49,14 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
 
     controlType = rev::CANSparkMax::ControlType::kSmartVelocity;
   } else {
-      controlType = rev::CANSparkMax::ControlType::kVelocity;
+    controlType = rev::CANSparkMax::ControlType::kVelocity;
   }
 }
 
 template <typename U>
 void SparkMaxVelocityController<U>::setVelocity(Velocity_t velocity) {
   double setPoint = RawVelocity_t(velocity / conversion).to<double>();
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
-      setPoint, controlType));
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(setPoint, controlType));
 }
 
 template <typename U>

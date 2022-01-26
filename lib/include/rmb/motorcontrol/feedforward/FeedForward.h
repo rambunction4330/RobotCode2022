@@ -8,12 +8,14 @@ namespace rmb {
 template <typename DistanceUnit> class Feedforward {
 public:
   using Distance_t = units::unit_t<DistanceUnit>;
-  using VelocityUnit = units::compound_unit<DistanceUnit, units::inverse<units::seconds>>;
+  using VelocityUnit =
+      units::compound_unit<DistanceUnit, units::inverse<units::seconds>>;
   using Velocity_t = units::unit_t<VelocityUnit>;
-  using AccelerationUnit = units::compound_unit<VelocityUnit, units::inverse<units::seconds>>;
+  using AccelerationUnit =
+      units::compound_unit<VelocityUnit, units::inverse<units::seconds>>;
   using Acceleration_t = units::unit_t<AccelerationUnit>;
 
   virtual units::volt_t calculate(Velocity_t velocity, Distance_t distance,
-                                  Acceleration_t acceleration)  const = 0;
+                                  Acceleration_t acceleration) const = 0;
 };
 } // namespace rmb

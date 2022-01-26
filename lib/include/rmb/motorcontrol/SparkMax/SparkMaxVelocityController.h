@@ -53,13 +53,16 @@ public:
     Velocity_t maxVelocity = Velocity_t(25), minVelocity = Velocity_t(0);
     Acceleration_t maxAccel = Acceleration_t(10);
     Distance_t allowedErr = Distance_t(0.9);
-    rev::SparkMaxPIDController::AccelStrategy accelStrategy = rev::SparkMaxPIDController::AccelStrategy::kSCurve;
+    rev::SparkMaxPIDController::AccelStrategy accelStrategy =
+        rev::SparkMaxPIDController::AccelStrategy::kSCurve;
   };
 
   SparkMaxVelocityController(int deviceID);
-  SparkMaxVelocityController(int deviceID, const PIDConfig &config,
-                             ConversionUnit_t conversionUnit = ConversionUnit_t(1),
-                             const Feedforward<DistanceUnit>& feedforward = noFeedforward<DistanceUnit>);
+  SparkMaxVelocityController(
+      int deviceID, const PIDConfig &config,
+      ConversionUnit_t conversionUnit = ConversionUnit_t(1),
+      const Feedforward<DistanceUnit> &feedforward =
+          noFeedforward<DistanceUnit>);
 
   void setVelocity(Velocity_t velocity) override;
   Velocity_t getVelocity() override;
@@ -74,8 +77,8 @@ private:
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
   ConversionUnit_t conversion;
-  const Feedforward<DistanceUnit>& feedforward;
+  const Feedforward<DistanceUnit> &feedforward;
 
-   rev::CANSparkMax::ControlType controlType;
+  rev::CANSparkMax::ControlType controlType;
 };
 } // namespace rmb
