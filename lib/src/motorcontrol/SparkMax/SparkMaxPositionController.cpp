@@ -15,7 +15,8 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
 
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
-    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor, Feedforward<U>& ff)
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor, 
+    Feedforward<U>& ff,std::initializer_list<Follower> followerList)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
@@ -51,6 +52,13 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
     controlType = rev::CANSparkMax::ControlType::kSmartMotion;
   } else {
     controlType = rev::CANSparkMax::ControlType::kPosition;
+  }
+
+  followers.reserve(followerList.size());
+  for (const auto &follower : followerList) {
+    followers.emplace_back(
+        new rev::CANSparkMax(follower.id, follower.motorType));
+    followers.back()->Follow(sparkMax, follower.inverted);
   }
 }
 
