@@ -52,10 +52,10 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
     controlType = rev::CANSparkMax::ControlType::kVelocity;
   }
 
-
   followers.reserve(followerList.size());
-  for (const auto& follower: followerList) {
-    followers.emplace_back(new rev::CANSparkMax(follower.id, follower.motorType));
+  for (const auto &follower : followerList) {
+    followers.emplace_back(
+        new rev::CANSparkMax(follower.id, follower.motorType));
     followers.back()->Follow(sparkMax, follower.inverted);
   }
 }

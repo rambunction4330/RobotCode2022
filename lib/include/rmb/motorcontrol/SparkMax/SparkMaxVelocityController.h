@@ -5,8 +5,8 @@
 
 #include "rmb/motorcontrol/VelocityController.h"
 #include "rmb/motorcontrol/feedforward/ArmFeedforward.h"
-#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 #include "rmb/motorcontrol/feedforward/ElevatorFeedforward.h"
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 
 #include <rev/CANSparkMax.h>
 
@@ -59,7 +59,11 @@ public:
         rev::SparkMaxPIDController::AccelStrategy::kSCurve;
   };
 
-  struct Follower { int id; rev::CANSparkMax::MotorType motorType; bool inverted; };
+  struct Follower {
+    int id;
+    rev::CANSparkMax::MotorType motorType;
+    bool inverted;
+  };
 
   SparkMaxVelocityController(int deviceID);
   SparkMaxVelocityController(
