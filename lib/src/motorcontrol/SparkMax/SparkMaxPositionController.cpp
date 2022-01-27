@@ -10,15 +10,17 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
-      conversion(Distance_t(1) / units::radian_t(1)) {}
+      conversion(Distance_t(1) / units::radian_t(1)),
+      feedforward(noFeedforward<U>) {}
 
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
-    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor)
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor, Feedforward<U>& ff)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
-      conversion(conversionFactor) {
+      conversion(conversionFactor),
+      feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
 
@@ -57,7 +59,7 @@ void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
   double setPoint = RawUnit_t(position / conversion).to<double>();
   std::clamp<double>(setPoint, minPosition.to<double>(),
                      maxPosition.to<double>());
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(setPoint, controlType));
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(setPoint, controlType, 0, units::volt_t(feedforward.calculate(Velocity_t(0.0), position)).to<double>()));
 }
 
 template <typename U>

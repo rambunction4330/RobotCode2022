@@ -16,7 +16,7 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit,
-    const Feedforward<U> &ff)
+    Feedforward<U> &ff)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
