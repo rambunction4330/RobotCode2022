@@ -59,12 +59,14 @@ public:
         rev::SparkMaxPIDController::AccelStrategy::kSCurve;
   };
 
+  struct Follower { int id; rev::CANSparkMax::MotorType motorType; bool inverted; };
+
   SparkMaxVelocityController(int deviceID);
   SparkMaxVelocityController(
       int deviceID, const PIDConfig &config,
       ConversionUnit_t conversionUnit = ConversionUnit_t(1),
-      Feedforward<DistanceUnit> &feedforward =
-          noFeedforward<DistanceUnit>);
+      Feedforward<DistanceUnit> &feedforward = noFeedforward<DistanceUnit>,
+      std::initializer_list<Follower> followers = {});
 
   void setVelocity(Velocity_t velocity) override;
   Velocity_t getVelocity() override;
@@ -82,5 +84,6 @@ private:
   Feedforward<DistanceUnit> &feedforward;
 
   rev::CANSparkMax::ControlType controlType;
+  std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
 };
 } // namespace rmb
