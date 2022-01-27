@@ -23,7 +23,7 @@ enum JoystickKey  {
 class Joystick : public frc2::SubsystemBase {
  public:
 
-  Joystick(int port = 0, float dz = 0.2f) : joystick(port), deadZone(dz) {} //Init constructer
+  Joystick(int port = 0, float dz = 0.2f, bool sqrTwst = false) : joystick(port), deadZone(dz), squareTwist(sqrTwst) {} //Init constructer
 
   double getX() {
     return std::abs(joystick.GetX()) <= deadZone ? 0.0f : joystick.GetX(); //Get the Y val of the joystick, doesn't include values within deadzone
@@ -46,14 +46,23 @@ class Joystick : public frc2::SubsystemBase {
   }
   
   double getTwist() { //Gets joystick twist/rotation
-    double twist = (std::abs(std::pow(joystick.GetTwist(),2)) <= deadZone) ? 0.0 : std::pow(joystick.GetTwist(),2);
+    double twist = joystick.GetTwist();
+    if (std::abs(twist) <= deadZone) {
+      twist = 0.0;
+    } else {
+      if (squareTwist) {
+        twist = std::pow(twist, 2);
+      }
+    } // If none, then it just returns twist
     return (joystick.GetTwist() >= 0) ? twist : -twist;
   }
 
   double getThrotle() {
     return joystick.GetThrottle();
   }
+
   private:
     frc::Joystick joystick;
     float deadZone = 0.2f;
+    bool squareTwist = false;
 };
