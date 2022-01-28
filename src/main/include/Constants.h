@@ -43,7 +43,7 @@ namespace driveSubsystemConstants {
     /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
   };
 
-  const static rmb::SimpleMotorFeedforward<units::meters> motorFeedforward(
+  static rmb::SimpleMotorFeedforward<units::meters> motorFeedforward(
     rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.0), 
     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(0.0), 
     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.0)
@@ -51,7 +51,6 @@ namespace driveSubsystemConstants {
 
   const static rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t motorConvertion(0.04);
 
-  const static units::meters_per_second_t maxXVelocity(0.0);
-  const static units::meters_per_second_t maxYVelocity(0.0);
+  const static units::meters_per_second_t maxVelocity(0.0);
   const static units::radians_per_second_t maxRotVelocity(0.0);
 }
