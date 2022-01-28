@@ -37,7 +37,7 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
   if (config.usingSmartMotion) {
     CHECK_REVLIB_ERROR(
         sparkMaxPIDController.SetSmartMotionAllowedClosedLoopError(
-            RawUnit_t(config.allowedErr / conversion).to<double>()));
+            RawVelocity_t(config.allowedErr / conversion).to<double>()));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMaxVelocity(
         RawVelocity_t(config.maxVelocity / conversion).to<double>()));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMaxAccel(

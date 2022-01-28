@@ -54,7 +54,7 @@ public:
     bool usingSmartMotion = true;
     Velocity_t maxVelocity = Velocity_t(25), minVelocity = Velocity_t(0);
     Acceleration_t maxAccel = Acceleration_t(10);
-    Distance_t allowedErr = Distance_t(0.9);
+    Velocity_t allowedErr = Velocity_t(0.9);
     rev::SparkMaxPIDController::AccelStrategy accelStrategy =
         rev::SparkMaxPIDController::AccelStrategy::kSCurve;
   };
