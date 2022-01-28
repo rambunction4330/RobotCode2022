@@ -12,6 +12,8 @@
 #include <rmb/drive/MecanumEncoderOdometry.h>
 #include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
 
+#include "Constants.h"
+
 class DriveSubsystem : public frc2::SubsystemBase {
 public:
   DriveSubsystem();
@@ -30,6 +32,4 @@ private:
   rmb::MecanumDrive drive;
   AHRS gyro;
   rmb::MecanumEncoderOdometry odometry;
-  // Components (e.g. motor controllers and sensors) should generally be
-  // declared private and exposed only through public methods.
 };
