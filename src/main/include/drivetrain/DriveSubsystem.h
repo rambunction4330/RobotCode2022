@@ -12,6 +12,8 @@
 #include <rmb/drive/MecanumEncoderOdometry.h>
 #include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
 
+#include "Constants.h"
+
 class DriveSubsystem : public frc2::SubsystemBase {
 public:
   DriveSubsystem();
