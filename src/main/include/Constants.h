@@ -20,6 +20,8 @@
 #include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
 
 namespace driveSubsystemConstants {
+  const static frc::SPI::Port gyroPort= frc::SPI::kMXP;
+
   const static int frontLeftID = 1, frontRightID = 2, 
                    rearLeftID  = 3, rearRightID  = 4;
 
