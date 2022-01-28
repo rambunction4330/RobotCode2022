@@ -16,7 +16,7 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit,
-    Feedforward<U> &ff)
+    Feedforward<U> &ff, std::initializer_list<Follower> followerList)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
@@ -50,6 +50,13 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
     controlType = rev::CANSparkMax::ControlType::kSmartVelocity;
   } else {
     controlType = rev::CANSparkMax::ControlType::kVelocity;
+  }
+
+  followers.reserve(followerList.size());
+  for (const auto &follower : followerList) {
+    followers.emplace_back(
+        new rev::CANSparkMax(follower.id, follower.motorType));
+    followers.back()->Follow(sparkMax, follower.inverted);
   }
 }
 
