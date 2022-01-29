@@ -1,5 +1,7 @@
 #pragma once
 
+#include <units/voltage.h>
+#include <units/base.h>
 #include <units/angle.h>
 
 #include <frc/controller/ArmFeedforward.h>
@@ -10,43 +12,54 @@ namespace rmb {
 
 class ArmFeedforward : public Feedforward<units::radians> {
 public:
-  using Distance_t = typename units::unit_t<units::radians>;
+  using Distance_t = typename Feedforward<units::radians>::Distance_t;
   using VelocityUnit = typename Feedforward<units::radians>::VelocityUnit;
   using Velocity_t = typename Feedforward<units::radians>::Velocity_t;
   using AccelerationUnit = typename Feedforward<units::radians>::AccelerationUnit;
   using Acceleration_t = typename Feedforward<units::radians>::Acceleration_t;
 
-  using KaUnit = typename frc::ArmFeedforward::ka_unit;
-  using Ka_t = typename units::unit_t<KaUnit>;
-  using KvUnit = typename frc::ArmFeedforward::kv_unit;
-  using Kv_t = typename units::unit_t<KvUnit>;
+  using KsUnit = typename Feedforward<units::radians>::KsUnit;
+  using Ks_t = typename Feedforward<units::radians>::Ks_t;
+  using KvUnit = typename Feedforward<units::radians>::KvUnit;
+  using Kv_t = typename Feedforward<units::radians>::Kv_t;
+  using KaUnit = typename Feedforward<units::radians>::KaUnit;
+  using Ka_t = typename Feedforward<units::radians>::Ka_t;
 
-  ArmFeedforward(units::volt_t kS, units::volt_t kCos, Kv_t kV, Ka_t ka) : feedforward{kS, kCos, kV, ka} {};
+  ArmFeedforward(Ks_t kS, Ks_t kCos, Kv_t kV, Ka_t kA) : kS(kS), kCos(kCos), kV(kV), kA(kA) {};
 
-  units::volt_t calculate(Velocity_t velocity, Distance_t angle,
-            Acceleration_t acceleration) override{
-    return feedforward.Calculate(angle, velocity, acceleration);
+  inline units::volt_t calculate(Velocity_t velocity, Distance_t position,
+            Acceleration_t acceleration) const override {
+    return kS * wpi::sgn(velocity) + kCos * units::math::cos(position) + kV * velocity + kA * acceleration;
   }
 
-  Velocity_t maxAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position) override {
-    return feedforward.MaxAchievableVelocity(maxVoltage, position, acceleration);
+  inline Velocity_t maxAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position) const override {
+    return (maxVoltage - kS - kCos * units::math::cos(position) - kA * acceleration) / kV;
   }
 
-  Velocity_t minAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position) override {
-    return feedforward.MinAchievableVelocity(maxVoltage, position, acceleration);
+  inline Velocity_t minAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position) const override {
+    return (-maxVoltage + kS - kCos * units::math::cos(position) - kA * acceleration) / kV;
   }
 
-  Acceleration_t maxAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) override {
-    return feedforward.MaxAchievableAcceleration(maxVoltage, position, velocity);
+  inline Acceleration_t maxAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) const override {
+    return (maxVoltage - kS * wpi::sgn(velocity) - kCos * units::math::cos(position) - kV * velocity) / kA;
   }
 
-  Acceleration_t minAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) override {
-    return feedforward.MinAchievableAcceleration(maxVoltage, position, velocity);
+  inline Acceleration_t minAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) const override {
+    return maxAchievableAcceleration(-maxVoltage, velocity, position);
   } 
 
-private:
-  frc::ArmFeedforward feedforward;
+  inline Kv_t getVelocityGain() const override { return kV; }
+  inline Ka_t getAcclerationGain() const override { return kA; }
 
+  inline units::volt_t calculateStatic(Velocity_t velocity, 
+                                       Distance_t position = Distance_t(0)) const override {
+    return kS * wpi::sgn(velocity) + kCos * units::math::cos(position);                                    
+  }
+
+private:
+  Ks_t kS, kCos;
+  Kv_t kV;
+  Ka_t kA;
 };
 
 }
