@@ -15,12 +15,12 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
 
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
-    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor, const Feedforward<U>& ff)
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor,
+    const Feedforward<U> &ff)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
-      conversion(conversionFactor),
-      feedforward(ff) {
+      conversion(conversionFactor), feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
 
@@ -51,7 +51,10 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
     controlType = rev::CANSparkMax::ControlType::kSmartMotion;
 
     if (&feedforward != &noFeedforward<U>) {
-      CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFF(units::unit_t<units::inverse<RawVelocity>>(feedforward.getVelocityGain() * conversion / 12_V).to<double>()));
+      CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFF(
+          units::unit_t<units::inverse<RawVelocity>>(
+              feedforward.getVelocityGain() * conversion / 12_V)
+              .to<double>()));
     }
   } else {
     controlType = rev::CANSparkMax::ControlType::kPosition;
@@ -61,8 +64,12 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
 template <typename U>
 void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
   double setPoint = RawUnit_t(position / conversion).to<double>();
-  std::clamp<double>(setPoint, minPosition.to<double>(), maxPosition.to<double>());
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(setPoint, controlType, 0, units::volt_t(feedforward.calculateStatic(Velocity_t(0.0), position)).to<double>()));
+  std::clamp<double>(setPoint, minPosition.to<double>(),
+                     maxPosition.to<double>());
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
+      setPoint, controlType, 0,
+      units::volt_t(feedforward.calculateStatic(Velocity_t(0.0), position))
+          .to<double>()));
 }
 
 template <typename U>

@@ -9,7 +9,7 @@
 #include <rmb/motorcontrol/PositionController.h>
 
 #include <rmb/motorcontrol/feedforward/Feedforward.h>
-#include <rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h> 
+#include <rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h>
 
 namespace rmb {
 template <typename DistanceUnit>
@@ -62,7 +62,9 @@ public:
 
   SparkMaxPositionController(int deviceID);
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
-                             ConversionUnit_t conversion = ConversionUnit_t(1), const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>);
+                             ConversionUnit_t conversion = ConversionUnit_t(1),
+                             const Feedforward<DistanceUnit> &feedForward =
+                                 noFeedforward<DistanceUnit>);
 
   void setPosition(Distance_t position) override;
   Distance_t getPosition() override;
@@ -91,6 +93,6 @@ private:
 
   rev::CANSparkMax::ControlType controlType;
 
-  const Feedforward<DistanceUnit>& feedforward;
+  const Feedforward<DistanceUnit> &feedforward;
 };
 } // namespace rmb

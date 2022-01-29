@@ -54,8 +54,9 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
 
   if (&feedforward != &noFeedforward<U>) {
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFF(
-      units::unit_t<units::inverse<RawVelocity>>(feedforward.getVelocityGain() * conversion / 12_V).to<double>()
-    )); 
+        units::unit_t<units::inverse<RawVelocity>>(
+            feedforward.getVelocityGain() * conversion / 12_V)
+            .to<double>()));
   }
 }
 

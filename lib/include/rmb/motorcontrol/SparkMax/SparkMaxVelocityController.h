@@ -5,8 +5,8 @@
 
 #include "rmb/motorcontrol/VelocityController.h"
 #include "rmb/motorcontrol/feedforward/ArmFeedforward.h"
-#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 #include "rmb/motorcontrol/feedforward/ElevatorFeedforward.h"
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 
 #include <rev/CANSparkMax.h>
 
