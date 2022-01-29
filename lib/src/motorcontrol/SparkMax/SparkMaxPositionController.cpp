@@ -59,6 +59,13 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
   } else {
     controlType = rev::CANSparkMax::ControlType::kPosition;
   }
+
+  followers.reserve(followerList.size());
+  for (const auto &follower : followerList) {
+    followers.emplace_back(
+        new rev::CANSparkMax(follower.id, follower.motorType));
+    followers.back()->Follow(sparkMax, follower.inverted);
+  }
 }
 
 template <typename U>

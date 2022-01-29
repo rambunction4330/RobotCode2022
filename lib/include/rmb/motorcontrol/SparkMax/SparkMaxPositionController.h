@@ -60,11 +60,17 @@ public:
     rev::SparkMaxPIDController::AccelStrategy accelStrategy;
   };
 
+  struct Follower {
+    int id;
+    rev::CANSparkMax::MotorType motorType;
+    bool inverted;
+  };
+
   SparkMaxPositionController(int deviceID);
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
-                             ConversionUnit_t conversion = ConversionUnit_t(1),
-                             const Feedforward<DistanceUnit> &feedForward =
-                                 noFeedforward<DistanceUnit>);
+                             ConversionUnit_t conversion = ConversionUnit_t(1), 
+                             const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>,
+                             std::initializer_list<Follower> followers = {});
 
   void setPosition(Distance_t position) override;
   Distance_t getPosition() override;
@@ -92,6 +98,7 @@ private:
   RawUnit_t minPosition = RawUnit_t(-1);
 
   rev::CANSparkMax::ControlType controlType;
+  std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
 
   const Feedforward<DistanceUnit> &feedforward;
 };

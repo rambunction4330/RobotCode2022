@@ -16,7 +16,7 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit,
-    const Feedforward<U> &ff)
+    const Feedforward<U> &ff, std::initializer_list<Follower> followerList)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
@@ -37,7 +37,7 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
   if (config.usingSmartMotion) {
     CHECK_REVLIB_ERROR(
         sparkMaxPIDController.SetSmartMotionAllowedClosedLoopError(
-            RawUnit_t(config.allowedErr / conversion).to<double>()));
+            RawVelocity_t(config.allowedErr / conversion).to<double>()));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMaxVelocity(
         RawVelocity_t(config.maxVelocity / conversion).to<double>()));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMaxAccel(
@@ -57,6 +57,13 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
         units::unit_t<units::inverse<RawVelocity>>(
             feedforward.getVelocityGain() * conversion / 12_V)
             .to<double>()));
+  }
+
+  followers.reserve(followerList.size());
+  for (const auto &follower : followerList) {
+    followers.emplace_back(
+        new rev::CANSparkMax(follower.id, follower.motorType));
+    followers.back()->Follow(sparkMax, follower.inverted);
   }
 }
 

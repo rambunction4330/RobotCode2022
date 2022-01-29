@@ -4,8 +4,6 @@
 #include <units/base.h>
 
 #include "rmb/motorcontrol/VelocityController.h"
-#include "rmb/motorcontrol/feedforward/ArmFeedforward.h"
-#include "rmb/motorcontrol/feedforward/ElevatorFeedforward.h"
 #include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 
 #include <rev/CANSparkMax.h>
@@ -54,17 +52,24 @@ public:
     bool usingSmartMotion = true;
     Velocity_t maxVelocity = Velocity_t(25), minVelocity = Velocity_t(0);
     Acceleration_t maxAccel = Acceleration_t(10);
-    Distance_t allowedErr = Distance_t(0.9);
+    Velocity_t allowedErr = Velocity_t(0.9);
     rev::SparkMaxPIDController::AccelStrategy accelStrategy =
         rev::SparkMaxPIDController::AccelStrategy::kSCurve;
+  };
+
+  struct Follower {
+    int id;
+    rev::CANSparkMax::MotorType motorType;
+    bool inverted;
   };
 
   SparkMaxVelocityController(int deviceID);
   SparkMaxVelocityController(
       int deviceID, const PIDConfig &config,
       ConversionUnit_t conversionUnit = ConversionUnit_t(1),
-      const Feedforward<DistanceUnit> &feedforward =
-          noFeedforward<DistanceUnit>);
+      const Feedforward<DistanceUnit> &feedforward = noFeedforward<DistanceUnit>,
+      std::initializer_list<Follower> followers = {});
+
 
   void setVelocity(Velocity_t velocity) override;
   Velocity_t getVelocity() override;
@@ -82,5 +87,6 @@ private:
   const Feedforward<DistanceUnit> &feedforward;
 
   rev::CANSparkMax::ControlType controlType;
+  std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
 };
 } // namespace rmb
