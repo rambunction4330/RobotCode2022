@@ -15,13 +15,12 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
 
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
-    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor, 
-    Feedforward<U>& ff,std::initializer_list<Follower> followerList)
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor,
+    const Feedforward<U> &ff, std::initializer_list<Follower> followerList)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
-      conversion(conversionFactor),
-      feedforward(ff) {
+      conversion(conversionFactor), feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
 
@@ -50,6 +49,13 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
         RawVelocity_t(config.minVelocity / conversion).to<double>()));
 
     controlType = rev::CANSparkMax::ControlType::kSmartMotion;
+
+    if (&feedforward != &noFeedforward<U>) {
+      CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFF(
+          units::unit_t<units::inverse<RawVelocity>>(
+              feedforward.getVelocityGain() * conversion / 12_V)
+              .to<double>()));
+    }
   } else {
     controlType = rev::CANSparkMax::ControlType::kPosition;
   }
@@ -67,7 +73,10 @@ void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
   double setPoint = RawUnit_t(position / conversion).to<double>();
   std::clamp<double>(setPoint, minPosition.to<double>(),
                      maxPosition.to<double>());
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(setPoint, controlType, 0, units::volt_t(feedforward.calculate(Velocity_t(0.0), position)).to<double>()));
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
+      setPoint, controlType, 0,
+      units::volt_t(feedforward.calculateStatic(Velocity_t(0.0), position))
+          .to<double>()));
 }
 
 template <typename U>
