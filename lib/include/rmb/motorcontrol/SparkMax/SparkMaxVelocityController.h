@@ -63,7 +63,7 @@ public:
   SparkMaxVelocityController(
       int deviceID, const PIDConfig &config,
       ConversionUnit_t conversionUnit = ConversionUnit_t(1),
-      Feedforward<DistanceUnit> &feedforward =
+      const Feedforward<DistanceUnit> &feedforward =
           noFeedforward<DistanceUnit>);
 
   void setVelocity(Velocity_t velocity) override;
@@ -79,7 +79,7 @@ private:
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
   ConversionUnit_t conversion;
-  Feedforward<DistanceUnit> &feedforward;
+  const Feedforward<DistanceUnit> &feedforward;
 
   rev::CANSparkMax::ControlType controlType;
 };

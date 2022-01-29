@@ -62,7 +62,7 @@ public:
 
   SparkMaxPositionController(int deviceID);
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
-                             ConversionUnit_t conversion = ConversionUnit_t(1), Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>);
+                             ConversionUnit_t conversion = ConversionUnit_t(1), const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>);
 
   void setPosition(Distance_t position) override;
   Distance_t getPosition() override;
@@ -91,6 +91,6 @@ private:
 
   rev::CANSparkMax::ControlType controlType;
 
-  Feedforward<DistanceUnit>& feedforward;
+  const Feedforward<DistanceUnit>& feedforward;
 };
 } // namespace rmb
