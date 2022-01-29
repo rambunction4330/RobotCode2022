@@ -5,7 +5,7 @@
 #include <units/length.h>
 #include <units/voltage.h>
 
-#include <frc/controller/SimpleMotorFeedforward.h>
+#include <wpi/MathExtras.h>
 
 #include "rmb/motorcontrol/feedforward/Feedforward.h"
 

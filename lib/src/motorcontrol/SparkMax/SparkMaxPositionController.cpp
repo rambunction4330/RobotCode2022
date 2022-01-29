@@ -1,9 +1,11 @@
+#include "rmb/motorcontrol/sparkmax/SparkMaxPositionController.h"
+
 #include <algorithm>
-#include <rmb/motorcontrol/SparkMax/SparkMaxError.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxPositionController.h>
 
 #include <units/angle.h>
 #include <units/length.h>
+
+#include "rmb/motorcontrol/sparkmax/SparkMaxError.h"
 
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)

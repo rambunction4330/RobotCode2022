@@ -1,6 +1,6 @@
-#include <units/time.h>
-
 #include "rmb/drive/HolonomicTrajectoryCommand.h"
+
+#include <units/time.h>
 
 namespace rmb {
 HolonomicTrajectoryCommand::HolonomicTrajectoryCommand(

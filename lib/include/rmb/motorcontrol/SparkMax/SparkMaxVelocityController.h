@@ -3,12 +3,10 @@
 #include <units/angle.h>
 #include <units/base.h>
 
-#include "rmb/motorcontrol/VelocityController.h"
-#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
-
 #include <rev/CANSparkMax.h>
 
-#include <frc/MotorSafety.h>
+#include "rmb/motorcontrol/VelocityController.h"
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 
 namespace rmb {
 // an abstraction over the SparkMax motor controller

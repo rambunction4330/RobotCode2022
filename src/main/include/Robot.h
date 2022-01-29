@@ -10,7 +10,7 @@
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
 #include <frc/shuffleboard/Shuffleboard.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
 #include "RobotContainer.h"
 #include <units/length.h>
 #include "driverstation/Joystick.h"

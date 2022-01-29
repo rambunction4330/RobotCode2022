@@ -1,4 +1,4 @@
-#include <rmb/motorcontrol/SparkMax/SparkMaxError.h>
+#include "rmb/motorcontrol/sparkmax/SparkMaxError.h"
 
 // false if error. True if not.
 bool checkREVLibError(rev::REVLibError error, const char *functionCall,

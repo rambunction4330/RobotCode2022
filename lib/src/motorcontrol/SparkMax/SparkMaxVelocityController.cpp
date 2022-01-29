@@ -1,8 +1,9 @@
-#include <rmb/motorcontrol/SparkMax/SparkMaxError.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
+#include "rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h"
 
 #include <units/angle.h>
 #include <units/length.h>
+
+#include "rmb/motorcontrol/sparkmax/SparkMaxError.h"
 
 namespace rmb {
 

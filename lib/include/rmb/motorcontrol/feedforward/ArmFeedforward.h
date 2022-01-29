@@ -4,9 +4,9 @@
 #include <units/base.h>
 #include <units/voltage.h>
 
-#include <frc/controller/ArmFeedforward.h>
+#include <wpi/MathExtras.h>
 
-#include <rmb/motorcontrol/feedforward/Feedforward.h>
+#include "rmb/motorcontrol/feedforward/Feedforward.h"
 
 namespace rmb {
 

@@ -6,10 +6,8 @@
 
 #include <rev/CANSparkMax.h>
 
-#include <rmb/motorcontrol/PositionController.h>
-
-#include <rmb/motorcontrol/feedforward/Feedforward.h>
-#include <rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h>
+#include "rmb/motorcontrol/PositionController.h"
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h" 
 
 namespace rmb {
 template <typename DistanceUnit>

@@ -5,6 +5,8 @@
 #include <units/length.h>
 #include <units/voltage.h>
 
+#include <wpi/MathExtras.h>
+
 #include "rmb/motorcontrol/feedforward/Feedforward.h"
 
 namespace rmb {

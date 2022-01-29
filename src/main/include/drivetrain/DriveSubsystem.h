@@ -10,7 +10,7 @@
 
 #include <rmb/drive/MecanumDrive.h>
 #include <rmb/drive/MecanumEncoderOdometry.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
 
 #include "Constants.h"
 
