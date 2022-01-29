@@ -16,7 +16,7 @@
 
 #include <AHRS.h>
 
-#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
 #include <rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h>
 
 namespace driveSubsystemConstants {

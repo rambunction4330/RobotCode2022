@@ -4,11 +4,13 @@
 
 #pragma once
 
-#include <frc2/command/SubsystemBase.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxPositionController.h>
 #include <units/length.h>
 #include <units/velocity.h>
+
+#include <frc2/command/SubsystemBase.h>
+
+#include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
 
 class IntakeSubsystem : public frc2::SubsystemBase {
  public:
