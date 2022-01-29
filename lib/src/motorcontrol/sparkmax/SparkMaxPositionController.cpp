@@ -77,7 +77,7 @@ void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
                      maxPosition.to<double>());
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
       setPoint, controlType, 0,
-      units::volt_t(feedforward.calculateStatic(Velocity_t(0.0), position))
+      units::volt_t(feedforward.calculateStatic((position - getPosition()) / 1_s, position))
           .to<double>()));
 }
 
