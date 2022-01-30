@@ -28,7 +28,10 @@ DriveSubsystem::DriveSubsystem()
       drive(frontLeft, frontRight, rearLeft, rearRight, kinematics,
             driveSubsystemConstants::maxVelocity,
             driveSubsystemConstants::maxRotVelocity),
-      gyro(driveSubsystemConstants::gyroPort), odometry(drive, gyro) {}
+      gyro(driveSubsystemConstants::gyroPort), odometry(drive, gyro),
+      driveContoller(driveSubsystemConstants::xController, 
+                     driveSubsystemConstants::yController, 
+                     driveSubsystemConstants::thetaController) {}
 
 // This method will be called once per scheduler run
 void DriveSubsystem::Periodic() { odometry.updatePose(); }
