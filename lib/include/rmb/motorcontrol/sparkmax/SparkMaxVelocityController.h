@@ -43,7 +43,7 @@ public:
 
   struct PIDConfig {
     double p = 0.000057181, i = 0.0, d = 0.0, f = 0.0;
-    double iZone = 0.0, iMaxAccumulator = 0.0;
+    double iZone = 0.0, /* this should be removed -> */iMaxAccumulator = 0.0;
     double maxOutput = 1.0, minOutput = -1.0;
 
     // SmartMotion config

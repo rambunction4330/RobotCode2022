@@ -13,7 +13,7 @@
 #include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
 #include "RobotContainer.h"
 #include <units/length.h>
-#include "driverstation/Joystick.h"
+#include "driverstation/JoystickSubsystem.h"
 #include <frc/controller/SimpleMotorFeedforward.h>
 
 #include <rmb/drive/MecanumDrive.h>
@@ -39,9 +39,9 @@ class Robot : public frc::TimedRobot {
 
   rmb::SparkMaxVelocityController<units::meters>::PIDConfig smConfig{};
   RobotContainer container;
-  Joystick joystick{};
+  JoystickSubsystem joystick{};
   frc::ShuffleboardTab& shuffleBoardTab  = frc::Shuffleboard::GetTab("RobotData");
-  rmb::SimpleMotorFeedforward<units::meters> motorFF{units::volt_t(0.10973), units::unit_t<kv_unit>(3.2592), units::unit_t<ka_unit>(0.30746)};
+  rmb::SimpleMotorFeedforward<units::meters> motorFF{units::volt_t(0.10973), units::unit_t<kv_unit>(3.1592), units::unit_t<ka_unit>(0.30746)};
   rmb::SparkMaxVelocityController<units::meters>::Follower follow = {2, rev::CANSparkMax::MotorType::kBrushless, true};
   rmb::SparkMaxVelocityController<units::meters> smMotorControllerFL{ 1, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.0762_m / 12_rad), motorFF};
   rmb::SparkMaxVelocityController<units::meters> smMotorControllerFr{ 2, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.0762_m / 12_rad), motorFF};

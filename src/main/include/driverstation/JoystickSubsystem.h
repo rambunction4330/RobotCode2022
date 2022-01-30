@@ -20,9 +20,9 @@ enum JoystickKey {
   TWELVE
 };
 
-class Joystick : public frc2::SubsystemBase {
+class JoystickSubsystem : public frc2::SubsystemBase {
 public:
-  Joystick(int port = 0, float dz = 0.2f, bool sqrTwst = false)
+  JoystickSubsystem(int port = 0, float dz = 0.2f, bool sqrTwst = false)
       : joystick(port), deadZone(dz), squareTwist(sqrTwst) {
   } // Init constructer
 
