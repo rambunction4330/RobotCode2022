@@ -24,7 +24,7 @@ public:
 
   void Periodic() override;
 
-  void driveCartesian(double ySpeed, double xSpeed, double rotation, bool feildOriented = false, bool rotationCorrection = false);
+  void driveCartesian(double ySpeed, double xSpeed, double rotation, bool fieldOriented = false, bool rotationCorrection = false);
   void drivePolar(units::radians direction, double magnitude, double rotation);
 
   std::unique_ptr<frc2::Command> generatePointCommand(frc::Pose2d point);
@@ -34,7 +34,7 @@ public:
   const frc::Pose2d& getPosition() const;
   units::radian_t getGyroHeading() const;
   frc::ChassisSpeeds getChassisSpeeds() const;
-  frc::ChassisSpeeds getFeildReletiveSpeeds() const;
+  frc::ChassisSpeeds getFieldRelativeSpeeds() const;
 
   void resetGyro(units::radian_t angle = 0.0_rad);
   void resetPosition(frc::Pose2d position = frc::Pose2d());
