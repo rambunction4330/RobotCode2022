@@ -24,20 +24,25 @@ public:
 
   void Periodic() override;
 
-  void driveCartesian(double ySpeed, double xSpeed, double rotation, bool fieldOriented = false, bool rotationCorrection = false);
-  void drivePolar(units::radians direction, double magnitude, double rotation);
+  void driveCartesian(double ySpeed, double xSpeed, double rotation,
+                      bool fieldOriented = false,
+                      bool rotationCorrection = false);
+  void drivePolar(double magnitude, units::radians direction, double rotation);
 
   std::unique_ptr<frc2::Command> generatePointCommand(frc::Pose2d point);
-  std::unique_ptr<frc2::Command> generateTrajectoryCommand(frc::Trajectory trajectory);
+  std::unique_ptr<frc2::Command>
+  generateTrajectoryCommand(frc::Trajectory trajectory);
   std::unique_ptr<frc2::Command> generateDanceCommand();
 
-  const frc::Pose2d& getPosition() const;
-  units::radian_t getGyroHeading() const;
-  frc::ChassisSpeeds getChassisSpeeds() const;
+  const frc::Pose2d &getPosition() { odometry.getPose(); }
+  units::radian_t getGyroHeading() { gyro.GetAngle(); };
+  frc::ChassisSpeeds getChassisSpeeds() { drive.getChassisSpeeds(); }
   frc::ChassisSpeeds getFieldRelativeSpeeds() const;
 
-  void resetGyro(units::radian_t angle = 0.0_rad);
-  void resetPosition(frc::Pose2d position = frc::Pose2d());
+  void resetGyro(units::radian_t angle = 0.0_rad) { gyro.Reset(); }
+  void resetPosition(frc::Pose2d position = frc::Pose2d()) {
+    odometry.resetPose(position);
+  }
 
 private:
   rmb::SparkMaxVelocityController<units::meters> frontLeft;
