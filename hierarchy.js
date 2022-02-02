@@ -21,5 +21,6 @@ var hierarchy =
       [ "rmb::SparkMaxVelocityController< DistanceUnit >", "classrmb_1_1_spark_max_velocity_controller.html", null ],
       [ "rmb::TalonFXVelocityController< DistanceUnit >", "classrmb_1_1_talon_f_x_velocity_controller.html", null ],
       [ "rmb::TalonSRXVelocityController< DistanceUnit >", "classrmb_1_1_talon_s_r_x_velocity_controller.html", null ]
-    ] ]
+    ] ],
+    [ "rmb::VelocityController< units::meters >", "classrmb_1_1_velocity_controller.html", null ]
 ];

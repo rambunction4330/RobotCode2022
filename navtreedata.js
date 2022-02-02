@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "RobotCode2022", "index.html", [
+    [ "pancakerecipe", "md_docs_additional_pancakerecipe.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
