@@ -1,8 +1,9 @@
-#include <rmb/motorcontrol/SparkMax/SparkMaxError.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
+#include "rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h"
 
 #include <units/angle.h>
 #include <units/length.h>
+
+#include "rmb/motorcontrol/sparkmax/SparkMaxError.h"
 
 namespace rmb {
 
@@ -10,15 +11,17 @@ template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
-      sparkMaxPIDController(sparkMax.GetPIDController()) {}
+      sparkMaxPIDController(sparkMax.GetPIDController()),
+      feedforward(noFeedforward<U>) {}
 
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
-    int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit)
+    int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit,
+    const Feedforward<U> &ff, std::initializer_list<Follower> followerList)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
-      conversion(conversionUnit) {
+      conversion(conversionUnit), feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
 
@@ -35,7 +38,7 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
   if (config.usingSmartMotion) {
     CHECK_REVLIB_ERROR(
         sparkMaxPIDController.SetSmartMotionAllowedClosedLoopError(
-            RawUnit_t(config.allowedErr / conversion).to<double>()));
+            RawVelocity_t(config.allowedErr / conversion).to<double>()));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMaxVelocity(
         RawVelocity_t(config.maxVelocity / conversion).to<double>()));
     CHECK_REVLIB_ERROR(sparkMaxPIDController.SetSmartMotionMaxAccel(
@@ -47,7 +50,21 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
 
     controlType = rev::CANSparkMax::ControlType::kSmartVelocity;
   } else {
-      controlType = rev::CANSparkMax::ControlType::kVelocity;
+    controlType = rev::CANSparkMax::ControlType::kVelocity;
+  }
+
+  if (&feedforward != &noFeedforward<U>) {
+    CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFF(
+        units::unit_t<units::inverse<RawVelocity>>(
+            feedforward.getVelocityGain() * conversion / 12_V)
+            .to<double>()));
+  }
+
+  followers.reserve(followerList.size());
+  for (const auto &follower : followerList) {
+    followers.emplace_back(
+        new rev::CANSparkMax(follower.id, follower.motorType));
+    followers.back()->Follow(sparkMax, follower.inverted);
   }
 }
 
@@ -55,7 +72,8 @@ template <typename U>
 void SparkMaxVelocityController<U>::setVelocity(Velocity_t velocity) {
   double setPoint = RawVelocity_t(velocity / conversion).to<double>();
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
-      setPoint, controlType));
+      setPoint, controlType, 0,
+      units::volt_t(feedforward.calculateStatic(velocity)).to<double>()));
 }
 
 template <typename U>

@@ -10,11 +10,17 @@
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
 #include <frc/shuffleboard/Shuffleboard.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
 #include "RobotContainer.h"
 #include <units/length.h>
-#include "driverstation/Joystick.h"
+#include "driverstation/JoystickSubsystem.h"
 #include <frc/controller/SimpleMotorFeedforward.h>
+
+#include <rmb/drive/MecanumDrive.h>
+#include <rmb/drive/MecanumEncoderOdometry.h>
+#include <AHRS.h>
+#include <frc/SPI.h>
+
 class Robot : public frc::TimedRobot {
  public:
   void RobotInit() override;
@@ -33,9 +39,18 @@ class Robot : public frc::TimedRobot {
 
   rmb::SparkMaxVelocityController<units::meters>::PIDConfig smConfig{};
   RobotContainer container;
-  Joystick joystick{};
+  JoystickSubsystem joystick{};
   frc::ShuffleboardTab& shuffleBoardTab  = frc::Shuffleboard::GetTab("RobotData");
-  rmb::SparkMaxVelocityController<units::meters> smMotorControllerFL{ 1, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.4788) };
-  frc::SimpleMotorFeedforward<units::meters> motorFF{units::volt_t(0.10973), units::unit_t<kv_unit>(3.1592), units::unit_t<ka_unit>(0.30746)};
+  rmb::SimpleMotorFeedforward<units::meters> motorFF{units::volt_t(0.10973), units::unit_t<kv_unit>(3.1592), units::unit_t<ka_unit>(0.30746)};
+  rmb::SparkMaxVelocityController<units::meters>::Follower follow = {2, rev::CANSparkMax::MotorType::kBrushless, true};
+  rmb::SparkMaxVelocityController<units::meters> smMotorControllerFL{ 1, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.0762_m / 12_rad), motorFF};
+  rmb::SparkMaxVelocityController<units::meters> smMotorControllerFr{ 2, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.0762_m / 12_rad), motorFF};
+  rmb::SparkMaxVelocityController<units::meters> smMotorControllerRL{ 3, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.0508_m / 12_rad), motorFF};
+  rmb::SparkMaxVelocityController<units::meters> smMotorControllerRR{ 4, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.0762_m / 12_rad), motorFF};
+  frc::MecanumDriveKinematics kinematics{{0.303_m, -0.299_m}, {0.303_m, 0.299_m}, {-0.303_m, -0.299_m}, {-0.303_m, 0.299_m,}};
+  rmb::MecanumDrive drive{smMotorControllerFL, smMotorControllerFr, smMotorControllerRL, smMotorControllerRR, kinematics, 2_mps, 5000_rpm};
+  AHRS gyro{frc::SPI::kMXP};
+  rmb::MecanumEncoderOdometry odometry{drive, gyro};
   nt::NetworkTableEntry throttle;
+  frc::Timer timer;
 };

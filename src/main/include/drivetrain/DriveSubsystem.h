@@ -4,22 +4,40 @@
 
 #pragma once
 
-#include <frc/SPI.h>
 #include <frc2/command/SubsystemBase.h>
+
 #include <units/length.h>
+
+#include <frc/SPI.h>
+#include <frc/controller/HolonomicDriveController.h>
+#include <frc2/command/Command.h>
 
 #include <rmb/drive/MecanumDrive.h>
 #include <rmb/drive/MecanumEncoderOdometry.h>
-#include <rmb/motorcontrol/SparkMax/SparkMaxVelocityController.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
+
+#include "Constants.h"
 
 class DriveSubsystem : public frc2::SubsystemBase {
 public:
   DriveSubsystem();
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
   void Periodic() override;
+
+  void driveCartesian(double ySpeed, double xSpeed, double rotation, bool feildOriented = false, bool rotationCorrection = false);
+  void drivePolar(units::radians direction, double magnitude, double rotation);
+
+  std::unique_ptr<frc2::Command> generatePointCommand(frc::Pose2d point);
+  std::unique_ptr<frc2::Command> generateTrajectoryCommand(frc::Trajectory trajectory);
+  std::unique_ptr<frc2::Command> generateDanceCommand();
+
+  const frc::Pose2d& getPosition() const;
+  units::radian_t getGyroHeading() const;
+  frc::ChassisSpeeds getChassisSpeeds() const;
+  frc::ChassisSpeeds getFeildReletiveSpeeds() const;
+
+  void resetGyro(units::radian_t angle = 0.0_rad);
+  void resetPosition(frc::Pose2d position = frc::Pose2d());
 
 private:
   rmb::SparkMaxVelocityController<units::meters> frontLeft;
@@ -30,6 +48,5 @@ private:
   rmb::MecanumDrive drive;
   AHRS gyro;
   rmb::MecanumEncoderOdometry odometry;
-  // Components (e.g. motor controllers and sensors) should generally be
-  // declared private and exposed only through public methods.
+  frc::HolonomicDriveController driveContoller;
 };

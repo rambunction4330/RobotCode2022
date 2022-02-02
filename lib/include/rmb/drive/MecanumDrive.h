@@ -1,10 +1,11 @@
 #pragma once
 
-#include <AHRS.h>
 #include <frc/kinematics/MecanumDriveKinematics.h>
 #include <frc/kinematics/MecanumDriveOdometry.h>
 #include <frc/kinematics/MecanumDriveWheelSpeeds.h>
 #include <units/velocity.h>
+
+#include <AHRS.h>
 
 #include "rmb/drive/HolonomicDrive.h"
 #include "rmb/motorcontrol/VelocityController.h"

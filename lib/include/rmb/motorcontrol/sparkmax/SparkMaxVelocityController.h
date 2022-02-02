@@ -3,10 +3,10 @@
 #include <units/angle.h>
 #include <units/base.h>
 
-#include "rmb/motorcontrol/VelocityController.h"
 #include <rev/CANSparkMax.h>
 
-#include <frc/MotorSafety.h>
+#include "rmb/motorcontrol/VelocityController.h"
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 
 namespace rmb {
 
@@ -66,16 +66,23 @@ public:
    * The PID constants used by the constructor of SparkMaxVelocityController. 
    */
   struct PIDConfig {
-    double p = 0.0057181, i = 0.0, d = 0.0, f = 0.0;
-    double iZone = 0.0, iMaxAccumulator = 0.0;
+    double p = 0.000057181, i = 0.0, d = 0.0, f = 0.0;
+    double iZone = 0.0, /* this should be removed -> */iMaxAccumulator = 0.0;
     double maxOutput = 1.0, minOutput = -1.0;
 
     // SmartMotion config
     bool usingSmartMotion = true;
     Velocity_t maxVelocity = Velocity_t(25), minVelocity = Velocity_t(0);
     Acceleration_t maxAccel = Acceleration_t(10);
-    Distance_t allowedErr = Distance_t(0.9);
-    rev::SparkMaxPIDController::AccelStrategy accelStrategy = rev::SparkMaxPIDController::AccelStrategy::kSCurve;
+    Velocity_t allowedErr = Velocity_t(0.9);
+    rev::SparkMaxPIDController::AccelStrategy accelStrategy =
+        rev::SparkMaxPIDController::AccelStrategy::kSCurve;
+  };
+
+  struct Follower {
+    int id;
+    rev::CANSparkMax::MotorType motorType;
+    bool inverted;
   };
 
   /** \deprecated
@@ -83,7 +90,7 @@ public:
    * @param deviceID the ID of the target SparkMax motor controller
    */
   SparkMaxVelocityController(int deviceID);
-
+  
   /**
    * Creates a SparkMaxVelocityController
    * @param deviceID the ID of the target SparkMax motor controller
@@ -98,8 +105,11 @@ public:
    *                           conversion ≈ 0.1592
    *                       
    */
-  SparkMaxVelocityController(int deviceID, const PIDConfig &config,
-                             ConversionUnit_t conversionUnit = ConversionUnit_t(1));
+  SparkMaxVelocityController(
+      int deviceID, const PIDConfig &config,
+      ConversionUnit_t conversionUnit = ConversionUnit_t(1),
+      const Feedforward<DistanceUnit> &feedforward = noFeedforward<DistanceUnit>,
+      std::initializer_list<Follower> followers = {});
 
   /**
    * Sets the target velocity of the motorcontroller
@@ -133,7 +143,9 @@ private:
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
   ConversionUnit_t conversion;
+  const Feedforward<DistanceUnit> &feedforward;
 
-   rev::CANSparkMax::ControlType controlType;
+  rev::CANSparkMax::ControlType controlType;
+  std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
 };
 } // namespace rmb

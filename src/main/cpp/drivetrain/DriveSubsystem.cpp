@@ -5,12 +5,33 @@
 #include "drivetrain/DriveSubsystem.h"
 
 DriveSubsystem::DriveSubsystem()
-    : frontLeft(-1), frontRight(-1), rearLeft(-1), rearRight(-1),
-      kinematics(frc::Translation2d(), frc::Translation2d(),
-                 frc::Translation2d(), frc::Translation2d()),
+    : frontLeft(driveSubsystemConstants::frontLeftID,
+                driveSubsystemConstants::motorPIDConfig,
+                driveSubsystemConstants::motorConvertion,
+                driveSubsystemConstants::motorFeedforward),
+      frontRight(driveSubsystemConstants::frontRightID,
+                 driveSubsystemConstants::motorPIDConfig,
+                 driveSubsystemConstants::motorConvertion,
+                 driveSubsystemConstants::motorFeedforward),
+      rearLeft(driveSubsystemConstants::rearLeftID,
+               driveSubsystemConstants::motorPIDConfig,
+               driveSubsystemConstants::motorConvertion,
+               driveSubsystemConstants::motorFeedforward),
+      rearRight(driveSubsystemConstants::rearRightID,
+                driveSubsystemConstants::motorPIDConfig,
+                driveSubsystemConstants::motorConvertion,
+                driveSubsystemConstants::motorFeedforward),
+      kinematics(driveSubsystemConstants::frontLeftPose,
+                 driveSubsystemConstants::frontRightPose,
+                 driveSubsystemConstants::rearLeftPose,
+                 driveSubsystemConstants::rearRightPose),
       drive(frontLeft, frontRight, rearLeft, rearRight, kinematics,
-            units::meters_per_second_t(0), units::radians_per_second_t(0)),
-      gyro(frc::SPI::kMXP), odometry(drive, gyro) {}
+            driveSubsystemConstants::maxVelocity,
+            driveSubsystemConstants::maxRotVelocity),
+      gyro(driveSubsystemConstants::gyroPort), odometry(drive, gyro),
+      driveContoller(driveSubsystemConstants::xController, 
+                     driveSubsystemConstants::yController, 
+                     driveSubsystemConstants::thetaController) {}
 
 // This method will be called once per scheduler run
 void DriveSubsystem::Periodic() { odometry.updatePose(); }

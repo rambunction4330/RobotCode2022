@@ -1,4 +1,3 @@
-
 #include "rmb/drive/MecanumDrive.h"
 
 namespace rmb {

@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <frc/Timer.h>
@@ -9,7 +8,7 @@
 #include <frc2/command/Subsystem.h>
 
 #include "rmb/drive/HolonomicDrive.h"
-#include "rmb/drive/HolonomicDriveOdometry.h"
+#include "rmb/drive/DriveOdometry.h"
 
 namespace rmb {
 /**
@@ -24,7 +23,7 @@ public:
 
   HolonomicTrajectoryCommand(const frc::Trajectory &trajectory,
                              HolonomicDrive &drive,
-                             const HolonomicDriveOdometry &odometry,
+                             const DriveOdometry &odometry,
                              frc::HolonomicDriveController &driveController,
                              std::initializer_list<frc2::Subsystem*> requirements);
   /**
@@ -64,7 +63,7 @@ public:
 private:
   const frc::Trajectory &trajectory;
   HolonomicDrive &drive;
-  const HolonomicDriveOdometry &odometry;
+  const DriveOdometry &odometry;
   frc::HolonomicDriveController &driveController;
   frc::Timer timer;
 };

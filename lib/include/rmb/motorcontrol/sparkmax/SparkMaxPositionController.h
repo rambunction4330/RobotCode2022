@@ -6,7 +6,8 @@
 
 #include <rev/CANSparkMax.h>
 
-#include <rmb/motorcontrol/PositionController.h>
+#include "rmb/motorcontrol/PositionController.h"
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h" 
 
 namespace rmb {
 /**
@@ -73,9 +74,12 @@ public:
     rev::SparkMaxPIDController::AccelStrategy accelStrategy;
   };
 
-  /** \deprecated
-   * Creates a SparkMaxPositionController with the specified deviceID
-   */
+  struct Follower {
+    int id;
+    rev::CANSparkMax::MotorType motorType;
+    bool inverted;
+  };
+
   SparkMaxPositionController(int deviceID);
 
   /**
@@ -87,7 +91,9 @@ public:
    *                   See SparkMaxPositionController<DistanceUnit>::ConversionUnit
    */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
-                             ConversionUnit_t conversion = ConversionUnit_t(1));
+                             ConversionUnit_t conversion = ConversionUnit_t(1), 
+                             const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>,
+                             std::initializer_list<Follower> followers = {});
 
   /**
    * Sets the position of the motor.
@@ -167,5 +173,8 @@ private:
   RawUnit_t minPosition = RawUnit_t(-1);
 
   rev::CANSparkMax::ControlType controlType;
+  std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
+
+  const Feedforward<DistanceUnit> &feedforward;
 };
 } // namespace rmb
