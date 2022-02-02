@@ -172,6 +172,7 @@ bin/
 
 # Doxygen-generated HTML docs
 docs/*
+!docs/additional
 !docs/mainpage.md
 !docs/doxygen-awesome.css
 !docs/Doxyfile
