@@ -1,7 +1,6 @@
 #include "rmb/drive/HolonomicDrive.h"
 
 #include <algorithm>
-#include <units/base.h>
 #include <units/math.h>
 
 namespace rmb {
@@ -16,7 +15,7 @@ void HolonomicDrive::driveCartesian(double ySpeed, double xSpeed,
   driveChassisSpeeds(speeds);
 }
 
-void HolonomicDrive::drivePolar(double magnitude, units::radians angle,
+void HolonomicDrive::drivePolar(double magnitude, units::radian_t angle,
                                 double zRotation) {
   double m = std::clamp(magnitude, -1.0, 1.0);
   double t = std::clamp(zRotation, -1.0, 1.0);

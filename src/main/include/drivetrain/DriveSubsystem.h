@@ -27,16 +27,16 @@ public:
   void driveCartesian(double ySpeed, double xSpeed, double rotation,
                       bool fieldOriented = false,
                       bool rotationCorrection = false);
-  void drivePolar(double magnitude, units::radians direction, double rotation);
+  void drivePolar(double magnitude, units::radian_t direction, double rotation);
 
   std::unique_ptr<frc2::Command> generatePointCommand(frc::Pose2d point);
   std::unique_ptr<frc2::Command>
   generateTrajectoryCommand(frc::Trajectory trajectory);
   std::unique_ptr<frc2::Command> generateDanceCommand();
 
-  const frc::Pose2d &getPosition() { odometry.getPose(); }
-  units::radian_t getGyroHeading() { gyro.GetAngle(); };
-  frc::ChassisSpeeds getChassisSpeeds() { drive.getChassisSpeeds(); }
+  const frc::Pose2d &getPosition() { return odometry.getPose(); }
+  units::radian_t getGyroHeading() { return units::radian_t{gyro.GetAngle()}; }
+  frc::ChassisSpeeds getChassisSpeeds() { return drive.getChassisSpeeds(); }
   frc::ChassisSpeeds getFieldRelativeSpeeds() const;
 
   void resetGyro(units::radian_t angle = 0.0_rad) { gyro.Reset(); }

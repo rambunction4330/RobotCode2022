@@ -43,7 +43,7 @@ void DriveSubsystem::driveCartesian(double ySpeed, double xSpeed,
   drive.driveCartesian(ySpeed, xSpeed, rotation);
 }
 
-void DriveSubsystem::drivePolar(double magnitude, units::radians direction,
+void DriveSubsystem::drivePolar(double magnitude, units::radian_t direction,
                                 double rotation) {
   drive.drivePolar(magnitude, direction, rotation);
 }
