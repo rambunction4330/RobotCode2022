@@ -1,6 +1,7 @@
 #include "rmb/drive/HolonomicDrive.h"
 
 #include <algorithm>
+#include <units/base.h>
 #include <units/math.h>
 
 namespace rmb {
