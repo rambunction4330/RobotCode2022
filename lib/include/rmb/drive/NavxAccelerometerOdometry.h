@@ -4,17 +4,18 @@
 
 #pragma once
 
-#include <frc/geometry/Pose2d.h>
 #include <frc/SPI.h>
+#include <frc/geometry/Pose2d.h>
 
 #include <AHRS.h>
 
 #include <rmb/drive/DriveOdometry.h>
 
 namespace rmb {
-class NavxAccelerometerOdometry: public DriveOdometry {
- public:
-  NavxAccelerometerOdometry(frc::SPI::Port port, const frc::Pose2d& initialPosition = frc::Pose2d());
+class NavxAccelerometerOdometry : public DriveOdometry {
+public:
+  NavxAccelerometerOdometry(frc::SPI::Port port,
+                            const frc::Pose2d &initialPosition = frc::Pose2d());
 
   /**
    * Gets the current pose.
@@ -39,8 +40,8 @@ class NavxAccelerometerOdometry: public DriveOdometry {
    */
   void resetPose(const frc::Pose2d &pose);
 
- private:
+private:
   AHRS accelerometer;
   frc::Pose2d refrence, pose;
 };
-}
+} // namespace rmb

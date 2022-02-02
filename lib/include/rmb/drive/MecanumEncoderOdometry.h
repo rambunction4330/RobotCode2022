@@ -2,8 +2,8 @@
 
 #include <frc/interfaces/Gyro.h>
 
-#include "rmb/drive/HolonomicDrive.h"
 #include "rmb/drive/DriveOdometry.h"
+#include "rmb/drive/HolonomicDrive.h"
 #include "rmb/drive/MecanumDrive.h"
 
 namespace rmb {
