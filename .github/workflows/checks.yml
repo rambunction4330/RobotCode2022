@@ -18,6 +18,7 @@ jobs:
         source: './lib'
         extensions: 'h,cpp'
         style: llvm
+      continue-on-error: true
 
     # TODO: Potentially add automagic format commit with EndBug/add-and-commit
 
