@@ -62,9 +62,9 @@ void Robot::TeleopInit() {
  */
 void Robot::TeleopPeriodic() {
 
-  rmb::outs() << "Here is a double: " << 3.1416 << "\n";
+  wpi::outs() << "Here is a double: " << 3.1416 << "\n";
   std::string testStr = "This is an std::string";
-  rmb::outs() << "printing this string --> " << testStr << "\n";
+  wpi::outs() << "printing this string --> " << testStr << "\n";
 
 
   // const auto JSX = this->joystick.getX();
