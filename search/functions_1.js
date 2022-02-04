@@ -8,5 +8,6 @@ var searchData=
   ['getminposition_5',['getMinPosition',['../classrmb_1_1_spark_max_position_controller.html#a9b6090522e964e614e9d00003500ba03',1,'rmb::SparkMaxPositionController']]],
   ['getpose_6',['getPose',['../classrmb_1_1_holonomic_drive_odometry.html#afe493ef71434378123a8c9c2b674c980',1,'rmb::HolonomicDriveOdometry::getPose()'],['../classrmb_1_1_mecanum_encoder_odometry.html#a669080c961edd4fff941e4487055ef8f',1,'rmb::MecanumEncoderOdometry::getPose()']]],
   ['getposition_7',['getPosition',['../classrmb_1_1_spark_max_position_controller.html#ace99f550275a470f03189c538629d80f',1,'rmb::SparkMaxPositionController']]],
-  ['getvelocity_8',['getVelocity',['../classrmb_1_1_spark_max_position_controller.html#a71010e00f8ad0cc47d1dd62bf41b98b5',1,'rmb::SparkMaxPositionController::getVelocity()'],['../classrmb_1_1_spark_max_velocity_controller.html#a8184fafcf6b0d12865bc87cc2663f708',1,'rmb::SparkMaxVelocityController::getVelocity()']]]
+  ['getvelocity_8',['getVelocity',['../classrmb_1_1_spark_max_position_controller.html#a71010e00f8ad0cc47d1dd62bf41b98b5',1,'rmb::SparkMaxPositionController::getVelocity()'],['../classrmb_1_1_spark_max_velocity_controller.html#a8184fafcf6b0d12865bc87cc2663f708',1,'rmb::SparkMaxVelocityController::getVelocity()']]],
+  ['getwheelspeeds_9',['getWheelSpeeds',['../classrmb_1_1_mecanum_drive.html#accce3d24f58d161a0e88599ef6cfd3c6',1,'rmb::MecanumDrive']]]
 ];

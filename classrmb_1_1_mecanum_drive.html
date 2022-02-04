@@ -104,14 +104,11 @@ Inheritance diagram for rmb::MecanumDrive:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a224869c0eb40c05d826262456e0a3ab7"><td class="memItemLeft" align="right" valign="top"><a id="a224869c0eb40c05d826262456e0a3ab7" name="a224869c0eb40c05d826262456e0a3ab7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumDrive</b> (<a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;frontLeft, <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;frontRight, <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;rearLeft, <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;rearRight, const frc::MecanumDriveKinematics &amp;kinematics, units::meters_per_second_t maxVelocity, units::radians_per_second_t maxRotVelocity)</td></tr>
+<tr class="memitem:a224869c0eb40c05d826262456e0a3ab7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_mecanum_drive.html#a224869c0eb40c05d826262456e0a3ab7">MecanumDrive</a> (<a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;frontLeft, <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;frontRight, <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;rearLeft, <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;rearRight, const frc::MecanumDriveKinematics &amp;kinematics, units::meters_per_second_t maxVelocity, units::radians_per_second_t maxRotVelocity)</td></tr>
 <tr class="separator:a224869c0eb40c05d826262456e0a3ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff10123dba679ed8bcac5152c44773d8"><td class="memItemLeft" align="right" valign="top"><a id="aff10123dba679ed8bcac5152c44773d8" name="aff10123dba679ed8bcac5152c44773d8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>driveWheelSpeeds</b> (const frc::MecanumDriveWheelSpeeds &amp;wheelSpeeds)</td></tr>
+<tr class="memitem:aff10123dba679ed8bcac5152c44773d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_mecanum_drive.html#aff10123dba679ed8bcac5152c44773d8">driveWheelSpeeds</a> (const frc::MecanumDriveWheelSpeeds &amp;wheelSpeeds)</td></tr>
 <tr class="separator:aff10123dba679ed8bcac5152c44773d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accce3d24f58d161a0e88599ef6cfd3c6"><td class="memItemLeft" align="right" valign="top"><a id="accce3d24f58d161a0e88599ef6cfd3c6" name="accce3d24f58d161a0e88599ef6cfd3c6"></a>
-frc::MecanumDriveWheelSpeeds&#160;</td><td class="memItemRight" valign="bottom"><b>getWheelSpeeds</b> () const</td></tr>
+<tr class="memitem:accce3d24f58d161a0e88599ef6cfd3c6"><td class="memItemLeft" align="right" valign="top">frc::MecanumDriveWheelSpeeds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_mecanum_drive.html#accce3d24f58d161a0e88599ef6cfd3c6">getWheelSpeeds</a> () const</td></tr>
 <tr class="separator:accce3d24f58d161a0e88599ef6cfd3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34a2f8602f4a8b6be38849d58e232386"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_mecanum_drive.html#a34a2f8602f4a8b6be38849d58e232386">driveChassisSpeeds</a> (const frc::ChassisSpeeds &amp;chassisSpeeds, const frc::Translation2d &amp;centerofRotation=frc::Translation2d())</td></tr>
 <tr class="separator:a34a2f8602f4a8b6be38849d58e232386"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,6 +138,77 @@ Friends</h2></td></tr>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdometry</b></td></tr>
 <tr class="separator:ac9b6f18a5e398eb15538126f3a39d6bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a224869c0eb40c05d826262456e0a3ab7" name="a224869c0eb40c05d826262456e0a3ab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a224869c0eb40c05d826262456e0a3ab7">&#9670;&nbsp;</a></span>MecanumDrive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rmb::MecanumDrive::MecanumDrive </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;&#160;</td>
+          <td class="paramname"><em>frontLeft</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;&#160;</td>
+          <td class="paramname"><em>frontRight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rearLeft</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a>&lt; units::meters &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rearRight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const frc::MecanumDriveKinematics &amp;&#160;</td>
+          <td class="paramname"><em>kinematics</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">units::meters_per_second_t&#160;</td>
+          <td class="paramname"><em>maxVelocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">units::radians_per_second_t&#160;</td>
+          <td class="paramname"><em>maxRotVelocity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Creates a <a class="el" href="classrmb_1_1_mecanum_drive.html">MecanumDrive</a> with wheels, kinematics, and maximum linear and rotational velocity </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frontLeft</td><td>Velocity controller for the front left wheel </td></tr>
+    <tr><td class="paramname">frontRight</td><td>Velocity controller for the front right wheel </td></tr>
+    <tr><td class="paramname">rearLeft</td><td>Velocity controller for the rear left wheel </td></tr>
+    <tr><td class="paramname">rearRight</td><td>Velocity controller for the rear right wheel </td></tr>
+    <tr><td class="paramname">kinematics</td><td>The MecanumDriveKinematics for the drive </td></tr>
+    <tr><td class="paramname">maxVelocity</td><td>The maximum velocity in meters per second </td></tr>
+    <tr><td class="paramname">maxRotVelocity</td><td>The maximum rotational velocity in radians per second </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a34a2f8602f4a8b6be38849d58e232386" name="a34a2f8602f4a8b6be38849d58e232386"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34a2f8602f4a8b6be38849d58e232386">&#9670;&nbsp;</a></span>driveChassisSpeeds()</h2>
@@ -175,20 +243,45 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdomet
   </tr>
 </table>
 </div><div class="memdoc">
-<p >A pure virtual member that drives using chassis speeds. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Function to drive using chassis speeds </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">chassisSpeeds</td><td>The chassis speeds to drive at. </td></tr>
-    <tr><td class="paramname">centerOfRotation</td><td>Translation2d that provides the center pivot point for the robot. </td></tr>
+    <tr><td class="paramname">chassisSpeeds</td><td>The chassis speeds to drive at </td></tr>
+    <tr><td class="paramname">centerOfRotation</td><td>The optionally-specified center of rotation, defaults to 0 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#a4450c6fef0e61fdeb7311f1a00ddd703">getChassisSpeeds()</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#aff10123dba679ed8bcac5152c44773d8">driveWheelSpeeds()</a> </dd>
 <dd>
-<a class="el" href="classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f">driveCartesian()</a> </dd>
-<dd>
-<a class="el" href="classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba">drivePolar()</a> </dd></dl>
+<a class="el" href="classrmb_1_1_mecanum_drive.html#a4450c6fef0e61fdeb7311f1a00ddd703">getChassisSpeeds()</a> </dd></dl>
 
 <p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4">rmb::HolonomicDrive</a>.</p>
+
+</div>
+</div>
+<a id="aff10123dba679ed8bcac5152c44773d8" name="aff10123dba679ed8bcac5152c44773d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff10123dba679ed8bcac5152c44773d8">&#9670;&nbsp;</a></span>driveWheelSpeeds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rmb::MecanumDrive::driveWheelSpeeds </td>
+          <td>(</td>
+          <td class="paramtype">const frc::MecanumDriveWheelSpeeds &amp;&#160;</td>
+          <td class="paramname"><em>wheelSpeeds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Function to drive using wheel speeds </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wheelSpeeds</td><td>Wheel speeds to drive using </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#accce3d24f58d161a0e88599ef6cfd3c6">getWheelSpeeds()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_mecanum_drive.html#a34a2f8602f4a8b6be38849d58e232386">driveChassisSpeeds()</a> </dd></dl>
 
 </div>
 </div>
@@ -214,11 +307,10 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdomet
   </tr>
 </table>
 </div><div class="memdoc">
-<p >A pure virtual member that returns the current chassis speeds. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#a34a2f8602f4a8b6be38849d58e232386">driveChassisSpeeds()</a> </dd>
+<p >Function that returns the current chassis speeds </p><dl class="section return"><dt>Returns</dt><dd>The current chassis speeds </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#a34a2f8602f4a8b6be38849d58e232386">driveChassisSpeeds()</a> </dd>
 <dd>
-<a class="el" href="classrmb_1_1_mecanum_drive.html#a4eae098944bb080bba9629f06a583664">getMaxVel()</a> </dd>
-<dd>
-<a class="el" href="classrmb_1_1_mecanum_drive.html#a30e4d0731a01f20fb2df27237d28b490">getMaxRotVel()</a> </dd></dl>
+<a class="el" href="classrmb_1_1_mecanum_drive.html#accce3d24f58d161a0e88599ef6cfd3c6">getWheelSpeeds()</a> </dd></dl>
 
 <p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html#a82fc55b0ee436c537cda7fff1c7f7e14">rmb::HolonomicDrive</a>.</p>
 
@@ -246,7 +338,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdomet
   </tr>
 </table>
 </div><div class="memdoc">
-<p >A pure virtual member that returns the maximum rotational velocity as specified. </p><dl class="section return"><dt>Returns</dt><dd>The maximum rotational velocity in radians per second </dd></dl>
+<p >Function that gets the maximum rotational velocity as specified on creation </p><dl class="section return"><dt>Returns</dt><dd>The maximum velocity in radians per second </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#a4eae098944bb080bba9629f06a583664">getMaxVel()</a> </dd></dl>
 
 <p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html#ace175ff6094c4b267af49418233e8879">rmb::HolonomicDrive</a>.</p>
 
@@ -274,9 +367,31 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MecanumEncoderOdomet
   </tr>
 </table>
 </div><div class="memdoc">
-<p >A pure virtual member that returns the maximum linear velocity as specified. </p><dl class="section return"><dt>Returns</dt><dd>The maximum velocity in meters per second </dd></dl>
+<p >Function that gets the maximum velocity as specified on creation </p><dl class="section return"><dt>Returns</dt><dd>The maximum velocity in meters per second </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#a30e4d0731a01f20fb2df27237d28b490">getMaxRotVel()</a> </dd></dl>
 
 <p>Implements <a class="el" href="classrmb_1_1_holonomic_drive.html#a8c6687fefdfb22d6922b7a5b0708588b">rmb::HolonomicDrive</a>.</p>
+
+</div>
+</div>
+<a id="accce3d24f58d161a0e88599ef6cfd3c6" name="accce3d24f58d161a0e88599ef6cfd3c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accce3d24f58d161a0e88599ef6cfd3c6">&#9670;&nbsp;</a></span>getWheelSpeeds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">frc::MecanumDriveWheelSpeeds rmb::MecanumDrive::getWheelSpeeds </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Function that gets the wheel speeds </p><dl class="section return"><dt>Returns</dt><dd>The current wheel speeds </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classrmb_1_1_mecanum_drive.html#aff10123dba679ed8bcac5152c44773d8">driveWheelSpeeds()</a> </dd>
+<dd>
+<a class="el" href="classrmb_1_1_mecanum_drive.html#a4450c6fef0e61fdeb7311f1a00ddd703">getChassisSpeeds()</a> </dd></dl>
 
 </div>
 </div>
