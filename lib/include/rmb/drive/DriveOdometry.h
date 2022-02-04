@@ -7,7 +7,7 @@ namespace rmb {
  * Odometry for holonomic drive. This class contains functions for managing
  * the robots location on the playing field.
  */
-class HolonomicDriveOdometry {
+class DriveOdometry {
 public:
   /**
    * A pure virtual member that returns the current pose.
@@ -31,6 +31,6 @@ public:
    * @see updatePose()
    * @return The pose as a Pose2d
    */
-  virtual void resetPose(const frc::Pose2d &pose) = 0;
+  virtual void resetPose(const frc::Pose2d &pose = frc::Pose2d()) = 0;
 };
 } // namespace rmb

@@ -1,4 +1,3 @@
-
 #include "rmb/drive/MecanumEncoderOdometry.h"
 
 namespace rmb {

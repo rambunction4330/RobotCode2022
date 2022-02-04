@@ -65,7 +65,8 @@ public:
    * @see driveChassisSpeeds()
    * @see driveCartesian()
    */
-  virtual void drivePolar(double magnitude, double angle, double zRotation);
+  virtual void drivePolar(double magnitude, units::radian_t angle,
+                          double zRotation);
 
   /**
    * A pure virtual member that returns
