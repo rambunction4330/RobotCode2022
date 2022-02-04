@@ -11,6 +11,8 @@
 #include <units/time.h>
 #include <units/angular_velocity.h>
 
+#include <rmb/io/log.h>
+
 void Robot::RobotInit() {
 
   throttle = this->shuffleBoardTab.Add("Throttle Speed", 0.2f).WithWidget(frc::BuiltInWidgets::kNumberSlider).GetEntry();
@@ -59,6 +61,11 @@ void Robot::TeleopInit() {
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
+
+  rmb::outs() << "Here is a double: " << 3.1416 << "\n";
+  std::string testStr = "This is an std::string";
+  rmb::outs() << "printing this string --> " << testStr << "\n";
+
 
   // const auto JSX = this->joystick.getX();
   // if(JSX)
