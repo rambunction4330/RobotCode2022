@@ -107,6 +107,8 @@ Inheritance diagram for rmb::SparkMaxPositionController&lt; DistanceUnit &gt;:</
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html">Follower</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html">PIDConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -152,8 +154,8 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit_t</b>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aec3457d12ead7b95d45480dbe50b5df6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#aec3457d12ead7b95d45480dbe50b5df6">SparkMaxPositionController</a> (int deviceID)</td></tr>
 <tr class="separator:aec3457d12ead7b95d45480dbe50b5df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab51769505640128f628ccc58379db49c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ab51769505640128f628ccc58379db49c">SparkMaxPositionController</a> (int deviceID, const <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html">PIDConfig</a> &amp;pidConfig, ConversionUnit_t conversion=ConversionUnit_t(1))</td></tr>
-<tr class="separator:ab51769505640128f628ccc58379db49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76f5c136fc1cdc6f4241018ad4cc4d3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a76f5c136fc1cdc6f4241018ad4cc4d3b">SparkMaxPositionController</a> (int deviceID, const <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html">PIDConfig</a> &amp;pidConfig, ConversionUnit_t conversion=ConversionUnit_t(1), const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;feedForward=noFeedforward&lt; DistanceUnit &gt;, std::initializer_list&lt; <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html">Follower</a> &gt; followers={})</td></tr>
+<tr class="separator:a76f5c136fc1cdc6f4241018ad4cc4d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f3fe24d4f01bea217dff1849ca9fb88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1f3fe24d4f01bea217dff1849ca9fb88">setPosition</a> (Distance_t position) override</td></tr>
 <tr class="separator:a1f3fe24d4f01bea217dff1849ca9fb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace99f550275a470f03189c538629d80f"><td class="memItemLeft" align="right" valign="top">Distance_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ace99f550275a470f03189c538629d80f">getPosition</a> () override</td></tr>
@@ -270,8 +272,8 @@ template&lt;typename DistanceUnit &gt; </div>
 
 </div>
 </div>
-<a id="ab51769505640128f628ccc58379db49c" name="ab51769505640128f628ccc58379db49c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab51769505640128f628ccc58379db49c">&#9670;&nbsp;</a></span>SparkMaxPositionController() <span class="overload">[2/2]</span></h2>
+<a id="a76f5c136fc1cdc6f4241018ad4cc4d3b" name="a76f5c136fc1cdc6f4241018ad4cc4d3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76f5c136fc1cdc6f4241018ad4cc4d3b">&#9670;&nbsp;</a></span>SparkMaxPositionController() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,7 +296,19 @@ template&lt;typename DistanceUnit &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">ConversionUnit_t&#160;</td>
-          <td class="paramname"><em>conversion</em> = <code>ConversionUnit_t(1)</code>&#160;</td>
+          <td class="paramname"><em>conversion</em> = <code>ConversionUnit_t(1)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;&#160;</td>
+          <td class="paramname"><em>feedForward</em> = <code>noFeedforward&lt;&#160;DistanceUnit&#160;&gt;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html">Follower</a> &gt;&#160;</td>
+          <td class="paramname"><em>followers</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -648,7 +662,7 @@ template&lt;typename DistanceUnit &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>lib/include/rmb/motorcontrol/SparkMax/<a class="el" href="_spark_max_position_controller_8h_source.html">SparkMaxPositionController.h</a></li>
+<li>lib/include/rmb/motorcontrol/sparkmax/<a class="el" href="_spark_max_position_controller_8h_source.html">SparkMaxPositionController.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RobotCode2022: rmb::FeedForward&lt; DistanceUnit &gt; Class Template Reference</title>
+<title>RobotCode2022: rmb::HolonomicPointCommand Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classrmb_1_1_feed_forward.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('classrmb_1_1_holonomic_point_command.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -86,46 +86,45 @@ $(document).ready(function(){initNavTree('classrmb_1_1_feed_forward.html',''); i
 
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classrmb_1_1_feed_forward-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">rmb::FeedForward&lt; DistanceUnit &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+<a href="classrmb_1_1_holonomic_point_command-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">rmb::HolonomicPointCommand Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Inheritance diagram for rmb::HolonomicPointCommand:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classrmb_1_1_holonomic_point_command.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a64fa11d0818bceb0467fc10607c7f89f"><td class="memItemLeft" align="right" valign="top"><a id="a64fa11d0818bceb0467fc10607c7f89f" name="a64fa11d0818bceb0467fc10607c7f89f"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Distance_t</b> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
-<tr class="separator:a64fa11d0818bceb0467fc10607c7f89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d182db5a57d146a4806cbd18bc3b182"><td class="memItemLeft" align="right" valign="top"><a id="a4d182db5a57d146a4806cbd18bc3b182" name="a4d182db5a57d146a4806cbd18bc3b182"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>VelocityUnit</b> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
-<tr class="separator:a4d182db5a57d146a4806cbd18bc3b182"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99fc483c5f88dd51309a7132f0898a78"><td class="memItemLeft" align="right" valign="top"><a id="a99fc483c5f88dd51309a7132f0898a78" name="a99fc483c5f88dd51309a7132f0898a78"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Velocity_t</b> = units::unit_t&lt; VelocityUnit &gt;</td></tr>
-<tr class="separator:a99fc483c5f88dd51309a7132f0898a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a706674d88dc307b6657ca0a60c252685"><td class="memItemLeft" align="right" valign="top"><a id="a706674d88dc307b6657ca0a60c252685" name="a706674d88dc307b6657ca0a60c252685"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationUnit</b> = units::compound_unit&lt; VelocityUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
-<tr class="separator:a706674d88dc307b6657ca0a60c252685"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6182faa416598a432e58230841cf19ae"><td class="memItemLeft" align="right" valign="top"><a id="a6182faa416598a432e58230841cf19ae" name="a6182faa416598a432e58230841cf19ae"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Acceleration_t</b> = units::unit_t&lt; AccelerationUnit &gt;</td></tr>
-<tr class="separator:a6182faa416598a432e58230841cf19ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a11c8195d858ccf19a52ff59180d58b5f"><td class="memItemLeft" align="right" valign="top"><a id="a11c8195d858ccf19a52ff59180d58b5f" name="a11c8195d858ccf19a52ff59180d58b5f"></a>
-virtual units::volt_t&#160;</td><td class="memItemRight" valign="bottom"><b>calculate</b> (Velocity_t velocity, Distance_t distance, Acceleration_t acceleration)=0</td></tr>
-<tr class="separator:a11c8195d858ccf19a52ff59180d58b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00756b7f6a5df39a772c01cd0d8a1ad4"><td class="memItemLeft" align="right" valign="top"><a id="a00756b7f6a5df39a772c01cd0d8a1ad4" name="a00756b7f6a5df39a772c01cd0d8a1ad4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>HolonomicPointCommand</b> (const frc::Pose2d &amp;pose, <a class="el" href="classrmb_1_1_holonomic_drive.html">HolonomicDrive</a> &amp;drive, const <a class="el" href="classrmb_1_1_drive_odometry.html">DriveOdometry</a> &amp;odometry, frc::HolonomicDriveController &amp;controller)</td></tr>
+<tr class="separator:a00756b7f6a5df39a772c01cd0d8a1ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaf27ac5174d4d0ab1f1789be60beec8"><td class="memItemLeft" align="right" valign="top"><a id="acaf27ac5174d4d0ab1f1789be60beec8" name="acaf27ac5174d4d0ab1f1789be60beec8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Initialize</b> () override</td></tr>
+<tr class="separator:acaf27ac5174d4d0ab1f1789be60beec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b0f12e55035445a031471ce90fea3d6"><td class="memItemLeft" align="right" valign="top"><a id="a8b0f12e55035445a031471ce90fea3d6" name="a8b0f12e55035445a031471ce90fea3d6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Execute</b> () override</td></tr>
+<tr class="separator:a8b0f12e55035445a031471ce90fea3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae31577767475e7ec02d6d764397914de"><td class="memItemLeft" align="right" valign="top"><a id="ae31577767475e7ec02d6d764397914de" name="ae31577767475e7ec02d6d764397914de"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>End</b> (bool interrupted) override</td></tr>
+<tr class="separator:ae31577767475e7ec02d6d764397914de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa592416138357e5419d1c34a96e2313"><td class="memItemLeft" align="right" valign="top"><a id="aaa592416138357e5419d1c34a96e2313" name="aaa592416138357e5419d1c34a96e2313"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsFinished</b> () override</td></tr>
+<tr class="separator:aaa592416138357e5419d1c34a96e2313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>lib/include/rmb/motorcontrol/feedforward/<a class="el" href="_feed_forward_8h_source.html">FeedForward.h</a></li>
+<li>lib/include/rmb/drive/<a class="el" href="_holonomic_point_command_8h_source.html">HolonomicPointCommand.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>rmb</b></li><li class="navelem"><a class="el" href="classrmb_1_1_feed_forward.html">FeedForward</a></li>
+    <li class="navelem"><b>rmb</b></li><li class="navelem"><a class="el" href="classrmb_1_1_holonomic_point_command.html">HolonomicPointCommand</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>

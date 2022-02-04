@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['deprecated_20list_0',['Deprecated List',['../deprecated.html',1,'']]],
-  ['drivecartesian_1',['driveCartesian',['../classrmb_1_1_holonomic_drive.html#a2c0f6447113e5ed7d62f6f557fda293f',1,'rmb::HolonomicDrive']]],
-  ['drivechassisspeeds_2',['driveChassisSpeeds',['../classrmb_1_1_holonomic_drive.html#aed5c311f6adefbdac5f10a6df48470a4',1,'rmb::HolonomicDrive::driveChassisSpeeds()'],['../classrmb_1_1_mecanum_drive.html#a34a2f8602f4a8b6be38849d58e232386',1,'rmb::MecanumDrive::driveChassisSpeeds()']]],
-  ['drivepolar_3',['drivePolar',['../classrmb_1_1_holonomic_drive.html#acebb3573e15172c8eaccb07c35449aba',1,'rmb::HolonomicDrive']]],
-  ['drivewheelspeeds_4',['driveWheelSpeeds',['../classrmb_1_1_mecanum_drive.html#aff10123dba679ed8bcac5152c44773d8',1,'rmb::MecanumDrive']]]
+  ['conversionunit_0',['ConversionUnit',['../classrmb_1_1_spark_max_position_controller.html#a2a99f081a78ed274a784a1050ed5c76c',1,'rmb::SparkMaxPositionController::ConversionUnit()'],['../classrmb_1_1_spark_max_velocity_controller.html#a8fde9ee51d9c15acb14cf395c00bd820',1,'rmb::SparkMaxVelocityController::ConversionUnit()']]]
 ];

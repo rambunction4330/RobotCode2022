@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RobotCode2022: lib/include/rmb/motorcontrol/SparkMax/SparkMaxError.h Source File</title>
+<title>RobotCode2022: lib/include/rmb/motorcontrol/sparkmax/SparkMaxError.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,21 +90,23 @@ $(document).ready(function(){initNavTree('_spark_max_error_8h_source.html',''); 
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;rev/REVLibError.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;wpi/raw_ostream.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// false if error. True if not.</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keywordtype">bool</span> checkREVLibError(rev::REVLibError error, <span class="keyword">const</span> <span class="keywordtype">char</span> *functionCall,</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>                      <span class="keyword">const</span> <span class="keywordtype">char</span> *fileName, <span class="keywordtype">int</span> line);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define CHECK_REVLIB_ERROR(x) checkREVLibError(x, #x, __FILE__, __LINE__)</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;rev/REVLibError.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// false if error. True if not.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">bool</span> checkREVLibError(rev::REVLibError error, <span class="keyword">const</span> <span class="keywordtype">char</span> *functionCall,</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>                      <span class="keyword">const</span> <span class="keywordtype">char</span> *fileName, <span class="keywordtype">int</span> line);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define CHECK_REVLIB_ERROR(x) checkREVLibError(x, #x, __FILE__, __LINE__)</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_5a30104352ef4255dc24354b02eb2d20.html">include</a></li><li class="navelem"><a class="el" href="dir_4235f703aa6cdb57334ff9d01563f842.html">rmb</a></li><li class="navelem"><a class="el" href="dir_c65db1c67aa6edf517623e07a0f89b47.html">motorcontrol</a></li><li class="navelem"><a class="el" href="dir_2ebde29e52892086dbef257987fb6a4c.html">SparkMax</a></li><li class="navelem"><b>SparkMaxError.h</b></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_5a30104352ef4255dc24354b02eb2d20.html">include</a></li><li class="navelem"><a class="el" href="dir_4235f703aa6cdb57334ff9d01563f842.html">rmb</a></li><li class="navelem"><a class="el" href="dir_c65db1c67aa6edf517623e07a0f89b47.html">motorcontrol</a></li><li class="navelem"><a class="el" href="dir_3475ebccd23fb0570c4c3ebd99cef598.html">sparkmax</a></li><li class="navelem"><b>SparkMaxError.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>

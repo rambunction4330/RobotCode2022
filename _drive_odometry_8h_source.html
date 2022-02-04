@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RobotCode2022: lib/include/rmb/drive/HolonomicDriveOdometry.h Source File</title>
+<title>RobotCode2022: lib/include/rmb/drive/DriveOdometry.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('_holonomic_drive_odometry_8h_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_drive_odometry_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -85,7 +85,7 @@ $(document).ready(function(){initNavTree('_holonomic_drive_odometry_8h_source.ht
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">HolonomicDriveOdometry.h</div></div>
+  <div class="headertitle"><div class="title">DriveOdometry.h</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
@@ -93,25 +93,25 @@ $(document).ready(function(){initNavTree('_holonomic_drive_odometry_8h_source.ht
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;frc/geometry/Pose2d.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>rmb {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive_odometry.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_holonomic_drive_odometry.html">HolonomicDriveOdometry</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classrmb_1_1_drive_odometry.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_drive_odometry.html">DriveOdometry</a> {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive_odometry.html#afe493ef71434378123a8c9c2b674c980">   18</a></span>  <span class="keyword">virtual</span> <span class="keyword">const</span> frc::Pose2d &amp;<a class="code hl_function" href="classrmb_1_1_holonomic_drive_odometry.html#afe493ef71434378123a8c9c2b674c980">getPose</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classrmb_1_1_drive_odometry.html#acad8ad80b0813025d7119b57a33731b6">   18</a></span>  <span class="keyword">virtual</span> <span class="keyword">const</span> frc::Pose2d &amp;<a class="code hl_function" href="classrmb_1_1_drive_odometry.html#acad8ad80b0813025d7119b57a33731b6">getPose</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive_odometry.html#a9a62e87296eae70264beb5a4ba27e594">   26</a></span>  <span class="keyword">virtual</span> <span class="keyword">const</span> frc::Pose2d &amp;<a class="code hl_function" href="classrmb_1_1_holonomic_drive_odometry.html#a9a62e87296eae70264beb5a4ba27e594">updatePose</a>() = 0;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classrmb_1_1_drive_odometry.html#a1d5763def0e18e309624267ce8130b99">   26</a></span>  <span class="keyword">virtual</span> <span class="keyword">const</span> frc::Pose2d &amp;<a class="code hl_function" href="classrmb_1_1_drive_odometry.html#a1d5763def0e18e309624267ce8130b99">updatePose</a>() = 0;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classrmb_1_1_holonomic_drive_odometry.html#afc3e7adc8e61d0a3cc609397a41c741e">   34</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_holonomic_drive_odometry.html#afc3e7adc8e61d0a3cc609397a41c741e">resetPose</a>(<span class="keyword">const</span> frc::Pose2d &amp;pose) = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classrmb_1_1_drive_odometry.html#a60a828caf5d74e604e4ef618ae66189b">   34</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_drive_odometry.html#a60a828caf5d74e604e4ef618ae66189b">resetPose</a>(<span class="keyword">const</span> frc::Pose2d &amp;pose = frc::Pose2d()) = 0;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>} <span class="comment">// namespace rmb</span></div>
-<div class="ttc" id="aclassrmb_1_1_holonomic_drive_odometry_html"><div class="ttname"><a href="classrmb_1_1_holonomic_drive_odometry.html">rmb::HolonomicDriveOdometry</a></div><div class="ttdef"><b>Definition:</b> HolonomicDriveOdometry.h:10</div></div>
-<div class="ttc" id="aclassrmb_1_1_holonomic_drive_odometry_html_a9a62e87296eae70264beb5a4ba27e594"><div class="ttname"><a href="classrmb_1_1_holonomic_drive_odometry.html#a9a62e87296eae70264beb5a4ba27e594">rmb::HolonomicDriveOdometry::updatePose</a></div><div class="ttdeci">virtual const frc::Pose2d &amp; updatePose()=0</div></div>
-<div class="ttc" id="aclassrmb_1_1_holonomic_drive_odometry_html_afc3e7adc8e61d0a3cc609397a41c741e"><div class="ttname"><a href="classrmb_1_1_holonomic_drive_odometry.html#afc3e7adc8e61d0a3cc609397a41c741e">rmb::HolonomicDriveOdometry::resetPose</a></div><div class="ttdeci">virtual void resetPose(const frc::Pose2d &amp;pose)=0</div></div>
-<div class="ttc" id="aclassrmb_1_1_holonomic_drive_odometry_html_afe493ef71434378123a8c9c2b674c980"><div class="ttname"><a href="classrmb_1_1_holonomic_drive_odometry.html#afe493ef71434378123a8c9c2b674c980">rmb::HolonomicDriveOdometry::getPose</a></div><div class="ttdeci">virtual const frc::Pose2d &amp; getPose() const =0</div></div>
+<div class="ttc" id="aclassrmb_1_1_drive_odometry_html"><div class="ttname"><a href="classrmb_1_1_drive_odometry.html">rmb::DriveOdometry</a></div><div class="ttdef"><b>Definition:</b> DriveOdometry.h:10</div></div>
+<div class="ttc" id="aclassrmb_1_1_drive_odometry_html_a1d5763def0e18e309624267ce8130b99"><div class="ttname"><a href="classrmb_1_1_drive_odometry.html#a1d5763def0e18e309624267ce8130b99">rmb::DriveOdometry::updatePose</a></div><div class="ttdeci">virtual const frc::Pose2d &amp; updatePose()=0</div></div>
+<div class="ttc" id="aclassrmb_1_1_drive_odometry_html_a60a828caf5d74e604e4ef618ae66189b"><div class="ttname"><a href="classrmb_1_1_drive_odometry.html#a60a828caf5d74e604e4ef618ae66189b">rmb::DriveOdometry::resetPose</a></div><div class="ttdeci">virtual void resetPose(const frc::Pose2d &amp;pose=frc::Pose2d())=0</div></div>
+<div class="ttc" id="aclassrmb_1_1_drive_odometry_html_acad8ad80b0813025d7119b57a33731b6"><div class="ttname"><a href="classrmb_1_1_drive_odometry.html#acad8ad80b0813025d7119b57a33731b6">rmb::DriveOdometry::getPose</a></div><div class="ttdeci">virtual const frc::Pose2d &amp; getPose() const =0</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_5a30104352ef4255dc24354b02eb2d20.html">include</a></li><li class="navelem"><a class="el" href="dir_4235f703aa6cdb57334ff9d01563f842.html">rmb</a></li><li class="navelem"><a class="el" href="dir_01caaff05c881079c1f4c8cb9b2f3a4d.html">drive</a></li><li class="navelem"><b>HolonomicDriveOdometry.h</b></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_5a30104352ef4255dc24354b02eb2d20.html">include</a></li><li class="navelem"><a class="el" href="dir_4235f703aa6cdb57334ff9d01563f842.html">rmb</a></li><li class="navelem"><a class="el" href="dir_01caaff05c881079c1f4c8cb9b2f3a4d.html">drive</a></li><li class="navelem"><b>DriveOdometry.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>

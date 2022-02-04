@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['sparkmaxpositioncontroller_0',['SparkMaxPositionController',['../classrmb_1_1_spark_max_position_controller.html',1,'rmb']]],
-  ['sparkmaxvelocitycontroller_1',['SparkMaxVelocityController',['../classrmb_1_1_spark_max_velocity_controller.html',1,'rmb']]]
+  ['holonomicdrive_0',['HolonomicDrive',['../classrmb_1_1_holonomic_drive.html',1,'rmb']]],
+  ['holonomicpointcommand_1',['HolonomicPointCommand',['../classrmb_1_1_holonomic_point_command.html',1,'rmb']]],
+  ['holonomictrajectorycommand_2',['HolonomicTrajectoryCommand',['../classrmb_1_1_holonomic_trajectory_command.html',1,'rmb']]]
 ];
