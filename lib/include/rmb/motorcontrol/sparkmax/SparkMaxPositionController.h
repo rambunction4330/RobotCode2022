@@ -80,6 +80,9 @@ public:
     bool inverted;
   };
 
+  /** \deprecated
+   * Creates a SparkMaxPositionController with the specified deviceID
+   */
   SparkMaxPositionController(int deviceID);
 
   /**
