@@ -42,22 +42,27 @@ void Robot::AutonomousInit() {}
 
 void Robot::AutonomousPeriodic() {}
 
-void Robot::TeleopInit() {}
+void Robot::TeleopInit() {
+  smPositionController.resetRefrence(0.0_m);
+}
 
 /**
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
+smPositionController.setPosition(1_m);
+//wpi::outs() << "position: " << std::to_string(smPositionController.getPosition().to<double>()) << "m\n";
 
-  const auto JSX = this->joystick.getX();
-  if(JSX)
-  {
-    this->smMotorControllerFL.setVelocity(5_mps);
-  }
-  else
-  {
-    this->smMotorControllerFL.setVelocity(0_mps);
-  }
+  //const auto JSX = this->joystick.getX();
+  // if(JSX)
+  // {
+  //   this->smMotorControllerFL.setVelocity(5_mps);
+  // }
+  // else
+  // {
+  //   this->smMotorControllerFL.setVelocity(0_mps);
+  // }
+  // smPositionController.setPosition(6.28_rad);
 
 }
 
