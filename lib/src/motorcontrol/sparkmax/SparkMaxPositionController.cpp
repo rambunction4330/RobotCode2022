@@ -78,10 +78,11 @@ void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
   double setPoint = RawUnit_t((position + reference) / conversion).to<double>();
   std::clamp<double>(setPoint, minPosition.to<double>(),
                      maxPosition.to<double>());
-  //wpi::outs() << "reference: " << std::to_string(reference()) << "\n";
- // wpi::outs() << "setpoint: " << std::to_string(setPoint) << "\n";
-  //wpi::outs().flush();
-  sparkMaxPIDController.SetReference(setPoint, controlType, 0);
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
+      setPoint, controlType, 0,
+      units::volt_t(feedforward.calculateStatic(
+                        (position - getPosition()) / 1_s, position))
+          .to<double>()));
 }
 
 template <typename U>

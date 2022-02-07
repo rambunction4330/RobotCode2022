@@ -2,12 +2,12 @@
 
 #include <frc/interfaces/Gyro.h>
 
+#include "rmb/drive/DriveOdometry.h"
 #include "rmb/drive/HolonomicDrive.h"
-#include "rmb/drive/HolonomicDriveOdometry.h"
 #include "rmb/drive/MecanumDrive.h"
 
 namespace rmb {
-class MecanumEncoderOdometry : public HolonomicDriveOdometry {
+class MecanumEncoderOdometry : public DriveOdometry {
 public:
   MecanumEncoderOdometry(MecanumDrive &drive, const frc::Gyro &gyro,
                          const frc::Pose2d &initalPose = frc::Pose2d());

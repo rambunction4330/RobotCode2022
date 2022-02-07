@@ -20,9 +20,9 @@ enum JoystickKey {
   TWELVE
 };
 
-class Joystick : public frc2::SubsystemBase {
+class JoystickSubsystem : public frc2::SubsystemBase {
 public:
-  Joystick(int port = 0, float dz = 0.2f, bool sqrTwst = false)
+  JoystickSubsystem(int port = 0, float dz = 0.2f, bool sqrTwst = false)
       : joystick(port), deadZone(dz), squareTwist(sqrTwst) {
   } // Init constructer
 
@@ -48,6 +48,9 @@ public:
     return joystick.GetY();
   }
 
+  inline double getTwistRaw() {
+    return joystick.GetTwist();
+  }
   frc2::JoystickButton
   getButton(JoystickKey button) { // Gets the button passed through the enum
     return frc2::JoystickButton(&joystick, (int)button);
@@ -60,9 +63,10 @@ public:
     } else {
       if (squareTwist) {
         twist = std::pow(twist, 2);
+        twist = (joystick.GetTwist() >= 0) ? twist : -twist;
       }
     } // If none, then it just returns twist
-    return (joystick.GetTwist() >= 0) ? twist : -twist;
+    return twist;
   }
 
   double getThrotle() { return joystick.GetThrottle(); }

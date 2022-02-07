@@ -6,10 +6,15 @@
 
 
 #include <frc2/command/CommandScheduler.h>
+#include <frc/Timer.h>
+
+#include <units/time.h>
+#include <units/angular_velocity.h>
 
 void Robot::RobotInit() {
 
   throttle = this->shuffleBoardTab.Add("Throttle Speed", 0.2f).WithWidget(frc::BuiltInWidgets::kNumberSlider).GetEntry();
+  timer.Reset();
 }
 
 /**
@@ -30,7 +35,10 @@ void Robot::RobotPeriodic() {
  * can use it to reset any subsystem information you want to clear when the
  * robot is disabled.
  */
-void Robot::DisabledInit() {}
+void Robot::DisabledInit() {
+  smMotorControllerFr.setInverted(true);
+  smMotorControllerRR.setInverted(true);
+}
 
 void Robot::DisabledPeriodic() {}
 
@@ -44,26 +52,32 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
   smPositionController.resetRefrence(0.0_m);
+
 }
 
 /**
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
-smPositionController.setPosition(1_m);
-//wpi::outs() << "position: " << std::to_string(smPositionController.getPosition().to<double>()) << "m\n";
-
-  //const auto JSX = this->joystick.getX();
+  // const auto JSX = this->joystick.getX();
   // if(JSX)
   // {
-  //   this->smMotorControllerFL.setVelocity(5_mps);
+  //   this->smMotorControllerFL.setVelocity(0.5_mps)
   // }
   // else
   // {
   //   this->smMotorControllerFL.setVelocity(0_mps);
   // }
-  // smPositionController.setPosition(6.28_rad);
-
+  // drive.driveCartesian(-joystick.getY(), -joystick.getX(), joystick.getTwist());
+  // odometry.updatePose();
+  // wpi::outs() << "(" << std::to_string(odometry.getPose().X().to<double>()) << "m, " << std::to_string(odometry.getPose().Y().to<double>()) << "m)\n";
+  // wpi::outs() << "gyro: " << std::to_string(gyro.GetAngle()) << "deg\n";
+  wpi::outs() << "time: " << std::to_string(timer.Get().to<double>()) << "s\n";
+  if (timer.Get() <= 1_s) {
+    drive.driveChassisSpeeds({1_mps, 0_mps, 0_rpm});
+  } else {
+    drive.driveChassisSpeeds({0_mps, 0_mps, 0_rpm});
+  }
 }
 
 /**
