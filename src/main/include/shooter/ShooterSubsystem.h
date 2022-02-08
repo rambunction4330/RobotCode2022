@@ -35,7 +35,7 @@ class ShooterSubsystem : public frc2::SubsystemBase {
     shooterSubsystemConstants::motorConversion,
     rmb::noFeedforward<units::radians>,
     {rightShooterMotor}
-    };
+  };
 
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
