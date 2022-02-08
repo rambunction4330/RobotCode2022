@@ -2,9 +2,15 @@
 
 #include <string>
 #include <wpi/raw_ostream.h>
-
+#include <units/base.h>
 
 namespace wpi {
+
+    template<typename T>
+    raw_ostream& operator<<(raw_ostream& os, units::unit_t<T> val) {
+        os << val();
+        return os;
+    }
 
     /**
      * Fallback in case none of the `raw_ostream& operator<<` functions match your function call. This will help
