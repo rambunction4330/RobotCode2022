@@ -42,17 +42,7 @@ class Robot : public frc::TimedRobot {
   RobotContainer container;
   JoystickSubsystem joystick{};
   frc::ShuffleboardTab& shuffleBoardTab  = frc::Shuffleboard::GetTab("RobotData");
-  rmb::SparkMaxVelocityController<units::meters> smMotorControllerFL{ 1, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.4788) };
-  rmb::SimpleMotorFeedforward<units::meters> motorFF{units::volt_t(0.10973), units::unit_t<kv_unit>(3.1592), units::unit_t<ka_unit>(0.30746)};
-  nt::NetworkTableEntry throttle;
 
-  rmb::SparkMaxPositionController<units::meters> smPositionController { 
-    4,  
-    positionControllerConstants::positionCtrlConfig,
-    3_in / 12_rad, 
-    motorFF,
-    {}
-  };
   rmb::SimpleMotorFeedforward<units::meters> motorFF{units::volt_t(0.10973), units::unit_t<kv_unit>(3.1592), units::unit_t<ka_unit>(0.30746)};
   rmb::SparkMaxVelocityController<units::meters>::Follower follow = {2, rev::CANSparkMax::MotorType::kBrushless, true};
   rmb::SparkMaxVelocityController<units::meters> smMotorControllerFL{ 1, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.0762_m / 12_rad), motorFF};
@@ -65,4 +55,11 @@ class Robot : public frc::TimedRobot {
   rmb::MecanumEncoderOdometry odometry{drive, gyro};
   nt::NetworkTableEntry throttle;
   frc::Timer timer;
+    rmb::SparkMaxPositionController<units::meters> smPositionController { 
+    4,  
+    positionControllerConstants::positionCtrlConfig,
+    3_in / 12_rad, 
+    motorFF,
+    {}
+  };
 };
