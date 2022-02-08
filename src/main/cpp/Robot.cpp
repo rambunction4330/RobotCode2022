@@ -10,6 +10,9 @@
 
 #include <units/time.h>
 #include <units/angular_velocity.h>
+#include <units/angle.h>
+
+#include <rmb/io/log.h>
 
 void Robot::RobotInit() {
 
@@ -52,7 +55,6 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
   smPositionController.resetRefrence(0.0_m);
-
 }
 
 /**
@@ -72,7 +74,7 @@ void Robot::TeleopPeriodic() {
   // odometry.updatePose();
   // wpi::outs() << "(" << std::to_string(odometry.getPose().X().to<double>()) << "m, " << std::to_string(odometry.getPose().Y().to<double>()) << "m)\n";
   // wpi::outs() << "gyro: " << std::to_string(gyro.GetAngle()) << "deg\n";
-  wpi::outs() << "time: " << std::to_string(timer.Get().to<double>()) << "s\n";
+  //wpi::outs() << "time: " << std::to_string(timer.Get().to<double>()) << "s\n";
   if (timer.Get() <= 1_s) {
     drive.driveChassisSpeeds({1_mps, 0_mps, 0_rpm});
   } else {
