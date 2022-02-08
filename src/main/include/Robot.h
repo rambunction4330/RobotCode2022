@@ -11,11 +11,12 @@
 #include <frc2/command/Command.h>
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
 #include "RobotContainer.h"
 #include <units/length.h>
 #include "driverstation/JoystickSubsystem.h"
 #include <frc/controller/SimpleMotorFeedforward.h>
-
+#include "Constants.h"
 #include <rmb/drive/MecanumDrive.h>
 #include <rmb/drive/MecanumEncoderOdometry.h>
 #include <AHRS.h>
@@ -41,6 +42,7 @@ class Robot : public frc::TimedRobot {
   RobotContainer container;
   JoystickSubsystem joystick{};
   frc::ShuffleboardTab& shuffleBoardTab  = frc::Shuffleboard::GetTab("RobotData");
+
   rmb::SimpleMotorFeedforward<units::meters> motorFF{units::volt_t(0.10973), units::unit_t<kv_unit>(3.1592), units::unit_t<ka_unit>(0.30746)};
   rmb::SparkMaxVelocityController<units::meters>::Follower follow = {2, rev::CANSparkMax::MotorType::kBrushless, true};
   rmb::SparkMaxVelocityController<units::meters> smMotorControllerFL{ 1, smConfig, rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(0.0762_m / 12_rad), motorFF};
@@ -53,4 +55,11 @@ class Robot : public frc::TimedRobot {
   rmb::MecanumEncoderOdometry odometry{drive, gyro};
   nt::NetworkTableEntry throttle;
   frc::Timer timer;
+    rmb::SparkMaxPositionController<units::meters> smPositionController { 
+    4,  
+    positionControllerConstants::positionCtrlConfig,
+    3_in / 12_rad, 
+    motorFF,
+    {}
+  };
 };

@@ -72,6 +72,9 @@ public:
 
   void setPosition(Distance_t position) override;
   Distance_t getPosition() override;
+  double getRawPosition() {
+    return sparkMaxEncoder.GetPosition();
+  }
   Velocity_t getVelocity() override;
 
   inline void setInverted(bool inverted) override {
@@ -92,12 +95,14 @@ private:
 
   ConversionUnit_t conversion;
 
-  RawUnit_t maxPosition = RawUnit_t(1);
-  RawUnit_t minPosition = RawUnit_t(-1);
+  RawUnit_t maxPosition = RawUnit_t(100);
+  RawUnit_t minPosition = RawUnit_t(-100);
 
   rev::CANSparkMax::ControlType controlType;
   std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
 
   const Feedforward<DistanceUnit> &feedforward;
+
+  Distance_t reference = Distance_t(0.0);
 };
 } // namespace rmb

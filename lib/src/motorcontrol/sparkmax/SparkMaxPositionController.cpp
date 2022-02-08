@@ -2,10 +2,13 @@
 
 #include <algorithm>
 
+#include <units/base.h>
 #include <units/angle.h>
 #include <units/length.h>
 
 #include "rmb/motorcontrol/sparkmax/SparkMaxError.h"
+#include <wpi/raw_ostream.h>
+#include <string>
 
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
@@ -72,7 +75,7 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
 
 template <typename U>
 void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
-  double setPoint = RawUnit_t(position / conversion).to<double>();
+  double setPoint = RawUnit_t((position + reference) / conversion).to<double>();
   std::clamp<double>(setPoint, minPosition.to<double>(),
                      maxPosition.to<double>());
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetReference(
@@ -87,7 +90,7 @@ typename rmb::SparkMaxPositionController<U>::Distance_t
 rmb::SparkMaxPositionController<U>::getPosition() {
   RawUnit_t val = RawUnit_t(sparkMaxEncoder.GetPosition());
   std::clamp<RawUnit_t>(val, minPosition, maxPosition);
-  return Distance_t(val * conversion);
+  return Distance_t((val * conversion)) - reference;
 }
 
 template <typename U>
@@ -98,8 +101,7 @@ rmb::SparkMaxPositionController<U>::getVelocity() {
 
 template <typename U>
 void rmb::SparkMaxPositionController<U>::resetRefrence(Distance_t distance) {
-  CHECK_REVLIB_ERROR(sparkMaxEncoder.SetPosition(
-      RawUnit_t(distance / conversion).to<double>()));
+  reference = (RawUnit_t(sparkMaxEncoder.GetPosition()) * conversion) + distance;
 }
 
 template <typename U>
