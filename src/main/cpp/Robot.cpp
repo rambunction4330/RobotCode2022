@@ -10,6 +10,9 @@
 
 #include <units/time.h>
 #include <units/angular_velocity.h>
+#include <units/angle.h>
+
+#include <rmb/io/log.h>
 
 void Robot::RobotInit() {
 
@@ -53,12 +56,29 @@ void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {
   timer.Reset();
   timer.Start();
+
+  wpi::outs() << "Here is a double: " << 3.1416 << wpi::endl;
+  std::string testStr = "This is an std::string";
+  wpi::outs() << "printing this string --> " << testStr << wpi::endl;
+
+  units::radian_t val = 0.123_rad;
+  wpi::outs() << "here is a units value: " << val << wpi::endl;
+
+  units::unit_t<units::compound_unit<units::meters, units::inverse<units::hour>>> meterph = (5_m / 1_hr);
+  wpi::outs() << "here is a units value in meters/hour: " << meterph << wpi::endl;
+
+  for(int i=0; i<3; i++) {
+    wpi::outs() << "flushtest";
+  }
+
+  wpi::outs() << wpi::flush;
 }
 
 /**
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
+
 
   // const auto JSX = this->joystick.getX();
   // if(JSX)
@@ -74,7 +94,7 @@ void Robot::TeleopPeriodic() {
   // odometry.updatePose();
   // wpi::outs() << "(" << std::to_string(odometry.getPose().X().to<double>()) << "m, " << std::to_string(odometry.getPose().Y().to<double>()) << "m)\n";
   // wpi::outs() << "gyro: " << std::to_string(gyro.GetAngle()) << "deg\n";
-  wpi::outs() << "time: " << std::to_string(timer.Get().to<double>()) << "s\n";
+  //wpi::outs() << "time: " << std::to_string(timer.Get().to<double>()) << "s\n";
   if (timer.Get() <= 1_s) {
     drive.driveChassisSpeeds({1_mps, 0_mps, 0_rpm});
   } else {
