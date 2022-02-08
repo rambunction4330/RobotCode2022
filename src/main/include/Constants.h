@@ -72,3 +72,31 @@ const frc::ProfiledPIDController<units::radians> thetaController(0.0, 0.0, 0.0, 
 namespace intakeSubsystem {
 
 }
+
+namespace shooterSubsystemConstants {
+  const int leftShooterMotorID  = 0,
+      rightShooterMotorID = 0;
+  
+  const rmb::SparkMaxVelocityController<units::radians>::PIDConfig
+    motorPIDConfig{
+        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
+        /* maxOutput */ 1.0, /* minOutput */ -1.0,
+
+        /* SmartMotion config */
+        /* usingSmartMotion */ true,
+        /* maxVelocity */ 100_tps, /* minVelocity */ 0_tps,
+        /* maxAccel */ 10_rad_per_s_sq,
+        /* allowedErr */ 0.01_tps,
+        /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
+    };
+
+  const rmb::SimpleMotorFeedforward<units::radians>
+    motorFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.10973),
+                     rmb::SimpleMotorFeedforward<units::radians>::Kv_t(3.15920),
+                     rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.30746));
+
+  const auto motorConversion = 
+       rmb::SparkMaxVelocityController<units::radians>::ConversionUnit_t(1_rad / 1_rad);
+  
+}

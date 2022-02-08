@@ -6,6 +6,12 @@
 
 #include <frc2/command/SubsystemBase.h>
 
+#include <units/angle.h>
+
+#include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
+
+#include <Constants.h>
+
 class ShooterSubsystem : public frc2::SubsystemBase {
  public:
   ShooterSubsystem();
@@ -16,6 +22,21 @@ class ShooterSubsystem : public frc2::SubsystemBase {
   void Periodic() override;
 
  private:
+
+  rmb::SparkMaxVelocityController<units::radians>::Follower rightShooterMotor {
+    shooterSubsystemConstants::rightShooterMotorID,
+    rev::CANSparkMax::MotorType::kBrushless,
+    false
+  };
+
+  rmb::SparkMaxVelocityController<units::radians> leftShooterMotor{
+    shooterSubsystemConstants::leftShooterMotorID,
+    shooterSubsystemConstants::motorPIDConfig,
+    shooterSubsystemConstants::motorConversion,
+    rmb::noFeedforward<units::radians>,
+    {rightShooterMotor}
+    };
+
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };
