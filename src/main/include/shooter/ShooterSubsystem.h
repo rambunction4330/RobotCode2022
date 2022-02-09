@@ -22,8 +22,10 @@ class ShooterSubsystem : public frc2::SubsystemBase {
    */
   void Periodic() override;
 
-  void spinTo(units::unit_t<units::compound_unit<units::angle::radian, units::inverse<units::time::second>>> vel);
-  void spinTo(units::unit_t<units::compound_unit<units::length::meter, units::inverse<units::time::second>>> vel);
+  void spinTo(units::angular_velocity::radians_per_second_t vel);
+  void spinTo(units::velocity::meters_per_second_t vel);
+
+
 
  private:
 

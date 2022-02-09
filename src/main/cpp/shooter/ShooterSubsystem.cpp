@@ -9,11 +9,11 @@
 ShooterSubsystem::ShooterSubsystem()  : wheelDiameter(1_m) {}
 ShooterSubsystem::ShooterSubsystem(const units::meter_t wd) : wheelDiameter(wd) {}
 
-void ShooterSubsystem::spinTo(units::unit_t<units::compound_unit<units::angle::radian, units::inverse<units::time::second>>> vel) {
+void ShooterSubsystem::spinTo(units::angular_velocity::radians_per_second_t vel) {
   leftMainShooterMotor.setVelocity(vel);
 }
 
-void ShooterSubsystem::spinTo(units::unit_t<units::compound_unit<units::length::meter, units::inverse<units::time::second>>> vel) {
+void ShooterSubsystem::spinTo(units::velocity::meters_per_second_t vel) {
   leftMainShooterMotor.setVelocity(
     units::angular_velocity::radians_per_second_t(vel * (1_rad / (wheelDiameter / 2)))
   );
