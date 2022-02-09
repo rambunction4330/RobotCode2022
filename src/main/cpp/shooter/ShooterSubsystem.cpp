@@ -19,6 +19,18 @@ void ShooterSubsystem::spinTo(units::velocity::meters_per_second_t vel) {
   );
 }
 
+void ShooterSubsystem::stop() {
+  leftMainShooterMotor.setVelocity(0.0_tps);
+}
+
+units::angular_velocity::radians_per_second_t ShooterSubsystem::getAngularVelocity() {
+  return leftMainShooterMotor.getVelocity();
+}
+units::velocity::meters_per_second_t ShooterSubsystem::getLinearVelocity() {
+  return leftMainShooterMotor.getVelocity() / 1_rad * wheelDiameter;
+}
+
+
 // This method will be called once per scheduler run
 void ShooterSubsystem::Periodic() {}
 

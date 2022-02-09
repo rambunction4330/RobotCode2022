@@ -25,7 +25,10 @@ class ShooterSubsystem : public frc2::SubsystemBase {
   void spinTo(units::angular_velocity::radians_per_second_t vel);
   void spinTo(units::velocity::meters_per_second_t vel);
 
+  void stop();
 
+  units::angular_velocity::radians_per_second_t getAngularVelocity();
+  units::velocity::meters_per_second_t getLinearVelocity();
 
  private:
 
