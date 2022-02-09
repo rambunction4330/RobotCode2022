@@ -15,13 +15,19 @@
 class ShooterSubsystem : public frc2::SubsystemBase {
  public:
   ShooterSubsystem();
+  ShooterSubsystem(const units::meter_t wheelDiameter = 1_m);
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
+  void spinTo(units::unit_t<units::compound_unit<units::angle::radian, units::inverse<units::time::second>>> vel);
+  void spinTo(units::unit_t<units::compound_unit<units::length::meter, units::inverse<units::time::second>>> vel);
+
  private:
+
+  const units::meter_t wheelDiameter;
 
   rmb::SparkMaxVelocityController<units::radians>::Follower rightShooterMotor {
     shooterSubsystemConstants::rightShooterMotorID,
@@ -29,7 +35,7 @@ class ShooterSubsystem : public frc2::SubsystemBase {
     false
   };
 
-  rmb::SparkMaxVelocityController<units::radians> leftShooterMotor{
+  rmb::SparkMaxVelocityController<units::radians> leftMainShooterMotor{
     shooterSubsystemConstants::leftShooterMotorID,
     shooterSubsystemConstants::motorPIDConfig,
     shooterSubsystemConstants::motorConversion,
