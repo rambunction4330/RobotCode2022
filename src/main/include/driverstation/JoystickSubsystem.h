@@ -26,29 +26,29 @@ public:
       : joystick(port), deadZone(dz), squareTwist(sqrTwst) {
   } // Init constructer
 
-  double getX() {
+  double getX() const {
     return std::abs(joystick.GetX()) <= deadZone
                ? 0.0f
                : joystick.GetX(); // Get the Y val of the joystick, doesn't
                                   // include values within deadzone
   }
 
-  double getY() {
+  double getY() const {
     return std::abs(joystick.GetY()) <= deadZone
                ? 0.0f
                : joystick.GetY(); // Get the Y val of the joystick, doesn't
                                   // include values within deadzone
   }
 
-  inline double getXRaw() { // Gets Joystick Raw values witout deadzone
+  inline double getXRaw() const { // Gets Joystick Raw values witout deadzone
     return joystick.GetX();
   }
 
-  inline double getYRaw() { // Gets Joystick Raw values witout deadzone
+  inline double getYRaw() const { // Gets Joystick Raw values witout deadzone
     return joystick.GetY();
   }
 
-  inline double getTwistRaw() {
+  inline double getTwistRaw() const {
     return joystick.GetTwist();
   }
   frc2::JoystickButton
@@ -56,7 +56,7 @@ public:
     return frc2::JoystickButton(&joystick, (int)button);
   }
 
-  double getTwist() { // Gets joystick twist/rotation
+  double getTwist() const { // Gets joystick twist/rotation
     double twist = joystick.GetTwist();
     if (std::abs(twist) <= deadZone) {
       twist = 0.0;
@@ -69,7 +69,7 @@ public:
     return twist;
   }
 
-  double getThrotle() { return joystick.GetThrottle(); }
+  double getThrottle() const { return -(joystick.GetThrottle() - 1) / 2; }
 
 private:
   frc::Joystick joystick;
