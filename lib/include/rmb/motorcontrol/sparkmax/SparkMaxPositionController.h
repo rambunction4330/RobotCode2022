@@ -88,6 +88,14 @@ public:
   void setMinPosition(Distance_t min) override;
   Distance_t getMinPosition() override;
 
+  /**
+   * Check if the motor is at the specified position within the allowed error-bounds
+   * specified in the PIDConfig struct passed in the constructor.
+   * @param The setpoint
+   * @return true if the motor is at the specified position. 
+   */
+  bool atPosition(Distance_t position);
+
 private:
   rev::CANSparkMax sparkMax;
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;
@@ -104,5 +112,7 @@ private:
   const Feedforward<DistanceUnit> &feedforward;
 
   Distance_t reference = Distance_t(0.0);
+
+  Distance_t allowedError = Distance_t(0.0);
 };
 } // namespace rmb
