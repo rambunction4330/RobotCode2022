@@ -10,6 +10,9 @@
 
 #include <units/time.h>
 #include <units/angular_velocity.h>
+#include <units/angle.h>
+
+#include <rmb/io/log.h>
 
 void Robot::RobotInit() {
 
@@ -51,30 +54,27 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  timer.Reset();
-  timer.Start();
+  smPositionController.resetRefrence(0.0_m);
 }
 
 /**
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
-
   // const auto JSX = this->joystick.getX();
   // if(JSX)
   // {
-  //   this->smMotorControllerFL.setVelocity(0.5_mps);
+  //   this->smMotorControllerFL.setVelocity(0.5_mps)
   // }
   // else
   // {
   //   this->smMotorControllerFL.setVelocity(0_mps);
   // }
-
   // drive.driveCartesian(-joystick.getY(), -joystick.getX(), joystick.getTwist());
   // odometry.updatePose();
   // wpi::outs() << "(" << std::to_string(odometry.getPose().X().to<double>()) << "m, " << std::to_string(odometry.getPose().Y().to<double>()) << "m)\n";
   // wpi::outs() << "gyro: " << std::to_string(gyro.GetAngle()) << "deg\n";
-  wpi::outs() << "time: " << std::to_string(timer.Get().to<double>()) << "s\n";
+  //wpi::outs() << "time: " << std::to_string(timer.Get().to<double>()) << "s\n";
   if (timer.Get() <= 1_s) {
     drive.driveChassisSpeeds({1_mps, 0_mps, 0_rpm});
   } else {

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <units/angle.h>
+#include <units/angular_velocity.h>
+#include <units/angular_acceleration.h>
 #include <units/base.h>
 
 #include <rev/CANSparkMax.h>

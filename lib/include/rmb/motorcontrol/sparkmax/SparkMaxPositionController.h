@@ -112,8 +112,21 @@ public:
    */
   Distance_t getPosition() override;
 
+
+
+
+  /**
+   * Get the raw position(in rotations) of the motor. This is for debug purposes or advanced 
+   * users who want to bypass all of the code @theVerySharpFlat has written.
+   * @return raw position(in rotations) of the motor according to the encoder
+   */
+  double getRawPosition() {
+    return sparkMaxEncoder.GetPosition();
+  }
+
   /**
    * Gets the velocity of the motor according to the SparkMax encoder
+   * @return the velocity of the motor in user specified velocity units
    */
   Velocity_t getVelocity() override;
 
@@ -165,6 +178,14 @@ public:
    */
   Distance_t getMinPosition() override;
 
+  /**
+   * Check if the motor is at the specified position within the allowed error-bounds
+   * specified in the PIDConfig struct passed in the constructor.
+   * @param The setpoint
+   * @return true if the motor is at the specified position. 
+   */
+  bool atPosition(Distance_t position);
+
 private:
   rev::CANSparkMax sparkMax;
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;
@@ -172,12 +193,16 @@ private:
 
   ConversionUnit_t conversion;
 
-  RawUnit_t maxPosition = RawUnit_t(1);
-  RawUnit_t minPosition = RawUnit_t(-1);
+  RawUnit_t maxPosition = RawUnit_t(100);
+  RawUnit_t minPosition = RawUnit_t(-100);
 
   rev::CANSparkMax::ControlType controlType;
   std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
 
   const Feedforward<DistanceUnit> &feedforward;
+
+  Distance_t reference = Distance_t(0.0);
+
+  Distance_t allowedError = Distance_t(0.0);
 };
 } // namespace rmb
