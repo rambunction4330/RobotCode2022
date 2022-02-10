@@ -1,6 +1,6 @@
 var classrmb_1_1_spark_max_velocity_controller =
 [
-    [ "Follower", "structrmb_1_1_spark_max_velocity_controller_1_1_follower.html", null ],
+    [ "Follower", "structrmb_1_1_spark_max_velocity_controller_1_1_follower.html", "structrmb_1_1_spark_max_velocity_controller_1_1_follower" ],
     [ "PIDConfig", "structrmb_1_1_spark_max_velocity_controller_1_1_p_i_d_config.html", null ],
     [ "ConversionUnit", "classrmb_1_1_spark_max_velocity_controller.html#a8fde9ee51d9c15acb14cf395c00bd820", null ],
     [ "RawAccel", "classrmb_1_1_spark_max_velocity_controller.html#a053c57fd88b75e84095023b1ca79f0e0", null ],
