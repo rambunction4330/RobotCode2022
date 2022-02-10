@@ -81,9 +81,24 @@ public:
         rev::SparkMaxPIDController::AccelStrategy::kSCurve;
   };
 
+  /**
+   * Type definition for the Follower functionality that the SparkMaxes provide. A follower is a motor that
+   * Will "follow" the specified motor. You can specify followers in the constructor.
+   */
   struct Follower {
+    /**
+     * device ID of the follower
+     */
     int id;
+    
+    /**
+     * Motor type of the follower. Can be kBrushless or kBrushed
+     */
     rev::CANSparkMax::MotorType motorType;
+    
+    /**
+     * Whether or not the motor is inverted or not. true for inverted.
+     */
     bool inverted;
   };
 
@@ -105,7 +120,9 @@ public:
    *                           1 rotation / 2pi rad =>
    *                           1/2pi rot/rad 
    *                           conversion ≈ 0.1592
-   *                       
+   * 
+   * @param feedForward the feedforward to be used. Defaults to noFeedforward<DistanceUnit>
+   * @param followers a list of followers to follow the motor
    */
   SparkMaxVelocityController(
       int deviceID, const PIDConfig &config,
