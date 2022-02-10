@@ -19,6 +19,8 @@
 
 #include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
 #include <rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
+
 
 namespace driverStationConstants {
   const int driveStickID = 0;
@@ -71,12 +73,32 @@ const frc::ProfiledPIDController<units::radians> thetaController(0.0, 0.0, 0.0, 
 
 namespace intakeSubsystem {
 
-}
+const static units::meters_per_second_t maxVelocity(0.0);
+const static units::radians_per_second_t maxRotVelocity(0.0);
+} // namespace driveSubsystemConstants
+
+
+namespace positionControllerConstants
+{
+    const static rmb::SparkMaxPositionController<units::meters>::PIDConfig
+    positionCtrlConfig{
+        /* p */ 0.000, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
+        /* maxOutput */ 1.0, /* minOutput */ -1.0,
+
+        /* SmartMotion config */
+        /* usingSmartMotion */ true,
+        /* maxVelocity */ 3_mps, /* minVelocity */ 0_mps,
+        /* maxAccel */ 10_mps_sq,
+        /* allowedErr */ 0.01_m,
+        /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
+    };
+} // namespace positionControllerConstants
 
 namespace shooterSubsystemConstants {
   const int leftShooterMotorID  = 0,
       rightShooterMotorID = 0;
-  
+
   const rmb::SparkMaxVelocityController<units::radians>::PIDConfig
     motorPIDConfig{
         /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
@@ -98,5 +120,5 @@ namespace shooterSubsystemConstants {
 
   const auto motorConversion = 
        rmb::SparkMaxVelocityController<units::radians>::ConversionUnit_t(1_rad / 1_rad);
-  
+
 }

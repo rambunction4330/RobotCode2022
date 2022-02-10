@@ -54,42 +54,22 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  timer.Reset();
-  timer.Start();
-
-  wpi::outs() << "Here is a double: " << 3.1416 << wpi::endl;
-  std::string testStr = "This is an std::string";
-  wpi::outs() << "printing this string --> " << testStr << wpi::endl;
-
-  units::radian_t val = 0.123_rad;
-  wpi::outs() << "here is a units value: " << val << wpi::endl;
-
-  units::unit_t<units::compound_unit<units::meters, units::inverse<units::hour>>> meterph = (5_m / 1_hr);
-  wpi::outs() << "here is a units value in meters/hour: " << meterph << wpi::endl;
-
-  for(int i=0; i<3; i++) {
-    wpi::outs() << "flushtest";
-  }
-
-  wpi::outs() << wpi::flush;
+  smPositionController.resetRefrence(0.0_m);
 }
 
 /**
  * This function is called periodically during operator control.
  */
 void Robot::TeleopPeriodic() {
-
-
   // const auto JSX = this->joystick.getX();
   // if(JSX)
   // {
-  //   this->smMotorControllerFL.setVelocity(0.5_mps);
+  //   this->smMotorControllerFL.setVelocity(0.5_mps)
   // }
   // else
   // {
   //   this->smMotorControllerFL.setVelocity(0_mps);
   // }
-
   // drive.driveCartesian(-joystick.getY(), -joystick.getX(), joystick.getTwist());
   // odometry.updatePose();
   // wpi::outs() << "(" << std::to_string(odometry.getPose().X().to<double>()) << "m, " << std::to_string(odometry.getPose().Y().to<double>()) << "m)\n";
