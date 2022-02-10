@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mecanumdrive_0',['MecanumDrive',['../classrmb_1_1_mecanum_drive.html#a224869c0eb40c05d826262456e0a3ab7',1,'rmb::MecanumDrive']]]
+  ['initialize_0',['Initialize',['../classrmb_1_1_holonomic_trajectory_command.html#a3f45a8d12406bd52e395a667d59d59c7',1,'rmb::HolonomicTrajectoryCommand']]],
+  ['isfinished_1',['IsFinished',['../classrmb_1_1_holonomic_trajectory_command.html#a50b0b6c0d21082439133d85639be322d',1,'rmb::HolonomicTrajectoryCommand']]]
 ];
