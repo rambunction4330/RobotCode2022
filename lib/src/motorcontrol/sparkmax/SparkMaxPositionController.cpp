@@ -71,6 +71,8 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
         new rev::CANSparkMax(follower.id, follower.motorType));
     followers.back()->Follow(sparkMax, follower.inverted);
   }
+
+  allowedError = config.allowedErr;
 }
 
 template <typename U>
@@ -124,6 +126,12 @@ template <typename U>
 typename rmb::SparkMaxPositionController<U>::Distance_t
 rmb::SparkMaxPositionController<U>::getMinPosition() {
   return Distance_t(minPosition * conversion);
+}
+
+template <typename U>
+bool rmb::SparkMaxPositionController<U>::atPosition(Distance_t position) {
+  Distance_t motorPosition = getPosition();
+  return position < (motorPosition + allowedError) && position > (motorPosition - allowedError);
 }
 
 template class rmb::SparkMaxPositionController<units::meters>;
