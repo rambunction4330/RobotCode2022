@@ -6,6 +6,10 @@
 
 #include <frc2/command/Command.h>
 
+#include "driverstation/JoystickSubsystem.h"
+#include "drivetrain/DriveSubsystem.h"
+#include "drivetrain/TeleopDriveCommand.h"
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -14,9 +18,15 @@
  * commands, and button mappings) should be declared here.
  */
 class RobotContainer {
- public:
+public:
   RobotContainer();
 
- private:
+  TeleopDriveCommand &getTeleopDriveCommand() { return teleopDriveCommand; }
+
+private:
   void ConfigureButtonBindings();
+  DriveSubsystem driveSubsystem;
+  JoystickSubsystem joystickSubsystem;
+
+  TeleopDriveCommand teleopDriveCommand{driveSubsystem, joystickSubsystem};
 };

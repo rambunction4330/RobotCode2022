@@ -11,3 +11,5 @@
 <img src="https://imgs.xkcd.com/comics/shouldnt_be_hard.png"></img>
 
 "Shouldn't Be Hard" by Randall Munroe is licensed under CC BY-NC 2.5
+
+## 3. Sugma

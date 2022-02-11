@@ -4,12 +4,15 @@
 
 #include "shooter/ManualShooterCommand.h"
 
-ManualShooterCommand::ManualShooterCommand() {
-  // Use addRequirements() here to declare subsystem dependencies.
+ManualShooterCommand::ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick) :
+   shooterSubsystem(shooter), joystickSubsystem(joystick) {
+  AddRequirements({&shooterSubsystem, &joystickSubsystem});
 }
 
 // Called when the command is initially scheduled.
-void ManualShooterCommand::Initialize() {}
+void ManualShooterCommand::Initialize() {
+  
+}
 
 // Called repeatedly when this Command is scheduled to run
 void ManualShooterCommand::Execute() {}
@@ -21,3 +24,4 @@ void ManualShooterCommand::End(bool interrupted) {}
 bool ManualShooterCommand::IsFinished() {
   return false;
 }
+
