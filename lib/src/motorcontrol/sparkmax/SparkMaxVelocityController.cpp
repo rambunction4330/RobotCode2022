@@ -12,7 +12,9 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
-      feedforward(noFeedforward<U>) {}
+      feedforward(noFeedforward<U>) {
+  #warning "SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID) is deprecated! Do not use it in competition!"
+}
 
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
