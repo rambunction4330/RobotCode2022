@@ -15,6 +15,9 @@
 #include <rmb/io/log.h>
 
 void Robot::RobotInit() {
+  
+  rmb::SparkMaxVelocityController testVel(0);
+  rmb::SparkMaxPOsitionController testPos(0);
 
   throttle = this->shuffleBoardTab.Add("Throttle Speed", 0.2f).WithWidget(frc::BuiltInWidgets::kNumberSlider).GetEntry();
   timer.Reset();
