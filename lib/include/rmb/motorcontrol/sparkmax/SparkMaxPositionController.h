@@ -96,6 +96,12 @@ public:
    */
   bool atPosition(Distance_t position);
 
+  /**
+   * Spins to an offset of the current position
+   * @param position the offset from the current position 
+   */
+  void spinOffset(Distance_t position);
+
 private:
   rev::CANSparkMax sparkMax;
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;

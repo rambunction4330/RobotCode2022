@@ -134,5 +134,10 @@ bool rmb::SparkMaxPositionController<U>::atPosition(Distance_t position) {
   return position < (motorPosition + allowedError) && position > (motorPosition - allowedError);
 }
 
+template <typename U>
+void rmb::SparkMaxPositionController<U>::spinOffset(Distance_t position) {
+  setPosition(position + getPosition());
+}
+
 template class rmb::SparkMaxPositionController<units::meters>;
 template class rmb::SparkMaxPositionController<units::radians>;
