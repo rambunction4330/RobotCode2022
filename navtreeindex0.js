@@ -116,9 +116,8 @@ var NAVTREEINDEX0 =
 "structrmb_1_1_spark_max_position_controller_1_1_follower.html#ace56caab393b46e8bcf8a9ba43c58561":[2,0,0,12,0,1],
 "structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html":[2,0,0,12,1],
 "structrmb_1_1_spark_max_velocity_controller_1_1_follower.html":[2,0,0,13,0],
-"structrmb_1_1_spark_max_velocity_controller_1_1_follower.html#a51b6f30b540201d6cbc646d5eb61b7cf":[2,0,0,13,0,1],
-"structrmb_1_1_spark_max_velocity_controller_1_1_follower.html#ab6bb1862ab52eb1914b5258239a42104":[2,0,0,13,0,0],
-"structrmb_1_1_spark_max_velocity_controller_1_1_follower.html#af09f02d03dd6fe51e5705484da440c13":[2,0,0,13,0,2],
+"structrmb_1_1_spark_max_velocity_controller_1_1_follower.html#a51b6f30b540201d6cbc646d5eb61b7cf":[2,0,0,13,0,0],
+"structrmb_1_1_spark_max_velocity_controller_1_1_follower.html#af09f02d03dd6fe51e5705484da440c13":[2,0,0,13,0,1],
 "structrmb_1_1_spark_max_velocity_controller_1_1_p_i_d_config.html":[2,0,0,13,1],
 "structrmb_1_1_talon_f_x_velocity_controller_1_1_p_i_d_config.html":[2,0,0,14,0],
 "structrmb_1_1_talon_s_r_x_velocity_controller_1_1_p_i_d_config.html":[2,0,0,15,0]
