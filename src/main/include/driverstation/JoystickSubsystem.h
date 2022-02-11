@@ -29,14 +29,14 @@ public:
   double getX() const {
     return std::abs(joystick.GetX()) <= deadZone
                ? 0.0f
-               : joystick.GetX(); // Get the Y val of the joystick, doesn't
+               : -joystick.GetX(); // Get the Y val of the joystick, doesn't
                                   // include values within deadzone
   }
 
   double getY() const {
     return std::abs(joystick.GetY()) <= deadZone
                ? 0.0f
-               : joystick.GetY(); // Get the Y val of the joystick, doesn't
+               : -joystick.GetY(); // Get the Y val of the joystick, doesn't
                                   // include values within deadzone
   }
 

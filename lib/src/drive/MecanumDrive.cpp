@@ -1,5 +1,6 @@
 #include "rmb/drive/MecanumDrive.h"
 
+#include <rmb/io/log.h>
 namespace rmb {
 MecanumDrive::MecanumDrive(VelocityController<units::meters> &fl,
                            VelocityController<units::meters> &fr,
