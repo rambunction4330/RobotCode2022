@@ -7,6 +7,9 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 
+#include "DriveSubsystem.h"
+#include "driverstation/JoystickSubsystem.h"
+
 // Default Command
 
 /**
@@ -18,8 +21,9 @@
  */
 class TeleopDriveCommand
     : public frc2::CommandHelper<frc2::CommandBase, TeleopDriveCommand> {
- public:
-  TeleopDriveCommand();
+public:
+  explicit TeleopDriveCommand(DriveSubsystem &driveSubsystem,
+                              const JoystickSubsystem &JoystickSubsystem);
 
   void Initialize() override;
 
@@ -28,4 +32,8 @@ class TeleopDriveCommand
   void End(bool interrupted) override;
 
   bool IsFinished() override;
+
+private:
+  DriveSubsystem &driveSubsystem;
+  const JoystickSubsystem &joystickSubsystem;
 };

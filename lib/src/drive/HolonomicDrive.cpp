@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <units/math.h>
 
+#include <rmb/io/log.h>
+
 namespace rmb {
 void HolonomicDrive::driveCartesian(double ySpeed, double xSpeed,
                                     double zRotation) {
