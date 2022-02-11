@@ -24,3 +24,11 @@ units::length::meter_t TurretSubsystem::getLinearPosition() {
 units::angle::radian_t TurretSubsystem::getAngularPosition() {
   return positionController.getPosition();
 }
+
+bool TurretSubsystem::isAtPosition(units::angle::radian_t pos) {
+  return positionController.atPosition(pos);
+}
+
+bool TurretSubsystem::isAtPosition(units::length::meter_t pos) {
+  return positionController.atPosition(pos * (1_rad / (wheelDiameter / 2)));
+}
