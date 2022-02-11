@@ -86,20 +86,9 @@ public:
    * Will "follow" the specified motor. You can specify followers in the constructor.
    */
   struct Follower {
-    /**
-     * device ID of the follower
-     */
-    int id;
-    
-    /**
-     * Motor type of the follower. Can be kBrushless or kBrushed
-     */
-    rev::CANSparkMax::MotorType motorType;
-    
-    /**
-     * Whether or not the motor is inverted or not. true for inverted.
-     */
-    bool inverted;
+    int id; /** device ID of the follower */
+    rev::CANSparkMax::MotorType motorType; /** Motor type of the follower. Can be kBrushless or kBrushed */
+    bool inverted; /** Whether or not the motor is inverted or not. true for inverted.*/
   };
 
   /** \deprecated
