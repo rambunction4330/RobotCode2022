@@ -71,6 +71,7 @@ var NAVTREEINDEX0 =
 "classrmb_1_1_spark_max_position_controller.html#a76f5c136fc1cdc6f4241018ad4cc4d3b":[2,0,0,12,7],
 "classrmb_1_1_spark_max_position_controller.html#a8886a87ea550b86e4bd10c15ef2d9576":[2,0,0,12,3],
 "classrmb_1_1_spark_max_position_controller.html#a9b6090522e964e614e9d00003500ba03":[2,0,0,12,11],
+"classrmb_1_1_spark_max_position_controller.html#a9d56960a3ffbf57d9fc5f0896f961981":[2,0,0,12,20],
 "classrmb_1_1_spark_max_position_controller.html#ac2c596d1e01916b2cc96511d9c604384":[2,0,0,12,15],
 "classrmb_1_1_spark_max_position_controller.html#ace99f550275a470f03189c538629d80f":[2,0,0,12,12],
 "classrmb_1_1_spark_max_position_controller.html#ad2d82d32ff37932b80169fea16cdf77d":[2,0,0,12,10],
