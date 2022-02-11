@@ -95,6 +95,7 @@ public:
    * Creates a new SparkMaxVelocityController with the specified device id
    * @param deviceID the ID of the target SparkMax motor controller
    */
+  [[deprecated("Do not use this constructor in competition. This is not guaranteed to work!")]]
   SparkMaxVelocityController(int deviceID);
   
   /**

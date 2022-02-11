@@ -87,6 +87,7 @@ public:
   /** \deprecated
    * Creates a SparkMaxPositionController with the specified deviceID
    */
+  [[deprecated("Do not use this constructor in competition. This is not guaranteed to work!")]]
   SparkMaxPositionController(int deviceID);
 
   /**
@@ -193,6 +194,12 @@ public:
    * @return true if the motor is at the specified position. 
    */
   bool atPosition(Distance_t position);
+
+  /**
+   * Spins to an offset of the current position
+   * @param position the offset from the current position 
+   */
+  void spinOffset(Distance_t position);
 
 private:
   rev::CANSparkMax sparkMax;
