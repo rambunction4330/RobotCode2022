@@ -1,6 +1,6 @@
 var classrmb_1_1_spark_max_position_controller =
 [
-    [ "Follower", "structrmb_1_1_spark_max_position_controller_1_1_follower.html", null ],
+    [ "Follower", "structrmb_1_1_spark_max_position_controller_1_1_follower.html", "structrmb_1_1_spark_max_position_controller_1_1_follower" ],
     [ "PIDConfig", "structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html", null ],
     [ "ConversionUnit", "classrmb_1_1_spark_max_position_controller.html#a2a99f081a78ed274a784a1050ed5c76c", null ],
     [ "RawAccel", "classrmb_1_1_spark_max_position_controller.html#a8886a87ea550b86e4bd10c15ef2d9576", null ],

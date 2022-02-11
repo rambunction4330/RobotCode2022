@@ -325,7 +325,9 @@ template&lt;typename DistanceUnit &gt; </div>
   <table class="params">
     <tr><td class="paramname">deviceID</td><td>The ID of the target SparkMax motorcontroller </td></tr>
     <tr><td class="paramname">pidConfig</td><td>configuration constants for the SparkMax PID controller. These constants will help you tune your motor such that it runs smooth within the desired bounds. </td></tr>
-    <tr><td class="paramname">conversion</td><td>The conversion from the user provided DistanceUnits to radians. See <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a2a99f081a78ed274a784a1050ed5c76c">SparkMaxPositionController&lt;DistanceUnit&gt;::ConversionUnit</a> </td></tr>
+    <tr><td class="paramname">conversion</td><td>The conversion from the user provided DistanceUnits to radians. See <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a2a99f081a78ed274a784a1050ed5c76c">SparkMaxPositionController&lt;DistanceUnit&gt;::ConversionUnit</a></td></tr>
+    <tr><td class="paramname">feedForward</td><td>The <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a> to be passed to the motor. rmb::noFeedforward&lt;DistanceUnit&gt; is the default </td></tr>
+    <tr><td class="paramname">followers</td><td>list of motors to follow this motor. The parent motor will construct the children with the given configuration and will own the followers. </td></tr>
   </table>
   </dd>
 </dl>

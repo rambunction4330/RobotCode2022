@@ -112,6 +112,8 @@ var NAVTREEINDEX0 =
 "md_docs_additional_pancakerecipe.html":[0],
 "pages.html":[],
 "structrmb_1_1_spark_max_position_controller_1_1_follower.html":[2,0,0,12,0],
+"structrmb_1_1_spark_max_position_controller_1_1_follower.html#a215c51dfba2f5f4a79b3439a7f4e5521":[2,0,0,12,0,0],
+"structrmb_1_1_spark_max_position_controller_1_1_follower.html#ace56caab393b46e8bcf8a9ba43c58561":[2,0,0,12,0,1],
 "structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html":[2,0,0,12,1],
 "structrmb_1_1_spark_max_velocity_controller_1_1_follower.html":[2,0,0,13,0],
 "structrmb_1_1_spark_max_velocity_controller_1_1_follower.html#a51b6f30b540201d6cbc646d5eb61b7cf":[2,0,0,13,0,1],
