@@ -16,7 +16,9 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(Distance_t(1) / units::radian_t(1)),
-      feedforward(noFeedforward<U>) {}
+      feedforward(noFeedforward<U>) {
+      #warning "rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID) is deprecated! Do not use it in competition!"
+      }
 
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
