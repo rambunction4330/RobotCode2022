@@ -63,6 +63,7 @@ public:
     bool inverted;
   };
 
+  [[deprecated("Do not use this constructor in competition. This is not guaranteed to work!")]]
   SparkMaxVelocityController(int deviceID);
   SparkMaxVelocityController(
       int deviceID, const PIDConfig &config,
