@@ -7,17 +7,16 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 
+#include <shooter/ShooterSubsystem.h>
+#include <driverstation/JoystickSubsystem.h>
+
 /**
- * An example command.
- *
- * <p>Note that this extends CommandHelper, rather extending CommandBase
- * directly; this is crucially important, or else the decorator functions in
- * Command will *not* work!
+ * Shoots based on user input from the joystick
  */
 class ManualShooterCommand
     : public frc2::CommandHelper<frc2::CommandBase, ManualShooterCommand> {
  public:
-  ManualShooterCommand();
+  ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick);
 
   void Initialize() override;
 
@@ -26,4 +25,10 @@ class ManualShooterCommand
   void End(bool interrupted) override;
 
   bool IsFinished() override;
+
+private:
+
+  ShooterSubsystem& shooterSubsystem;
+  JoystickSubsystem& joystickSubsystem;
+  
 };

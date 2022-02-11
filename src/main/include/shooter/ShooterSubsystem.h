@@ -6,16 +6,48 @@
 
 #include <frc2/command/SubsystemBase.h>
 
+#include <units/angle.h>
+
+#include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
+
+#include <Constants.h>
+
 class ShooterSubsystem : public frc2::SubsystemBase {
  public:
   ShooterSubsystem();
+  ShooterSubsystem(const units::meter_t wheelDiameter = 1_m);
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
+  void spinTo(units::angular_velocity::radians_per_second_t vel);
+  void spinTo(units::velocity::meters_per_second_t vel);
+
+  void stop();
+
+  units::angular_velocity::radians_per_second_t getAngularVelocity();
+  units::velocity::meters_per_second_t getLinearVelocity();
+
  private:
+
+  const units::meter_t wheelDiameter;
+
+  rmb::SparkMaxVelocityController<units::radians>::Follower rightShooterMotor {
+    shooterSubsystemConstants::rightShooterMotorID,
+    rev::CANSparkMax::MotorType::kBrushless,
+    false
+  };
+
+  rmb::SparkMaxVelocityController<units::radians> leftMainShooterMotor{
+    shooterSubsystemConstants::leftShooterMotorID,
+    shooterSubsystemConstants::motorPIDConfig,
+    shooterSubsystemConstants::motorConversion,
+    rmb::noFeedforward<units::radians>,
+    {rightShooterMotor}
+  };
+
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };
