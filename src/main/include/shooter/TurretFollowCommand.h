@@ -10,6 +10,12 @@
 #include <shooter/TurretSubsystem.h>
 #include <vision/VisionSubsystem.h>
 
+//class TurretFindCommand : public frc2::CommandHelper<frc2::CommandBase, TurretFindCommand> {};
+
+class TurretFindCommand;
+
+//#include <shooter/TurretFindCommand.h>
+
 /**
  * An example command.
  *
@@ -17,6 +23,8 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
+
+class TurretFindCommand;
 class TurretFollowCommand
     : public frc2::CommandHelper<frc2::CommandBase, TurretFollowCommand> {
  public:
@@ -33,4 +41,5 @@ class TurretFollowCommand
 private:
   TurretSubsystem& turretSubsystem;
   VisionSubsystem& visionSubsystem;
+  std::unique_ptr<TurretFindCommand> turretFindCommand;
 };

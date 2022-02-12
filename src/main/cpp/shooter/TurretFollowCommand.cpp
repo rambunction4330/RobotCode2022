@@ -2,11 +2,12 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "shooter/TurretFollowCommand.h"
+#include <shooter/TurretFindCommand.h>
+#include "shooter/TurretFollowCommand.h"  
 #include <frc2/command/CommandScheduler.h>
 
 TurretFollowCommand::TurretFollowCommand(TurretSubsystem& turret, VisionSubsystem& vision) 
-  : turretSubsystem(turret), visionSubsystem(vision){
+  : turretSubsystem(turret), visionSubsystem(vision), turretFindCommand(new TurretFindCommand(turret, vision, *this)){
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements({&turretSubsystem, &visionSubsystem});
 }
@@ -24,7 +25,7 @@ void TurretFollowCommand::Execute() {
 // Called once the command ends or is interrupted.
 void TurretFollowCommand::End(bool interrupted) {
   if(!interrupted) {
-    //frc2::CommandScheduler::GetInstance().Schedule(findCommand)
+    turretFindCommand->Schedule(true);
   }
 }
 

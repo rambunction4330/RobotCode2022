@@ -8,7 +8,11 @@
 #include <frc2/command/CommandHelper.h>
 
 #include <vision/VisionSubsystem.h>
+#include <shooter/TurretSubsystem.h>
 
+//class TurretFollowCommand : public frc2::CommandHelper<frc2::CommandBase, TurretFollowCommand> {};
+
+class TurretFollowCommand;
 
 /**
  * An example command.
@@ -20,7 +24,7 @@
 class TurretFindCommand
     : public frc2::CommandHelper<frc2::CommandBase, TurretFindCommand> {
  public:
-  TurretFindCommand();
+  TurretFindCommand(TurretSubsystem& turretSubsystem, VisionSubsystem& visionSubsystem, TurretFollowCommand& followCommand);
 
   void Initialize() override;
 
@@ -29,4 +33,9 @@ class TurretFindCommand
   void End(bool interrupted) override;
 
   bool IsFinished() override;
+
+private:
+  TurretSubsystem& turretSubsystem;
+  VisionSubsystem& visionSubsystem;
+  TurretFollowCommand& turretFollowCommand;
 };
