@@ -14,7 +14,7 @@
 
 class ShooterSubsystem : public frc2::SubsystemBase {
  public:
-  ShooterSubsystem();
+  ShooterSubsystem() = delete;
   ShooterSubsystem(const units::meter_t wheelDiameter = 1_m);
 
   /**

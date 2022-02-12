@@ -6,7 +6,6 @@
 
 #include "shooter/ShooterSubsystem.h"
 
-ShooterSubsystem::ShooterSubsystem()  : wheelDiameter(1_m) {}
 ShooterSubsystem::ShooterSubsystem(const units::meter_t wd) : wheelDiameter(wd) {}
 
 void ShooterSubsystem::spinTo(units::angular_velocity::radians_per_second_t vel) {
