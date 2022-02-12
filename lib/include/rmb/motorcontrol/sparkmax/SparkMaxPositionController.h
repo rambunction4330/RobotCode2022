@@ -63,7 +63,7 @@ public:
     rev::CANSparkMax::MotorType motorType;
     bool inverted;
   };
-
+  [[deprecated("Do not use this constructor in competition. This is not guaranteed to work!")]]
   SparkMaxPositionController(int deviceID);
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
                              ConversionUnit_t conversion = ConversionUnit_t(1), 

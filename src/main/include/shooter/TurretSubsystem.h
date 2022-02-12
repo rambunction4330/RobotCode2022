@@ -77,7 +77,6 @@ class TurretSubsystem : public frc2::SubsystemBase {
    */
   void Periodic() override;
 
-
  private:
 
   rmb::SparkMaxPositionController<units::radians> positionController{

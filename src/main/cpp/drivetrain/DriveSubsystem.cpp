@@ -5,6 +5,8 @@
 #include "drivetrain/DriveSubsystem.h"
 #include <rmb/drive/HolonomicTrajectoryCommand.h>
 
+#include <rmb/io/log.h>
+
 DriveSubsystem::DriveSubsystem()
     : frontLeft(driveSubsystemConstants::frontLeftID,
                 driveSubsystemConstants::motorPIDConfig,
@@ -32,7 +34,10 @@ DriveSubsystem::DriveSubsystem()
       gyro(driveSubsystemConstants::gyroPort), odometry(drive, gyro),
       driveContoller(driveSubsystemConstants::xController,
                      driveSubsystemConstants::yController,
-                     driveSubsystemConstants::thetaController) {}
+                     driveSubsystemConstants::thetaController) {
+        frontRight.setInverted(true);
+        rearRight.setInverted(true);
+      }
 
 // This method will be called once per scheduler run
 void DriveSubsystem::Periodic() { odometry.updatePose(); }
