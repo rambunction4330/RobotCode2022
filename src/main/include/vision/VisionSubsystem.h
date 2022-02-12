@@ -12,10 +12,10 @@
 #include <units/math.h>
 using namespace units; // we are lazy
 
-template <typename T> class Vector3 {
-public:
-  T x, y, z;
-};
+// template <typename T> class Vector3 {
+// public:
+//   T x, y, z;
+// };
 
 class VisionSubsystem : public frc2::SubsystemBase {
 public:
@@ -25,7 +25,26 @@ public:
 
   void Periodic() override;
   bool IsHubInView();
-  Vector3<float> GetHubPosition();
+
+  // Vector3<float> GetHubPosition();
+
+  /**
+   * Get the horizontal distance to the hub.
+   * @return the horizontal distance to the hub in meters. 
+   */
+  units::length::meter_t getHubHorizontalPos();
+
+  /**
+   * Get the vertical distance to the hub
+   * @return height in meters
+   */
+  units::length::meter_t getHubHeight();
+
+  /**
+   * Get the angle to the hub
+   * @return angle in radians to the hub
+   */
+  units::angle::radian_t getAngleToHub();
 
 private:
   nt::NetworkTableEntry baseRotation, shooterAngle;
