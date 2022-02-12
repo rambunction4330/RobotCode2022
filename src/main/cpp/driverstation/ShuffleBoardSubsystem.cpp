@@ -4,7 +4,12 @@
 
 #include "driverstation/ShuffleBoardSubsystem.h"
 
-ShuffleBoardSubsystem::ShuffleBoardSubsystem() = default;
-
 // This method will be called once per scheduler run
-void ShuffleBoardSubsystem::Periodic() {}
+void ShuffleBoardSubsystem::Periodic() { }
+
+
+
+void ShuffleBoardSubsystem::ShuffleBoardInit() {
+
+    jsThrottle = shuffleBoardTab.Add("Throttle Speed", 0).WithWidget(frc::BuiltInWidgets::kNumberSlider).GetEntry();
+}
