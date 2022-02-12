@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "shooter/TurretFollowCommand.h"
+#include <frc2/command/CommandScheduler.h>
 
 TurretFollowCommand::TurretFollowCommand(TurretSubsystem& turret, VisionSubsystem& vision) 
   : turretSubsystem(turret), visionSubsystem(vision){
@@ -21,7 +22,11 @@ void TurretFollowCommand::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void TurretFollowCommand::End(bool interrupted) {}
+void TurretFollowCommand::End(bool interrupted) {
+  if(!interrupted) {
+    //frc2::CommandScheduler::GetInstance().Schedule(findCommand)
+  }
+}
 
 // Returns true when the command should end.
 bool TurretFollowCommand::IsFinished() {
