@@ -13,9 +13,20 @@
 #include <frc/shuffleboard/Shuffleboard.h>
 #include "JoystickSubsystem.h"
 
-
+/**
+ * Handles shuffleboard communication and data
+ */
 class ShuffleBoardSubsystem : public frc2::SubsystemBase {
  public:
+
+  /**
+   * Constructs a ShuffleBoardSubsystem
+   * @param shooter shootersystem dependency
+   * @param joystick shootersystem dependency
+   * @param climber shootersystem dependency
+   * @param drive shootersystem dependency
+   * @param intake shootersystem dependency
+   */
   ShuffleBoardSubsystem( const ShooterSubsystem& shooter, const JoystickSubsystem& joystick, const ClimberSubsystem& climber, const DriveSubsystem& drive, const IntakeSubsystem& intake ) : 
   shooterSubsystem(shooter),
   joystickSubsystem(joystick),
@@ -23,7 +34,14 @@ class ShuffleBoardSubsystem : public frc2::SubsystemBase {
   driveSubsystem(drive),
   intakeSubsystem(intake) {};
 
+  /**
+   * Periodic update of networkTables
+   */
   void Periodic() override;
+
+  /**
+   * Initializes the subsystem networkTables
+   */
   void ShuffleBoardInit();
  private:
  const ShooterSubsystem&  shooterSubsystem;
