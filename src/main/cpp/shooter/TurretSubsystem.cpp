@@ -18,7 +18,11 @@ void TurretSubsystem::spinTo(units::angle::radian_t pos) {
 }
 
 void TurretSubsystem::spinOffset(units::angle::radian_t offset) {
-  positionController.
+  positionController.spinOffset(offset);
+}
+
+void TurretSubsystem::spinOffset(units::length::meter_t offset) {
+  positionController.spinOffset(offset * (1_rad / (wheelDiameter / 2)));
 }
 
 units::length::meter_t TurretSubsystem::getLinearPosition() {

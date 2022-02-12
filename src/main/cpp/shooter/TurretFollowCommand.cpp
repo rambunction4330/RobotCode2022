@@ -16,7 +16,7 @@ void TurretFollowCommand::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void TurretFollowCommand::Execute() {
   if(!IsFinished()) {
-    turretSubsystem.spinTo()
+    turretSubsystem.spinTo(visionSubsystem.getAngleToHub());
   }
 }
 

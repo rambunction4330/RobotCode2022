@@ -62,7 +62,7 @@ units::length::meter_t VisionSubsystem::getHubHorizontalPos() {
   if(networkInstance.IsConnected()) {
     auto table = networkInstance.GetTable("HubData");
     horizontalDistance = 
-      units::length::meter_t(table->GetEntry("HorizontalDistanceToHub").GetDouble());
+      units::length::meter_t((table->GetEntry("HorizontalDistanceToHub")).GetDouble(-1));
   }
 
   return horizontalDistance;
@@ -74,7 +74,7 @@ units::length::meter_t VisionSubsystem::getHubHeight() {
 
   if(networkInstance.IsConnected()) {
     auto table = networkInstance.GetTable("HubData");
-    verticalHeight = units::length::meter_t(table->GetEntry("HeightToHub").GetDouble());
+    verticalHeight = units::length::meter_t((table->GetEntry("HeightToHub")).GetDouble(-1));
   }
 
   return verticalHeight;
@@ -86,7 +86,7 @@ units::angle::radian_t VisionSubsystem::getAngleToHub() {
 
   if(networkInstance.IsConnected()) {
     auto table = networkInstance.GetTable("HubData");
-    angle = units::angle::radian_t(table->GetEntry("RotationToHub").GetDouble());
+    angle = units::angle::radian_t((table->GetEntry("RotationToHub")).GetDouble(-1));
   }
 
   return angle;
