@@ -4,20 +4,18 @@
 
 #include "Robot.h"
 
-
-#include <frc2/command/CommandScheduler.h>
 #include <frc/Timer.h>
+#include <frc2/command/CommandScheduler.h>
 
-#include <units/time.h>
-#include <units/angular_velocity.h>
 #include <units/angle.h>
+#include <units/angular_velocity.h>
+#include <units/time.h>
 
 #include <rmb/io/log.h>
 
-void Robot::RobotInit() {
+void Robot::RobotInit() { 
 
-  throttle = this->shuffleBoardTab.Add("Throttle Speed", 0.2f).WithWidget(frc::BuiltInWidgets::kNumberSlider).GetEntry();
-  timer.Reset();
+  container.shuffleBoard.ShuffleBoardInit();
 }
 
 /**
@@ -29,9 +27,10 @@ void Robot::RobotInit() {
  * LiveWindow and SmartDashboard integrated updating.
  */
 void Robot::RobotPeriodic() {
-  frc2::CommandScheduler::GetInstance().Run();
   
-}
+  frc2::CommandScheduler::GetInstance().Run();
+  container.shuffleBoard.Periodic();
+  }
 
 /**
  * This function is called once each time the robot enters Disabled mode. You
@@ -39,8 +38,7 @@ void Robot::RobotPeriodic() {
  * robot is disabled.
  */
 void Robot::DisabledInit() {
-  smMotorControllerFr.setInverted(true);
-  smMotorControllerRR.setInverted(true);
+  container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::DisabledPeriodic() {}
@@ -49,38 +47,21 @@ void Robot::DisabledPeriodic() {}
  * This autonomous runs the autonomous command selected by your {@link
  * RobotContainer} class.
  */
-void Robot::AutonomousInit() {}
+void Robot::AutonomousInit() {
+  container.getTeleopDriveCommand().Cancel();
+}
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  smPositionController.resetRefrence(0.0_m);
+  frc2::CommandScheduler::GetInstance().Schedule(
+      &container.getTeleopDriveCommand());
 }
 
 /**
  * This function is called periodically during operator control.
  */
-void Robot::TeleopPeriodic() {
-  // const auto JSX = this->joystick.getX();
-  // if(JSX)
-  // {
-  //   this->smMotorControllerFL.setVelocity(0.5_mps)
-  // }
-  // else
-  // {
-  //   this->smMotorControllerFL.setVelocity(0_mps);
-  // }
-  // drive.driveCartesian(-joystick.getY(), -joystick.getX(), joystick.getTwist());
-  // odometry.updatePose();
-  // wpi::outs() << "(" << std::to_string(odometry.getPose().X().to<double>()) << "m, " << std::to_string(odometry.getPose().Y().to<double>()) << "m)\n";
-  // wpi::outs() << "gyro: " << std::to_string(gyro.GetAngle()) << "deg\n";
-  //wpi::outs() << "time: " << std::to_string(timer.Get().to<double>()) << "s\n";
-  if (timer.Get() <= 1_s) {
-    drive.driveChassisSpeeds({1_mps, 0_mps, 0_rpm});
-  } else {
-    drive.driveChassisSpeeds({0_mps, 0_mps, 0_rpm});
-  }
-}
+void Robot::TeleopPeriodic() {}
 
 /**
  * This function is called periodically during test mode.
@@ -88,7 +69,5 @@ void Robot::TeleopPeriodic() {
 void Robot::TestPeriodic() {}
 
 #ifndef RUNNING_FRC_TESTS
-int main() {
-  return frc::StartRobot<Robot>();
-}
+int main() { return frc::StartRobot<Robot>(); }
 #endif
