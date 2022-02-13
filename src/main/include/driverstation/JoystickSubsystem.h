@@ -22,7 +22,7 @@ enum JoystickKey {
 
 class JoystickSubsystem : public frc2::SubsystemBase {
 public:
-  JoystickSubsystem(int port = 0, float dz = 0.2f, bool sqrTwst = false)
+  JoystickSubsystem(int port = 0, float dz = 0.1f, bool sqrTwst = false)
       : joystick(port), deadZone(dz), squareTwist(sqrTwst) {
   } // Init constructer
 
@@ -73,6 +73,6 @@ public:
 
 private:
   frc::Joystick joystick;
-  float deadZone = 0.2f;
+  float deadZone = 0.1f;
   bool squareTwist = false;
 };

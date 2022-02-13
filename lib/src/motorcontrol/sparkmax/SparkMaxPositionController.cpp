@@ -139,5 +139,15 @@ void rmb::SparkMaxPositionController<U>::spinOffset(Distance_t position) {
   setPosition(position + getPosition());
 }
 
+template <typename U>
+bool rmb::SparkMaxPositionController<U>::canSetPositionTo(Distance_t position) {
+  return position < maxPosition * conversion && position > minPosition * conversion;
+}
+
+template <typename U>
+bool rmb::SparkMaxPositionController<U>::canSpinOffsetOf(Distance_t offset) {
+  return canSetPositionTo(getPosition() + offset);
+}
+
 template class rmb::SparkMaxPositionController<units::meters>;
 template class rmb::SparkMaxPositionController<units::radians>;
