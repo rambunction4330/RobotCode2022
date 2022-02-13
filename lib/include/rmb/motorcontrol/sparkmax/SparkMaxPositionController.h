@@ -201,6 +201,20 @@ public:
    */
   void spinOffset(Distance_t position);
 
+  /**
+   * Check if the position to be set is within the minimum position and maximum position.
+   * @param position The theoretical position
+   * @return Whether or not the motor can move to the specified position. true if it can move to the position.
+   */
+  bool canSetPositionTo(Distance_t position);
+
+  /**
+   * Check if the motor position can offset to the specified value.
+   * @param offset The theoretical offset
+   * @return If the motor can spin to the offset. Returns true if it can.  
+   */
+  bool canSpinOffsetOf(Distance_t offset);
+
 private:
   rev::CANSparkMax sparkMax;
   rev::SparkMaxRelativeEncoder sparkMaxEncoder;
