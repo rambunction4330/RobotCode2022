@@ -124,7 +124,9 @@ namespace shooterSubsystemConstants {
 }
 
 namespace turretSubsystemConstants {
-    const int motorID = 0;
+  const int motorID = 0;
+
+  const units::radian_t sweepOffsetPerTick = 0.1_rad;
 
   const rmb::SparkMaxPositionController<units::radians>::PIDConfig
     motorPIDConfig{

@@ -4,7 +4,10 @@
 
 #include "shooter/TurretSubsystem.h"
 
-TurretSubsystem::TurretSubsystem(units::length::meter_t wd) : wheelDiameter(wd) {}
+TurretSubsystem::TurretSubsystem(units::length::meter_t wd) : wheelDiameter(wd) {
+  positionController.setMaxPosition((3_rad * M_PI) / 2);
+  positionController.setMinPosition((-3_rad * M_PI) / 2);
+}
 
 // This method will be called once per scheduler run
 void TurretSubsystem::Periodic() {}
@@ -23,6 +26,15 @@ void TurretSubsystem::spinOffset(units::angle::radian_t offset) {
 
 void TurretSubsystem::spinOffset(units::length::meter_t offset) {
   positionController.spinOffset(offset * (1_rad / (wheelDiameter / 2)));
+}
+
+void TurretSubsystem::sweep() {
+  static units::radian_t lastDelta = turretSubsystemConstants::sweepOffsetPerTick;
+
+  if(!positionController.canSpinOffsetOf(lastDelta))
+    lastDelta *= -1;
+
+  positionController.spinOffset(lastDelta);
 }
 
 units::length::meter_t TurretSubsystem::getLinearPosition() {
