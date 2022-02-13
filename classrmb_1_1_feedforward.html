@@ -92,6 +92,8 @@ $(document).ready(function(){initNavTree('classrmb_1_1_feedforward.html',''); in
   <div class="headertitle"><div class="title">rmb::Feedforward&lt; DistanceUnit &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_feedforward_8h_source.html">Feedforward.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for rmb::Feedforward&lt; DistanceUnit &gt;:</div>
 <div class="dyncontent">
@@ -141,31 +143,422 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>Ka_t</b> = units::un
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a68a7ca359f4c3ce1301d557681e37f73"><td class="memItemLeft" align="right" valign="top"><a id="a68a7ca359f4c3ce1301d557681e37f73" name="a68a7ca359f4c3ce1301d557681e37f73"></a>
-virtual units::volt_t&#160;</td><td class="memItemRight" valign="bottom"><b>calculate</b> (Velocity_t velocity, Distance_t distance=Distance_t(0.0), Acceleration_t acceleration=Acceleration_t(0.0)) const =0</td></tr>
+<tr class="memitem:a68a7ca359f4c3ce1301d557681e37f73"><td class="memItemLeft" align="right" valign="top">virtual units::volt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_feedforward.html#a68a7ca359f4c3ce1301d557681e37f73">calculate</a> (Velocity_t velocity, Distance_t distance=Distance_t(0.0), Acceleration_t acceleration=Acceleration_t(0.0)) const =0</td></tr>
 <tr class="separator:a68a7ca359f4c3ce1301d557681e37f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3314a5b654765f3c9cb93f30b1281e49"><td class="memItemLeft" align="right" valign="top"><a id="a3314a5b654765f3c9cb93f30b1281e49" name="a3314a5b654765f3c9cb93f30b1281e49"></a>
-virtual Velocity_t&#160;</td><td class="memItemRight" valign="bottom"><b>maxAchievableVelocity</b> (units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position) const =0</td></tr>
+<tr class="memitem:a3314a5b654765f3c9cb93f30b1281e49"><td class="memItemLeft" align="right" valign="top">virtual Velocity_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_feedforward.html#a3314a5b654765f3c9cb93f30b1281e49">maxAchievableVelocity</a> (units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position) const =0</td></tr>
 <tr class="separator:a3314a5b654765f3c9cb93f30b1281e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a025f7cdea9c24a48da65f0a91cf027cf"><td class="memItemLeft" align="right" valign="top"><a id="a025f7cdea9c24a48da65f0a91cf027cf" name="a025f7cdea9c24a48da65f0a91cf027cf"></a>
-virtual Velocity_t&#160;</td><td class="memItemRight" valign="bottom"><b>minAchievableVelocity</b> (units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position) const =0</td></tr>
+<tr class="memitem:a025f7cdea9c24a48da65f0a91cf027cf"><td class="memItemLeft" align="right" valign="top">virtual Velocity_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_feedforward.html#a025f7cdea9c24a48da65f0a91cf027cf">minAchievableVelocity</a> (units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position) const =0</td></tr>
 <tr class="separator:a025f7cdea9c24a48da65f0a91cf027cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8639967b8e6053e79f50b56fa5c4afed"><td class="memItemLeft" align="right" valign="top"><a id="a8639967b8e6053e79f50b56fa5c4afed" name="a8639967b8e6053e79f50b56fa5c4afed"></a>
-virtual Acceleration_t&#160;</td><td class="memItemRight" valign="bottom"><b>maxAchievableAcceleration</b> (units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) const =0</td></tr>
+<tr class="memitem:a8639967b8e6053e79f50b56fa5c4afed"><td class="memItemLeft" align="right" valign="top">virtual Acceleration_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_feedforward.html#a8639967b8e6053e79f50b56fa5c4afed">maxAchievableAcceleration</a> (units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) const =0</td></tr>
 <tr class="separator:a8639967b8e6053e79f50b56fa5c4afed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd677d4e59dd6843b3c6010f7ee17098"><td class="memItemLeft" align="right" valign="top"><a id="abd677d4e59dd6843b3c6010f7ee17098" name="abd677d4e59dd6843b3c6010f7ee17098"></a>
-virtual Acceleration_t&#160;</td><td class="memItemRight" valign="bottom"><b>minAchievableAcceleration</b> (units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) const =0</td></tr>
+<tr class="memitem:abd677d4e59dd6843b3c6010f7ee17098"><td class="memItemLeft" align="right" valign="top">virtual Acceleration_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_feedforward.html#abd677d4e59dd6843b3c6010f7ee17098">minAchievableAcceleration</a> (units::volt_t maxVoltage, Velocity_t velocity, Distance_t position) const =0</td></tr>
 <tr class="separator:abd677d4e59dd6843b3c6010f7ee17098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96bc3ab4cb6173e23221d132ec2ef50c"><td class="memItemLeft" align="right" valign="top"><a id="a96bc3ab4cb6173e23221d132ec2ef50c" name="a96bc3ab4cb6173e23221d132ec2ef50c"></a>
-virtual Kv_t&#160;</td><td class="memItemRight" valign="bottom"><b>getVelocityGain</b> () const =0</td></tr>
+<tr class="memitem:a96bc3ab4cb6173e23221d132ec2ef50c"><td class="memItemLeft" align="right" valign="top">virtual Kv_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_feedforward.html#a96bc3ab4cb6173e23221d132ec2ef50c">getVelocityGain</a> () const =0</td></tr>
 <tr class="separator:a96bc3ab4cb6173e23221d132ec2ef50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d6bd339f00c45df8f3211399d1ea82f"><td class="memItemLeft" align="right" valign="top"><a id="a4d6bd339f00c45df8f3211399d1ea82f" name="a4d6bd339f00c45df8f3211399d1ea82f"></a>
-virtual Ka_t&#160;</td><td class="memItemRight" valign="bottom"><b>getAcclerationGain</b> () const =0</td></tr>
+<tr class="memitem:a4d6bd339f00c45df8f3211399d1ea82f"><td class="memItemLeft" align="right" valign="top">virtual Ka_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_feedforward.html#a4d6bd339f00c45df8f3211399d1ea82f">getAcclerationGain</a> () const =0</td></tr>
 <tr class="separator:a4d6bd339f00c45df8f3211399d1ea82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af03717bf6384f6886c60a7947348400d"><td class="memItemLeft" align="right" valign="top"><a id="af03717bf6384f6886c60a7947348400d" name="af03717bf6384f6886c60a7947348400d"></a>
-virtual units::volt_t&#160;</td><td class="memItemRight" valign="bottom"><b>calculateStatic</b> (Velocity_t velocity, Distance_t position=Distance_t(0)) const =0</td></tr>
+<tr class="memitem:af03717bf6384f6886c60a7947348400d"><td class="memItemLeft" align="right" valign="top">virtual units::volt_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_feedforward.html#af03717bf6384f6886c60a7947348400d">calculateStatic</a> (Velocity_t velocity, Distance_t position=Distance_t(0)) const =0</td></tr>
 <tr class="separator:af03717bf6384f6886c60a7947348400d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename DistanceUnit&gt;<br />
+class rmb::Feedforward&lt; DistanceUnit &gt;</div><p >Generalized interface for voltage feedforwards. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">DistanceUnit</td><td>Base unit of distance for feedforward inputs. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a68a7ca359f4c3ce1301d557681e37f73" name="a68a7ca359f4c3ce1301d557681e37f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68a7ca359f4c3ce1301d557681e37f73">&#9670;&nbsp;</a></span>calculate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::volt_t <a class="el" href="classrmb_1_1_feedforward.html">rmb::Feedforward</a>&lt; DistanceUnit &gt;::calculate </td>
+          <td>(</td>
+          <td class="paramtype">Velocity_t&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramname"><em>distance</em> = <code>Distance_t(0.0)</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Acceleration_t&#160;</td>
+          <td class="paramname"><em>acceleration</em> = <code>Acceleration_t(0.0)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Calculates a feedforward voltage at a desired velocity, acceleration, and distance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">velocity</td><td>Desired Velocity </td></tr>
+    <tr><td class="paramname">acceleration</td><td>Desired Acceleration </td></tr>
+    <tr><td class="paramname">Distance</td><td>Position of Motor (Not always useful). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_elevator_feedforward.html#a4ca493c64fe9242ca88525f8431512d8">rmb::ElevatorFeedforward&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_simple_motor_feedforward.html#a5bf038bd2f3f8d2a31d2f5f80cd84b93">rmb::SimpleMotorFeedforward&lt; DistanceUnit &gt;</a>.</p>
+
+</div>
+</div>
+<a id="af03717bf6384f6886c60a7947348400d" name="af03717bf6384f6886c60a7947348400d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af03717bf6384f6886c60a7947348400d">&#9670;&nbsp;</a></span>calculateStatic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual units::volt_t <a class="el" href="classrmb_1_1_feedforward.html">rmb::Feedforward</a>&lt; DistanceUnit &gt;::calculateStatic </td>
+          <td>(</td>
+          <td class="paramtype">Velocity_t&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramname"><em>position</em> = <code>Distance_t(0)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Calculates the static gain of the feedforward at a given position. This is the value added on tot he end of the feedforward calculation. A velocity term is included only to determine the direction of movment. This is useful when adding feedforwads to the PID loops of motor controllers.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">velocity</td><td>term only to determine the direction of movment (positive or negetive). </td></tr>
+    <tr><td class="paramname">position</td><td>positon at which the static gain is calculated.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Static gain. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_elevator_feedforward.html#a9b53371e5d214ce6a2cd7bce1f8eb576">rmb::ElevatorFeedforward&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_simple_motor_feedforward.html#a5cde130fd63cbf90ed9ba90aff92ac8d">rmb::SimpleMotorFeedforward&lt; DistanceUnit &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a4d6bd339f00c45df8f3211399d1ea82f" name="a4d6bd339f00c45df8f3211399d1ea82f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d6bd339f00c45df8f3211399d1ea82f">&#9670;&nbsp;</a></span>getAcclerationGain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Ka_t <a class="el" href="classrmb_1_1_feedforward.html">rmb::Feedforward</a>&lt; DistanceUnit &gt;::getAcclerationGain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Return the acceleration gain of feed forward. This is the value that acceleration is multiplied by when calculating voltage. This is useful when adding feedforwads to the PID loops of motor controllers.</p>
+<dl class="section return"><dt>Returns</dt><dd>Acceleration gain. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_arm_feedforward.html#a9e757c1f7e4c2cf799aa0445d2fc1c60">rmb::ArmFeedforward</a>, <a class="el" href="classrmb_1_1_elevator_feedforward.html#a00ba1970bcc2b1ce7d1229ce41bbfeb5">rmb::ElevatorFeedforward&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_simple_motor_feedforward.html#aecb1886f20eb67804c0e79593fc32129">rmb::SimpleMotorFeedforward&lt; DistanceUnit &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a96bc3ab4cb6173e23221d132ec2ef50c" name="a96bc3ab4cb6173e23221d132ec2ef50c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96bc3ab4cb6173e23221d132ec2ef50c">&#9670;&nbsp;</a></span>getVelocityGain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Kv_t <a class="el" href="classrmb_1_1_feedforward.html">rmb::Feedforward</a>&lt; DistanceUnit &gt;::getVelocityGain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Return the velocity gain of feed forward. This is the value that velocity is multiplied by when calculating voltage. This is useful when adding feedforwads to the PID loops of motor controllers.</p>
+<dl class="section return"><dt>Returns</dt><dd>Velocity gain. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_arm_feedforward.html#a94dac981564c9f5ee34707d882db35f7">rmb::ArmFeedforward</a>, <a class="el" href="classrmb_1_1_elevator_feedforward.html#a9c3425caaa91582983cf6c99409bac1c">rmb::ElevatorFeedforward&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_simple_motor_feedforward.html#af33399485a51f91e3dcdcdbdb0486c3d">rmb::SimpleMotorFeedforward&lt; DistanceUnit &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a8639967b8e6053e79f50b56fa5c4afed" name="a8639967b8e6053e79f50b56fa5c4afed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8639967b8e6053e79f50b56fa5c4afed">&#9670;&nbsp;</a></span>maxAchievableAcceleration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Acceleration_t <a class="el" href="classrmb_1_1_feedforward.html">rmb::Feedforward</a>&lt; DistanceUnit &gt;::maxAchievableAcceleration </td>
+          <td>(</td>
+          <td class="paramtype">units::volt_t&#160;</td>
+          <td class="paramname"><em>maxVoltage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Velocity_t&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Calculates the maximum achievable accceleration of a component.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxVoltage</td><td>max voltage that can be applied </td></tr>
+    <tr><td class="paramname">velocity</td><td>velocity that this acceleration is achived at </td></tr>
+    <tr><td class="paramname">position</td><td>position that this acceleration is achived at</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Maximum achivable acceleration. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_elevator_feedforward.html#a4b95933e995402a4a75563772cb48e6f">rmb::ElevatorFeedforward&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_simple_motor_feedforward.html#afc805ae879ee516593723b28c8693ad2">rmb::SimpleMotorFeedforward&lt; DistanceUnit &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a3314a5b654765f3c9cb93f30b1281e49" name="a3314a5b654765f3c9cb93f30b1281e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3314a5b654765f3c9cb93f30b1281e49">&#9670;&nbsp;</a></span>maxAchievableVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Velocity_t <a class="el" href="classrmb_1_1_feedforward.html">rmb::Feedforward</a>&lt; DistanceUnit &gt;::maxAchievableVelocity </td>
+          <td>(</td>
+          <td class="paramtype">units::volt_t&#160;</td>
+          <td class="paramname"><em>maxVoltage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Acceleration_t&#160;</td>
+          <td class="paramname"><em>acceleration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Calculates the minimum achievable velocity of a component.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxVoltage</td><td>max voltage that can be applied </td></tr>
+    <tr><td class="paramname">acceleration</td><td>acceleration that this velocity is achived at </td></tr>
+    <tr><td class="paramname">position</td><td>position that this veloocity is achived at</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Maximum achivable velocity. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_elevator_feedforward.html#a0346e9c0dae03678206312231d8872b2">rmb::ElevatorFeedforward&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_simple_motor_feedforward.html#a733219e39511dbfb2f3cd6eac1242d09">rmb::SimpleMotorFeedforward&lt; DistanceUnit &gt;</a>.</p>
+
+</div>
+</div>
+<a id="abd677d4e59dd6843b3c6010f7ee17098" name="abd677d4e59dd6843b3c6010f7ee17098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd677d4e59dd6843b3c6010f7ee17098">&#9670;&nbsp;</a></span>minAchievableAcceleration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Acceleration_t <a class="el" href="classrmb_1_1_feedforward.html">rmb::Feedforward</a>&lt; DistanceUnit &gt;::minAchievableAcceleration </td>
+          <td>(</td>
+          <td class="paramtype">units::volt_t&#160;</td>
+          <td class="paramname"><em>maxVoltage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Velocity_t&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Calculates the minimum achievable accceleration of a component.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxVoltage</td><td>max voltage that can be applied </td></tr>
+    <tr><td class="paramname">velocity</td><td>velocity that this acceleration is achived at </td></tr>
+    <tr><td class="paramname">position</td><td>position that this acceleration is achived at</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Minimum achivable acceleration. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_elevator_feedforward.html#a73f6b3c0ba4738a8163cc15ddbb42af2">rmb::ElevatorFeedforward&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_simple_motor_feedforward.html#a567776b3aecb700c1eea8e0c2ad6532d">rmb::SimpleMotorFeedforward&lt; DistanceUnit &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a025f7cdea9c24a48da65f0a91cf027cf" name="a025f7cdea9c24a48da65f0a91cf027cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a025f7cdea9c24a48da65f0a91cf027cf">&#9670;&nbsp;</a></span>minAchievableVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Velocity_t <a class="el" href="classrmb_1_1_feedforward.html">rmb::Feedforward</a>&lt; DistanceUnit &gt;::minAchievableVelocity </td>
+          <td>(</td>
+          <td class="paramtype">units::volt_t&#160;</td>
+          <td class="paramname"><em>maxVoltage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Acceleration_t&#160;</td>
+          <td class="paramname"><em>acceleration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Calculates the minimum achievable velocity of a component.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxVoltage</td><td>max voltage that can be applied </td></tr>
+    <tr><td class="paramname">acceleration</td><td>acceleration that this velocity is achived at </td></tr>
+    <tr><td class="paramname">position</td><td>position that this veloocity is achived at</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Minimum achivable velocity. </dd></dl>
+
+<p>Implemented in <a class="el" href="classrmb_1_1_elevator_feedforward.html#accca20fcc3d9067fdd53ce130b0b9f0e">rmb::ElevatorFeedforward&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_simple_motor_feedforward.html#a50ca2615e145515c5f6dac104a86565a">rmb::SimpleMotorFeedforward&lt; DistanceUnit &gt;</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/include/rmb/motorcontrol/feedforward/<a class="el" href="_feedforward_8h_source.html">Feedforward.h</a></li>
 </ul>

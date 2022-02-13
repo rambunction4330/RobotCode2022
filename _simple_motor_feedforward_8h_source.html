@@ -100,78 +100,88 @@ $(document).ready(function(){initNavTree('_simple_motor_feedforward_8h_source.ht
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;rmb/motorcontrol/feedforward/Feedforward.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span>rmb {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> DistanceUnit&gt;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_simple_motor_feedforward.html">SimpleMotorFeedforward</a> : <span class="keyword">public</span> <a class="code hl_class" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt;DistanceUnit&gt; {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <span class="keyword">using</span> Distance_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Distance_t;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">using</span> VelocityUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::VelocityUnit;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <span class="keyword">using</span> Velocity_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Velocity_t;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keyword">using</span> AccelerationUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::AccelerationUnit;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keyword">using</span> Acceleration_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Acceleration_t;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keyword">using</span> KsUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::KsUnit;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keyword">using</span> Ks_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Ks_t;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keyword">using</span> KvUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::KvUnit;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keyword">using</span> Kv_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Kv_t;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="keyword">using</span> KaUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::KaUnit;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keyword">using</span> Ka_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Ka_t;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <a class="code hl_class" href="classrmb_1_1_simple_motor_feedforward.html">SimpleMotorFeedforward</a>(Ks_t kS, Kv_t kV, Ka_t kA) : kS(kS), kV(kV), kA(kA) {}</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">inline</span> units::volt_t</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  calculate(Velocity_t velocity, Distance_t distance = Distance_t(0.0),</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            Acceleration_t acceleration = Acceleration_t(0.0))<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> kS * wpi::sgn(velocity) + kV * velocity + kA * acceleration;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  }</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keyword">inline</span> Velocity_t</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  maxAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                        Distance_t position = Distance_t(0.0))<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">return</span> (maxVoltage - kS - kA * acceleration) / kV;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keyword">inline</span> Velocity_t</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  minAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                        Distance_t position = Distance_t(0.0))<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> (-maxVoltage + kS - kA * acceleration) / kV;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">inline</span> Acceleration_t maxAchievableAcceleration(</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      units::volt_t maxVoltage, Velocity_t velocity,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      Distance_t position = Distance_t(0.0))<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">return</span> (maxVoltage - kS * wpi::sgn(velocity) - kV * velocity) / kA;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keyword">inline</span> Acceleration_t minAchievableAcceleration(</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      units::volt_t maxVoltage, Velocity_t velocity,</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>      Distance_t position = Distance_t(0.0))<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">return</span> maxAchievableAcceleration(-maxVoltage, velocity);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  }</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">inline</span> Kv_t getVelocityGain()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> kV; }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">inline</span> Ka_t getAcclerationGain()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> kA; }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keyword">inline</span> units::volt_t</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  calculateStatic(Velocity_t velocity,</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                  Distance_t position = Distance_t(0))<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> kS * wpi::sgn(velocity);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  Ks_t kS;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  Kv_t kV;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  Ka_t kA;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>};</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><a class="code hl_class" href="classrmb_1_1_simple_motor_feedforward.html">SimpleMotorFeedforward&lt;U&gt;</a></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    noFeedforward(<span class="keyword">typename</span> SimpleMotorFeedforward&lt;U&gt;::Ks_t(0.0),</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                  <span class="keyword">typename</span> SimpleMotorFeedforward&lt;U&gt;::Kv_t(0.0),</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                  <span class="keyword">typename</span> SimpleMotorFeedforward&lt;U&gt;::Ka_t(0.0));</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>} <span class="comment">// namespace rmb</span></div>
-<div class="ttc" id="aclassrmb_1_1_feedforward_html"><div class="ttname"><a href="classrmb_1_1_feedforward.html">rmb::Feedforward</a></div><div class="ttdef"><b>Definition:</b> Feedforward.h:8</div></div>
-<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html">rmb::SimpleMotorFeedforward</a></div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:14</div></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> DistanceUnit&gt;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_simple_motor_feedforward.html">SimpleMotorFeedforward</a> : <span class="keyword">public</span> <a class="code hl_class" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt;DistanceUnit&gt; {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keyword">using</span> Distance_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Distance_t;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keyword">using</span> VelocityUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::VelocityUnit;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keyword">using</span> Velocity_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Velocity_t;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keyword">using</span> AccelerationUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::AccelerationUnit;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keyword">using</span> Acceleration_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Acceleration_t;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keyword">using</span> KsUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::KsUnit;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keyword">using</span> Ks_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Ks_t;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">using</span> KvUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::KvUnit;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keyword">using</span> Kv_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Kv_t;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">using</span> KaUnit = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::KaUnit;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">using</span> Ka_t = <span class="keyword">typename</span> Feedforward&lt;DistanceUnit&gt;::Ka_t;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <a class="code hl_class" href="classrmb_1_1_simple_motor_feedforward.html">SimpleMotorFeedforward</a>(Ks_t kS, Kv_t kV, Ka_t kA) : kS(kS), kV(kV), kA(kA) {}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keyword">inline</span> units::volt_t</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html#a5bf038bd2f3f8d2a31d2f5f80cd84b93">   45</a></span>  <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#a5bf038bd2f3f8d2a31d2f5f80cd84b93">calculate</a>(Velocity_t velocity, Distance_t distance = Distance_t(0.0),</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            Acceleration_t acceleration = Acceleration_t(0.0))<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">return</span> kS * wpi::sgn(velocity) + kV * velocity + kA * acceleration;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">inline</span> Velocity_t</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html#a733219e39511dbfb2f3cd6eac1242d09">   60</a></span>  <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#a733219e39511dbfb2f3cd6eac1242d09">maxAchievableVelocity</a>(units::volt_t maxVoltage, Acceleration_t acceleration,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                        Distance_t position = Distance_t(0.0))<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">return</span> (maxVoltage - kS - kA * acceleration) / kV;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">inline</span> Velocity_t</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html#a50ca2615e145515c5f6dac104a86565a">   75</a></span>  <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#a50ca2615e145515c5f6dac104a86565a">minAchievableVelocity</a>(units::volt_t maxVoltage, Acceleration_t acceleration,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                        Distance_t position = Distance_t(0.0))<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">return</span> (-maxVoltage + kS - kA * acceleration) / kV;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html#afc805ae879ee516593723b28c8693ad2">   89</a></span>  <span class="keyword">inline</span> Acceleration_t <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#afc805ae879ee516593723b28c8693ad2">maxAchievableAcceleration</a>(</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      units::volt_t maxVoltage, Velocity_t velocity,</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      Distance_t position = Distance_t(0.0))<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">return</span> (maxVoltage - kS * wpi::sgn(velocity) - kV * velocity) / kA;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html#a567776b3aecb700c1eea8e0c2ad6532d">  104</a></span>  <span class="keyword">inline</span> Acceleration_t <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#a567776b3aecb700c1eea8e0c2ad6532d">minAchievableAcceleration</a>(</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      units::volt_t maxVoltage, Velocity_t velocity,</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      Distance_t position = Distance_t(0.0))<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#afc805ae879ee516593723b28c8693ad2">maxAchievableAcceleration</a>(-maxVoltage, velocity);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html#af33399485a51f91e3dcdcdbdb0486c3d">  117</a></span>  <span class="keyword">inline</span> Kv_t <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#af33399485a51f91e3dcdcdbdb0486c3d">getVelocityGain</a>()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> kV; }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html#aecb1886f20eb67804c0e79593fc32129">  126</a></span>  <span class="keyword">inline</span> Ka_t <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#aecb1886f20eb67804c0e79593fc32129">getAcclerationGain</a>()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> kA; }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  <span class="keyword">inline</span> units::volt_t</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classrmb_1_1_simple_motor_feedforward.html#a5cde130fd63cbf90ed9ba90aff92ac8d">  140</a></span>  <a class="code hl_function" href="classrmb_1_1_simple_motor_feedforward.html#a5cde130fd63cbf90ed9ba90aff92ac8d">calculateStatic</a>(Velocity_t velocity,</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                  Distance_t position = Distance_t(0))<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordflow">return</span> kS * wpi::sgn(velocity);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  }</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  Ks_t kS; <span class="comment">/* Static gain. */</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  Kv_t kV; <span class="comment">/* Velocity gain. */</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  Ka_t kA; <span class="comment">/* Acelrration gain. */</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>};</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="keyword">const</span> SimpleMotorFeedforward&lt;U&gt;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    noFeedforward(<span class="keyword">typename</span> SimpleMotorFeedforward&lt;U&gt;::Ks_t(0.0),</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                  <span class="keyword">typename</span> SimpleMotorFeedforward&lt;U&gt;::Kv_t(0.0),</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                  <span class="keyword">typename</span> SimpleMotorFeedforward&lt;U&gt;::Ka_t(0.0));</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>} <span class="comment">// namespace rmb</span></div>
+<div class="ttc" id="aclassrmb_1_1_feedforward_html"><div class="ttname"><a href="classrmb_1_1_feedforward.html">rmb::Feedforward</a></div><div class="ttdef"><b>Definition:</b> Feedforward.h:13</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html">rmb::SimpleMotorFeedforward</a></div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:19</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html_a50ca2615e145515c5f6dac104a86565a"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html#a50ca2615e145515c5f6dac104a86565a">rmb::SimpleMotorFeedforward::minAchievableVelocity</a></div><div class="ttdeci">Velocity_t minAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position=Distance_t(0.0)) const override</div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:75</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html_a567776b3aecb700c1eea8e0c2ad6532d"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html#a567776b3aecb700c1eea8e0c2ad6532d">rmb::SimpleMotorFeedforward::minAchievableAcceleration</a></div><div class="ttdeci">Acceleration_t minAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position=Distance_t(0.0)) const override</div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:104</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html_a5bf038bd2f3f8d2a31d2f5f80cd84b93"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html#a5bf038bd2f3f8d2a31d2f5f80cd84b93">rmb::SimpleMotorFeedforward::calculate</a></div><div class="ttdeci">units::volt_t calculate(Velocity_t velocity, Distance_t distance=Distance_t(0.0), Acceleration_t acceleration=Acceleration_t(0.0)) const override</div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:45</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html_a5cde130fd63cbf90ed9ba90aff92ac8d"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html#a5cde130fd63cbf90ed9ba90aff92ac8d">rmb::SimpleMotorFeedforward::calculateStatic</a></div><div class="ttdeci">units::volt_t calculateStatic(Velocity_t velocity, Distance_t position=Distance_t(0)) const override</div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:140</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html_a733219e39511dbfb2f3cd6eac1242d09"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html#a733219e39511dbfb2f3cd6eac1242d09">rmb::SimpleMotorFeedforward::maxAchievableVelocity</a></div><div class="ttdeci">Velocity_t maxAchievableVelocity(units::volt_t maxVoltage, Acceleration_t acceleration, Distance_t position=Distance_t(0.0)) const override</div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:60</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html_aecb1886f20eb67804c0e79593fc32129"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html#aecb1886f20eb67804c0e79593fc32129">rmb::SimpleMotorFeedforward::getAcclerationGain</a></div><div class="ttdeci">Ka_t getAcclerationGain() const override</div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:126</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html_af33399485a51f91e3dcdcdbdb0486c3d"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html#af33399485a51f91e3dcdcdbdb0486c3d">rmb::SimpleMotorFeedforward::getVelocityGain</a></div><div class="ttdeci">Kv_t getVelocityGain() const override</div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:117</div></div>
+<div class="ttc" id="aclassrmb_1_1_simple_motor_feedforward_html_afc805ae879ee516593723b28c8693ad2"><div class="ttname"><a href="classrmb_1_1_simple_motor_feedforward.html#afc805ae879ee516593723b28c8693ad2">rmb::SimpleMotorFeedforward::maxAchievableAcceleration</a></div><div class="ttdeci">Acceleration_t maxAchievableAcceleration(units::volt_t maxVoltage, Velocity_t velocity, Distance_t position=Distance_t(0.0)) const override</div><div class="ttdef"><b>Definition:</b> SimpleMotorFeedforward.h:89</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
