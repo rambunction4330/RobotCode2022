@@ -92,6 +92,8 @@ $(document).ready(function(){initNavTree('classrmb_1_1_position_controller.html'
   <div class="headertitle"><div class="title">rmb::PositionController&lt; DistanceUnit &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_position_controller_8h_source.html">PositionController.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for rmb::PositionController&lt; DistanceUnit &gt;:</div>
 <div class="dyncontent">
@@ -107,17 +109,15 @@ Public Types</h2></td></tr>
 <tr class="memitem:ac0c1f079e8a7577a681029d300315b81"><td class="memItemLeft" align="right" valign="top"><a id="ac0c1f079e8a7577a681029d300315b81" name="ac0c1f079e8a7577a681029d300315b81"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>Distance_t</b> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
 <tr class="separator:ac0c1f079e8a7577a681029d300315b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaf3719162c2e0a2df410ee2dd50d0ad"><td class="memItemLeft" align="right" valign="top"><a id="adaf3719162c2e0a2df410ee2dd50d0ad" name="adaf3719162c2e0a2df410ee2dd50d0ad"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>VelocityUnit</b> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:adaf3719162c2e0a2df410ee2dd50d0ad"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:adaf3719162c2e0a2df410ee2dd50d0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42a620e1fd29de249ae2b7af217234ac"><td class="memItemLeft" align="right" valign="top"><a id="a42a620e1fd29de249ae2b7af217234ac" name="a42a620e1fd29de249ae2b7af217234ac"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Velocity_t</b> = units::unit_t&lt; VelocityUnit &gt;</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Velocity_t</b> = units::unit_t&lt; <a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a> &gt;</td></tr>
 <tr class="separator:a42a620e1fd29de249ae2b7af217234ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af72d3da3481fd48583764acf765788dc"><td class="memItemLeft" align="right" valign="top"><a id="af72d3da3481fd48583764acf765788dc" name="af72d3da3481fd48583764acf765788dc"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationUnit</b> = units::compound_unit&lt; VelocityUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:af72d3da3481fd48583764acf765788dc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#af72d3da3481fd48583764acf765788dc">AccelerationUnit</a> = units::compound_unit&lt; <a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a>, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:af72d3da3481fd48583764acf765788dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9aa54c76717e0333ab85041d84fd4d8"><td class="memItemLeft" align="right" valign="top"><a id="ae9aa54c76717e0333ab85041d84fd4d8" name="ae9aa54c76717e0333ab85041d84fd4d8"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Acceleration_t</b> = units::unit_t&lt; AccelerationUnit &gt;</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Acceleration_t</b> = units::unit_t&lt; <a class="el" href="classrmb_1_1_position_controller.html#af72d3da3481fd48583764acf765788dc">AccelerationUnit</a> &gt;</td></tr>
 <tr class="separator:ae9aa54c76717e0333ab85041d84fd4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -143,6 +143,44 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a33c8f20958be9ab248e830515bd48618"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a33c8f20958be9ab248e830515bd48618">getInverted</a> ()=0</td></tr>
 <tr class="separator:a33c8f20958be9ab248e830515bd48618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename DistanceUnit&gt;<br />
+class rmb::PositionController&lt; DistanceUnit &gt;</div><p >Base class for wrappers around vendor API / device specific positionController code. This class provides a standard interface to code that allows you to control the position of a motor. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="af72d3da3481fd48583764acf765788dc" name="af72d3da3481fd48583764acf765788dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af72d3da3481fd48583764acf765788dc">&#9670;&nbsp;</a></span>AccelerationUnit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::AccelerationUnit =  units::compound_unit&lt;<a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a>, units::inverse&lt;units::seconds&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >DistanceUnit per second </p>
+
+</div>
+</div>
+<a id="adaf3719162c2e0a2df410ee2dd50d0ad" name="adaf3719162c2e0a2df410ee2dd50d0ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaf3719162c2e0a2df410ee2dd50d0ad">&#9670;&nbsp;</a></span>VelocityUnit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::VelocityUnit =  units::compound_unit&lt;DistanceUnit, units::inverse&lt;units::seconds&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >User specified distance unit. Is probably going to be an angle or a length </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a33c8f20958be9ab248e830515bd48618" name="a33c8f20958be9ab248e830515bd48618"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a33c8f20958be9ab248e830515bd48618">&#9670;&nbsp;</a></span>getInverted()</h2>
@@ -168,6 +206,7 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get whether or not the motor is inverted </p><dl class="section return"><dt>Returns</dt><dd>true if the motor is inverted </dd></dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1962f839d2c11548165c649ab9836d68">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -197,6 +236,7 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the maximum position of the motorcontroller </p><dl class="section return"><dt>Returns</dt><dd>the maximum position in user specified DistanceUnits </dd></dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#ad2d82d32ff37932b80169fea16cdf77d">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -226,6 +266,7 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the minimum position the motorcontroller can go to </p><dl class="section return"><dt>Returns</dt><dd>the minimum position in user specified DistanceUnits </dd></dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a9b6090522e964e614e9d00003500ba03">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -255,6 +296,7 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the current position of the motor. </p><dl class="section return"><dt>Returns</dt><dd>the current position of the motor in user specified DistanceUnits </dd></dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#ace99f550275a470f03189c538629d80f">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -284,6 +326,7 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the current velocity of the motor </p><dl class="section return"><dt>Returns</dt><dd>the current velocity of the motor in user specified DistanceUnits </dd></dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a71010e00f8ad0cc47d1dd62bf41b98b5">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -314,6 +357,12 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >DistanceUnit per second squared Resets the reference point of the position controller to base position readings off of. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>the desired reference point of the position controller in user specified DistanceUnits </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#ac2c596d1e01916b2cc96511d9c604384">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -344,6 +393,12 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Invert the motor (make it go reverse from the default) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inverted</td><td>whether or not the motor should be inverted. true if inverted. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a148ef41cf987e23ef20bc84b9862b610">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -374,6 +429,12 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the maximum position that the motor controller can go to. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max</td><td>the maximum position in user specified DistanceUnits </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#ad9f33c533ade836f17b3bf688e18b4db">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -404,6 +465,12 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Set the minimum position the motorcontroller can go to. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>the minimum position in user specified DistanceUnits </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#adbd7c9afc0afef1b6e9d45a8d092c8f7">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 
@@ -434,6 +501,12 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Sets the desired position of the motor. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>the desired position in user specified DistanceUnits </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1f3fe24d4f01bea217dff1849ca9fb88">rmb::SparkMaxPositionController&lt; DistanceUnit &gt;</a>.</p>
 

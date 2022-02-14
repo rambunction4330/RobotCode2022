@@ -11,7 +11,7 @@ var annotated_dup =
       [ "MecanumDrive", "classrmb_1_1_mecanum_drive.html", "classrmb_1_1_mecanum_drive" ],
       [ "MecanumEncoderOdometry", "classrmb_1_1_mecanum_encoder_odometry.html", "classrmb_1_1_mecanum_encoder_odometry" ],
       [ "NavxAccelerometerOdometry", "classrmb_1_1_navx_accelerometer_odometry.html", "classrmb_1_1_navx_accelerometer_odometry" ],
-      [ "PositionController", "classrmb_1_1_position_controller.html", null ],
+      [ "PositionController", "classrmb_1_1_position_controller.html", "classrmb_1_1_position_controller" ],
       [ "SimpleMotorFeedforward", "classrmb_1_1_simple_motor_feedforward.html", "classrmb_1_1_simple_motor_feedforward" ],
       [ "SparkMaxPositionController", "classrmb_1_1_spark_max_position_controller.html", "classrmb_1_1_spark_max_position_controller" ],
       [ "SparkMaxVelocityController", "classrmb_1_1_spark_max_velocity_controller.html", "classrmb_1_1_spark_max_velocity_controller" ],
