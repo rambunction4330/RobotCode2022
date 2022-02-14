@@ -17,6 +17,6 @@ var annotated_dup =
       [ "SparkMaxVelocityController", "classrmb_1_1_spark_max_velocity_controller.html", "classrmb_1_1_spark_max_velocity_controller" ],
       [ "TalonFXVelocityController", "classrmb_1_1_talon_f_x_velocity_controller.html", "classrmb_1_1_talon_f_x_velocity_controller" ],
       [ "TalonSRXVelocityController", "classrmb_1_1_talon_s_r_x_velocity_controller.html", "classrmb_1_1_talon_s_r_x_velocity_controller" ],
-      [ "VelocityController", "classrmb_1_1_velocity_controller.html", null ]
+      [ "VelocityController", "classrmb_1_1_velocity_controller.html", "classrmb_1_1_velocity_controller" ]
     ] ]
 ];

@@ -92,6 +92,8 @@ $(document).ready(function(){initNavTree('classrmb_1_1_velocity_controller.html'
   <div class="headertitle"><div class="title">rmb::VelocityController&lt; DistanceUnit &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_velocity_controller_8h_source.html">VelocityController.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for rmb::VelocityController&lt; DistanceUnit &gt;:</div>
 <div class="dyncontent">
@@ -109,17 +111,15 @@ Public Types</h2></td></tr>
 <tr class="memitem:a588cd9384fb546fda392757cf10a4ea0"><td class="memItemLeft" align="right" valign="top"><a id="a588cd9384fb546fda392757cf10a4ea0" name="a588cd9384fb546fda392757cf10a4ea0"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>Distance_t</b> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
 <tr class="separator:a588cd9384fb546fda392757cf10a4ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6354cdbb6206c3178275bb0cd8fbb67"><td class="memItemLeft" align="right" valign="top"><a id="af6354cdbb6206c3178275bb0cd8fbb67" name="af6354cdbb6206c3178275bb0cd8fbb67"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>VelocityUnit</b> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:af6354cdbb6206c3178275bb0cd8fbb67"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:af6354cdbb6206c3178275bb0cd8fbb67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af76e5fead85640b7e1e88abcc0b441c6"><td class="memItemLeft" align="right" valign="top"><a id="af76e5fead85640b7e1e88abcc0b441c6" name="af76e5fead85640b7e1e88abcc0b441c6"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Velocity_t</b> = units::unit_t&lt; VelocityUnit &gt;</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Velocity_t</b> = units::unit_t&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> &gt;</td></tr>
 <tr class="separator:af76e5fead85640b7e1e88abcc0b441c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ec888f03e30ebef7f598038a6d80f21"><td class="memItemLeft" align="right" valign="top"><a id="a0ec888f03e30ebef7f598038a6d80f21" name="a0ec888f03e30ebef7f598038a6d80f21"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationUnit</b> = units::compound_unit&lt; VelocityUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:a0ec888f03e30ebef7f598038a6d80f21"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> = units::compound_unit&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a>, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:a0ec888f03e30ebef7f598038a6d80f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d2ddd51f51e55a5e2802ed3c3eb83db"><td class="memItemLeft" align="right" valign="top"><a id="a6d2ddd51f51e55a5e2802ed3c3eb83db" name="a6d2ddd51f51e55a5e2802ed3c3eb83db"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Acceleration_t</b> = units::unit_t&lt; AccelerationUnit &gt;</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Acceleration_t</b> = units::unit_t&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> &gt;</td></tr>
 <tr class="separator:a6d2ddd51f51e55a5e2802ed3c3eb83db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -133,6 +133,44 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad6b3ae2c917cc84e5dd8147c3b036e5d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#ad6b3ae2c917cc84e5dd8147c3b036e5d">getInverted</a> ()=0</td></tr>
 <tr class="separator:ad6b3ae2c917cc84e5dd8147c3b036e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename DistanceUnit&gt;<br />
+class rmb::VelocityController&lt; DistanceUnit &gt;</div><p >The base class for wrappers around classes that abstract over device-specific apis to control the velocity at which a motor spins. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a0ec888f03e30ebef7f598038a6d80f21" name="a0ec888f03e30ebef7f598038a6d80f21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ec888f03e30ebef7f598038a6d80f21">&#9670;&nbsp;</a></span>AccelerationUnit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a>&lt; DistanceUnit &gt;::AccelerationUnit =  units::compound_unit&lt;<a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a>, units::inverse&lt;units::seconds&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >User specificed distance unit / second </p>
+
+</div>
+</div>
+<a id="af6354cdbb6206c3178275bb0cd8fbb67" name="af6354cdbb6206c3178275bb0cd8fbb67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6354cdbb6206c3178275bb0cd8fbb67">&#9670;&nbsp;</a></span>VelocityUnit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a>&lt; DistanceUnit &gt;::VelocityUnit =  units::compound_unit&lt;DistanceUnit, units::inverse&lt;units::seconds&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >User specified distance unit </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad6b3ae2c917cc84e5dd8147c3b036e5d" name="ad6b3ae2c917cc84e5dd8147c3b036e5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad6b3ae2c917cc84e5dd8147c3b036e5d">&#9670;&nbsp;</a></span>getInverted()</h2>
@@ -158,8 +196,9 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get whether or not the motor is inverted </p><dl class="section return"><dt>Returns</dt><dd>whether or not the motor is inverted. true if inverted. </dd></dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a1ec761427197654dbede306bc90c040a">rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a1ec761427197654dbede306bc90c040a">rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;</a>, <a class="el" href="classrmb_1_1_talon_f_x_velocity_controller.html#a0af9979b625add3374b8609e9d880122">rmb::TalonFXVelocityController&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_talon_s_r_x_velocity_controller.html#a1e52bdaa364837380e6dee175a92c7a3">rmb::TalonSRXVelocityController&lt; DistanceUnit &gt;</a>.</p>
 
 </div>
 </div>
@@ -187,8 +226,10 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Get the <b>current</b> velocity of the motor </p><dl class="section return"><dt>Returns</dt><dd>the velocity of the motor in user specified velocity units </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>Velocity_t </dd></dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a8184fafcf6b0d12865bc87cc2663f708">rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a8184fafcf6b0d12865bc87cc2663f708">rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;</a>, <a class="el" href="classrmb_1_1_talon_f_x_velocity_controller.html#aa53e28d2888f029a9bbc0910f6268800">rmb::TalonFXVelocityController&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_talon_s_r_x_velocity_controller.html#a95bf2010c9e51da1fa9de116f1130d37">rmb::TalonSRXVelocityController&lt; DistanceUnit &gt;</a>.</p>
 
 </div>
 </div>
@@ -217,8 +258,14 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Toggles motor inversion </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inverted</td><td>whether or not the motor should be inverted. true if inverted. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a92342213fd1c8d33064b64c6c24da82f">rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a92342213fd1c8d33064b64c6c24da82f">rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;</a>, <a class="el" href="classrmb_1_1_talon_f_x_velocity_controller.html#a940d3d7fe635d08d2c306dbcf030a04c">rmb::TalonFXVelocityController&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_talon_s_r_x_velocity_controller.html#affe6ed4ea1563c1e362a4b13871aae78">rmb::TalonSRXVelocityController&lt; DistanceUnit &gt;</a>.</p>
 
 </div>
 </div>
@@ -247,8 +294,15 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >User specified distance unit / second^2 Sets the target velocity of the motor. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">velocity</td><td>the target velocity in user specified velocity units </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd>Velocity_t </dd></dl>
 
-<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a93562edd0e8c3045681d4dfe551114dd">rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a93562edd0e8c3045681d4dfe551114dd">rmb::SparkMaxVelocityController&lt; DistanceUnit &gt;</a>, <a class="el" href="classrmb_1_1_talon_f_x_velocity_controller.html#a01fddeff566c2c26497eadbc933d2abc">rmb::TalonFXVelocityController&lt; DistanceUnit &gt;</a>, and <a class="el" href="classrmb_1_1_talon_s_r_x_velocity_controller.html#a66509e40fe25985e588c4f8da4978dcb">rmb::TalonSRXVelocityController&lt; DistanceUnit &gt;</a>.</p>
 
 </div>
 </div>
