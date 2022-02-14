@@ -11,3 +11,6 @@
 <img src="https://imgs.xkcd.com/comics/shouldnt_be_hard.png"></img>
 
 "Shouldn't Be Hard" by Randall Munroe is licensed under CC BY-NC 2.5
+## 3. What does boolean mean.
+
+<img src="https://media.discordapp.net/attachments/903243553143144448/903709669753770004/caption.gif"></img>
