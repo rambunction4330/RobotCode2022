@@ -16,7 +16,7 @@ void TurretFindCommand::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void TurretFindCommand::Execute() {
   if(!IsFinished()) {
-    turretSubsystem.spinOffset(0.1_rad);
+    turretSubsystem.sweep();
   }
 }
 

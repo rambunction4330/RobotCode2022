@@ -10,32 +10,41 @@
 #include <shooter/TurretSubsystem.h>
 #include <vision/VisionSubsystem.h>
 
-//class TurretFindCommand : public frc2::CommandHelper<frc2::CommandBase, TurretFindCommand> {};
-
 class TurretFindCommand;
-
-//#include <shooter/TurretFindCommand.h>
 
 /**
- * An example command.
- *
- * <p>Note that this extends CommandHelper, rather extending CommandBase
- * directly; this is crucially important, or else the decorator functions in
- * Command will *not* work!
+ * Follows the hub
  */
-
-class TurretFindCommand;
 class TurretFollowCommand
     : public frc2::CommandHelper<frc2::CommandBase, TurretFollowCommand> {
  public:
+
+  /**
+   * Creates a TurretFollowCommand
+   * @param turretSubsystem the turretSubsystem that will spin towards the target
+   * @param visionSubsystem the visionSubsystem that will track the target
+   */
   TurretFollowCommand(TurretSubsystem& turretSubsystem, VisionSubsystem& visionSubsystem);
 
+  /**
+   * Called when the command is ran by the CommandScheduler
+   */
   void Initialize() override;
 
+  /**
+   * Called in a loop by the command scheduler. The turret will follow the Hub using vision.
+   */
   void Execute() override;
 
+  /**
+   * Either called when IsFinished() returns true or the command is interrupted.
+   */
   void End(bool interrupted) override;
 
+  /**
+   * Whether or not the command is finished or not
+   * @return true if the hub is out of sight, which means the command is finshed.
+   */
   bool IsFinished() override;
 
 private:

@@ -85,16 +85,13 @@ class TurretSubsystem : public frc2::SubsystemBase {
  private:
 
   rmb::SparkMaxPositionController<units::radians> positionController{
-    0,
+    turretSubsystemConstants::motorID,
     turretSubsystemConstants::motorPIDConfig,
-    1_rad / 1_rad,
-    rmb::noFeedforward<units::radians>,
+    turretSubsystemConstants::motorConversion,
+    turretSubsystemConstants::motorFeedforward,
     {}
   };
 
   const units::length::meter_t wheelDiameter;
 
-  // rmb::SparkMaxPositionController<units::angle::radians> positionController {
-  //   turretSubsystemConstants::motorID
-  // };
 };
