@@ -96,8 +96,8 @@ namespace positionControllerConstants
 } // namespace positionControllerConstants
 
 namespace shooterSubsystemConstants {
-  const int leftShooterMotorID  = 0,
-      rightShooterMotorID = 0;
+  const int leftShooterMotorID  = 7,
+      rightShooterMotorID = 8;
 
   const rmb::SparkMaxVelocityController<units::radians>::PIDConfig
     motorPIDConfig{

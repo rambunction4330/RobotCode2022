@@ -15,7 +15,7 @@
 
 void Robot::RobotInit() { 
 
-  container.shuffleBoard.ShuffleBoardInit();
+  // container.shuffleBoard.ShuffleBoardInit();
 }
 
 /**
@@ -29,7 +29,7 @@ void Robot::RobotInit() {
 void Robot::RobotPeriodic() {
   
   frc2::CommandScheduler::GetInstance().Run();
-  container.shuffleBoard.Periodic();
+  // container.shuffleBoard.Periodic();
   }
 
 /**
