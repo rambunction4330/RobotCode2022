@@ -24,7 +24,9 @@ public:
    * 
    * @param command Command to be wrapped.
    **/
-  RepeatingCommand(std::unique_ptr<frc2::Command> command) : command(std::move(command)) {}
+  RepeatingCommand(std::unique_ptr<frc2::Command> command) : command(std::move(command)) {
+    AddRequirements(command->GetRequirements());
+  }
   
   void Initialize() { command->Initialize(); }
 
