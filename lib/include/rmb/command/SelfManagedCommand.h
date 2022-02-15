@@ -15,5 +15,5 @@ namespace rmb {
    * 
    * @param command Command to be schedueled (construt in place).
    **/
-  void scheduelSelfManagedCommand(std::unique_ptr<frc2::Command> command);
+  void scheduelAsSelfManagedCommand(std::unique_ptr<frc2::Command> command);
 } // namespace rmb
