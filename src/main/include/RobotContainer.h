@@ -38,5 +38,5 @@ private:
   JoystickSubsystem joystickSubsystem;
   VisionSubsystem   visionSubsystem{turretSubsystem, [](){return 0_rad;}};
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
-  TurretFindCommand turretFindCommand{turretSubsystem, visionSubsystem};
+  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
 };
