@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "shooter/TurretSubsystem.h"
+#include "shooter/turret/TurretSubsystem.h"
 
 TurretSubsystem::TurretSubsystem(units::length::meter_t wd) : wheelDiameter(wd) {
   positionController.setMaxPosition((3_rad * M_PI) / 2);

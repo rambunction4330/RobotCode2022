@@ -8,7 +8,7 @@
 #include <frc2/command/CommandHelper.h>
 
 #include <vision/VisionSubsystem.h>
-#include <shooter/TurretSubsystem.h>
+#include <shooter/turret/TurretSubsystem.h>
 
 /**
  * Makes the turret find and point to the hub using vision
