@@ -89,7 +89,7 @@ void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
 
 template <typename U>
 typename rmb::SparkMaxPositionController<U>::Distance_t
-rmb::SparkMaxPositionController<U>::getPosition() {
+rmb::SparkMaxPositionController<U>::getPosition() const{
   RawUnit_t val = RawUnit_t(sparkMaxEncoder.GetPosition());
   std::clamp<RawUnit_t>(val, minPosition, maxPosition);
   return Distance_t((val * conversion)) - reference;

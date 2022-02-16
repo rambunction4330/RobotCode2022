@@ -50,13 +50,13 @@ class TurretSubsystem : public frc2::SubsystemBase {
    * Get the position of the turret
    * @return the position of the turret in radians
    */
-  units::angle::radian_t getAngularPosition();
+  units::angle::radian_t getAngularPosition() const;
 
   /**
    * Get the position of the turret
    * @return get the linear position of the turret in meters. Ie rotationAngle * circumference
    */
-  units::length::meter_t getLinearPosition();
+  units::length::meter_t getLinearPosition() const;
 
   /**
    * Check if the turret is at the position within the specified error bounds

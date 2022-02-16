@@ -5,8 +5,8 @@
 #include "shooter/TurretFindCommand.h"
 #include "frc2/command/CommandScheduler.h"
 
-TurretFindCommand::TurretFindCommand(TurretSubsystem& turret, VisionSubsystem& vision, TurretFollowCommand& followCommand)
-  : turretSubsystem(turret), visionSubsystem(vision), turretFollowCommand(followCommand) {
+TurretFindCommand::TurretFindCommand(TurretSubsystem& turret, VisionSubsystem& vision)
+  : turretSubsystem(turret), visionSubsystem(vision) {
   AddRequirements({&turret, &vision});
 }
 
@@ -21,11 +21,7 @@ void TurretFindCommand::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void TurretFindCommand::End(bool interrupted) {
-  if(!interrupted) {
-    turretFollowCommand.Schedule(true);
-  }
-}
+void TurretFindCommand::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool TurretFindCommand::IsFinished() {

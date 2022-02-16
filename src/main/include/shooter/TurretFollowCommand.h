@@ -10,8 +10,6 @@
 #include <shooter/TurretSubsystem.h>
 #include <vision/VisionSubsystem.h>
 
-class TurretFindCommand;
-
 /**
  * Follows the hub
  */
@@ -50,5 +48,4 @@ class TurretFollowCommand
 private:
   TurretSubsystem& turretSubsystem;
   VisionSubsystem& visionSubsystem;
-  std::unique_ptr<TurretFindCommand> turretFindCommand;
 };

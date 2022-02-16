@@ -10,9 +10,6 @@
 #include <vision/VisionSubsystem.h>
 #include <shooter/TurretSubsystem.h>
 
-// forward declaration of TurretFollowCommand
-class TurretFollowCommand;
-
 /**
  * Makes the turret find and point to the hub using vision
  */
@@ -26,7 +23,7 @@ class TurretFindCommand
    * @param visionSubsystem the visionSubsystem used to tell if the hub is in view
    * @param followCommand   scheduled when this command ends 
    */
-  TurretFindCommand(TurretSubsystem& turretSubsystem, VisionSubsystem& visionSubsystem, TurretFollowCommand& followCommand);
+  TurretFindCommand(TurretSubsystem& turretSubsystem, VisionSubsystem& visionSubsystem);
 
   /**
    * Called at the beginning when the command is scheduled. 
@@ -52,5 +49,4 @@ class TurretFindCommand
 private:
   TurretSubsystem& turretSubsystem;
   VisionSubsystem& visionSubsystem;
-  TurretFollowCommand& turretFollowCommand;
 };

@@ -20,7 +20,7 @@ public:
   virtual Distance_t getMinPosition() = 0;
 
   virtual void setPosition(Distance_t position) = 0;
-  virtual Distance_t getPosition() = 0;
+  virtual Distance_t getPosition() const = 0;
   virtual Velocity_t getVelocity() = 0;
 
   virtual void setInverted(bool inverted) = 0;

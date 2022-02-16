@@ -7,7 +7,7 @@
 #include <frc2/command/CommandScheduler.h>
 
 TurretFollowCommand::TurretFollowCommand(TurretSubsystem& turret, VisionSubsystem& vision) 
-  : turretSubsystem(turret), visionSubsystem(vision), turretFindCommand(new TurretFindCommand(turret, vision, *this)){
+  : turretSubsystem(turret), visionSubsystem(vision) {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements({&turretSubsystem, &visionSubsystem});
 }
@@ -23,11 +23,7 @@ void TurretFollowCommand::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void TurretFollowCommand::End(bool interrupted) {
-  if(!interrupted) {
-    turretFindCommand->Schedule(true);
-  }
-}
+void TurretFollowCommand::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool TurretFollowCommand::IsFinished() {

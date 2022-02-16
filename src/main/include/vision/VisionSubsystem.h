@@ -10,6 +10,8 @@
 #include <units/angle.h>
 #include <units/length.h>
 #include <units/math.h>
+
+#include <shooter/TurretSubsystem.h>
 using namespace units; // we are lazy
 
 // template <typename T> class Vector3 {
@@ -19,14 +21,13 @@ using namespace units; // we are lazy
 
 class VisionSubsystem : public frc2::SubsystemBase {
 public:
-  VisionSubsystem(std::function<radian_t()> fnBaseRotation,
-                  std::function<radian_t()> fnShooterAngle)
-      : getBaseRotation(fnBaseRotation), getShooterAngle(fnShooterAngle){};
+  VisionSubsystem(const TurretSubsystem& turret, std::function<units::radian_t()> shooterAngleFn) 
+    : turretSubsystem(turret), getShooterAngle(shooterAngleFn) {};
 
   void Periodic() override;
   bool IsHubInView();
 
-  // Vector3<float> GetHubPosition();
+  // Vector3<float> GetHubPositioo();
 
   /**
    * Get the horizontal distance to the hub.
@@ -48,6 +49,7 @@ public:
 
 private:
   nt::NetworkTableEntry baseRotation, shooterAngle;
-  std::function<radian_t()> getBaseRotation, getShooterAngle;
+  const TurretSubsystem& turretSubsystem;
+  std::function<radian_t()> getShooterAngle;
   nt::NetworkTableInstance networkInstance;
 };

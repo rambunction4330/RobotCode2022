@@ -8,24 +8,24 @@
 void VisionSubsystem::Periodic() {
 
   static units::radian_t baseRot, shooterAng;
-  this->networkInstance = nt::NetworkTableInstance::GetDefault();
-  if (this->networkInstance.IsConnected()) {
-    baseRot = this->getBaseRotation();
-    shooterAng = this->getShooterAngle();
-    auto table = this->networkInstance.GetTable("ShooterRobot");
+  networkInstance = nt::NetworkTableInstance::GetDefault();
+  if (networkInstance.IsConnected()) {
+    baseRot = turretSubsystem.getAngularPosition();
+    shooterAng = getShooterAngle();
+    auto table = networkInstance.GetTable("ShooterRobot");
 
-    this->baseRotation = table->GetEntry("baseRotation");
-    this->baseRotation.SetDouble(baseRot.to<double>());
+    baseRotation = table->GetEntry("baseRotation");
+    baseRotation.SetDouble(turretSubsystem.getAngularPosition().to<double>());
 
-    this->shooterAngle = table->GetEntry("shooterAngle");
-    this->shooterAngle.SetDouble(shooterAng.to<double>());
+    shooterAngle = table->GetEntry("shooterAngle");
+    shooterAngle.SetDouble(shooterAng.to<double>());
   }
 }
 
 bool VisionSubsystem::IsHubInView() {
 
-  if (this->networkInstance.IsConnected()) {
-    auto table = this->networkInstance.GetTable("HubData");
+  if (networkInstance.IsConnected()) {
+    auto table = networkInstance.GetTable("HubData");
     auto value = table->GetEntry("HubInView");
 
     return value.GetBoolean(0);
@@ -39,8 +39,8 @@ bool VisionSubsystem::IsHubInView() {
 //                                     // hub, hub height
 //   Vector3<float> ret;
 
-//   if (this->networkInstance.IsConnected()) {
-//     auto table = this->networkInstance.GetTable("HubData");
+//   if (networkInstance.IsConnected()) {
+//     auto table = networkInstance.GetTable("HubData");
 //     auto rotationToHub = table->GetEntry("RotationToHub");
 //     auto horizontalDistance = table->GetEntry("HorizontalDistanceToHub");
 //     auto hubHeight = table->GetEntry("HeightToHub");

@@ -37,11 +37,11 @@ void TurretSubsystem::sweep() {
   positionController.spinOffset(lastDelta);
 }
 
-units::length::meter_t TurretSubsystem::getLinearPosition() {
+units::length::meter_t TurretSubsystem::getLinearPosition() const{
   return positionController.getPosition() * ((wheelDiameter / 2) / 1_rad);
 }
 
-units::angle::radian_t TurretSubsystem::getAngularPosition() {
+units::angle::radian_t TurretSubsystem::getAngularPosition() const{
   return positionController.getPosition();
 }
 

@@ -119,7 +119,7 @@ public:
    * @return the distance from the reference point in the user defined Distance. The reference point can be set with 
    *         rmb::SparkMaxPositionController< DistanceUnit >::resetRefrence(Distance_t position) 	
    */
-  Distance_t getPosition() override;
+  Distance_t getPosition() const override;
 
 
 
