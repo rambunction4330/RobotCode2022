@@ -25,7 +25,7 @@ public:
 private:
 
   void ConfigureButtonBindings();
-  ShooterSubsystem  shooterSubsystem{1_m};
+  ShooterSubsystem  shooterSubsystem;
   ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
   IntakeSubsystem   intakeSubsystem;
