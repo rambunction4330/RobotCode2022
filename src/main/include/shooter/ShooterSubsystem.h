@@ -14,38 +14,26 @@
 
 class ShooterSubsystem : public frc2::SubsystemBase {
  public:
-  ShooterSubsystem() = delete;
-  ShooterSubsystem(const units::meter_t wheelDiameter = 1_m);
+  ShooterSubsystem();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
-  void spinTo(units::angular_velocity::radians_per_second_t vel);
   void spinTo(units::velocity::meters_per_second_t vel);
 
   void stop();
 
-  units::angular_velocity::radians_per_second_t getAngularVelocity();
-  units::velocity::meters_per_second_t getLinearVelocity();
+  units::velocity::meters_per_second_t getVelocity();
 
  private:
 
-  const units::meter_t wheelDiameter;
-
-  rmb::SparkMaxVelocityController<units::radians>::Follower rightShooterMotor {
-    shooterSubsystemConstants::rightShooterMotorID,
-    rev::CANSparkMax::MotorType::kBrushless,
-    false
-  };
-
-  rmb::SparkMaxVelocityController<units::radians> leftMainShooterMotor{
-    shooterSubsystemConstants::leftShooterMotorID,
-    shooterSubsystemConstants::motorPIDConfig,
-    shooterSubsystemConstants::motorConversion,
-    rmb::noFeedforward<units::radians>,
-    {rightShooterMotor}
+  rmb::SparkMaxVelocityController<units::meters> flywheel{
+    shooterSubsystemConstants::flywheelMotorID,
+    shooterSubsystemConstants::flywheelPIDConfig,
+    shooterSubsystemConstants::flywheelConversion,
+    shooterSubsystemConstants::flywheelFeedforward
   };
 
   // Components (e.g. motor controllers and sensors) should generally be

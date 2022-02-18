@@ -96,29 +96,28 @@ namespace positionControllerConstants
 } // namespace positionControllerConstants
 
 namespace shooterSubsystemConstants {
-  const int leftShooterMotorID  = 7,
-      rightShooterMotorID = 8;
+  const int flywheelMotorID  = 7;
 
-  const rmb::SparkMaxVelocityController<units::radians>::PIDConfig
-    motorPIDConfig{
+  const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
+    flywheelPIDConfig{
         /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
         /* SmartMotion config */
         /* usingSmartMotion */ true,
-        /* maxVelocity */ 100_tps, /* minVelocity */ 0_tps,
-        /* maxAccel */ 10_rad_per_s_sq,
-        /* allowedErr */ 0.01_tps,
+        /* maxVelocity */ 100_mps, /* minVelocity */ 0_mps,
+        /* maxAccel */ 10_mps_sq,
+        /* allowedErr */ 0.01_mps,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
     };
 
-  const rmb::SimpleMotorFeedforward<units::radians>
-    motorFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.10973),
-                     rmb::SimpleMotorFeedforward<units::radians>::Kv_t(3.15920),
-                     rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.30746));
+  const rmb::SimpleMotorFeedforward<units::meters>
+    flywheelFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.10973),
+                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.15920),
+                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.30746));
 
-  const auto motorConversion = 
-       rmb::SparkMaxVelocityController<units::radians>::ConversionUnit_t(1_rad / 1_rad);
+  const auto flywheelConversion = 
+       rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(1_m / 1_rad);
 
 }
