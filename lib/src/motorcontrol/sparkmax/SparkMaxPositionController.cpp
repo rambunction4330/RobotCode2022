@@ -21,13 +21,16 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor,
-    const Feedforward<U> &ff, std::initializer_list<Follower> followerList)
+    const Feedforward<U> &ff, std::initializer_list<Follower> followerList, bool alternateEncoder)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionFactor), feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
+
+  if(alternateEncoder)
+    (rev::RelativeEncoder&)sparkMaxEncoder = sparkMax.GetAlternateEncoder(1);
 
   // configure pid consts
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));

@@ -105,7 +105,7 @@ public:
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
                              ConversionUnit_t conversion = ConversionUnit_t(1), 
                              const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>,
-                             std::initializer_list<Follower> followers = {});
+                             std::initializer_list<Follower> followers = {}, bool alternateEncoder = false);
 
   /**
    * Sets the position of the motor.
@@ -217,7 +217,7 @@ public:
 
 private:
   rev::CANSparkMax sparkMax;
-  rev::SparkMaxRelativeEncoder sparkMaxEncoder;
+  const rev::RelativeEncoder& sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
 
   ConversionUnit_t conversion;
