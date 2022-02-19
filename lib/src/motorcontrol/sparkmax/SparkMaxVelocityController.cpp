@@ -17,13 +17,17 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(int deviceID)
 template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit,
-    const Feedforward<U> &ff, std::initializer_list<Follower> followerList)
+    const Feedforward<U> &ff, std::initializer_list<Follower> followerList, 
+    bool alternateEncoder)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionUnit), feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
+
+  if(alternateEncoder)
+    (rev::RelativeEncoder&)sparkMaxEncoder = sparkMax.GetAlternateEncoder(1);
 
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetI(config.i));

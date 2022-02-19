@@ -118,7 +118,7 @@ public:
       int deviceID, const PIDConfig &config,
       ConversionUnit_t conversionUnit = ConversionUnit_t(1),
       const Feedforward<DistanceUnit> &feedforward = noFeedforward<DistanceUnit>,
-      std::initializer_list<Follower> followers = {});
+      std::initializer_list<Follower> followers = {}, bool alternateEncoder = false);
 
   /**
    * Sets the target velocity of the motorcontroller
@@ -149,10 +149,10 @@ public:
 
 private:
   rev::CANSparkMax sparkMax;
-  rev::SparkMaxRelativeEncoder sparkMaxEncoder;
+  const rev::RelativeEncoder& sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
   ConversionUnit_t conversion;
-  const Feedforward<DistanceUnit> &feedforward;
+  const Feedforward<DistanceUnit>& feedforward;
 
   rev::CANSparkMax::ControlType controlType;
   std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
