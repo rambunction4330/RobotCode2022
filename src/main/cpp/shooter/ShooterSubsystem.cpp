@@ -6,27 +6,18 @@
 
 #include "shooter/ShooterSubsystem.h"
 
-ShooterSubsystem::ShooterSubsystem(const units::meter_t wd) : wheelDiameter(wd) {}
-
-void ShooterSubsystem::spinTo(units::angular_velocity::radians_per_second_t vel) {
-  leftMainShooterMotor.setVelocity(vel);
-}
+ShooterSubsystem::ShooterSubsystem() {}
 
 void ShooterSubsystem::spinTo(units::velocity::meters_per_second_t vel) {
-  leftMainShooterMotor.setVelocity(
-    units::angular_velocity::radians_per_second_t(vel * (1_rad / (wheelDiameter / 2)))
-  );
+  flywheel.setVelocity(vel);
 }
 
 void ShooterSubsystem::stop() {
-  leftMainShooterMotor.setVelocity(0.0_tps);
+  flywheel.setVelocity(0.0_mps);
 }
 
-units::angular_velocity::radians_per_second_t ShooterSubsystem::getAngularVelocity() {
-  return leftMainShooterMotor.getVelocity();
-}
-units::velocity::meters_per_second_t ShooterSubsystem::getLinearVelocity() {
-  return leftMainShooterMotor.getVelocity() / 1_rad * wheelDiameter;
+units::velocity::meters_per_second_t ShooterSubsystem::getVelocity() {
+  return flywheel.getVelocity();
 }
 
 

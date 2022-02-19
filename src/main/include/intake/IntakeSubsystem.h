@@ -14,7 +14,7 @@
 
 class IntakeSubsystem : public frc2::SubsystemBase {
  public:
-  IntakeSubsystem() : intakeMotorVel(-1), intakeMotorPos(-1) {}
+  IntakeSubsystem() : intakeMotorVel(98), intakeMotorPos(73) {}
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
