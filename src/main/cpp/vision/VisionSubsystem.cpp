@@ -22,7 +22,7 @@ void VisionSubsystem::Periodic() {
   }
 }
 
-bool VisionSubsystem::IsHubInView() {
+bool VisionSubsystem::IsHubInView() const{
 
   if (networkInstance.IsConnected()) {
     auto table = networkInstance.GetTable("HubData");
@@ -55,7 +55,7 @@ bool VisionSubsystem::IsHubInView() {
 //   return {};
 // }
 
-units::length::meter_t VisionSubsystem::getHubHorizontalPos() {
+units::length::meter_t VisionSubsystem::getHubHorizontalPos() const{
 
   units::length::meter_t horizontalDistance = -1_m;
 
@@ -68,7 +68,7 @@ units::length::meter_t VisionSubsystem::getHubHorizontalPos() {
   return horizontalDistance;
 }
 
-units::length::meter_t VisionSubsystem::getHubHeight() {
+units::length::meter_t VisionSubsystem::getHubHeight() const{
 
   units::length::meter_t verticalHeight = -1_m;
 
@@ -80,7 +80,7 @@ units::length::meter_t VisionSubsystem::getHubHeight() {
   return verticalHeight;
 }
 
-units::angle::radian_t VisionSubsystem::getAngleToHub() {
+units::angle::radian_t VisionSubsystem::getAngleToHub() const{
   
   units::angle::radian_t angle;
 

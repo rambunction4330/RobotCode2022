@@ -25,7 +25,7 @@ public:
     : turretSubsystem(turret), getShooterAngle(shooterAngleFn) {};
 
   void Periodic() override;
-  bool IsHubInView();
+  bool IsHubInView() const;
 
   // Vector3<float> GetHubPositioo();
 
@@ -33,19 +33,19 @@ public:
    * Get the horizontal distance to the hub.
    * @return the horizontal distance to the hub in meters. 
    */
-  units::length::meter_t getHubHorizontalPos();
+  units::length::meter_t getHubHorizontalPos() const;
 
   /**
    * Get the vertical distance to the hub
    * @return height in meters
    */
-  units::length::meter_t getHubHeight();
+  units::length::meter_t getHubHeight() const;
 
   /**
    * Get the angle to the hub
    * @return angle in radians to the hub
    */
-  units::angle::radian_t getAngleToHub();
+  units::angle::radian_t getAngleToHub() const;
 
 private:
   nt::NetworkTableEntry baseRotation, shooterAngle;

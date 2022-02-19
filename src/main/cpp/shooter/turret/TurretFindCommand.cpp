@@ -5,9 +5,9 @@
 #include "shooter/turret/TurretFindCommand.h"
 #include "frc2/command/CommandScheduler.h"
 
-TurretFindCommand::TurretFindCommand(TurretSubsystem& turret, VisionSubsystem& vision)
+TurretFindCommand::TurretFindCommand(TurretSubsystem& turret, const VisionSubsystem& vision)
   : turretSubsystem(turret), visionSubsystem(vision) {
-  AddRequirements({&turret, &vision});
+  AddRequirements({&turret});
 }
 
 // Called when the command is initially scheduled.

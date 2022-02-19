@@ -23,7 +23,7 @@ class TurretFindCommand
    * @param visionSubsystem the visionSubsystem used to tell if the hub is in view
    * @param followCommand   scheduled when this command ends 
    */
-  TurretFindCommand(TurretSubsystem& turretSubsystem, VisionSubsystem& visionSubsystem);
+  TurretFindCommand(TurretSubsystem& turretSubsystem, const VisionSubsystem& visionSubsystem);
 
   /**
    * Called at the beginning when the command is scheduled. 
@@ -48,5 +48,5 @@ class TurretFindCommand
 
 private:
   TurretSubsystem& turretSubsystem;
-  VisionSubsystem& visionSubsystem;
+  const VisionSubsystem& visionSubsystem;
 };
