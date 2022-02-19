@@ -7,18 +7,15 @@
 
 void VisionSubsystem::Periodic() {
 
-  static units::radian_t baseRot, shooterAng;
+  static units::radian_t baseRot;
   networkInstance = nt::NetworkTableInstance::GetDefault();
   if (networkInstance.IsConnected()) {
     baseRot = turretSubsystem.getAngularPosition();
-    shooterAng = getShooterAngle();
     auto table = networkInstance.GetTable("ShooterRobot");
 
     baseRotation = table->GetEntry("baseRotation");
     baseRotation.SetDouble(turretSubsystem.getAngularPosition().to<double>());
 
-    shooterAngle = table->GetEntry("shooterAngle");
-    shooterAngle.SetDouble(shooterAng.to<double>());
   }
 }
 

@@ -21,8 +21,8 @@ using namespace units; // we are lazy
 
 class VisionSubsystem : public frc2::SubsystemBase {
 public:
-  VisionSubsystem(const TurretSubsystem& turret, std::function<units::radian_t()> shooterAngleFn) 
-    : turretSubsystem(turret), getShooterAngle(shooterAngleFn) {};
+  VisionSubsystem(const TurretSubsystem& turret) 
+    : turretSubsystem(turret) {};
 
   void Periodic() override;
   bool IsHubInView() const;
@@ -50,6 +50,5 @@ public:
 private:
   nt::NetworkTableEntry baseRotation, shooterAngle;
   const TurretSubsystem& turretSubsystem;
-  std::function<radian_t()> getShooterAngle;
   nt::NetworkTableInstance networkInstance;
 };

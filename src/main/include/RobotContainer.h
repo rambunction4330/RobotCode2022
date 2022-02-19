@@ -37,7 +37,7 @@ private:
   DriveSubsystem    driveSubsystem;
   IntakeSubsystem   intakeSubsystem;
   JoystickSubsystem joystickSubsystem;
-  VisionSubsystem   visionSubsystem{ turretSubsystem, [](){return 0_rad;} };
+  VisionSubsystem   visionSubsystem{ turretSubsystem};
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
   TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
   ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeSubsystem };
