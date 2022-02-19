@@ -17,9 +17,8 @@ class TurretSubsystem : public frc2::SubsystemBase {
  public:
  /**
   * Creates a TurretSubsystem with the given wheelDiameter
-  * @param wheelDiameter the diameter of the wheel in meters
   */
-  TurretSubsystem(units::length::meter_t wheelDiameter = 0_m);
+  TurretSubsystem();
 
   /**
    * Spin the turret to a position
@@ -28,22 +27,10 @@ class TurretSubsystem : public frc2::SubsystemBase {
   void spinTo(units::angle::radian_t pos);
 
   /**
-   * Spin to turret to a position
-   * @param pos the position to spin to in meters
-   */
-  void spinTo(units::length::meter_t pos);
-
-  /**
    * Spin to an offset of the current position
    * @param pos the offset position in radians
    */
   void spinOffset(units::angle::radian_t pos);
-
-  /**
-   * Spin to an offset of the current position
-   * @param pos the offset position in meters. I.E angle * circumference
-   */
-  void spinOffset(units::length::meter_t pos);
 
 
   /**
@@ -53,24 +40,11 @@ class TurretSubsystem : public frc2::SubsystemBase {
   units::angle::radian_t getAngularPosition() const;
 
   /**
-   * Get the position of the turret
-   * @return get the linear position of the turret in meters. Ie rotationAngle * circumference
-   */
-  units::length::meter_t getLinearPosition() const;
-
-  /**
    * Check if the turret is at the position within the specified error bounds
    * @param pos The target position in radians
    * @return whether or not the turret is at the specified position. True if it is.
    */
   bool isAtPosition(units::angle::radian_t pos);
-
-  /**
-   * Check if the turret is at the position within the specified error bounds
-   * @param pos The target position in meters
-   * @return whether or not the turret is at the specified position. True if it is.
-   */
-  bool isAtPosition(units::length::meter_t pos);
 
   /**
    * Sweep the turret from the minimum position to the maximum position and vice versa. 
@@ -91,7 +65,5 @@ class TurretSubsystem : public frc2::SubsystemBase {
     turretSubsystemConstants::motorFeedforward,
     {}
   };
-
-  const units::length::meter_t wheelDiameter;
 
 };

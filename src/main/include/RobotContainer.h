@@ -31,7 +31,7 @@ private:
   void ConfigureButtonBindings();
 
   ShooterSubsystem  shooterSubsystem{};
-  TurretSubsystem   turretSubsystem{1_m};
+  TurretSubsystem   turretSubsystem{};
 
   ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
