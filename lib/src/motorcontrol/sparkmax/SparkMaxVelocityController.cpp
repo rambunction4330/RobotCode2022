@@ -18,7 +18,7 @@ template <typename U>
 SparkMaxVelocityController<U>::SparkMaxVelocityController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionUnit,
     const Feedforward<U> &ff, std::initializer_list<Follower> followerList, 
-    bool alternateEncoder)
+    bool alternateEncoder, int countsPerRevolution)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(sparkMax.GetEncoder()),
       sparkMaxPIDController(sparkMax.GetPIDController()),
@@ -27,7 +27,7 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
   sparkMax.RestoreFactoryDefaults();
 
   if(alternateEncoder)
-    (rev::RelativeEncoder&)sparkMaxEncoder = sparkMax.GetAlternateEncoder(1);
+    (rev::RelativeEncoder&)sparkMaxEncoder = sparkMax.GetAlternateEncoder(countsPerRevolution);
 
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetI(config.i));

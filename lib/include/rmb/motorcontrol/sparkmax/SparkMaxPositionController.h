@@ -101,11 +101,13 @@ public:
    * @param feedForward The Feedforward to be passed to the motor. rmb::noFeedforward<DistanceUnit> is the default
    * @param followers list of motors to follow this motor. The parent motor will construct the children with the given configuration
    *                  and will own the followers.
+   * @param ticksPerRevolution The number of ticks per rotation of the motor
    */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
                              ConversionUnit_t conversion = ConversionUnit_t(1), 
                              const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>,
-                             std::initializer_list<Follower> followers = {}, bool alternateEncoder = false);
+                             std::initializer_list<Follower> followers = {}, bool alternateEncoder = false,
+                             int ticksPerRevolution = 4096);
 
   /**
    * Sets the position of the motor.

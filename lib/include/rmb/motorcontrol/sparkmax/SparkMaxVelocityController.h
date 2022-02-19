@@ -113,12 +113,15 @@ public:
    * 
    * @param feedForward the feedforward to be used. Defaults to noFeedforward<DistanceUnit>
    * @param followers a list of followers to follow the motor
+   * @param alternateEncoder whether or not the VelocityController should use the encoder plugged
+   *                         into the SparkMax's data port
+   * @param countPerRevolution the number of ticks per revolution of the alternate encoder
    */
   SparkMaxVelocityController(
       int deviceID, const PIDConfig &config,
       ConversionUnit_t conversionUnit = ConversionUnit_t(1),
       const Feedforward<DistanceUnit> &feedforward = noFeedforward<DistanceUnit>,
-      std::initializer_list<Follower> followers = {}, bool alternateEncoder = false);
+      std::initializer_list<Follower> followers = {}, bool alternateEncoder = false, int countPerRevolution = 4096);
 
   /**
    * Sets the target velocity of the motorcontroller
