@@ -132,7 +132,7 @@ public:
    * @return raw position(in rotations) of the motor according to the encoder
    */
   double getRawPosition() {
-    return sparkMaxEncoder.GetPosition();
+    return sparkMaxEncoder -> GetPosition();
   }
 
   /**
@@ -219,7 +219,7 @@ public:
 
 private:
   rev::CANSparkMax sparkMax;
-  const rev::RelativeEncoder& sparkMaxEncoder;
+  std::unique_ptr<rev::RelativeEncoder> sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
 
   ConversionUnit_t conversion;

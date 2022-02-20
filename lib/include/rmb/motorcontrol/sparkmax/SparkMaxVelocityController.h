@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <units/angle.h>
 #include <units/angular_velocity.h>
 #include <units/angular_acceleration.h>
@@ -152,7 +154,7 @@ public:
 
 private:
   rev::CANSparkMax sparkMax;
-  const rev::RelativeEncoder& sparkMaxEncoder;
+  std::unique_ptr<rev::RelativeEncoder> sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
   ConversionUnit_t conversion;
   const Feedforward<DistanceUnit>& feedforward;

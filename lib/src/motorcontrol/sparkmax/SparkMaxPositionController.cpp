@@ -13,7 +13,7 @@
 template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(int deviceID)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-      sparkMaxEncoder(sparkMax.GetEncoder()),
+      sparkMaxEncoder(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder())),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(Distance_t(1) / units::radian_t(1)),
       feedforward(noFeedforward<U>) {}
@@ -24,14 +24,15 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
     const Feedforward<U> &ff, std::initializer_list<Follower> followerList, bool alternateEncoder
     , int ticksPerRotation)
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
-      sparkMaxEncoder(sparkMax.GetEncoder()),
+      sparkMaxEncoder(
+        alternateEncoder ? 
+          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder())) :
+          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxAlternateEncoder>(sparkMax.GetAlternateEncoder(ticksPerRotation)))
+        ),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionFactor), feedforward(ff) {
 
   sparkMax.RestoreFactoryDefaults();
-
-  if(alternateEncoder)
-    (rev::RelativeEncoder&)sparkMaxEncoder = sparkMax.GetAlternateEncoder(ticksPerRotation);
 
   // configure pid consts
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));
@@ -94,7 +95,7 @@ void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
 template <typename U>
 typename rmb::SparkMaxPositionController<U>::Distance_t
 rmb::SparkMaxPositionController<U>::getPosition() {
-  RawUnit_t val = RawUnit_t(sparkMaxEncoder.GetPosition());
+  RawUnit_t val = RawUnit_t(sparkMaxEncoder -> GetPosition());
   std::clamp<RawUnit_t>(val, minPosition, maxPosition);
   return Distance_t((val * conversion)) - reference;
 }
@@ -102,12 +103,12 @@ rmb::SparkMaxPositionController<U>::getPosition() {
 template <typename U>
 typename rmb::SparkMaxPositionController<U>::Velocity_t
 rmb::SparkMaxPositionController<U>::getVelocity() {
-  return Velocity_t(RawVelocity_t(sparkMaxEncoder.GetVelocity()) * conversion);
+  return Velocity_t(RawVelocity_t(sparkMaxEncoder -> GetVelocity()) * conversion);
 }
 
 template <typename U>
 void rmb::SparkMaxPositionController<U>::resetRefrence(Distance_t distance) {
-  reference = (RawUnit_t(sparkMaxEncoder.GetPosition()) * conversion) + distance;
+  reference = (RawUnit_t(sparkMaxEncoder -> GetPosition()) * conversion) + distance;
 }
 
 template <typename U>
