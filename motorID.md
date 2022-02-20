@@ -7,7 +7,7 @@
 | Intake_DeployA        | 21 | SparkMax             |
 | Intake_DeployB        | 22 | SparkMax             |
 | Intake_Spinner        | 23 | SparkMax             |
-| Storage_Motor         | 31 | SparkMax             |
+| Storage_Motor         | 31 | TalonSRX             |
 | Shooter_Turret        | 41 | SparkMax             |
 | Shooter_Hood          | 42 | SparkMax             |
-| Shooter_Flywheel      | 43 | TalonSRX             |
+| Shooter_Flywheel      | 43 | SparkMax             |
