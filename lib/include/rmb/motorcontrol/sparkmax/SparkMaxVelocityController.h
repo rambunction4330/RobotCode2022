@@ -87,8 +87,8 @@ public:
    */
   struct Follower {
     int id; /** device ID of the follower */
-    rev::CANSparkMax::MotorType motorType; /** Motor type of the follower. Can be kBrushless or kBrushed */
-    bool inverted; /** Whether or not the motor is inverted or not. true for inverted.*/
+    rev::CANSparkMax::MotorType motorType; /**< Motor type of the follower. Can be kBrushless or kBrushed */
+    bool inverted; /**< Whether or not the motor is inverted or not. true for inverted.*/
   };
 
   /** \deprecated

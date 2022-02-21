@@ -20,15 +20,14 @@ namespace rmb {
  */
 namespace trajectory {
 
-const units::meters_per_second_squared_t g = 9.80665_mps_sq; /** Universaly agreed upon gravitation constant. 
-                                                                 Source: https://en.wikipedia.org/wiki/Gravitational_acceleration*/
+const units::meters_per_second_squared_t g = 9.80665_mps_sq; /**< Universaly agreed upon gravitation constant. Source: https://en.wikipedia.org/wiki/Gravitational_acceleration */
 
 /**
  * Structure representing a trajectory
  */
 struct Trajectory {
-    units::angle::radian_t angle; /** The initial angle of the projectile*/
-    units::velocity::meters_per_second_t velocity; /** The initial velocity of the projectile*/
+    units::angle::radian_t angle; /**< The initial angle of the projectile*/
+    units::velocity::meters_per_second_t velocity; /**< The initial velocity of the projectile*/
 };
 
 /**
@@ -44,10 +43,38 @@ struct Trajectory {
  *        ------------------^          
  *                          px       
  * 
- * <h3> Formulas: </h3>
- * \f
+ * <h3> Formulas Used: </h3>
+ * 
+ * 
+ * Slope of entry 
+ * \f[
+ *   s_{e}=\tan\left(-a_{e}\right)
+ * \f]
+ * 
+ * 
+ * Velocity in the x direction:
+ * \f[
+ *   v_{x}=\sqrt{\frac{gp_{x}}{2\left(\frac{p_{y}}{p_{x}}-s_{e}\right)}}
+ * \f]
+ *
+ * 
+ * Velocity in the y direction:
+ * \f[
  *   v_{y}=\frac{\left(p_{y}+\frac{1}{2}g\left(\frac{p_{x}}{v_{x}}\right)^{2}\right)}{\frac{p_{x}}{v_{x}}}
- * \f
+ * \f]
+ * 
+ * 
+ * Required angle:
+ * \f[
+ *  a=\arctan\left(\frac{v_{y}}{v_{x}}\right)
+ * \f]
+ * 
+ * 
+ * Required Velocity:
+ * \f[
+ *  v=\sqrt{v_{x}^{2}+v_{y}^{2}}
+ * \f]
+ * 
  * 
  * @param px the x position to the target
  * @param py the y position to the target

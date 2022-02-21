@@ -11,13 +11,13 @@ namespace rmb {
 */
 template <typename DistanceUnit> class VelocityController {
 public:
-  using Distance_t = units::unit_t<DistanceUnit>; /** User specified distance unit*/
+  using Distance_t = units::unit_t<DistanceUnit>; /**< User specified distance unit*/
   using VelocityUnit =
       units::compound_unit<DistanceUnit, units::inverse<units::seconds>>;
-  using Velocity_t = units::unit_t<VelocityUnit>; /** User specificed distance unit / second*/
+  using Velocity_t = units::unit_t<VelocityUnit>; /**< User specificed distance unit / second*/
   using AccelerationUnit =
       units::compound_unit<VelocityUnit, units::inverse<units::seconds>>;
-  using Acceleration_t = units::unit_t<AccelerationUnit>; /** User specified distance unit / second^2*/
+  using Acceleration_t = units::unit_t<AccelerationUnit>; /**< User specified distance unit / second^2*/
 
   /**
    * Sets the target velocity of the motor.
