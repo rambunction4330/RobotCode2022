@@ -137,7 +137,7 @@ namespace turretSubsystemConstants {
         /* usingSmartMotion */ true,
         /* maxVelocity */ 100_tps, /* minVelocity */ 0_tps,
         /* maxAccel */ 10_rad_per_s_sq,
-        /* allowedErr */ 0.8_rad_per_s,
+        /* allowedErr */ 0.8_rad,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
     };
 
