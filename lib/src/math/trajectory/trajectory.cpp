@@ -36,5 +36,19 @@ Trajectory trajectoryFromVelocity(units::meter_t px, units::meter_t py, units::m
     return trajectory;
 }
 
+Trajectory trajectoryFromAngle(units::meter_t px, units::meter_t py, units::radian_t a) {
+    Trajectory trajectory;
+
+    units::velocity::meters_per_second_t v = units::math::sqrt(
+        (g * px) /
+        (2 * units::math::cos(a) * (units::math::sin(a) - ((py * units::math::cos(a)) / px)))
+    );
+
+    trajectory.angle = a;
+    trajectory.velocity = v;
+
+    return trajectory;
+}
+
 } // namespace trajectory
 } // namespace rmb

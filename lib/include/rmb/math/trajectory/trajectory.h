@@ -89,7 +89,7 @@ Trajectory trajectoryFromEntryAngle(units::meter_t px, units::meter_t py, units:
  * Calculates the required trajectory of the projectile based on the given initial velocity
  * and position.
  * 
- * <h3>Formulas: </h3>
+ * <h3>Formulas used: </h3>
  * 
  * Angle:
  * \f[
@@ -104,6 +104,27 @@ Trajectory trajectoryFromEntryAngle(units::meter_t px, units::meter_t py, units:
  * @see trajectoryFromEntryAngle
  */
 Trajectory trajectoryFromVelocity(units::meter_t px, units::meter_t py, units::meters_per_second_t velocity);
+
+/**
+ * 
+ * Caculates the required trajectory of a projectile based on the x and y position of the target and the
+ * intial angle
+ * 
+ * <h3>Formulas used: </h3>
+ * 
+ * Velocity:
+ * \f[
+ *   v=\sqrt{\frac{gp_{x}}{2\cos\left(a\right)\left(\sin\left(a\right)-\frac{\left(p_{y}\cos\left(a\right)\right)}{p_{x}}\right)}}
+ * \f]
+ * 
+ * 
+ * @param px the x distance to the target
+ * @param py the y distance to the target
+ * @param angle the initial angle of the projectile
+ * @return The trajectory(angle and velocity) that the projectile must take to reach (px, py)
+ * @see trajectoryFromEntryAngle
+ */
+Trajectory trajectoryFromAngle(units::meter_t px, units::meter_t py, units::radian_t angle);
 
 } // namespace trajectory
 } // namespace rmb
