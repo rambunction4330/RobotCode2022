@@ -32,7 +32,7 @@ struct Trajectory {
 
 /**
  * Calculates the trajectory required based on the location of the target and the desired
- * entry angle Update stuff please
+ * entry angle
  * 
  *                                 < py
  *                      \       /  |
@@ -79,9 +79,31 @@ struct Trajectory {
  * @param px the x position to the target
  * @param py the y position to the target
  * @param entryAngle the desired angle at which the projectile should enter the target
+ * @return The trajectory the projectile needs to follow to meet the provided criteria
  */
 Trajectory trajectoryFromEntryAngle(units::meter_t px, units::meter_t py, units::radian_t entryAngle);
 
-}
 
-}
+/**
+ * 
+ * Calculates the required trajectory of the projectile based on the given initial velocity
+ * and position.
+ * 
+ * <h3>Formulas: </h3>
+ * 
+ * Angle:
+ * \f[
+ *  a=\arctan\left(\frac{v^{2}+\sqrt{v^{4}-g\left(gp_{x}^{2}+2v^{2}p_{y}\right)}}{gp_{x}}\right)
+ * \f]
+ * 
+ * 
+ * @param px the x position to the target
+ * @param py the y position to the target
+ * @param velocity the initial velocity of the projectile
+ * @return The trajectory the projectile needs to follow to meet the provided criteria
+ * @see trajectoryFromEntryAngle
+ */
+Trajectory trajectoryFromVelocity(units::meter_t px, units::meter_t py, units::meters_per_second_t velocity);
+
+} // namespace trajectory
+} // namespace rmb

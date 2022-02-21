@@ -20,5 +20,21 @@ Trajectory trajectoryFromEntryAngle(units::meter_t px, units::meter_t py, units:
 
     return trajectory;
 }
+
+Trajectory trajectoryFromVelocity(units::meter_t px, units::meter_t py, units::meters_per_second_t v) {
+    Trajectory trajectory;
+    
+    // angle
+    units::radian_t a = units::math::atan(
+        (units::math::pow<2>(v) + units::math::sqrt(units::math::pow<4>(v) - g * (g * units::math::pow<2>(px) + 2 * units::math::pow<2>(v) * py))) / 
+        (g * px)
+    );
+
+    trajectory.angle = a;
+    trajectory.velocity = v;
+
+    return trajectory;
 }
-}
+
+} // namespace trajectory
+} // namespace rmb
