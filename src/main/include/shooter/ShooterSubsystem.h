@@ -8,6 +8,8 @@
 
 #include <units/angle.h>
 
+#include <rmb/math/trajectory/trajectory.h>
+
 #include <rmb/motorcontrol/sparkmax/SparkMaxVelocityController.h>
 
 #include <Constants.h>
