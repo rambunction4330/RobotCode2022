@@ -2,11 +2,7 @@ name: doxygen-publish
 
 on:
   push:
-    # Change to main once the PR is merged
-    # theVerySharpFlat -> changing to main. PR is merged.
     branches: [ main ]
-#  pull_request:
-#    branches: [ main ]
 
 jobs:
   build:
