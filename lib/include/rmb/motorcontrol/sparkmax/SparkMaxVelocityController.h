@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <units/angle.h>
 #include <units/angular_velocity.h>
 #include <units/angular_acceleration.h>
@@ -113,12 +115,15 @@ public:
    * 
    * @param feedForward the feedforward to be used. Defaults to noFeedforward<DistanceUnit>
    * @param followers a list of followers to follow the motor
+   * @param alternateEncoder whether or not the VelocityController should use the encoder plugged
+   *                         into the SparkMax's data port
+   * @param countPerRevolution the number of ticks per revolution of the alternate encoder
    */
   SparkMaxVelocityController(
       int deviceID, const PIDConfig &config,
       ConversionUnit_t conversionUnit = ConversionUnit_t(1),
       const Feedforward<DistanceUnit> &feedforward = noFeedforward<DistanceUnit>,
-      std::initializer_list<Follower> followers = {});
+      std::initializer_list<Follower> followers = {}, bool alternateEncoder = false, int countPerRevolution = 4096);
 
   /**
    * Sets the target velocity of the motorcontroller
@@ -149,10 +154,10 @@ public:
 
 private:
   rev::CANSparkMax sparkMax;
-  rev::SparkMaxRelativeEncoder sparkMaxEncoder;
+  std::unique_ptr<rev::RelativeEncoder> sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
   ConversionUnit_t conversion;
-  const Feedforward<DistanceUnit> &feedforward;
+  const Feedforward<DistanceUnit>& feedforward;
 
   rev::CANSparkMax::ControlType controlType;
   std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
