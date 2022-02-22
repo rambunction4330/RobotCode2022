@@ -7,7 +7,8 @@
 | Intake_DeployA        | 21 | SparkMax             | Brushless             |
 | Intake_DeployB        | 22 | SparkMax             | Brushless             |
 | Intake_Spinner        | 23 | SparkMax             | Brushed               |
-| Storage_Motor         | 31 | TalonSRX             | Brushless             |
+| Storage_Motor         | 31 | TalonSRX             | Brushed               |
 | Shooter_Turret        | 41 | SparkMax             | Brushless             |
-| Shooter_Hood          | 42 | SparkMax             | Brushless             |
-| Shooter_Flywheel      | 43 | SparkMax             | Brushless             |
+| Shooter_Hood          | 42 | SparkMax             | Brushed               |
+| Shooter_FlywheelA     | 43 | SparkMax             | Brushless             |
+| Shooter_FlywheelB     | 44 | SparkMax             | Brushless             |
