@@ -3,7 +3,8 @@ name: doxygen-publish
 on:
   push:
     # Change to main once the PR is merged
-    branches: [ doxygen ]
+    # theVerySharpFlat -> changing to main. PR is merged.
+    branches: [ main ]
 #  pull_request:
 #    branches: [ main ]
 
