@@ -16,6 +16,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -96,8 +106,7 @@ $(document).ready(function(){initNavTree('structrmb_1_1_spark_max_position_contr
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a51eb65f7c0f300c3bbf1f64dbcd32e33"><td class="memItemLeft" align="right" valign="top"><a id="a51eb65f7c0f300c3bbf1f64dbcd32e33" name="a51eb65f7c0f300c3bbf1f64dbcd32e33"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="memitem:a51eb65f7c0f300c3bbf1f64dbcd32e33"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html#a51eb65f7c0f300c3bbf1f64dbcd32e33">id</a></td></tr>
 <tr class="separator:a51eb65f7c0f300c3bbf1f64dbcd32e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace56caab393b46e8bcf8a9ba43c58561"><td class="memItemLeft" align="right" valign="top">rev::CANSparkMax::MotorType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html#ace56caab393b46e8bcf8a9ba43c58561">motorType</a></td></tr>
 <tr class="separator:ace56caab393b46e8bcf8a9ba43c58561"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +117,23 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename DistanceUnit&gt;<br />
 struct rmb::SparkMaxPositionController&lt; DistanceUnit &gt;::Follower</div><p >Type definition for the <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html">Follower</a> functionality that the SparkMaxes provide. A follower is a motor that Will "follow" the specified motor. You can specify followers in the constructor. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a51eb65f7c0f300c3bbf1f64dbcd32e33" name="a51eb65f7c0f300c3bbf1f64dbcd32e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51eb65f7c0f300c3bbf1f64dbcd32e33">&#9670;&nbsp;</a></span>id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classrmb_1_1_spark_max_position_controller.html">rmb::SparkMaxPositionController</a>&lt; DistanceUnit &gt;::Follower::id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >The ID of the follower motor </p>
+
+</div>
+</div>
 <a id="a215c51dfba2f5f4a79b3439a7f4e5521" name="a215c51dfba2f5f4a79b3439a7f4e5521"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a215c51dfba2f5f4a79b3439a7f4e5521">&#9670;&nbsp;</a></span>inverted</h2>
 
@@ -121,7 +147,7 @@ template&lt;typename DistanceUnit &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >The type of motor. Can be kBrushless or kBrushed. </p>
+<p >Whether or not the follower motor should be inverted. true if inverted. </p>
 
 </div>
 </div>
@@ -138,7 +164,7 @@ template&lt;typename DistanceUnit &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >The ID of the follower motor </p>
+<p >The type of motor. Can be kBrushless or kBrushed. </p>
 
 </div>
 </div>

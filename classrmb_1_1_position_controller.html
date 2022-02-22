@@ -16,6 +16,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -106,37 +116,36 @@ Inheritance diagram for rmb::PositionController&lt; DistanceUnit &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ac0c1f079e8a7577a681029d300315b81"><td class="memItemLeft" align="right" valign="top"><a id="ac0c1f079e8a7577a681029d300315b81" name="ac0c1f079e8a7577a681029d300315b81"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Distance_t</b> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
+<tr class="memitem:ac0c1f079e8a7577a681029d300315b81"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
 <tr class="separator:ac0c1f079e8a7577a681029d300315b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaf3719162c2e0a2df410ee2dd50d0ad"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:adaf3719162c2e0a2df410ee2dd50d0ad"><td class="memItemLeft" align="right" valign="top"><a id="adaf3719162c2e0a2df410ee2dd50d0ad" name="adaf3719162c2e0a2df410ee2dd50d0ad"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>VelocityUnit</b> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:adaf3719162c2e0a2df410ee2dd50d0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42a620e1fd29de249ae2b7af217234ac"><td class="memItemLeft" align="right" valign="top"><a id="a42a620e1fd29de249ae2b7af217234ac" name="a42a620e1fd29de249ae2b7af217234ac"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Velocity_t</b> = units::unit_t&lt; <a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a> &gt;</td></tr>
+<tr class="memitem:a42a620e1fd29de249ae2b7af217234ac"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a42a620e1fd29de249ae2b7af217234ac">Velocity_t</a> = units::unit_t&lt; VelocityUnit &gt;</td></tr>
 <tr class="separator:a42a620e1fd29de249ae2b7af217234ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af72d3da3481fd48583764acf765788dc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#af72d3da3481fd48583764acf765788dc">AccelerationUnit</a> = units::compound_unit&lt; <a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a>, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:af72d3da3481fd48583764acf765788dc"><td class="memItemLeft" align="right" valign="top"><a id="af72d3da3481fd48583764acf765788dc" name="af72d3da3481fd48583764acf765788dc"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationUnit</b> = units::compound_unit&lt; VelocityUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:af72d3da3481fd48583764acf765788dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9aa54c76717e0333ab85041d84fd4d8"><td class="memItemLeft" align="right" valign="top"><a id="ae9aa54c76717e0333ab85041d84fd4d8" name="ae9aa54c76717e0333ab85041d84fd4d8"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Acceleration_t</b> = units::unit_t&lt; <a class="el" href="classrmb_1_1_position_controller.html#af72d3da3481fd48583764acf765788dc">AccelerationUnit</a> &gt;</td></tr>
+<tr class="memitem:ae9aa54c76717e0333ab85041d84fd4d8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#ae9aa54c76717e0333ab85041d84fd4d8">Acceleration_t</a> = units::unit_t&lt; AccelerationUnit &gt;</td></tr>
 <tr class="separator:ae9aa54c76717e0333ab85041d84fd4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad521e51484557c6636dce869f97dd002"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#ad521e51484557c6636dce869f97dd002">resetRefrence</a> (Distance_t position)=0</td></tr>
+<tr class="memitem:ad521e51484557c6636dce869f97dd002"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#ad521e51484557c6636dce869f97dd002">resetRefrence</a> (<a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> position)=0</td></tr>
 <tr class="separator:ad521e51484557c6636dce869f97dd002"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a143b2fe8bd6be5f688ff690b03a471ec"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a143b2fe8bd6be5f688ff690b03a471ec">setMaxPosition</a> (Distance_t max)=0</td></tr>
+<tr class="memitem:a143b2fe8bd6be5f688ff690b03a471ec"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a143b2fe8bd6be5f688ff690b03a471ec">setMaxPosition</a> (<a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> max)=0</td></tr>
 <tr class="separator:a143b2fe8bd6be5f688ff690b03a471ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa136da3fdbf6ac7bea219ca7482772e0"><td class="memItemLeft" align="right" valign="top">virtual Distance_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#aa136da3fdbf6ac7bea219ca7482772e0">getMaxPosition</a> ()=0</td></tr>
+<tr class="memitem:aa136da3fdbf6ac7bea219ca7482772e0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#aa136da3fdbf6ac7bea219ca7482772e0">getMaxPosition</a> ()=0</td></tr>
 <tr class="separator:aa136da3fdbf6ac7bea219ca7482772e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72b23357bcd57be8bdb41646c5f39080"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a72b23357bcd57be8bdb41646c5f39080">setMinPosition</a> (Distance_t min)=0</td></tr>
+<tr class="memitem:a72b23357bcd57be8bdb41646c5f39080"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a72b23357bcd57be8bdb41646c5f39080">setMinPosition</a> (<a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> min)=0</td></tr>
 <tr class="separator:a72b23357bcd57be8bdb41646c5f39080"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45164e92e303ecd0b39d9481b3fe57bc"><td class="memItemLeft" align="right" valign="top">virtual Distance_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a45164e92e303ecd0b39d9481b3fe57bc">getMinPosition</a> ()=0</td></tr>
+<tr class="memitem:a45164e92e303ecd0b39d9481b3fe57bc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a45164e92e303ecd0b39d9481b3fe57bc">getMinPosition</a> ()=0</td></tr>
 <tr class="separator:a45164e92e303ecd0b39d9481b3fe57bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abad3452a95f00f1e5a0751611fce5659"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#abad3452a95f00f1e5a0751611fce5659">setPosition</a> (Distance_t position)=0</td></tr>
+<tr class="memitem:abad3452a95f00f1e5a0751611fce5659"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#abad3452a95f00f1e5a0751611fce5659">setPosition</a> (<a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> position)=0</td></tr>
 <tr class="separator:abad3452a95f00f1e5a0751611fce5659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f5824ba5f4f036a6bffb4e7d4e48ce8"><td class="memItemLeft" align="right" valign="top">virtual Distance_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a6f5824ba5f4f036a6bffb4e7d4e48ce8">getPosition</a> ()=0</td></tr>
+<tr class="memitem:a6f5824ba5f4f036a6bffb4e7d4e48ce8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a6f5824ba5f4f036a6bffb4e7d4e48ce8">getPosition</a> ()=0</td></tr>
 <tr class="separator:a6f5824ba5f4f036a6bffb4e7d4e48ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fd2318416850550ef32d941da71f44a"><td class="memItemLeft" align="right" valign="top">virtual Velocity_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a3fd2318416850550ef32d941da71f44a">getVelocity</a> ()=0</td></tr>
+<tr class="memitem:a3fd2318416850550ef32d941da71f44a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classrmb_1_1_position_controller.html#a42a620e1fd29de249ae2b7af217234ac">Velocity_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#a3fd2318416850550ef32d941da71f44a">getVelocity</a> ()=0</td></tr>
 <tr class="separator:a3fd2318416850550ef32d941da71f44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa13b2b997211e032795ea54e57f5c52"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_position_controller.html#aaa13b2b997211e032795ea54e57f5c52">setInverted</a> (bool inverted)=0</td></tr>
 <tr class="separator:aaa13b2b997211e032795ea54e57f5c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,8 +156,8 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename DistanceUnit&gt;<br />
 class rmb::PositionController&lt; DistanceUnit &gt;</div><p >Base class for wrappers around vendor API / device specific positionController code. This class provides a standard interface to code that allows you to control the position of a motor. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="af72d3da3481fd48583764acf765788dc" name="af72d3da3481fd48583764acf765788dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af72d3da3481fd48583764acf765788dc">&#9670;&nbsp;</a></span>AccelerationUnit</h2>
+<a id="ae9aa54c76717e0333ab85041d84fd4d8" name="ae9aa54c76717e0333ab85041d84fd4d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9aa54c76717e0333ab85041d84fd4d8">&#9670;&nbsp;</a></span>Acceleration_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,16 +165,16 @@ class rmb::PositionController&lt; DistanceUnit &gt;</div><p >Base class for wrap
 template&lt;typename DistanceUnit &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::AccelerationUnit =  units::compound_unit&lt;<a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a>, units::inverse&lt;units::seconds&gt; &gt;</td>
+          <td class="memname">using <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::Acceleration_t =  units::unit_t&lt;AccelerationUnit&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >DistanceUnit per second </p>
+<p >DistanceUnit per second squared </p>
 
 </div>
 </div>
-<a id="adaf3719162c2e0a2df410ee2dd50d0ad" name="adaf3719162c2e0a2df410ee2dd50d0ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adaf3719162c2e0a2df410ee2dd50d0ad">&#9670;&nbsp;</a></span>VelocityUnit</h2>
+<a id="ac0c1f079e8a7577a681029d300315b81" name="ac0c1f079e8a7577a681029d300315b81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0c1f079e8a7577a681029d300315b81">&#9670;&nbsp;</a></span>Distance_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -173,11 +182,28 @@ template&lt;typename DistanceUnit &gt; </div>
 template&lt;typename DistanceUnit &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::VelocityUnit =  units::compound_unit&lt;DistanceUnit, units::inverse&lt;units::seconds&gt; &gt;</td>
+          <td class="memname">using <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::Distance_t =  units::unit_t&lt;DistanceUnit&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p >User specified distance unit. Is probably going to be an angle or a length </p>
+
+</div>
+</div>
+<a id="a42a620e1fd29de249ae2b7af217234ac" name="a42a620e1fd29de249ae2b7af217234ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a620e1fd29de249ae2b7af217234ac">&#9670;&nbsp;</a></span>Velocity_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename DistanceUnit &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::Velocity_t =  units::unit_t&lt;VelocityUnit&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >DistanceUnit per second </p>
 
 </div>
 </div>
@@ -224,7 +250,7 @@ template&lt;typename DistanceUnit &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual Distance_t <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::getMaxPosition </td>
+          <td class="memname">virtual <a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::getMaxPosition </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -254,7 +280,7 @@ template&lt;typename DistanceUnit &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual Distance_t <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::getMinPosition </td>
+          <td class="memname">virtual <a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::getMinPosition </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -284,7 +310,7 @@ template&lt;typename DistanceUnit &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual Distance_t <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::getPosition </td>
+          <td class="memname">virtual <a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::getPosition </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -314,7 +340,7 @@ template&lt;typename DistanceUnit &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual Velocity_t <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::getVelocity </td>
+          <td class="memname">virtual <a class="el" href="classrmb_1_1_position_controller.html#a42a620e1fd29de249ae2b7af217234ac">Velocity_t</a> <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::getVelocity </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -346,7 +372,7 @@ template&lt;typename DistanceUnit &gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::resetRefrence </td>
           <td>(</td>
-          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramtype"><a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a>&#160;</td>
           <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
         </tr>
@@ -357,7 +383,7 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >DistanceUnit per second squared Resets the reference point of the position controller to base position readings off of. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Resets the reference point of the position controller to base position readings off of. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>the desired reference point of the position controller in user specified DistanceUnits </td></tr>
   </table>
@@ -418,7 +444,7 @@ template&lt;typename DistanceUnit &gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::setMaxPosition </td>
           <td>(</td>
-          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramtype"><a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a>&#160;</td>
           <td class="paramname"><em>max</em></td><td>)</td>
           <td></td>
         </tr>
@@ -454,7 +480,7 @@ template&lt;typename DistanceUnit &gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::setMinPosition </td>
           <td>(</td>
-          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramtype"><a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a>&#160;</td>
           <td class="paramname"><em>min</em></td><td>)</td>
           <td></td>
         </tr>
@@ -490,7 +516,7 @@ template&lt;typename DistanceUnit &gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController</a>&lt; DistanceUnit &gt;::setPosition </td>
           <td>(</td>
-          <td class="paramtype">Distance_t&#160;</td>
+          <td class="paramtype"><a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a>&#160;</td>
           <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
         </tr>

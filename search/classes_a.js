@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['velocitycontroller_0',['VelocityController',['../classrmb_1_1_velocity_controller.html',1,'rmb']]],
-  ['velocitycontroller_3c_20units_3a_3ameters_20_3e_1',['VelocityController&lt; units::meters &gt;',['../classrmb_1_1_velocity_controller.html',1,'rmb']]]
+  ['talonfxvelocitycontroller_0',['TalonFXVelocityController',['../classrmb_1_1_talon_f_x_velocity_controller.html',1,'rmb']]],
+  ['talonsrxvelocitycontroller_1',['TalonSRXVelocityController',['../classrmb_1_1_talon_s_r_x_velocity_controller.html',1,'rmb']]],
+  ['trajectory_2',['Trajectory',['../structrmb_1_1trajectory_1_1_trajectory.html',1,'rmb::trajectory']]]
 ];

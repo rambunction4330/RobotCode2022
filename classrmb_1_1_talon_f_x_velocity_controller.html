@@ -16,6 +16,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -144,18 +154,17 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit</b> =
 using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit_t</b> = typename units::unit_t&lt; ConversionUnit &gt;</td></tr>
 <tr class="separator:adcb5ba400095b52dfd57823192b84631"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_classrmb_1_1_velocity_controller"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classrmb_1_1_velocity_controller')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td></tr>
-<tr class="memitem:a588cd9384fb546fda392757cf10a4ea0 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="a588cd9384fb546fda392757cf10a4ea0" name="a588cd9384fb546fda392757cf10a4ea0"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Distance_t</b> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
+<tr class="memitem:a588cd9384fb546fda392757cf10a4ea0 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a588cd9384fb546fda392757cf10a4ea0">Distance_t</a> = units::unit_t&lt; DistanceUnit &gt;</td></tr>
 <tr class="separator:a588cd9384fb546fda392757cf10a4ea0 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6354cdbb6206c3178275bb0cd8fbb67 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:af6354cdbb6206c3178275bb0cd8fbb67 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="af6354cdbb6206c3178275bb0cd8fbb67" name="af6354cdbb6206c3178275bb0cd8fbb67"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>VelocityUnit</b> = units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:af6354cdbb6206c3178275bb0cd8fbb67 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af76e5fead85640b7e1e88abcc0b441c6 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="af76e5fead85640b7e1e88abcc0b441c6" name="af76e5fead85640b7e1e88abcc0b441c6"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Velocity_t</b> = units::unit_t&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> &gt;</td></tr>
+<tr class="memitem:af76e5fead85640b7e1e88abcc0b441c6 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> = units::unit_t&lt; VelocityUnit &gt;</td></tr>
 <tr class="separator:af76e5fead85640b7e1e88abcc0b441c6 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ec888f03e30ebef7f598038a6d80f21 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> = units::compound_unit&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a>, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
+<tr class="memitem:a0ec888f03e30ebef7f598038a6d80f21 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="a0ec888f03e30ebef7f598038a6d80f21" name="a0ec888f03e30ebef7f598038a6d80f21"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationUnit</b> = units::compound_unit&lt; VelocityUnit, units::inverse&lt; units::seconds &gt; &gt;</td></tr>
 <tr class="separator:a0ec888f03e30ebef7f598038a6d80f21 inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d2ddd51f51e55a5e2802ed3c3eb83db inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top"><a id="a6d2ddd51f51e55a5e2802ed3c3eb83db" name="a6d2ddd51f51e55a5e2802ed3c3eb83db"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>Acceleration_t</b> = units::unit_t&lt; <a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> &gt;</td></tr>
+<tr class="memitem:a6d2ddd51f51e55a5e2802ed3c3eb83db inherit pub_types_classrmb_1_1_velocity_controller"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">Acceleration_t</a> = units::unit_t&lt; AccelerationUnit &gt;</td></tr>
 <tr class="separator:a6d2ddd51f51e55a5e2802ed3c3eb83db inherit pub_types_classrmb_1_1_velocity_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -177,9 +186,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a940d3d7fe635d08d2c306dbcf030a04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0af9979b625add3374b8609e9d880122"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_talon_f_x_velocity_controller.html#a0af9979b625add3374b8609e9d880122">getInverted</a> () override</td></tr>
 <tr class="separator:a0af9979b625add3374b8609e9d880122"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0a84da414457fb5b07a7970c2e36fbe"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#ad0a84da414457fb5b07a7970c2e36fbe">setVelocity</a> (Velocity_t velocity)=0</td></tr>
+<tr class="memitem:ad0a84da414457fb5b07a7970c2e36fbe"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#ad0a84da414457fb5b07a7970c2e36fbe">setVelocity</a> (<a class="el" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> velocity)=0</td></tr>
 <tr class="separator:ad0a84da414457fb5b07a7970c2e36fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf9ce4fbe2c3fd72d335e3f180be55be"><td class="memItemLeft" align="right" valign="top">virtual Velocity_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#abf9ce4fbe2c3fd72d335e3f180be55be">getVelocity</a> ()=0</td></tr>
+<tr class="memitem:abf9ce4fbe2c3fd72d335e3f180be55be"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#abf9ce4fbe2c3fd72d335e3f180be55be">getVelocity</a> ()=0</td></tr>
 <tr class="separator:abf9ce4fbe2c3fd72d335e3f180be55be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfebe8151dd32a700537e2e0cbfc9312"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_velocity_controller.html#abfebe8151dd32a700537e2e0cbfc9312">setInverted</a> (bool inverted)=0</td></tr>
 <tr class="separator:abfebe8151dd32a700537e2e0cbfc9312"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -309,7 +318,7 @@ template&lt;typename DistanceUnit &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >User specified distance unit / second^2 Sets the target velocity of the motor. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Sets the target velocity of the motor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">velocity</td><td>the target velocity in user specified velocity units </td></tr>
   </table>

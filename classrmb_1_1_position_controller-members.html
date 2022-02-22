@@ -16,6 +16,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -91,9 +101,9 @@ $(document).ready(function(){initNavTree('classrmb_1_1_position_controller.html'
 
 <p>This is the complete list of members for <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Acceleration_t</b> typedef (defined in <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#af72d3da3481fd48583764acf765788dc">AccelerationUnit</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Distance_t</b> typedef (defined in <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#ae9aa54c76717e0333ab85041d84fd4d8">Acceleration_t</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>AccelerationUnit</b> typedef (defined in <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#ac0c1f079e8a7577a681029d300315b81">Distance_t</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#a33c8f20958be9ab248e830515bd48618">getInverted</a>()=0</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#aa136da3fdbf6ac7bea219ca7482772e0">getMaxPosition</a>()=0</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#a45164e92e303ecd0b39d9481b3fe57bc">getMinPosition</a>()=0</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
@@ -104,8 +114,8 @@ $(document).ready(function(){initNavTree('classrmb_1_1_position_controller.html'
   <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#a143b2fe8bd6be5f688ff690b03a471ec">setMaxPosition</a>(Distance_t max)=0</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#a72b23357bcd57be8bdb41646c5f39080">setMinPosition</a>(Distance_t min)=0</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#abad3452a95f00f1e5a0751611fce5659">setPosition</a>(Distance_t position)=0</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>Velocity_t</b> typedef (defined in <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad">VelocityUnit</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html#a42a620e1fd29de249ae2b7af217234ac">Velocity_t</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>VelocityUnit</b> typedef (defined in <a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_position_controller.html">rmb::PositionController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

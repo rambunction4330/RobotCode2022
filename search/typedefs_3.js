@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['velocityunit_0',['VelocityUnit',['../classrmb_1_1_position_controller.html#adaf3719162c2e0a2df410ee2dd50d0ad',1,'rmb::PositionController::VelocityUnit()'],['../classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67',1,'rmb::VelocityController::VelocityUnit()']]]
+  ['rawaccel_0',['RawAccel',['../classrmb_1_1_spark_max_position_controller.html#a8886a87ea550b86e4bd10c15ef2d9576',1,'rmb::SparkMaxPositionController::RawAccel()'],['../classrmb_1_1_spark_max_velocity_controller.html#a053c57fd88b75e84095023b1ca79f0e0',1,'rmb::SparkMaxVelocityController::RawAccel()']]],
+  ['rawunit_1',['RawUnit',['../classrmb_1_1_spark_max_position_controller.html#a053b922cbb5455a699d8b02efdbcaa24',1,'rmb::SparkMaxPositionController::RawUnit()'],['../classrmb_1_1_spark_max_velocity_controller.html#a0421c166263788f0d6b996a1c8202684',1,'rmb::SparkMaxVelocityController::RawUnit()']]],
+  ['rawvelocity_2',['RawVelocity',['../classrmb_1_1_spark_max_position_controller.html#a2c7c1c0cfeed326747887561c3a0b0e7',1,'rmb::SparkMaxPositionController::RawVelocity()'],['../classrmb_1_1_spark_max_velocity_controller.html#a27a85b4840275a072e9ce22f31e44b1f',1,'rmb::SparkMaxVelocityController::RawVelocity()']]]
 ];

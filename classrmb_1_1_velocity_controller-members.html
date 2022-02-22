@@ -16,6 +16,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -91,15 +101,15 @@ $(document).ready(function(){initNavTree('classrmb_1_1_velocity_controller.html'
 
 <p>This is the complete list of members for <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Acceleration_t</b> typedef (defined in <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Distance_t</b> typedef (defined in <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">Acceleration_t</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>AccelerationUnit</b> typedef (defined in <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#a588cd9384fb546fda392757cf10a4ea0">Distance_t</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#ad6b3ae2c917cc84e5dd8147c3b036e5d">getInverted</a>()=0</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#abf9ce4fbe2c3fd72d335e3f180be55be">getVelocity</a>()=0</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#abfebe8151dd32a700537e2e0cbfc9312">setInverted</a>(bool inverted)=0</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#ad0a84da414457fb5b07a7970c2e36fbe">setVelocity</a>(Velocity_t velocity)=0</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>Velocity_t</b> typedef (defined in <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> typedef</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>VelocityUnit</b> typedef (defined in <a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a>)</td><td class="entry"><a class="el" href="classrmb_1_1_velocity_controller.html">rmb::VelocityController&lt; DistanceUnit &gt;</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

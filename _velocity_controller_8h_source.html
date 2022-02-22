@@ -16,6 +16,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -97,16 +107,16 @@ $(document).ready(function(){initNavTree('_velocity_controller_8h_source.html','
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html">   12</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> DistanceUnit&gt; <span class="keyword">class </span><a class="code hl_class" href="classrmb_1_1_velocity_controller.html">VelocityController</a> {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="keyword">using</span> Distance_t = units::unit_t&lt;DistanceUnit&gt;; </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">   15</a></span>  <span class="keyword">using</span> <a class="code hl_typedef" href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">VelocityUnit</a> =</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#a588cd9384fb546fda392757cf10a4ea0">   14</a></span>  <span class="keyword">using</span> <a class="code hl_typedef" href="classrmb_1_1_velocity_controller.html#a588cd9384fb546fda392757cf10a4ea0">Distance_t</a> = units::unit_t&lt;DistanceUnit&gt;; </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <span class="keyword">using</span> VelocityUnit =</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>      units::compound_unit&lt;DistanceUnit, units::inverse&lt;units::seconds&gt;&gt;;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">using</span> Velocity_t = units::unit_t&lt;VelocityUnit&gt;; </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">   18</a></span>  <span class="keyword">using</span> <a class="code hl_typedef" href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">AccelerationUnit</a> =</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">   17</a></span>  <span class="keyword">using</span> <a class="code hl_typedef" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> = units::unit_t&lt;VelocityUnit&gt;; </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <span class="keyword">using</span> AccelerationUnit =</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>      units::compound_unit&lt;VelocityUnit, units::inverse&lt;units::seconds&gt;&gt;;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  <span class="keyword">using</span> Acceleration_t = units::unit_t&lt;AccelerationUnit&gt;; </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#ad0a84da414457fb5b07a7970c2e36fbe">   27</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_velocity_controller.html#ad0a84da414457fb5b07a7970c2e36fbe">setVelocity</a>(Velocity_t velocity) = 0;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">   20</a></span>  <span class="keyword">using</span> <a class="code hl_typedef" href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">Acceleration_t</a> = units::unit_t&lt;AccelerationUnit&gt;; </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#ad0a84da414457fb5b07a7970c2e36fbe">   27</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_velocity_controller.html#ad0a84da414457fb5b07a7970c2e36fbe">setVelocity</a>(<a class="code hl_typedef" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> velocity) = 0;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#abf9ce4fbe2c3fd72d335e3f180be55be">   34</a></span>  <span class="keyword">virtual</span> Velocity_t <a class="code hl_function" href="classrmb_1_1_velocity_controller.html#abf9ce4fbe2c3fd72d335e3f180be55be">getVelocity</a>() = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#abf9ce4fbe2c3fd72d335e3f180be55be">   34</a></span>  <span class="keyword">virtual</span> <a class="code hl_typedef" href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">Velocity_t</a> <a class="code hl_function" href="classrmb_1_1_velocity_controller.html#abf9ce4fbe2c3fd72d335e3f180be55be">getVelocity</a>() = 0;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classrmb_1_1_velocity_controller.html#abfebe8151dd32a700537e2e0cbfc9312">   40</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classrmb_1_1_velocity_controller.html#abfebe8151dd32a700537e2e0cbfc9312">setInverted</a>(<span class="keywordtype">bool</span> inverted) = 0;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  </div>
@@ -114,12 +124,13 @@ $(document).ready(function(){initNavTree('_velocity_controller_8h_source.html','
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>} <span class="comment">// namespace rmb</span></div>
 <div class="ttc" id="aclassrmb_1_1_velocity_controller_html"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html">rmb::VelocityController</a></div><div class="ttdef"><b>Definition:</b> VelocityController.h:12</div></div>
-<div class="ttc" id="aclassrmb_1_1_velocity_controller_html_a0ec888f03e30ebef7f598038a6d80f21"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#a0ec888f03e30ebef7f598038a6d80f21">rmb::VelocityController::AccelerationUnit</a></div><div class="ttdeci">units::compound_unit&lt; VelocityUnit, units::inverse&lt; units::seconds &gt; &gt; AccelerationUnit</div><div class="ttdef"><b>Definition:</b> VelocityController.h:19</div></div>
+<div class="ttc" id="aclassrmb_1_1_velocity_controller_html_a588cd9384fb546fda392757cf10a4ea0"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#a588cd9384fb546fda392757cf10a4ea0">rmb::VelocityController::Distance_t</a></div><div class="ttdeci">units::unit_t&lt; DistanceUnit &gt; Distance_t</div><div class="ttdef"><b>Definition:</b> VelocityController.h:14</div></div>
+<div class="ttc" id="aclassrmb_1_1_velocity_controller_html_a6d2ddd51f51e55a5e2802ed3c3eb83db"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#a6d2ddd51f51e55a5e2802ed3c3eb83db">rmb::VelocityController::Acceleration_t</a></div><div class="ttdeci">units::unit_t&lt; AccelerationUnit &gt; Acceleration_t</div><div class="ttdef"><b>Definition:</b> VelocityController.h:20</div></div>
 <div class="ttc" id="aclassrmb_1_1_velocity_controller_html_abf9ce4fbe2c3fd72d335e3f180be55be"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#abf9ce4fbe2c3fd72d335e3f180be55be">rmb::VelocityController::getVelocity</a></div><div class="ttdeci">virtual Velocity_t getVelocity()=0</div></div>
 <div class="ttc" id="aclassrmb_1_1_velocity_controller_html_abfebe8151dd32a700537e2e0cbfc9312"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#abfebe8151dd32a700537e2e0cbfc9312">rmb::VelocityController::setInverted</a></div><div class="ttdeci">virtual void setInverted(bool inverted)=0</div></div>
 <div class="ttc" id="aclassrmb_1_1_velocity_controller_html_ad0a84da414457fb5b07a7970c2e36fbe"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#ad0a84da414457fb5b07a7970c2e36fbe">rmb::VelocityController::setVelocity</a></div><div class="ttdeci">virtual void setVelocity(Velocity_t velocity)=0</div></div>
 <div class="ttc" id="aclassrmb_1_1_velocity_controller_html_ad6b3ae2c917cc84e5dd8147c3b036e5d"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#ad6b3ae2c917cc84e5dd8147c3b036e5d">rmb::VelocityController::getInverted</a></div><div class="ttdeci">virtual bool getInverted()=0</div></div>
-<div class="ttc" id="aclassrmb_1_1_velocity_controller_html_af6354cdbb6206c3178275bb0cd8fbb67"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#af6354cdbb6206c3178275bb0cd8fbb67">rmb::VelocityController::VelocityUnit</a></div><div class="ttdeci">units::compound_unit&lt; DistanceUnit, units::inverse&lt; units::seconds &gt; &gt; VelocityUnit</div><div class="ttdef"><b>Definition:</b> VelocityController.h:16</div></div>
+<div class="ttc" id="aclassrmb_1_1_velocity_controller_html_af76e5fead85640b7e1e88abcc0b441c6"><div class="ttname"><a href="classrmb_1_1_velocity_controller.html#af76e5fead85640b7e1e88abcc0b441c6">rmb::VelocityController::Velocity_t</a></div><div class="ttdeci">units::unit_t&lt; VelocityUnit &gt; Velocity_t</div><div class="ttdef"><b>Definition:</b> VelocityController.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
