@@ -79,9 +79,9 @@ public:
    * You can specify followers in the constructor.
    */
   struct Follower {
-    int id; /** The ID of the follower motor */
-    rev::CANSparkMax::MotorType motorType; /** The type of motor. Can be kBrushless or kBrushed. */
-    bool inverted; /** Whether or not the follower motor should be inverted. true if inverted. */
+    int id; /**< The ID of the follower motor */
+    rev::CANSparkMax::MotorType motorType; /**< The type of motor. Can be kBrushless or kBrushed. */
+    bool inverted; /**< Whether or not the follower motor should be inverted. true if inverted. */
   };
 
   /** \deprecated
@@ -101,11 +101,13 @@ public:
    * @param feedForward The Feedforward to be passed to the motor. rmb::noFeedforward<DistanceUnit> is the default
    * @param followers list of motors to follow this motor. The parent motor will construct the children with the given configuration
    *                  and will own the followers.
+   * @param ticksPerRevolution The number of ticks per rotation of the motor
    */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
                              ConversionUnit_t conversion = ConversionUnit_t(1), 
                              const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>,
-                             std::initializer_list<Follower> followers = {});
+                             std::initializer_list<Follower> followers = {}, bool alternateEncoder = false,
+                             int ticksPerRevolution = 4096);
 
   /**
    * Sets the position of the motor.
@@ -130,7 +132,7 @@ public:
    * @return raw position(in rotations) of the motor according to the encoder
    */
   double getRawPosition() {
-    return sparkMaxEncoder.GetPosition();
+    return sparkMaxEncoder -> GetPosition();
   }
 
   /**
@@ -217,7 +219,7 @@ public:
 
 private:
   rev::CANSparkMax sparkMax;
-  rev::SparkMaxRelativeEncoder sparkMaxEncoder;
+  std::unique_ptr<rev::RelativeEncoder> sparkMaxEncoder;
   rev::SparkMaxPIDController sparkMaxPIDController;
 
   ConversionUnit_t conversion;

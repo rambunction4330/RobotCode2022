@@ -10,13 +10,13 @@ namespace rmb {
  */
 template <typename DistanceUnit> class PositionController {
 public:
-  using Distance_t = units::unit_t<DistanceUnit>; /** User specified distance unit. Is probably going to be an angle or a length*/
+  using Distance_t = units::unit_t<DistanceUnit>; /**< User specified distance unit. Is probably going to be an angle or a length*/
   using VelocityUnit =
       units::compound_unit<DistanceUnit, units::inverse<units::seconds>>;
-  using Velocity_t = units::unit_t<VelocityUnit>; /** DistanceUnit per second*/
+  using Velocity_t = units::unit_t<VelocityUnit>; /**< DistanceUnit per second*/
   using AccelerationUnit =
       units::compound_unit<VelocityUnit, units::inverse<units::seconds>>;
-  using Acceleration_t = units::unit_t<AccelerationUnit>; /** DistanceUnit per second squared */
+  using Acceleration_t = units::unit_t<AccelerationUnit>; /**< DistanceUnit per second squared */
 
   /**
    * Resets the reference point of the position controller to base position readings off of.
