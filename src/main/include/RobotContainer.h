@@ -28,8 +28,9 @@ private:
   ShooterSubsystem  shooterSubsystem;
   ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
-  IntakeSubsystem   intakeSubsystem;
+  IntakeExtenderSubsystem intakeExtenderSubsystem;
+  IntakeSpinnerSubsystem intakeSpinnerSubsystem;
   JoystickSubsystem joystickSubsystem;
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
-  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeSubsystem };
+  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
 };
