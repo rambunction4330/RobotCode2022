@@ -23,8 +23,8 @@ class StorageSubsystem : public frc2::SubsystemBase {
    */
   void Periodic() override;
 
-  void spinStorage(double speed);
-  std::unique_ptr<frc2::Command> spinStorageCommand(double speed);
+  void spinStorage(double speed = 0.5);
+  std::unique_ptr<frc2::Command> spinStorageCommand(double speed = 0.5);
 
   void stop();
   std::unique_ptr<frc2::Command> stopCommand();

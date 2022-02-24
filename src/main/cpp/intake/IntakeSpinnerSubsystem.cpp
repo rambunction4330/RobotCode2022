@@ -11,7 +11,9 @@
 
 IntakeSpinnerSubsystem::IntakeSpinnerSubsystem()
     : spinner(intakeSubsystem::spinnerID,
-              rev::CANSparkMax::MotorType::kBrushed) {}
+              rev::CANSparkMax::MotorType::kBrushed) {
+  SetDefaultCommand(frc2::RunCommand([&]() { stop(); }, {this}));
+}
 
 void IntakeSpinnerSubsystem::Periodic() {}
 

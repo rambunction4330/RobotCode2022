@@ -12,7 +12,9 @@ IntakeExtenderSubsystem::IntakeExtenderSubsystem()
     : extender(intakeSubsystem::extenderID, intakeSubsystem::extenderPIDConfig,
                intakeSubsystem::extenderConvertion,
                intakeSubsystem::extenderFeedforward,
-               {intakeSubsystem::extenderFollower}) {}
+               {intakeSubsystem::extenderFollower}) {
+  SetDefaultCommand(frc2::RunCommand([this]() { retract(); }, {this}));
+}
 
 // This method will be called once per scheduler run
 void IntakeExtenderSubsystem::Periodic() {}
