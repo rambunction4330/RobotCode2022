@@ -34,3 +34,8 @@ std::unique_ptr<frc2::Command> IntakeExtenderSubsystem::retractCommand() {
   return std::unique_ptr<frc2::Command>(
       new frc2::RunCommand([this]() { retract(); }, {this}));
 }
+
+bool IntakeExtenderSubsystem::isExtended() const {
+  // TODO: Needs to be implemented
+ return false;
+}

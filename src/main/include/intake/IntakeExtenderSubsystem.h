@@ -26,6 +26,8 @@ public:
   void retract();
   std::unique_ptr<frc2::Command> retractCommand();
 
+  bool isExtended() const;
+
 private:
   rmb::SparkMaxPositionController<units::meters> extender;
 };
