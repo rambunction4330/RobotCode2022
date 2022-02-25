@@ -9,14 +9,13 @@
 #include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
 #include <rev/ColorSensorV3.h>
 
-#include "intake/IntakeExtenderSubsystem.h"
+#include "intake/IntakeSpinnerSubsystem.h"
 
 class StorageSubsystem : public frc2::SubsystemBase {
- public:
+public:
+  enum BallColor { RED, BLUE, NONE };
 
-  enum BallColor {RED, BLUE, NONE};
-
-  StorageSubsystem(const IntakeExtenderSubsystem& intakeExtender);
+  StorageSubsystem(const IntakeSpinnerSubsystem &intakeSpinner);
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
@@ -32,9 +31,9 @@ class StorageSubsystem : public frc2::SubsystemBase {
   bool hasBall() const;
   BallColor ballColor() const;
 
- private:
+private:
   ctre::phoenix::motorcontrol::can::WPI_TalonSRX storageWheel;
   rev::ColorSensorV3 colorSensor;
 
-  const IntakeExtenderSubsystem& intakeExtender;
+  const IntakeSpinnerSubsystem &intakeSpinner;
 };

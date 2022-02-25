@@ -9,28 +9,26 @@
 
 #include "Constants.h"
 
-IntakeSpinnerSubsystem::IntakeSpinnerSubsystem()
+IntakeSpinnerSubsystem::IntakeSpinnerSubsystem(
+    const IntakeExtenderSubsystem &extenderSubsystem)
     : spinner(intakeSubsystem::spinnerID,
-              rev::CANSparkMax::MotorType::kBrushed) {
+              rev::CANSparkMax::MotorType::kBrushed),
+      extender(extenderSubsystem) {
   SetDefaultCommand(frc2::RunCommand([&]() { stop(); }, {this}));
 }
 
 void IntakeSpinnerSubsystem::Periodic() {}
 
-void IntakeSpinnerSubsystem::pulllIn(double speed) { spinner.Set(speed); }
-
-std::unique_ptr<frc2::Command>
-IntakeSpinnerSubsystem::pullInCommand(double speed) {
-  return std::unique_ptr<frc2::Command>(
-      new frc2::RunCommand([&]() { pulllIn(speed); }, {this}));
+void IntakeSpinnerSubsystem::spin(double speed) {
+  if (extender.isExtended()) {
+    spinner.Set(speed);
+  }
 }
 
-void IntakeSpinnerSubsystem::spitOut(double speed) { spinner.Set(-speed); }
-
 std::unique_ptr<frc2::Command>
-IntakeSpinnerSubsystem::spitOutCommand(double speed) {
+IntakeSpinnerSubsystem::spinCommand(double speed) {
   return std::unique_ptr<frc2::Command>(
-      new frc2::RunCommand([&]() { spitOut(speed); }, {this}));
+      new frc2::RunCommand([&]() { spin(speed); }, {this}));
 }
 
 void IntakeSpinnerSubsystem::stop() { spinner.Set(0.0); }
@@ -39,3 +37,5 @@ std::unique_ptr<frc2::Command> IntakeSpinnerSubsystem::stopCommand() {
   return std::unique_ptr<frc2::Command>(
       new frc2::RunCommand([&]() { stop(); }, {this}));
 }
+
+bool IntakeSpinnerSubsystem::isSpinning() const { return spinner.Get() != 0.0; }
