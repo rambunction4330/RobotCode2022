@@ -22,8 +22,8 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(
         alternateEncoder ? 
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder())) :
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxAlternateEncoder>(sparkMax.GetAlternateEncoder(countsPerRevolution)))
+          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxAlternateEncoder>(sparkMax.GetAlternateEncoder(countsPerRevolution))) :
+          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder()))
         ),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionUnit), feedforward(ff) {
