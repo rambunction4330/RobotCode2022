@@ -15,13 +15,14 @@ IntakeSpinnerSubsystem::IntakeSpinnerSubsystem()
 
 void IntakeSpinnerSubsystem::Periodic() {}
 
-void IntakeSpinnerSubsystem::pulllIn(double speed) { spinner.Set(speed); }
+void IntakeSpinnerSubsystem::pullIn(double speed) { spinner.Set(speed); }
 
 std::unique_ptr<frc2::Command>
 IntakeSpinnerSubsystem::pullInCommand(double speed) {
   return std::unique_ptr<frc2::Command>(
-      new frc2::RunCommand([&]() { pulllIn(speed); }, {this}));
+      new frc2::RunCommand([&]() { pullIn(speed); }, {this}));
 }
+
 
 void IntakeSpinnerSubsystem::spitOut(double speed) { spinner.Set(-speed); }
 

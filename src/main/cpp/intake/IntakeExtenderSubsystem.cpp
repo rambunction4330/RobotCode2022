@@ -8,14 +8,21 @@
 
 #include "Constants.h"
 
+#include <rmb/io/log.h>
+
 IntakeExtenderSubsystem::IntakeExtenderSubsystem()
     : extender(intakeSubsystem::extenderID, intakeSubsystem::extenderPIDConfig,
                intakeSubsystem::extenderConvertion,
                intakeSubsystem::extenderFeedforward,
-               {intakeSubsystem::extenderFollower}) {}
+               {intakeSubsystem::extenderFollower}) {
+  extender.setMinPosition(0.0_m);
+  extender.setMaxPosition(0.25_m);
+}
 
 // This method will be called once per scheduler run
-void IntakeExtenderSubsystem::Periodic() {}
+void IntakeExtenderSubsystem::Periodic() {
+  wpi::outs() << extender.getPosition() << wpi::endl;
+}
 
 void IntakeExtenderSubsystem::extend() {
   extender.setPosition(intakeSubsystem::extenderOut);

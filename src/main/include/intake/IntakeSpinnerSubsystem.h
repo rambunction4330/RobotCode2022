@@ -18,7 +18,7 @@ public:
    */
   void Periodic() override;
 
-  void pulllIn(double speed = 0.5);
+  void pullIn(double speed = 0.5);
   std::unique_ptr<frc2::Command> pullInCommand(double speed = 0.5);
 
   void spitOut(double speed = -0.5);

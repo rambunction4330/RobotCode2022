@@ -28,7 +28,7 @@ void Robot::RobotInit() {
  */
 void Robot::RobotPeriodic() {
   
-  frc2::CommandScheduler::GetInstance().Run();
+ frc2::CommandScheduler::GetInstance().Run();
   // container.shuffleBoard.Periodic();
   }
 
@@ -38,7 +38,7 @@ void Robot::RobotPeriodic() {
  * robot is disabled.
  */
 void Robot::DisabledInit() {
-  container.getTeleopDriveCommand().Cancel();
+  //container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::DisabledPeriodic() {}
@@ -48,14 +48,14 @@ void Robot::DisabledPeriodic() {}
  * RobotContainer} class.
  */
 void Robot::AutonomousInit() {
-  container.getTeleopDriveCommand().Cancel();
+  //container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  frc2::CommandScheduler::GetInstance().Schedule(
-      &container.getTeleopDriveCommand());
+  /*frc2::CommandScheduler::GetInstance().Schedule(
+      &container.getTeleopDriveCommand());*/
 }
 
 /**
@@ -63,10 +63,20 @@ void Robot::TeleopInit() {
  */
 void Robot::TeleopPeriodic() {}
 
-/**
+/**s
  * This function is called periodically during test mode.
  */
-void Robot::TestPeriodic() {}
+void Robot::TestPeriodic() {
+  if(joystick.GetY() > 0.1)
+    spinner.pullIn(0.5);
+  else if(joystick.GetY() < -0.1)
+    spinner.spitOut(0.5);
+  
+  if(joystick.GetRawButtonPressed(11))
+    extender.retract();
+  else if(joystick.GetRawButtonPressed(9))
+    extender.extend();
+}
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
