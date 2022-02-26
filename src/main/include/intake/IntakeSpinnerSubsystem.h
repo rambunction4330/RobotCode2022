@@ -20,8 +20,16 @@ public:
    */
   void Periodic() override;
 
+<<<<<<< HEAD
   void spin(double speed = 0.5);
   std::unique_ptr<frc2::Command> spinCommand(double speed = 0.5);
+=======
+  void pullIn(double speed = 0.5);
+  std::unique_ptr<frc2::Command> pullInCommand(double speed = 0.5);
+
+  void spitOut(double speed = -0.5);
+  std::unique_ptr<frc2::Command> spitOutCommand(double speed = 0.5);
+>>>>>>> f9005044a3f992e8ba16294891cda3e625349aae
 
   void stop();
   std::unique_ptr<frc2::Command> stopCommand();

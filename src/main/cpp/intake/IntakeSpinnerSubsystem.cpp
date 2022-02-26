@@ -19,12 +19,26 @@ IntakeSpinnerSubsystem::IntakeSpinnerSubsystem(
 
 void IntakeSpinnerSubsystem::Periodic() {}
 
+<<<<<<< HEAD
 void IntakeSpinnerSubsystem::spin(double speed) {
   if (extender.isExtended()) {
     spinner.Set(speed);
   }
 }
 
+=======
+void IntakeSpinnerSubsystem::pullIn(double speed) { spinner.Set(speed); }
+
+std::unique_ptr<frc2::Command>
+IntakeSpinnerSubsystem::pullInCommand(double speed) {
+  return std::unique_ptr<frc2::Command>(
+      new frc2::RunCommand([&]() { pullIn(speed); }, {this}));
+}
+
+
+void IntakeSpinnerSubsystem::spitOut(double speed) { spinner.Set(-speed); }
+
+>>>>>>> f9005044a3f992e8ba16294891cda3e625349aae
 std::unique_ptr<frc2::Command>
 IntakeSpinnerSubsystem::spinCommand(double speed) {
   return std::unique_ptr<frc2::Command>(

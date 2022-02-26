@@ -79,15 +79,15 @@ const rmb::SparkMaxPositionController<units::meters>::Follower extenderFollower 
 
 const rmb::SparkMaxPositionController<units::meters>::PIDConfig
     extenderPIDConfig{
-        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
         /* SmartMotion config */
         /* usingSmartMotion */ true,
-        /* maxVelocity */ 0.3_mps, /* minVelocity */ 0.0_mps,
+        /* maxVelocity */ 0.2_mps, /* minVelocity */ 0.0_mps,
         /* maxAccel */ 0.5_mps_sq,
-        /* allowedErr */ 0.01_m,
+        /* allowedErr */ 0.001_m,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>
@@ -96,9 +96,9 @@ const rmb::SparkMaxPositionController<units::meters>::PIDConfig
                         rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.043975));
 
 const rmb::SparkMaxPositionController<units::meters>::ConversionUnit_t
-    extenderConvertion(/* radius */(1.3_in / 2_rad) * /* gearing */(4/1));
+    extenderConvertion(/* radius */(1.3_in / 2_rad) * /* gearing */(1.0/4));
 
-const units::meter_t extenderOut = 0.1_m;
+const units::meter_t extenderOut = 0.24_m;
 const units::meter_t extenderIn = 0.0_m;
 
 } // namespace driveSubsystemConstants

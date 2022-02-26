@@ -19,5 +19,10 @@ public:
   void TestPeriodic() override;
 
 private:
-  RobotContainer container;
+  //RobotContainer container;
+
+  IntakeSpinnerSubsystem spinner {};
+  IntakeExtenderSubsystem extender{};
+
+  frc::Joystick joystick{0};
 };

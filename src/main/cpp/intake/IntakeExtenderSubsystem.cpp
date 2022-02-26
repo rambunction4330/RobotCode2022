@@ -15,13 +15,22 @@ IntakeExtenderSubsystem::IntakeExtenderSubsystem()
                intakeSubsystem::extenderConvertion,
                intakeSubsystem::extenderFeedforward,
                {intakeSubsystem::extenderFollower}) {
+<<<<<<< HEAD
   extender.resetRefrence(0.0_m);
   SetDefaultCommand(frc2::RunCommand([this]() { retract(); }, {this}));
+=======
+  extender.setMinPosition(0.0_m);
+  extender.setMaxPosition(0.25_m);
+>>>>>>> f9005044a3f992e8ba16294891cda3e625349aae
 }
 
 // This method will be called once per scheduler run
 void IntakeExtenderSubsystem::Periodic() {
+<<<<<<< HEAD
   wpi::outs() << std::to_string(extender.getPosition().to<double>()) << wpi::endl;
+=======
+  wpi::outs() << extender.getPosition() << wpi::endl;
+>>>>>>> f9005044a3f992e8ba16294891cda3e625349aae
 }
 
 void IntakeExtenderSubsystem::extend() {

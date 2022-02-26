@@ -26,8 +26,8 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
     : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
       sparkMaxEncoder(
         alternateEncoder ? 
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder())) :
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxAlternateEncoder>(sparkMax.GetAlternateEncoder(ticksPerRotation)))
+          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxAlternateEncoder>(sparkMax.GetAlternateEncoder(ticksPerRotation))) :
+          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder()))
         ),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionFactor), feedforward(ff) {
