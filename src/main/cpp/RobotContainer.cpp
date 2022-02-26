@@ -13,4 +13,6 @@ RobotContainer::RobotContainer() {
 
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
+
+  joystickSubsystem.getButton(ELLEVEN).WhileHeld([&]() { intakeExtenderSubsystem.extend(); }, {&intakeExtenderSubsystem});
 }

@@ -32,10 +32,10 @@ namespace driveSubsystemConstants {
 
 const frc::SPI::Port gyroPort = frc::SPI::kMXP;
 
-const int frontLeftID  = 1, 
-          frontRightID = 2, 
-          rearLeftID   = 3,
-          rearRightID  = 4;
+const int frontLeftID  = 11, 
+          frontRightID = 12, 
+          rearLeftID   = 13,
+          rearRightID  = 14;
 
 const frc::Translation2d frontLeftPose  = { 0.303_m, -0.299_m},
                          frontRightPose = { 0.303_m,  0.299_m}, 
@@ -85,20 +85,20 @@ const rmb::SparkMaxPositionController<units::meters>::PIDConfig
 
         /* SmartMotion config */
         /* usingSmartMotion */ true,
-        /* maxVelocity */ 25_mps, /* minVelocity */ 0_mps,
-        /* maxAccel */ 10_mps_sq,
+        /* maxVelocity */ 0.3_mps, /* minVelocity */ 0.0_mps,
+        /* maxAccel */ 0.5_mps_sq,
         /* allowedErr */ 0.01_m,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>
-    extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.10973),
-                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.15920),
-                        rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.30746));
+    extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.26336),
+                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(2.6898),
+                        rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.043975));
 
 const rmb::SparkMaxPositionController<units::meters>::ConversionUnit_t
-    extenderConvertion(/* radius */(3_in / 1_rad) * /* gearing */(12/1));
+    extenderConvertion(/* radius */(1.3_in / 2_rad) * /* gearing */(4/1));
 
-const units::meter_t extenderOut = 0.10_m;
+const units::meter_t extenderOut = 0.1_m;
 const units::meter_t extenderIn = 0.0_m;
 
 } // namespace driveSubsystemConstants

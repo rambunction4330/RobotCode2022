@@ -8,16 +8,21 @@
 
 #include "Constants.h"
 
+#include <rmb/io/log.h>
+
 IntakeExtenderSubsystem::IntakeExtenderSubsystem()
     : extender(intakeSubsystem::extenderID, intakeSubsystem::extenderPIDConfig,
                intakeSubsystem::extenderConvertion,
                intakeSubsystem::extenderFeedforward,
                {intakeSubsystem::extenderFollower}) {
+  extender.resetRefrence(0.0_m);
   SetDefaultCommand(frc2::RunCommand([this]() { retract(); }, {this}));
 }
 
 // This method will be called once per scheduler run
-void IntakeExtenderSubsystem::Periodic() {}
+void IntakeExtenderSubsystem::Periodic() {
+  wpi::outs() << std::to_string(extender.getPosition().to<double>()) << wpi::endl;
+}
 
 void IntakeExtenderSubsystem::extend() {
   extender.setPosition(intakeSubsystem::extenderOut);
@@ -39,5 +44,5 @@ std::unique_ptr<frc2::Command> IntakeExtenderSubsystem::retractCommand() {
 
 bool IntakeExtenderSubsystem::isExtended() const {
   // TODO: Needs to be implemented
-  return false;
+ return (const_cast<rmb::SparkMaxPositionController<units::meters>*>(&extender))->atPosition(intakeSubsystem::extenderOut);
 }

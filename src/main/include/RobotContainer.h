@@ -25,12 +25,12 @@ public:
 private:
 
   void ConfigureButtonBindings();
-  ShooterSubsystem  shooterSubsystem;
-  ClimberSubsystem  climberSubsystem;
+  // ShooterSubsystem  shooterSubsystem;
+  // ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
   IntakeExtenderSubsystem intakeExtenderSubsystem;
-  IntakeSpinnerSubsystem intakeSpinnerSubsystem{intakeExtenderSubsystem};
+  // IntakeSpinnerSubsystem intakeSpinnerSubsystem{intakeExtenderSubsystem};
   JoystickSubsystem joystickSubsystem;
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
-  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
+  // ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
 };
