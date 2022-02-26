@@ -27,3 +27,7 @@
 > 'We divided instead of multiplying so the units didnt work" - Aids Lampfart
 > 
 > "I prefer nano" - Samyul Wiseman
+> 
+> "Verbally I think I haven't said too many stupid things... but in the git issues I know I have" - George Jurgiel
+> 
+> "This robot is packin'" - George Jurgiel
