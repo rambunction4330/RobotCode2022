@@ -13,6 +13,7 @@
 
 #include <Constants.h>
 
+
 class TurretSubsystem : public frc2::SubsystemBase {
  public:
  /**
@@ -65,5 +66,4 @@ class TurretSubsystem : public frc2::SubsystemBase {
     turretSubsystemConstants::motorFeedforward,
     {}
   };
-
 };

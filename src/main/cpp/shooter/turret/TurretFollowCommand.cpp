@@ -27,5 +27,5 @@ void TurretFollowCommand::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool TurretFollowCommand::IsFinished() {
-  return !visionSubsystem.IsHubInView();
+  return false;
 }

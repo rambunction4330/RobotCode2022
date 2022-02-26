@@ -14,7 +14,7 @@
 #include <rmb/io/log.h>
 
 void Robot::RobotInit() { 
-
+  //turretPositionController.resetRefrence(0_rad);
   // container.shuffleBoard.ShuffleBoardInit();
 }
 
@@ -28,7 +28,7 @@ void Robot::RobotInit() {
  */
 void Robot::RobotPeriodic() {
   
-  frc2::CommandScheduler::GetInstance().Run();
+  //frc2::CommandScheduler::GetInstance().Run();
   // container.shuffleBoard.Periodic();
   }
 
@@ -38,7 +38,7 @@ void Robot::RobotPeriodic() {
  * robot is disabled.
  */
 void Robot::DisabledInit() {
-  container.getTeleopDriveCommand().Cancel();
+  //container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::DisabledPeriodic() {}
@@ -48,14 +48,14 @@ void Robot::DisabledPeriodic() {}
  * RobotContainer} class.
  */
 void Robot::AutonomousInit() {
-  container.getTeleopDriveCommand().Cancel();
+  //container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  frc2::CommandScheduler::GetInstance().Schedule(
-      &container.getTeleopDriveCommand());
+  // frc2::CommandScheduler::GetInstance().Schedule(
+  //     &container.getTeleopDriveCommand());
 }
 
 /**
@@ -66,7 +66,10 @@ void Robot::TeleopPeriodic() {}
 /**
  * This function is called periodically during test mode.
  */
-void Robot::TestPeriodic() {}
+void Robot::TestPeriodic() {
+  //turretPositionController.setPosition(M_PI * 1_rad);
+  sparkMax.Set(0.1);
+}
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }

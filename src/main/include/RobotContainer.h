@@ -29,6 +29,7 @@ public:
 private:
 
   void ConfigureButtonBindings();
+  void InitializeTurret();
 
   ShooterSubsystem  shooterSubsystem{};
   TurretSubsystem   turretSubsystem{};

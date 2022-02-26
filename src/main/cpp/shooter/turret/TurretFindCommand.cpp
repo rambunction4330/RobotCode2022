@@ -25,5 +25,5 @@ void TurretFindCommand::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool TurretFindCommand::IsFinished() {
-  return visionSubsystem.IsHubInView();
+  return false;
 }

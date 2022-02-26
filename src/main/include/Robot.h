@@ -6,6 +6,8 @@
 #include "RobotContainer.h"
 #include <frc/TimedRobot.h>
 
+#include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
+
 class Robot : public frc::TimedRobot {
 public:
   void RobotInit() override;
@@ -20,4 +22,17 @@ public:
 
 private:
   RobotContainer container;
+
+  // rmb::SparkMaxPositionController<units::radians> turretPositionController {
+  //   41,
+  //   turretSubsystemConstants::motorPIDConfig,
+  //   1/56,
+  //   turretSubsystemConstants::motorFeedforward,
+  //   {}
+  // };
+
+  rev::CANSparkMax sparkMax {
+    41, rev::CANSparkMaxLowLevel::MotorType::kBrushless
+  };
+
 };
