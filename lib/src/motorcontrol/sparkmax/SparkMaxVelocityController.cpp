@@ -28,8 +28,9 @@ SparkMaxVelocityController<U>::SparkMaxVelocityController(
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionUnit), feedforward(ff) {
 
-  sparkMax.RestoreFactoryDefaults();
+  CHECK_REVLIB_ERROR(sparkMax.RestoreFactoryDefaults());
 
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFeedbackDevice(*sparkMaxEncoder));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetI(config.i));
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetD(config.d));
