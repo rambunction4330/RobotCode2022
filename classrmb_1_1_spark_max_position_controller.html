@@ -164,8 +164,8 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>ConversionUnit_t</b>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aec3457d12ead7b95d45480dbe50b5df6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#aec3457d12ead7b95d45480dbe50b5df6">SparkMaxPositionController</a> (int deviceID)</td></tr>
 <tr class="separator:aec3457d12ead7b95d45480dbe50b5df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c333d122bb4388255dbb1c7dbcf9d83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a4c333d122bb4388255dbb1c7dbcf9d83">SparkMaxPositionController</a> (int deviceID, const <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html">PIDConfig</a> &amp;pidConfig, ConversionUnit_t conversion=ConversionUnit_t(1), const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;feedForward=noFeedforward&lt; DistanceUnit &gt;, std::initializer_list&lt; <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html">Follower</a> &gt; followers={}, bool alternateEncoder=false, int ticksPerRevolution=4096)</td></tr>
-<tr class="separator:a4c333d122bb4388255dbb1c7dbcf9d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f1703ab684a91c8685f179a496d1313"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1f1703ab684a91c8685f179a496d1313">SparkMaxPositionController</a> (int deviceID, const <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_p_i_d_config.html">PIDConfig</a> &amp;pidConfig, ConversionUnit_t conversion=ConversionUnit_t(1), const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;feedForward=noFeedforward&lt; DistanceUnit &gt;, std::initializer_list&lt; <a class="el" href="structrmb_1_1_spark_max_position_controller_1_1_follower.html">Follower</a> &gt; followers={}, bool alternateEncoder=false, int ticksPerRevolution=4096, rev::CANSparkMax::MotorType motorType=rev::CANSparkMax::MotorType::kBrushless)</td></tr>
+<tr class="separator:a1f1703ab684a91c8685f179a496d1313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f3fe24d4f01bea217dff1849ca9fb88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#a1f3fe24d4f01bea217dff1849ca9fb88">setPosition</a> (Distance_t position) override</td></tr>
 <tr class="separator:a1f3fe24d4f01bea217dff1849ca9fb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace99f550275a470f03189c538629d80f"><td class="memItemLeft" align="right" valign="top">Distance_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_position_controller.html#ace99f550275a470f03189c538629d80f">getPosition</a> () override</td></tr>
@@ -292,8 +292,8 @@ template&lt;typename DistanceUnit &gt; </div>
 
 </div>
 </div>
-<a id="a4c333d122bb4388255dbb1c7dbcf9d83" name="a4c333d122bb4388255dbb1c7dbcf9d83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c333d122bb4388255dbb1c7dbcf9d83">&#9670;&nbsp;</a></span>SparkMaxPositionController() <span class="overload">[2/2]</span></h2>
+<a id="a1f1703ab684a91c8685f179a496d1313" name="a1f1703ab684a91c8685f179a496d1313"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f1703ab684a91c8685f179a496d1313">&#9670;&nbsp;</a></span>SparkMaxPositionController() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -340,7 +340,13 @@ template&lt;typename DistanceUnit &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ticksPerRevolution</em> = <code>4096</code>&#160;</td>
+          <td class="paramname"><em>ticksPerRevolution</em> = <code>4096</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rev::CANSparkMax::MotorType&#160;</td>
+          <td class="paramname"><em>motorType</em> = <code>rev::CANSparkMax::MotorType::kBrushless</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -357,6 +363,7 @@ template&lt;typename DistanceUnit &gt; </div>
     <tr><td class="paramname">feedForward</td><td>The <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a> to be passed to the motor. rmb::noFeedforward&lt;DistanceUnit&gt; is the default </td></tr>
     <tr><td class="paramname">followers</td><td>list of motors to follow this motor. The parent motor will construct the children with the given configuration and will own the followers. </td></tr>
     <tr><td class="paramname">ticksPerRevolution</td><td>The number of ticks per rotation of the motor </td></tr>
+    <tr><td class="paramname">motorType</td><td>the type of motor, Can be kBrushed or kBrushless </td></tr>
   </table>
   </dd>
 </dl>

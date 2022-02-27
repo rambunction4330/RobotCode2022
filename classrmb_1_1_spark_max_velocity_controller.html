@@ -177,8 +177,8 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationUnit</b>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a774260dfcb78054b40c1723550a65d61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a774260dfcb78054b40c1723550a65d61">SparkMaxVelocityController</a> (int deviceID)</td></tr>
 <tr class="separator:a774260dfcb78054b40c1723550a65d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad43ca3f4300a5e96846d104e74799bc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#ad43ca3f4300a5e96846d104e74799bc5">SparkMaxVelocityController</a> (int deviceID, const <a class="el" href="structrmb_1_1_spark_max_velocity_controller_1_1_p_i_d_config.html">PIDConfig</a> &amp;config, ConversionUnit_t conversionUnit=ConversionUnit_t(1), const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;feedforward=noFeedforward&lt; DistanceUnit &gt;, std::initializer_list&lt; <a class="el" href="structrmb_1_1_spark_max_velocity_controller_1_1_follower.html">Follower</a> &gt; followers={}, bool alternateEncoder=false, int countPerRevolution=4096)</td></tr>
-<tr class="separator:ad43ca3f4300a5e96846d104e74799bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc3284cb6f11ac74bd42669964c864ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#acc3284cb6f11ac74bd42669964c864ec">SparkMaxVelocityController</a> (int deviceID, const <a class="el" href="structrmb_1_1_spark_max_velocity_controller_1_1_p_i_d_config.html">PIDConfig</a> &amp;config, ConversionUnit_t conversionUnit=ConversionUnit_t(1), const <a class="el" href="classrmb_1_1_feedforward.html">Feedforward</a>&lt; DistanceUnit &gt; &amp;feedforward=noFeedforward&lt; DistanceUnit &gt;, std::initializer_list&lt; <a class="el" href="structrmb_1_1_spark_max_velocity_controller_1_1_follower.html">Follower</a> &gt; followers={}, bool alternateEncoder=false, int countPerRevolution=4096, rev::CANSparkMax::MotorType motorType=rev::CANSparkMax::MotorType::kBrushless)</td></tr>
+<tr class="separator:acc3284cb6f11ac74bd42669964c864ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93562edd0e8c3045681d4dfe551114dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a93562edd0e8c3045681d4dfe551114dd">setVelocity</a> (Velocity_t velocity) override</td></tr>
 <tr class="separator:a93562edd0e8c3045681d4dfe551114dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8184fafcf6b0d12865bc87cc2663f708"><td class="memItemLeft" align="right" valign="top">Velocity_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrmb_1_1_spark_max_velocity_controller.html#a8184fafcf6b0d12865bc87cc2663f708">getVelocity</a> () override</td></tr>
@@ -299,8 +299,8 @@ template&lt;typename DistanceUnit &gt; </div>
 
 </div>
 </div>
-<a id="ad43ca3f4300a5e96846d104e74799bc5" name="ad43ca3f4300a5e96846d104e74799bc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad43ca3f4300a5e96846d104e74799bc5">&#9670;&nbsp;</a></span>SparkMaxVelocityController() <span class="overload">[2/2]</span></h2>
+<a id="acc3284cb6f11ac74bd42669964c864ec" name="acc3284cb6f11ac74bd42669964c864ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc3284cb6f11ac74bd42669964c864ec">&#9670;&nbsp;</a></span>SparkMaxVelocityController() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,7 +347,13 @@ template&lt;typename DistanceUnit &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>countPerRevolution</em> = <code>4096</code>&#160;</td>
+          <td class="paramname"><em>countPerRevolution</em> = <code>4096</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rev::CANSparkMax::MotorType&#160;</td>
+          <td class="paramname"><em>motorType</em> = <code>rev::CANSparkMax::MotorType::kBrushless</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -369,6 +375,7 @@ conversion ≈ 0.1592
     <tr><td class="paramname">followers</td><td>a list of followers to follow the motor </td></tr>
     <tr><td class="paramname">alternateEncoder</td><td>whether or not the <a class="el" href="classrmb_1_1_velocity_controller.html">VelocityController</a> should use the encoder plugged into the SparkMax's data port </td></tr>
     <tr><td class="paramname">countPerRevolution</td><td>the number of ticks per revolution of the alternate encoder </td></tr>
+    <tr><td class="paramname">motorType</td><td>the type of motor. Can be kBrushed or kBrushless. </td></tr>
   </table>
   </dd>
 </dl>
