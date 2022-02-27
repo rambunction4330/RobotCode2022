@@ -118,12 +118,14 @@ public:
    * @param alternateEncoder whether or not the VelocityController should use the encoder plugged
    *                         into the SparkMax's data port
    * @param countPerRevolution the number of ticks per revolution of the alternate encoder
+   * @param motorType the type of motor. Can be kBrushed or kBrushless.
    */
   SparkMaxVelocityController(
       int deviceID, const PIDConfig &config,
       ConversionUnit_t conversionUnit = ConversionUnit_t(1),
       const Feedforward<DistanceUnit> &feedforward = noFeedforward<DistanceUnit>,
-      std::initializer_list<Follower> followers = {}, bool alternateEncoder = false, int countPerRevolution = 4096);
+      std::initializer_list<Follower> followers = {}, bool alternateEncoder = false, int countPerRevolution = 4096,
+      rev::CANSparkMax::MotorType motorType = rev::CANSparkMax::MotorType::kBrushless);
 
   /**
    * Sets the target velocity of the motorcontroller
