@@ -32,7 +32,8 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionFactor), feedforward(ff) {
 
-  sparkMax.RestoreFactoryDefaults();
+  CHECK_REVLIB_ERROR(sparkMax.RestoreFactoryDefaults());
+  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFeedbackDevice(*sparkMaxEncoder));
 
   // configure pid consts
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));
