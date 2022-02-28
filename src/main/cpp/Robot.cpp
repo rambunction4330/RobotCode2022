@@ -67,8 +67,15 @@ void Robot::TeleopPeriodic() {}
  * This function is called periodically during test mode.
  */
 void Robot::TestPeriodic() {
+  auto joystickAngle = units::radian_t(joystick.GetDirectionRadians());
+
+  //turret.spinTo(joystickAngle);
   //turretPositionController.setPosition(M_PI * 1_rad);
-  sparkMax.Set(0.1);
+  //sparkMax.Set(0.05);
+  //turret.sweep();
+  //turret.spinOffset(0.25_tr);
+  //turret.spinTo(0.25_tr);
+  wpi::outs() << (units::degree_t) turret.getAngularPosition() << wpi::endl;
 }
 
 #ifndef RUNNING_FRC_TESTS

@@ -21,7 +21,7 @@ public:
   void TestPeriodic() override;
 
 private:
-  RobotContainer container;
+  //RobotContainer container;
 
   // rmb::SparkMaxPositionController<units::radians> turretPositionController {
   //   41,
@@ -31,8 +31,12 @@ private:
   //   {}
   // };
 
-  rev::CANSparkMax sparkMax {
-    41, rev::CANSparkMaxLowLevel::MotorType::kBrushless
-  };
+  // rev::CANSparkMax sparkMax {
+  //   41, rev::CANSparkMaxLowLevel::MotorType::kBrushless
+  // };
+
+  TurretSubsystem turret {};
+
+  frc::Joystick joystick{0};
 
 };

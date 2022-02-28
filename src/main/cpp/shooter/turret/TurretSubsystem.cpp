@@ -11,6 +11,7 @@
 TurretSubsystem::TurretSubsystem() {
   positionController.setMaxPosition((3_rad * M_PI) / 2);
   positionController.setMinPosition((-3_rad * M_PI) / 2);
+  positionController.resetRefrence(0.0_tr);
 }
 
 // This method will be called once per scheduler run

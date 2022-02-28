@@ -8,6 +8,7 @@
 
 #include "rmb/motorcontrol/PositionController.h"
 #include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h" 
+#include <limits>
 
 namespace rmb {
 /**
@@ -125,7 +126,6 @@ public:
 
 
 
-
   /**
    * Get the raw position(in rotations) of the motor. This is for debug purposes or advanced 
    * users who want to bypass all of the code @theVerySharpFlat has written.
@@ -224,8 +224,8 @@ private:
 
   ConversionUnit_t conversion;
 
-  RawUnit_t maxPosition = RawUnit_t(100);
-  RawUnit_t minPosition = RawUnit_t(-100);
+  RawUnit_t minPosition = RawUnit_t(__DBL_MIN__);
+  RawUnit_t maxPosition = RawUnit_t(__DBL_MAX__);
 
   rev::CANSparkMax::ControlType controlType;
   std::vector<std::unique_ptr<rev::CANSparkMax>> followers;
