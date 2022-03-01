@@ -15,15 +15,15 @@ class StorageSubsystem : public frc2::SubsystemBase {
 public:
   enum BallColor { RED, BLUE, NONE };
 
-  StorageSubsystem(const IntakeSpinnerSubsystem &intakeSpinner);
+  StorageSubsystem();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
-  void spinStorage(double speed = 0.5);
-  std::unique_ptr<frc2::Command> spinStorageCommand(double speed = 0.5);
+  void spinStorage(double speed = 1.0);
+  std::unique_ptr<frc2::Command> spinStorageCommand(double speed = 1.0);
 
   void stop();
   std::unique_ptr<frc2::Command> stopCommand();
@@ -34,6 +34,4 @@ public:
 private:
   ctre::phoenix::motorcontrol::can::WPI_TalonSRX storageWheel;
   rev::ColorSensorV3 colorSensor;
-
-  const IntakeSpinnerSubsystem &intakeSpinner;
 };

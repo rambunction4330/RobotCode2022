@@ -15,26 +15,17 @@ IntakeExtenderSubsystem::IntakeExtenderSubsystem()
                intakeSubsystem::extenderConvertion,
                intakeSubsystem::extenderFeedforward,
                {intakeSubsystem::extenderFollower}) {
-<<<<<<< HEAD
   extender.resetRefrence(0.0_m);
-  SetDefaultCommand(frc2::RunCommand([this]() { retract(); }, {this}));
-=======
   extender.setMinPosition(0.0_m);
-  extender.setMaxPosition(0.25_m);
->>>>>>> f9005044a3f992e8ba16294891cda3e625349aae
+  extender.setMaxPosition(0.26_m);
 }
 
 // This method will be called once per scheduler run
-void IntakeExtenderSubsystem::Periodic() {
-<<<<<<< HEAD
-  wpi::outs() << std::to_string(extender.getPosition().to<double>()) << wpi::endl;
-=======
-  wpi::outs() << extender.getPosition() << wpi::endl;
->>>>>>> f9005044a3f992e8ba16294891cda3e625349aae
-}
+void IntakeExtenderSubsystem::Periodic() {}
 
 void IntakeExtenderSubsystem::extend() {
   extender.setPosition(intakeSubsystem::extenderOut);
+  extended = true;
 }
 
 std::unique_ptr<frc2::Command> IntakeExtenderSubsystem::extendCommand() {
@@ -44,6 +35,7 @@ std::unique_ptr<frc2::Command> IntakeExtenderSubsystem::extendCommand() {
 
 void IntakeExtenderSubsystem::retract() {
   extender.setPosition(intakeSubsystem::extenderIn);
+  extended = false;
 }
 
 std::unique_ptr<frc2::Command> IntakeExtenderSubsystem::retractCommand() {
@@ -53,5 +45,5 @@ std::unique_ptr<frc2::Command> IntakeExtenderSubsystem::retractCommand() {
 
 bool IntakeExtenderSubsystem::isExtended() const {
   // TODO: Needs to be implemented
- return (const_cast<rmb::SparkMaxPositionController<units::meters>*>(&extender))->atPosition(intakeSubsystem::extenderOut);
+ return extended;
 }

@@ -19,10 +19,7 @@ public:
   void TestPeriodic() override;
 
 private:
-  //RobotContainer container;
-
-  IntakeSpinnerSubsystem spinner {};
-  IntakeExtenderSubsystem extender{};
-
-  frc::Joystick joystick{0};
+  RobotContainer container;
+  // ctre::phoenix::motorcontrol::can::WPI_TalonSRX storageWheel{31};
+  // frc::Joystick stick{0};
 };

@@ -7,19 +7,31 @@
 #include <frc2/command/ConditionalCommand.h>
 #include <frc2/command/RunCommand.h>
 
+#include <rmb/io/log.h>
+
 #include "Constants.h"
 
-StorageSubsystem::StorageSubsystem(const IntakeSpinnerSubsystem &spinner)
+StorageSubsystem::StorageSubsystem()
     : storageWheel(storageConstants::wheelID),
-      colorSensor(frc::I2C::Port::kOnboard), intakeSpinner(spinner) {
-  SetDefaultCommand(
-      frc2::ConditionalCommand(spinStorageCommand(0.5), stopCommand(), [&]() {
-        return !hasBall() && intakeSpinner.isSpinning();
-      }));
+      colorSensor(frc::I2C::Port::kOnboard) {
+  storageWheel.SetInverted(true);
 }
 
 // This method will be called once per scheduler run
-void StorageSubsystem::Periodic() {}
+void StorageSubsystem::Periodic() {
+  switch (ballColor()) {
+    case RED:
+      wpi::outs() << "RED" << wpi::endl;
+      break;
+    case BLUE:
+      wpi::outs() << "BLUE" << wpi::endl;
+      break;
+    default:
+      wpi::outs() << "NONE" << wpi::endl;
+      break;
+
+  } 
+}
 
 void StorageSubsystem::spinStorage(double speed) { storageWheel.Set(speed); }
 
@@ -37,7 +49,7 @@ std::unique_ptr<frc2::Command> StorageSubsystem::stopCommand() {
 }
 
 bool StorageSubsystem::hasBall() const {
-  const static uint32_t threshold = 1000;
+  const static uint32_t threshold = 600 ;
   return (const_cast<rev::ColorSensorV3 *>(&colorSensor))->GetProximity() >
          threshold;
 }
@@ -47,7 +59,7 @@ StorageSubsystem::BallColor StorageSubsystem::ballColor() const {
     return BallColor::NONE;
   }
 
-  const static double redThesh = 100;
+  const static double redThesh = 0.3;
 
   if ((const_cast<rev::ColorSensorV3 *>(&colorSensor))->GetColor().red >
       redThesh) {

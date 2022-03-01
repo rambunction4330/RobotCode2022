@@ -10,6 +10,8 @@
 #include "drivetrain/DriveSubsystem.h"
 #include "drivetrain/TeleopDriveCommand.h"
 #include "driverstation/ShuffleBoardSubsystem.h"
+#include "storage/StorageSubsystem.h"
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -29,7 +31,8 @@ private:
   // ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
   IntakeExtenderSubsystem intakeExtenderSubsystem;
-  // IntakeSpinnerSubsystem intakeSpinnerSubsystem{intakeExtenderSubsystem};
+  IntakeSpinnerSubsystem intakeSpinnerSubsystem{intakeExtenderSubsystem};
+  StorageSubsystem storageSubsystem;
   JoystickSubsystem joystickSubsystem;
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
   // ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };

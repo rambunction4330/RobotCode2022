@@ -30,4 +30,5 @@ public:
 
 private:
   rmb::SparkMaxPositionController<units::meters> extender;
+  bool extended;
 };
