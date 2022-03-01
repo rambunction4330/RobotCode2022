@@ -77,7 +77,7 @@ void Robot::TestPeriodic() {
   //turret.spinTo(0.25_tr);
   wpi::outs() << "turret position -> " << (units::turn_t) turret.getAngularPosition() << wpi::endl;
 
-  turret.spinTo(turretSubsystemConstants::maxPosition * spinDirection);
+  turret.spinTo(spinDirection < 0.0 ? turretSubsystemConstants::minPosition : turretSubsystemConstants::maxPosition);
 
   if(turret.isAtPosition(turretSubsystemConstants::minPosition) || turret.isAtPosition(turretSubsystemConstants::maxPosition)) {
       spinDirection *= -1;
