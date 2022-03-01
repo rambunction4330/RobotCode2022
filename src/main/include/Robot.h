@@ -18,6 +18,7 @@ public:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
+  void TestInit() override;
   void TestPeriodic() override;
 
 private:
@@ -39,4 +40,5 @@ private:
 
   frc::Joystick joystick{0};
 
+  units::scalar_t spinDirection = 1.0;
 };

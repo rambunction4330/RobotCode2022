@@ -15,9 +15,7 @@ void TurretFindCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void TurretFindCommand::Execute() {
-  if(!IsFinished()) {
-    turretSubsystem.sweep();
-  }
+
 }
 
 // Called once the command ends or is interrupted.

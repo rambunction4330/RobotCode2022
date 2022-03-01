@@ -48,11 +48,6 @@ class TurretSubsystem : public frc2::SubsystemBase {
   bool isAtPosition(units::angle::radian_t pos);
 
   /**
-   * Sweep the turret from the minimum position to the maximum position and vice versa. 
-   */
-  void sweep();
-
-  /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;

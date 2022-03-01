@@ -125,11 +125,12 @@ namespace shooterSubsystemConstants {
 namespace turretSubsystemConstants {
   const int motorID = 41;
 
-  const units::radian_t sweepOffsetPerTick = 0.1_rad;
+  const units::radian_t minPosition = -180_deg;
+  const units::radian_t maxPosition = 180_deg;
 
   const rmb::SparkMaxPositionController<units::radians>::PIDConfig
     motorPIDConfig{
-        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
@@ -137,15 +138,15 @@ namespace turretSubsystemConstants {
         /* usingSmartMotion */ true,
         /* maxVelocity */ 0.1_tps, /* minVelocity */ 0_tps,
         /* maxAccel */ 10_rad_per_s_sq,
-        /* allowedErr */ 0.8_rad,
+        /* allowedErr */ 1_deg,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
     };
 
   const rmb::SimpleMotorFeedforward<units::radians>
-    motorFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.3378),
-                     rmb::SimpleMotorFeedforward<units::radians>::Kv_t(0.49656),
-                     rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.082985));
+    motorFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.50091),
+                     rmb::SimpleMotorFeedforward<units::radians>::Kv_t(0.45084),
+                     rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.081423));
 
   const auto motorConversion = 
-       rmb::SparkMaxPositionController<units::radians>::ConversionUnit_t(1_tr / 52_tr);
+       rmb::SparkMaxPositionController<units::radians>::ConversionUnit_t(1_tr / 53.76_tr);
 }

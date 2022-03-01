@@ -9,8 +9,8 @@
 #include "shooter/turret/TurretFollowCommand.h"
 
 TurretSubsystem::TurretSubsystem() {
-  positionController.setMaxPosition((3_rad * M_PI) / 2);
-  positionController.setMinPosition((-3_rad * M_PI) / 2);
+  positionController.setMaxPosition(turretSubsystemConstants::maxPosition);
+  positionController.setMinPosition(turretSubsystemConstants::minPosition);
   positionController.resetRefrence(0.0_tr);
 }
 
@@ -23,15 +23,6 @@ void TurretSubsystem::spinTo(units::angle::radian_t pos) {
 
 void TurretSubsystem::spinOffset(units::angle::radian_t offset) {
   positionController.spinOffset(offset);
-}
-
-void TurretSubsystem::sweep() {
-  static units::radian_t lastDelta = turretSubsystemConstants::sweepOffsetPerTick;
-
-  if(!positionController.canSpinOffsetOf(lastDelta))
-    lastDelta *= -1;
-
-  positionController.spinOffset(lastDelta);
 }
 
 units::angle::radian_t TurretSubsystem::getAngularPosition() const{

@@ -75,7 +75,21 @@ void Robot::TestPeriodic() {
   //turret.sweep();
   //turret.spinOffset(0.25_tr);
   //turret.spinTo(0.25_tr);
-  wpi::outs() << (units::degree_t) turret.getAngularPosition() << wpi::endl;
+  wpi::outs() << "turret position -> " << (units::turn_t) turret.getAngularPosition() << wpi::endl;
+
+  turret.spinTo(turretSubsystemConstants::maxPosition * spinDirection);
+
+  if(turret.isAtPosition(turretSubsystemConstants::minPosition) || turret.isAtPosition(turretSubsystemConstants::maxPosition)) {
+      spinDirection *= -1;
+  }
+}
+
+void Robot::TestInit() {
+    if(turret.getAngularPosition() < 0_tr) {
+        spinDirection = -1;
+    } else {
+        spinDirection = 1;
+    }
 }
 
 #ifndef RUNNING_FRC_TESTS
