@@ -66,17 +66,7 @@ void Robot::TeleopPeriodic() {}
 /**s
  * This function is called periodically during test mode.
  */
-void Robot::TestPeriodic() {
-  if(joystick.GetY() > 0.1)
-    spinner.pullIn(0.5);
-  else if(joystick.GetY() < -0.1)
-    spinner.spitOut(0.5);
-  
-  if(joystick.GetRawButtonPressed(11))
-    extender.retract();
-  else if(joystick.GetRawButtonPressed(9))
-    extender.extend();
-}
+void Robot::TestPeriodic() {}
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
