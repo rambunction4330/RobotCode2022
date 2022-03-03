@@ -26,14 +26,14 @@ rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
     : sparkMax(deviceID, motorType),
       sparkMaxEncoder(
         alternateEncoder ? 
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxAlternateEncoder>(sparkMax.GetAlternateEncoder(ticksPerRotation))) :
+          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder(rev::SparkMaxRelativeEncoder::Type::kQuadrature, ticksPerRotation))) :
           std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder()))
         ),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionFactor), feedforward(ff) {
 
   CHECK_REVLIB_ERROR(sparkMax.RestoreFactoryDefaults());
-  CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFeedbackDevice(*sparkMaxEncoder));
+  //CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFeedbackDevice(*sparkMaxEncoder));
 
   // configure pid consts
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));

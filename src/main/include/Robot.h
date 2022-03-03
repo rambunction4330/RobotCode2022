@@ -6,6 +6,8 @@
 #include "RobotContainer.h"
 #include <frc/TimedRobot.h>
 
+#include <shooter/hood/HoodSubsystem.h>
+
 class Robot : public frc::TimedRobot {
 public:
   void RobotInit() override;
@@ -17,7 +19,17 @@ public:
   void TeleopInit() override;
   void TeleopPeriodic() override;
   void TestPeriodic() override;
+  void TestInit() override;
 
 private:
-  RobotContainer container;
+  //RobotContainer container;
+  HoodSubsystem hoodSubsystem{};
+
+  frc::Joystick stick{0};
+
+
+//  rev::CANSparkMax positionController {
+//      42, rev::CANSparkMax::MotorType::kBrushed
+//  };
+
 };

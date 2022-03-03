@@ -121,3 +121,29 @@ namespace shooterSubsystemConstants {
        rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(1_m / 1_rad);
 
 }
+
+namespace hoodSubsystemConstants {
+    const int motorID = 42;
+
+    const rmb::SparkMaxPositionController<units::radians>::PIDConfig
+            hoodPIDConfig{
+            /* p */ 15.0, /* i */ 0.0, /* d */ 4.0, /* f */ 0.0,
+            /* iZone */ 0.01, /* iMaxAccumulator */ 0.05,
+            /* maxOutput */ 1.0, /* minOutput */ -1.0,
+
+            /* SmartMotion config */
+            /* usingSmartMotion */ false,
+            /* maxVelocity */ 0_tps, /* minVelocity */ 0.0_tps,
+            /* maxAccel */ 0_rad_per_s_sq,
+            /* allowedErr */ 1.0_deg,
+            /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
+    };
+
+    const rmb::SimpleMotorFeedforward<units::radians>
+            hoodFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.2),
+                                rmb::SimpleMotorFeedforward<units::radians>::Kv_t(0.0),
+                                rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.0));
+
+    const auto hoodConversion =
+            rmb::SparkMaxVelocityController<units::radians>::ConversionUnit_t(22_rad / 32_rad);
+}

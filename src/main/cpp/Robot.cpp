@@ -38,7 +38,7 @@ void Robot::RobotPeriodic() {
  * robot is disabled.
  */
 void Robot::DisabledInit() {
-  container.getTeleopDriveCommand().Cancel();
+  //container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::DisabledPeriodic() {}
@@ -48,14 +48,14 @@ void Robot::DisabledPeriodic() {}
  * RobotContainer} class.
  */
 void Robot::AutonomousInit() {
-  container.getTeleopDriveCommand().Cancel();
+  //container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  frc2::CommandScheduler::GetInstance().Schedule(
-      &container.getTeleopDriveCommand());
+  //frc2::CommandScheduler::GetInstance().Schedule(
+      //&container.getTeleopDriveCommand());
 }
 
 /**
@@ -66,7 +66,15 @@ void Robot::TeleopPeriodic() {}
 /**
  * This function is called periodically during test mode.
  */
-void Robot::TestPeriodic() {}
+void Robot::TestPeriodic() {
+    //hoodSubsystem.setPosition(45_deg);
+    wpi::outs() << (units::degree_t) hoodSubsystem.getPosition() << "-" << 35_deg * ((stick.GetThrottle() + 1)/2) << wpi::endl;
+    hoodSubsystem.setPosition(35_deg * ((stick.GetThrottle() + 1)/2));
+}
+
+void Robot::TestInit(){
+    hoodSubsystem.zero();
+}
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
