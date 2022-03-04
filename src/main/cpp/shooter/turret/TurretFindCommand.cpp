@@ -11,11 +11,21 @@ TurretFindCommand::TurretFindCommand(TurretSubsystem& turret, const VisionSubsys
 }
 
 // Called when the command is initially scheduled.
-void TurretFindCommand::Initialize() {}
+void TurretFindCommand::Initialize() {
+    if(turretSubsystem.getAngularPosition() < 0_tr) {
+        spinDirection = -1;
+    } else {
+        spinDirection = 1;
+    }
+}
 
 // Called repeatedly when this Command is scheduled to run
 void TurretFindCommand::Execute() {
+    turretSubsystem.spinTo(spinDirection < 0.0 ? turretSubsystemConstants::minPosition : turretSubsystemConstants::maxPosition);
 
+    if(turretSubsystem.isAtPosition(turretSubsystemConstants::minPosition) || turretSubsystem.isAtPosition(turretSubsystemConstants::maxPosition)) {
+        spinDirection *= -1;
+    }
 }
 
 // Called once the command ends or is interrupted.
@@ -23,5 +33,5 @@ void TurretFindCommand::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool TurretFindCommand::IsFinished() {
-  return false;
+  return visionSubsystem.IsHubInView();
 }

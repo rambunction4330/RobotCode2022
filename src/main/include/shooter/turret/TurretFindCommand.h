@@ -49,4 +49,5 @@ class TurretFindCommand
 private:
   TurretSubsystem& turretSubsystem;
   const VisionSubsystem& visionSubsystem;
+  units::scalar_t spinDirection = 1.0;
 };
