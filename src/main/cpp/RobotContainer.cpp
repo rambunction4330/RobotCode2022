@@ -36,7 +36,7 @@ void RobotContainer::ConfigureButtonBindings() {
     storageSubsystem.spinStorage(0.5);
   }, [&](bool a) {
     intakeSpinnerSubsystem.stop(); 
-    storageSubsystem.stop(); 
+    storageSubsystem.spinStorage(-1.0); 
   }, [&]() {
     return !intakeExtenderSubsystem.isExtended() || storageSubsystem.hasBall();
   }, {&intakeSpinnerSubsystem, &storageSubsystem}));
@@ -44,7 +44,7 @@ void RobotContainer::ConfigureButtonBindings() {
   // Spit balls out
   joystickSubsystem.getButton(NINE).WhileHeld([&]() {
     intakeExtenderSubsystem.extend();
-    intakeSpinnerSubsystem.spin(-1.0);
+    intakeSpinnerSubsystem.spin(-0.5);
     storageSubsystem.spinStorage(-1.0);
   }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem});
 }
