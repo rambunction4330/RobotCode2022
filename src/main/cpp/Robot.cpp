@@ -69,7 +69,8 @@ void Robot::TeleopPeriodic() {}
 void Robot::TestPeriodic() {}
 
 void Robot::TestInit(){
-    hoodSubsystem.zero();
+    //hoodSubsystem.zero();
+    //frc2::CommandScheduler::GetInstance().Schedule(&container.getManualShooterCommand());
 }
 
 

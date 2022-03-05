@@ -23,16 +23,16 @@ public:
   void TestPeriodic() override;
 
 private:
-  //RobotContainer container;
+  RobotContainer container;
 
-  HoodSubsystem hoodSubsystem{};
+  //HoodSubsystem hoodSubsystem{};
   //rev::CANSparkMax flywheelA{43, rev::CANSparkMax::MotorType::kBrushless};
   //rev::CANSparkMax flywheelB{44, rev::CANSparkMax::MotorType::kBrushless};
 
 
-  TurretSubsystem turret {};
+ // TurretSubsystem turret {};
 
-  frc::Joystick joystick{0};
+  //frc::Joystick joystick{0};
 
   units::scalar_t spinDirection = 1.0;
 };

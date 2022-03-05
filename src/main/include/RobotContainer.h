@@ -14,6 +14,7 @@
 #include "shooter/turret/TurretSubsystem.h"
 #include "shooter/turret/TurretFindCommand.h"
 #include "shooter/turret/TurretFollowCommand.h"
+#include "shooter/ManualShooterCommand.h"
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -26,6 +27,7 @@ public:
   RobotContainer();
 
   TeleopDriveCommand &getTeleopDriveCommand() { return teleopDriveCommand; }
+  //ManualShooterCommand& getManualShooterCommand() { return manualShooterCommand; }
 private:
 
   void ConfigureButtonBindings();
@@ -34,13 +36,13 @@ private:
   ShooterSubsystem  shooterSubsystem{};
   TurretSubsystem   turretSubsystem{};
 
-  ClimberSubsystem  climberSubsystem;
+  //ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
   IntakeSubsystem   intakeSubsystem;
-  JoystickSubsystem joystickSubsystem;
+  JoystickSubsystem joystickSubsystem{0};
   VisionSubsystem   visionSubsystem{ turretSubsystem};
-  TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
-  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
-  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeSubsystem };
-
+  //TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
+  //TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
+  //ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeSubsystem };
+  //ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem };
 };

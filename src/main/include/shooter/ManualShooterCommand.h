@@ -9,6 +9,7 @@
 
 #include <shooter/ShooterSubsystem.h>
 #include <driverstation/JoystickSubsystem.h>
+#include <shooter/turret/TurretSubsystem.h>
 
 /**
  * Shoots based on user input from the joystick
@@ -16,7 +17,7 @@
 class ManualShooterCommand
     : public frc2::CommandHelper<frc2::CommandBase, ManualShooterCommand> {
  public:
-  ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick);
+  ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick, TurretSubsystem& turret);
 
   void Initialize() override;
 
@@ -30,5 +31,6 @@ private:
 
   ShooterSubsystem& shooterSubsystem;
   JoystickSubsystem& joystickSubsystem;
+  TurretSubsystem& turretSubsystem;
   
 };
