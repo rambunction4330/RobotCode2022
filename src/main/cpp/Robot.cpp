@@ -14,7 +14,7 @@
 #include <rmb/io/log.h>
 
 void Robot::RobotInit() { 
-
+  //turretPositionController.resetRefrence(0_rad);
   // container.shuffleBoard.ShuffleBoardInit();
 }
 
@@ -28,7 +28,7 @@ void Robot::RobotInit() {
  */
 void Robot::RobotPeriodic() {
   
-  frc2::CommandScheduler::GetInstance().Run();
+  //frc2::CommandScheduler::GetInstance().Run();
   // container.shuffleBoard.Periodic();
   }
 
@@ -54,8 +54,8 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  //frc2::CommandScheduler::GetInstance().Schedule(
-      //&container.getTeleopDriveCommand());
+  // frc2::CommandScheduler::GetInstance().Schedule(
+  //     &container.getTeleopDriveCommand());
 }
 
 /**
@@ -66,23 +66,12 @@ void Robot::TeleopPeriodic() {}
 /**
  * This function is called periodically during test mode.
  */
-void Robot::TestPeriodic() {
-    //hoodSubsystem.setPosition(45_deg);
-    wpi::outs() << (units::degree_t) hoodSubsystem.getPosition() << "-" << 21_deg * ((stick.GetThrottle() + 1)/2) << wpi::endl;
-    hoodSubsystem.setPosition(21_deg * ((stick.GetThrottle() + 1)/2));
-
-    if (stick.GetTrigger()) {
-        flywheelA.Set(1.0);
-        flywheelB.Set(1.0);
-    } else {
-        flywheelA.Set(0.0);
-        flywheelB.Set(0.0);
-    }
-}
+void Robot::TestPeriodic() {}
 
 void Robot::TestInit(){
     hoodSubsystem.zero();
 }
+
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }

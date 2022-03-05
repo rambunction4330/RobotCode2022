@@ -36,5 +36,6 @@ bool checkREVLibError(rev::REVLibError error, const char *functionCall,
               << " ] in " << fileName << ":" << std::to_string(line) << " \""
               << functionCall << "\"" << wpi::endl;
 
+
   return false;
 }

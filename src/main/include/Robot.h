@@ -6,7 +6,11 @@
 #include "RobotContainer.h"
 #include <frc/TimedRobot.h>
 
+<<<<<<< HEAD
 #include <shooter/hood/HoodSubsystem.h>
+=======
+#include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
+>>>>>>> TurretImpl
 
 class Robot : public frc::TimedRobot {
 public:
@@ -18,20 +22,20 @@ public:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
-  void TestPeriodic() override;
   void TestInit() override;
+  void TestPeriodic() override;
 
 private:
   //RobotContainer container;
+
   HoodSubsystem hoodSubsystem{};
-  rev::CANSparkMax flywheelA{43, rev::CANSparkMax::MotorType::kBrushless};
-  rev::CANSparkMax flywheelB{44, rev::CANSparkMax::MotorType::kBrushless};
-
-  frc::Joystick stick{0};
+  //rev::CANSparkMax flywheelA{43, rev::CANSparkMax::MotorType::kBrushless};
+  //rev::CANSparkMax flywheelB{44, rev::CANSparkMax::MotorType::kBrushless};
 
 
-//  rev::CANSparkMax positionController {
-//      42, rev::CANSparkMax::MotorType::kBrushed
-//  };
+  TurretSubsystem turret {};
 
+  frc::Joystick joystick{0};
+
+  units::scalar_t spinDirection = 1.0;
 };
