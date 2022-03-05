@@ -32,8 +32,8 @@ namespace driveSubsystemConstants {
 
 const frc::SPI::Port gyroPort = frc::SPI::kMXP;
 
-const int frontLeftID  = 11,
-          frontRightID = 12,
+const int frontLeftID  = 11, 
+          frontRightID = 12, 
           rearLeftID   = 13,
           rearRightID  = 14;
 
@@ -103,6 +103,11 @@ const units::meter_t extenderIn = 0.0_m;
 
 } // namespace driveSubsystemConstants
 
+namespace storageConstants{
+  const int wheelID = 31;
+
+
+}
 
 namespace positionControllerConstants
 {

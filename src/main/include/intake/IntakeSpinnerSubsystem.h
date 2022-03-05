@@ -9,24 +9,27 @@
 
 #include <rev/CANSparkMax.h>
 
+#include "IntakeExtenderSubsystem.h"
+
 class IntakeSpinnerSubsystem : public frc2::SubsystemBase {
 public:
-  IntakeSpinnerSubsystem();
+  IntakeSpinnerSubsystem(const IntakeExtenderSubsystem &extender);
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
-  void pullIn(double speed = 0.5);
-  std::unique_ptr<frc2::Command> pullInCommand(double speed = 0.5);
-
-  void spitOut(double speed = -0.5);
-  std::unique_ptr<frc2::Command> spitOutCommand(double speed = 0.5);
-
+  void spin(double speed = 0.5);
+  std::unique_ptr<frc2::Command> spinCommand(double speed = 0.5);
+  
   void stop();
   std::unique_ptr<frc2::Command> stopCommand();
 
+  bool isSpinning() const;
+
 private:
   rev::CANSparkMax spinner;
+
+  const IntakeExtenderSubsystem &extender;
 };

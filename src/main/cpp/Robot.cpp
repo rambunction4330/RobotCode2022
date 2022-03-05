@@ -67,12 +67,15 @@ void Robot::TeleopPeriodic() {}
  * This function is called periodically during test mode.
  */
 void Robot::TestPeriodic() {}
+<<<<<<< HEAD
 
 void Robot::TestInit(){
     //hoodSubsystem.zero();
     wpi::outs() << "Schedueling Command!" << wpi::endl;
     frc2::CommandScheduler::GetInstance().Schedule(container.getManualShooterCommand());
 }
+=======
+>>>>>>> storage
 
 
 #ifndef RUNNING_FRC_TESTS

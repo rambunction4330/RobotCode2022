@@ -37,4 +37,5 @@ private:
 
   units::scalar_t spinDirection = 1.0;
 
+
 };
