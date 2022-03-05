@@ -5,20 +5,6 @@
 #include <frc/Joystick.h>
 #include <frc2/command/SubsystemBase.h>
 #include <frc2/command/button/JoystickButton.h>
-enum JoystickKey {
-  TRIGGER = 1,
-  SIDETRIGGER,
-  THREE,
-  FOUR,
-  FIVE,
-  SIX,
-  SEVEN,
-  EIGHT,
-  NINE,
-  TEN,
-  ELLEVEN,
-  TWELVE
-};
 
 class JoystickSubsystem : public frc2::SubsystemBase {
 public:
@@ -52,8 +38,13 @@ public:
     return joystick.GetTwist();
   }
   frc2::JoystickButton
-  getButton(JoystickKey button) { // Gets the button passed through the enum
-    return frc2::JoystickButton(&joystick, (int)button);
+  getButton(int button) { // Gets the button passed through the enum
+    return frc2::JoystickButton(&joystick, button);
+  }
+  
+  bool
+  buttonPressed(int button) { // Gets the button passed through the enum
+    return joystick.GetRawButton(button);
   }
 
   double getTwist() const { // Gets joystick twist/rotation
