@@ -73,8 +73,34 @@ const frc::ProfiledPIDController<units::radians> thetaController(0.0, 0.0, 0.0, 
 
 namespace intakeSubsystem {
 
-const static units::meters_per_second_t maxVelocity(0.0);
-const static units::radians_per_second_t maxRotVelocity(0.0);
+const int extenderID = 21, spinnerID = 23;
+
+const rmb::SparkMaxPositionController<units::meters>::Follower extenderFollower = {22, rev::CANSparkMax::MotorType::kBrushless, true};
+
+const rmb::SparkMaxPositionController<units::meters>::PIDConfig
+    extenderPIDConfig{
+        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
+        /* maxOutput */ 1.0, /* minOutput */ -1.0,
+
+        /* SmartMotion config */
+        /* usingSmartMotion */ true,
+        /* maxVelocity */ 0.2_mps, /* minVelocity */ 0.0_mps,
+        /* maxAccel */ 0.5_mps_sq,
+        /* allowedErr */ 0.001_m,
+        /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
+
+ const rmb::SimpleMotorFeedforward<units::meters>
+    extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.26336),
+                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(2.6898),
+                        rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.043975));
+
+const rmb::SparkMaxPositionController<units::meters>::ConversionUnit_t
+    extenderConvertion(/* radius */(1.3_in / 2_rad) * /* gearing */(1.0/4));
+
+const units::meter_t extenderOut = 0.24_m;
+const units::meter_t extenderIn = 0.0_m;
+
 } // namespace driveSubsystemConstants
 
 

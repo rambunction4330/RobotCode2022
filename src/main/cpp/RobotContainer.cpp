@@ -20,10 +20,10 @@ void RobotContainer::ConfigureButtonBindings() {
 }
 
 void RobotContainer::InitializeTurret() {
-  turretSubsystem.SetDefaultCommand(
-    frc2::ConditionalCommand(
-      TurretFollowCommand(turretSubsystem, visionSubsystem), 
-      TurretFindCommand(turretSubsystem, visionSubsystem),
-      [&]() { return visionSubsystem.IsHubInView(); })
-    );
+//  turretSubsystem.SetDefaultCommand(
+//    frc2::ConditionalCommand(
+//      TurretFollowCommand(turretSubsystem, visionSubsystem),
+//      TurretFindCommand(turretSubsystem, visionSubsystem),
+//      [&]() { return visionSubsystem.IsHubInView(); })
+//    );
 }

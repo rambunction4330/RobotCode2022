@@ -27,7 +27,7 @@ public:
   RobotContainer();
 
   TeleopDriveCommand &getTeleopDriveCommand() { return teleopDriveCommand; }
-  //ManualShooterCommand& getManualShooterCommand() { return manualShooterCommand; }
+  ManualShooterCommand* getManualShooterCommand() { return &manualShooterCommand; }
 private:
 
   void ConfigureButtonBindings();
@@ -35,14 +35,17 @@ private:
 
   ShooterSubsystem  shooterSubsystem{};
   TurretSubsystem   turretSubsystem{};
-
-  //ClimberSubsystem  climberSubsystem;
+//
+//  ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
-  IntakeSubsystem   intakeSubsystem;
+
+  IntakeExtenderSubsystem intakeExtenderSubsystem;
+  IntakeSpinnerSubsystem intakeSpinnerSubsystem;
   JoystickSubsystem joystickSubsystem{0};
-  VisionSubsystem   visionSubsystem{ turretSubsystem};
-  //TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
-  //TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
-  //ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeSubsystem };
-  //ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem };
+  TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
+//  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
+//  VisionSubsystem   visionSubsystem{ turretSubsystem};
+//  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
+  ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem };
+
 };

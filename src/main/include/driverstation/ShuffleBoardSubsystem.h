@@ -8,7 +8,8 @@
 #include <shooter/ShooterSubsystem.h>
 #include <climber/ClimberSubsystem.h>
 #include <drivetrain/DriveSubsystem.h>
-#include <intake/IntakeSubsystem.h>
+#include <intake/IntakeSpinnerSubsystem.h>
+#include <intake/IntakeExtenderSubsystem.h>
 #include <frc2/command/Command.h>
 #include <frc/shuffleboard/Shuffleboard.h>
 #include "JoystickSubsystem.h"
@@ -25,14 +26,16 @@ class ShuffleBoardSubsystem : public frc2::SubsystemBase {
    * @param joystick shootersystem dependency
    * @param climber shootersystem dependency
    * @param drive shootersystem dependency
-   * @param intake shootersystem dependency
+   * @param intakeExtender shootersystem dependency
+   * @param intakeSpinner shootersystem dependency
    */
-  ShuffleBoardSubsystem( const ShooterSubsystem& shooter, const JoystickSubsystem& joystick, const ClimberSubsystem& climber, const DriveSubsystem& drive, const IntakeSubsystem& intake ) : 
+  ShuffleBoardSubsystem( const ShooterSubsystem& shooter, const JoystickSubsystem& joystick, const ClimberSubsystem& climber, const DriveSubsystem& drive, const IntakeExtenderSubsystem& intakeExtender, const IntakeSpinnerSubsystem& intakeSpinner) : 
   shooterSubsystem(shooter),
   joystickSubsystem(joystick),
   climberSubsystem(climber),
   driveSubsystem(drive),
-  intakeSubsystem(intake) {};
+  intakeExtenderSubsystem(intakeExtender),
+  intakeSpinnerSubsystem(intakeSpinner) {};
 
   /**
    * Periodic update of networkTables
@@ -48,7 +51,8 @@ class ShuffleBoardSubsystem : public frc2::SubsystemBase {
  const JoystickSubsystem& joystickSubsystem;
  const ClimberSubsystem&  climberSubsystem;
  const DriveSubsystem&    driveSubsystem;
- const IntakeSubsystem&   intakeSubsystem;
+ const IntakeExtenderSubsystem&   intakeExtenderSubsystem;
+ const IntakeSpinnerSubsystem&   intakeSpinnerSubsystem;
 // Network tables vars
  nt::NetworkTableInstance networkInstance;
  frc::ShuffleboardTab&    shuffleBoardTab  = frc::Shuffleboard::GetTab("RobotData");

@@ -27,8 +27,7 @@ void Robot::RobotInit() {
  * LiveWindow and SmartDashboard integrated updating.
  */
 void Robot::RobotPeriodic() {
-  
-  //frc2::CommandScheduler::GetInstance().Run();
+  frc2::CommandScheduler::GetInstance().Run();
   // container.shuffleBoard.Periodic();
   }
 
@@ -56,6 +55,7 @@ void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {
   // frc2::CommandScheduler::GetInstance().Schedule(
   //     &container.getTeleopDriveCommand());
+
 }
 
 /**
@@ -63,14 +63,15 @@ void Robot::TeleopInit() {
  */
 void Robot::TeleopPeriodic() {}
 
-/**
+/**s
  * This function is called periodically during test mode.
  */
 void Robot::TestPeriodic() {}
 
 void Robot::TestInit(){
     //hoodSubsystem.zero();
-    //frc2::CommandScheduler::GetInstance().Schedule(&container.getManualShooterCommand());
+    wpi::outs() << "Schedueling Command!" << wpi::endl;
+    frc2::CommandScheduler::GetInstance().Schedule(container.getManualShooterCommand());
 }
 
 

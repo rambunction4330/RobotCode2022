@@ -23,6 +23,7 @@ public:
   void TestPeriodic() override;
 
 private:
+
   RobotContainer container;
 
   //HoodSubsystem hoodSubsystem{};
@@ -35,4 +36,5 @@ private:
   //frc::Joystick joystick{0};
 
   units::scalar_t spinDirection = 1.0;
+
 };
