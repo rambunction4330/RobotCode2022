@@ -5,8 +5,8 @@
 #include <rmb/io/log.h>
 #include "shooter/ManualShooterCommand.h"
 
-ManualShooterCommand::ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick, TurretSubsystem& turret) :
-   shooterSubsystem(shooter), joystickSubsystem(joystick), turretSubsystem(turret) {
+ManualShooterCommand::ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick, TurretSubsystem& turret, StorageSubsystem& storage) :
+   shooterSubsystem(shooter), joystickSubsystem(joystick), turretSubsystem(turret), storageSubsystem(storage) {
   AddRequirements({&shooterSubsystem, &joystickSubsystem, &turretSubsystem});
 }
 
