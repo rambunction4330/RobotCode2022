@@ -24,7 +24,7 @@ class HoodSubsystem : public frc2::SubsystemBase {
   }
 
   void zero() {
-      positionController.resetRefrence(0.0_tr);
+      positionController.resetRefrence(0.0_rad);
   }
 
  private:

@@ -127,7 +127,7 @@ namespace hoodSubsystemConstants {
 
     const rmb::SparkMaxPositionController<units::radians>::PIDConfig
             hoodPIDConfig{
-            /* p */ 15.0, /* i */ 0.0, /* d */ 4.0, /* f */ 0.0,
+            /* p */ 16.0, /* i */ 0.0, /* d */ 4.0, /* f */ 0.0,
             /* iZone */ 0.01, /* iMaxAccumulator */ 0.05,
             /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
@@ -140,7 +140,7 @@ namespace hoodSubsystemConstants {
     };
 
     const rmb::SimpleMotorFeedforward<units::radians>
-            hoodFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.2),
+            hoodFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.15),
                                 rmb::SimpleMotorFeedforward<units::radians>::Kv_t(0.0),
                                 rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.0));
 

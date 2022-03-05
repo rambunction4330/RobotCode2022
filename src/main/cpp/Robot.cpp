@@ -68,8 +68,16 @@ void Robot::TeleopPeriodic() {}
  */
 void Robot::TestPeriodic() {
     //hoodSubsystem.setPosition(45_deg);
-    wpi::outs() << (units::degree_t) hoodSubsystem.getPosition() << "-" << 35_deg * ((stick.GetThrottle() + 1)/2) << wpi::endl;
-    hoodSubsystem.setPosition(35_deg * ((stick.GetThrottle() + 1)/2));
+    wpi::outs() << (units::degree_t) hoodSubsystem.getPosition() << "-" << 21_deg * ((stick.GetThrottle() + 1)/2) << wpi::endl;
+    hoodSubsystem.setPosition(21_deg * ((stick.GetThrottle() + 1)/2));
+
+    if (stick.GetTrigger()) {
+        flywheelA.Set(1.0);
+        flywheelB.Set(1.0);
+    } else {
+        flywheelA.Set(0.0);
+        flywheelB.Set(0.0);
+    }
 }
 
 void Robot::TestInit(){

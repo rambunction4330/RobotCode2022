@@ -24,6 +24,8 @@ public:
 private:
   //RobotContainer container;
   HoodSubsystem hoodSubsystem{};
+  rev::CANSparkMax flywheelA{43, rev::CANSparkMax::MotorType::kBrushless};
+  rev::CANSparkMax flywheelB{44, rev::CANSparkMax::MotorType::kBrushless};
 
   frc::Joystick stick{0};
 
