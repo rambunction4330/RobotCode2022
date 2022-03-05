@@ -20,7 +20,7 @@ class HoodSubsystem : public frc2::SubsystemBase {
   void setPosition(units::angle::radian_t position);
   units::angle::radian_t getPosition();
   double getRawPosition() {
-      positionController.getRawPosition();
+      return positionController.getRawPosition();
   }
 
   void zero() {

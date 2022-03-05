@@ -6,11 +6,8 @@
 #include "RobotContainer.h"
 #include <frc/TimedRobot.h>
 
-<<<<<<< HEAD
 #include <shooter/hood/HoodSubsystem.h>
-=======
 #include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
->>>>>>> TurretImpl
 
 class Robot : public frc::TimedRobot {
 public:
