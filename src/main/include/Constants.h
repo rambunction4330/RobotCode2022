@@ -44,21 +44,21 @@ const frc::Translation2d frontLeftPose  = { 21.34_in/2.0, -23.59_in/2.0},
                          
 const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     motorPIDConfig{
-        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.00001, /* i */ 0.0000001, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
         /* SmartMotion config */
         /* usingSmartMotion */ true,
-        /* maxVelocity */ 25_mps, /* minVelocity */ 0_mps,
-        /* maxAccel */ 10_mps_sq,
+        /* maxVelocity */ 2.5_mps, /* minVelocity */ 0_mps,
+        /* maxAccel */ 5_mps_sq,
         /* allowedErr */ 0.01_mps,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>
-    motorFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.10973),
-                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.15920),
-                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.30746));
+    motorFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.16515),
+                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.1771),
+                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.36795));
 
 const rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t
     motorConvertion(/* radius */(3_in / 1_rad) * /* gearing */(12/1));
