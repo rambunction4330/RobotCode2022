@@ -87,7 +87,7 @@ const rmb::SparkMaxPositionController<units::meters>::PIDConfig
         /* usingSmartMotion */ true,
         /* maxVelocity */ 0.2_mps, /* minVelocity */ 0.0_mps,
         /* maxAccel */ 0.5_mps_sq,
-        /* allowedErr */ 0.001_m,
+        /* allowedErr */ 0.05_m,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>

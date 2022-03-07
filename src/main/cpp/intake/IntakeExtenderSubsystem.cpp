@@ -45,5 +45,5 @@ std::unique_ptr<frc2::Command> IntakeExtenderSubsystem::retractCommand() {
 
 bool IntakeExtenderSubsystem::isExtended() const {
   // TODO: Needs to be implemented
- return extended;
+ return  (const_cast<rmb::SparkMaxPositionController<units::meters> *>(&extender))->atPosition(intakeSubsystem::extenderOut);
 }

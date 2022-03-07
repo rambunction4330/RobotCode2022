@@ -21,30 +21,25 @@ RobotContainer::RobotContainer() {
 
 void RobotContainer::ConfigureButtonBindings() {
 
-  // Extend Intake
+  // Extend  and pull ball in
   joystickSubsystem.getButton(ELLEVEN).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() { 
-    intakeExtenderSubsystem.extend(); 
+    intakeExtenderSubsystem.extend();
+    if (intakeExtenderSubsystem.isExtended()) {
+      intakeSpinnerSubsystem.spin(1.0);  
+      storageSubsystem.spinStorage(0.5);
+    }
   }, [&](bool) {
+    
+    if (intakeExtenderSubsystem.isExtended()) {
+      storageSubsystem.spinStorage(-1.0);
+    } else {
+      storageSubsystem.stop();
+    }
+
+    intakeSpinnerSubsystem.stop();
     intakeExtenderSubsystem.retract();
+
   }, [&]() {
     return storageSubsystem.hasBall();
-  }, {&intakeExtenderSubsystem}));
-
-  // Pull balls in
-  joystickSubsystem.getButton(TWELVE).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() { 
-    intakeSpinnerSubsystem.spin(1.0);  
-    storageSubsystem.spinStorage(0.5);
-  }, [&](bool a) {
-    intakeSpinnerSubsystem.stop(); 
-    storageSubsystem.spinStorage(-1.0); 
-  }, [&]() {
-    return !intakeExtenderSubsystem.isExtended() || storageSubsystem.hasBall();
-  }, {&intakeSpinnerSubsystem, &storageSubsystem}));
-
-  // Spit balls out
-  joystickSubsystem.getButton(NINE).WhileHeld([&]() {
-    intakeExtenderSubsystem.extend();
-    intakeSpinnerSubsystem.spin(-0.5);
-    storageSubsystem.spinStorage(-1.0);
-  }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem});
+  }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem}));
 }
