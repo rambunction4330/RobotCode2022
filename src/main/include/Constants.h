@@ -32,15 +32,15 @@ namespace driveSubsystemConstants {
 
 const frc::SPI::Port gyroPort = frc::SPI::kMXP;
 
-const int frontLeftID  = 1, 
-          frontRightID = 2, 
-          rearLeftID   = 3,
-          rearRightID  = 4;
+const int frontLeftID  = 11, 
+          frontRightID = 12, 
+          rearLeftID   = 13,
+          rearRightID  = 14;
 
-const frc::Translation2d frontLeftPose  = { 0.303_m, -0.299_m},
-                         frontRightPose = { 0.303_m,  0.299_m}, 
-                         rearLeftPose   = {-0.303_m, -0.299_m},
-                         rearRightPose  = {-0.303_m,  0.299_m,};
+const frc::Translation2d frontLeftPose  = { 21.34_in/2.0, -23.59_in/2.0},
+                         frontRightPose = { 21.34_in/2.0,  23.59_in/2.0}, 
+                         rearLeftPose   = {-21.34_in/2.0, -23.59_in/2.0},
+                         rearRightPose  = {-21.34_in/2.0,  23.59_in/2.0};
                          
 const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     motorPIDConfig{
