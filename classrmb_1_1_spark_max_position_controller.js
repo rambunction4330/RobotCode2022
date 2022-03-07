@@ -14,7 +14,7 @@ var classrmb_1_1_spark_max_position_controller =
     [ "getInverted", "classrmb_1_1_spark_max_position_controller.html#a1962f839d2c11548165c649ab9836d68", null ],
     [ "getMaxPosition", "classrmb_1_1_spark_max_position_controller.html#ad2d82d32ff37932b80169fea16cdf77d", null ],
     [ "getMinPosition", "classrmb_1_1_spark_max_position_controller.html#a9b6090522e964e614e9d00003500ba03", null ],
-    [ "getPosition", "classrmb_1_1_spark_max_position_controller.html#ace99f550275a470f03189c538629d80f", null ],
+    [ "getPosition", "classrmb_1_1_spark_max_position_controller.html#abaee291e90bf6dc8a4c064d8857e21e4", null ],
     [ "getRawPosition", "classrmb_1_1_spark_max_position_controller.html#a2634c29cfcaa54e8f91a66c7bee7eaae", null ],
     [ "getVelocity", "classrmb_1_1_spark_max_position_controller.html#a71010e00f8ad0cc47d1dd62bf41b98b5", null ],
     [ "resetRefrence", "classrmb_1_1_spark_max_position_controller.html#ac2c596d1e01916b2cc96511d9c604384", null ],

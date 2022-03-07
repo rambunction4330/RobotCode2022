@@ -6,7 +6,7 @@ var classrmb_1_1_position_controller =
     [ "getInverted", "classrmb_1_1_position_controller.html#a33c8f20958be9ab248e830515bd48618", null ],
     [ "getMaxPosition", "classrmb_1_1_position_controller.html#aa136da3fdbf6ac7bea219ca7482772e0", null ],
     [ "getMinPosition", "classrmb_1_1_position_controller.html#a45164e92e303ecd0b39d9481b3fe57bc", null ],
-    [ "getPosition", "classrmb_1_1_position_controller.html#a6f5824ba5f4f036a6bffb4e7d4e48ce8", null ],
+    [ "getPosition", "classrmb_1_1_position_controller.html#ae33d655e3c79114fe5cf747ec12ec6ed", null ],
     [ "getVelocity", "classrmb_1_1_position_controller.html#a3fd2318416850550ef32d941da71f44a", null ],
     [ "resetRefrence", "classrmb_1_1_position_controller.html#ad521e51484557c6636dce869f97dd002", null ],
     [ "setInverted", "classrmb_1_1_position_controller.html#aaa13b2b997211e032795ea54e57f5c52", null ],
