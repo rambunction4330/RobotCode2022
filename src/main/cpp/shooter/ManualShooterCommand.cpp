@@ -5,9 +5,9 @@
 #include <rmb/io/log.h>
 #include "shooter/ManualShooterCommand.h"
 
-ManualShooterCommand::ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick, TurretSubsystem& turret, StorageSubsystem& storage) :
-   shooterSubsystem(shooter), joystickSubsystem(joystick), turretSubsystem(turret), storageSubsystem(storage) {
-  AddRequirements({&shooterSubsystem, &joystickSubsystem, &turretSubsystem});
+ManualShooterCommand::ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick, TurretSubsystem& turret, StorageSubsystem& storage, HoodSubsystem& hood) :
+   shooterSubsystem(shooter), joystickSubsystem(joystick), turretSubsystem(turret), storageSubsystem(storage), hoodSubsystem(hood) {
+  AddRequirements({&shooterSubsystem, &joystickSubsystem, &turretSubsystem, &storageSubsystem, &hoodSubsystem});
 }
 
 // Called when the command is initially scheduled.
@@ -24,6 +24,20 @@ void ManualShooterCommand::Execute() {
                 turretSubsystemConstants::maxPosition * std::abs(twist) :
                 turretSubsystemConstants::minPosition * std::abs(twist)
     );
+
+    if(joystickSubsystem.buttonPressed(2)) {
+        shooterSubsystem.spinTo(5_mps);
+    } else {
+        shooterSubsystem.stop();
+    }
+
+    if(joystickSubsystem.buttonPressed(1)) {
+        storageSubsystem.spinStorage(0.5);
+    } else {
+        storageSubsystem.stop();
+    }
+
+    hoodSubsystem.setPosition(45_deg * joystickSubsystem.getThrottle());
 }
 
 // Called once the command ends or is interrupted.

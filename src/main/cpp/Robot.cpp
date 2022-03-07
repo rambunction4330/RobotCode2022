@@ -53,8 +53,9 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  // frc2::CommandScheduler::GetInstance().Schedule(
-  //     &container.getTeleopDriveCommand());
+   frc2::CommandScheduler::GetInstance().Schedule(
+       container.getManualShooterCommand());
+
 
 }
 

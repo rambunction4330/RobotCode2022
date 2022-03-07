@@ -26,7 +26,7 @@ RobotContainer::RobotContainer() {
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
     // Extend Intake
-  joystickSubsystem.getButton(ELLEVEN).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() { 
+  joystickSubsystem.getButton(11).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() {
     intakeExtenderSubsystem.extend(); 
   }, [&](bool) {
     intakeExtenderSubsystem.retract();
@@ -35,18 +35,18 @@ void RobotContainer::ConfigureButtonBindings() {
   }, {&intakeExtenderSubsystem}));
 
   // Pull balls in
-  joystickSubsystem.getButton(TWELVE).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() { 
+  joystickSubsystem.getButton(12).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() {
     intakeSpinnerSubsystem.spin(1.0);  
     storageSubsystem.spinStorage(0.5);
   }, [&](bool a) {
     intakeSpinnerSubsystem.stop(); 
-    storageSubsystem.spinStorage(-1.0); 
+    storageSubsystem.spinStorage(-1.0);
   }, [&]() {
     return !intakeExtenderSubsystem.isExtended() || storageSubsystem.hasBall();
   }, {&intakeSpinnerSubsystem, &storageSubsystem}));
 
   // Spit balls out
-  joystickSubsystem.getButton(NINE).WhileHeld([&]() {
+  joystickSubsystem.getButton(9).WhileHeld([&]() {
     intakeExtenderSubsystem.extend();
     intakeSpinnerSubsystem.spin(-0.5);
     storageSubsystem.spinStorage(-1.0);

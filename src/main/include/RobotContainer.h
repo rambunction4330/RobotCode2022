@@ -48,10 +48,11 @@ private:
   StorageSubsystem storageSubsystem;
   JoystickSubsystem joystickSubsystem{0};
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
+  HoodSubsystem hoodSubsystem{};
 //  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
 //  VisionSubsystem   visionSubsystem{ turretSubsystem};
 //  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
-  ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem, storageSubsystem };
+  ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem, storageSubsystem, hoodSubsystem };
 
 
 };
