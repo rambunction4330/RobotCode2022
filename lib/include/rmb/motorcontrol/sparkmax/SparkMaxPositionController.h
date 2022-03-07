@@ -8,6 +8,7 @@
 
 #include "rmb/motorcontrol/PositionController.h"
 #include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h" 
+#include <limits>
 
 namespace rmb {
 /**
@@ -122,8 +123,7 @@ public:
    * @return the distance from the reference point in the user defined Distance. The reference point can be set with 
    *         rmb::SparkMaxPositionController< DistanceUnit >::resetRefrence(Distance_t position) 	
    */
-  Distance_t getPosition() override;
-
+  Distance_t getPosition() const override;
 
 
 
@@ -225,8 +225,8 @@ private:
 
   ConversionUnit_t conversion;
 
-  RawUnit_t maxPosition = RawUnit_t(100);
-  RawUnit_t minPosition = RawUnit_t(-100);
+  RawUnit_t minPosition = RawUnit_t(__DBL_MIN__);
+  RawUnit_t maxPosition = RawUnit_t(__DBL_MAX__);
 
   rev::CANSparkMax::ControlType controlType;
   std::vector<std::unique_ptr<rev::CANSparkMax>> followers;

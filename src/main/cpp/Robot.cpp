@@ -14,7 +14,7 @@
 #include <rmb/io/log.h>
 
 void Robot::RobotInit() { 
-
+  //turretPositionController.resetRefrence(0_rad);
   // container.shuffleBoard.ShuffleBoardInit();
 }
 
@@ -27,7 +27,6 @@ void Robot::RobotInit() {
  * LiveWindow and SmartDashboard integrated updating.
  */
 void Robot::RobotPeriodic() {
-  
   frc2::CommandScheduler::GetInstance().Run();
   // container.shuffleBoard.Periodic();
   }
@@ -38,7 +37,7 @@ void Robot::RobotPeriodic() {
  * robot is disabled.
  */
 void Robot::DisabledInit() {
-  container.getTeleopDriveCommand().Cancel();
+  //container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::DisabledPeriodic() {}
@@ -48,14 +47,16 @@ void Robot::DisabledPeriodic() {}
  * RobotContainer} class.
  */
 void Robot::AutonomousInit() {
-  container.getTeleopDriveCommand().Cancel();
+  //container.getTeleopDriveCommand().Cancel();
 }
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  frc2::CommandScheduler::GetInstance().Schedule(
-      &container.getTeleopDriveCommand());
+   frc2::CommandScheduler::GetInstance().Schedule(
+       container.getManualShooterCommand());
+
+
 }
 
 /**
@@ -63,10 +64,14 @@ void Robot::TeleopInit() {
  */
 void Robot::TeleopPeriodic() {}
 
-/**
+/**s
  * This function is called periodically during test mode.
  */
 void Robot::TestPeriodic() {}
+
+void Robot::TestInit(){}
+
+
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }

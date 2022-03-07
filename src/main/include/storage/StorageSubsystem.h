@@ -6,8 +6,15 @@
 
 #include <frc2/command/SubsystemBase.h>
 
+#include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
+#include <rev/ColorSensorV3.h>
+
+#include "intake/IntakeSpinnerSubsystem.h"
+
 class StorageSubsystem : public frc2::SubsystemBase {
- public:
+public:
+  enum BallColor { RED, BLUE, NONE };
+
   StorageSubsystem();
 
   /**
@@ -15,7 +22,16 @@ class StorageSubsystem : public frc2::SubsystemBase {
    */
   void Periodic() override;
 
- private:
-  // Components (e.g. motor controllers and sensors) should generally be
-  // declared private and exposed only through public methods.
+  void spinStorage(double speed = 1.0);
+  std::unique_ptr<frc2::Command> spinStorageCommand(double speed = 1.0);
+
+  void stop();
+  std::unique_ptr<frc2::Command> stopCommand();
+
+  bool hasBall() const;
+  BallColor ballColor() const;
+
+private:
+  ctre::phoenix::motorcontrol::can::WPI_TalonSRX storageWheel;
+  rev::ColorSensorV3 colorSensor;
 };
