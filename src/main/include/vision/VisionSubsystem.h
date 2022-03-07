@@ -10,25 +10,45 @@
 #include <units/angle.h>
 #include <units/length.h>
 #include <units/math.h>
+
+#include <shooter/turret/TurretSubsystem.h>
 using namespace units; // we are lazy
 
-template <typename T> class Vector3 {
-public:
-  T x, y, z;
-};
+// template <typename T> class Vector3 {
+// public:
+//   T x, y, z;
+// };
 
 class VisionSubsystem : public frc2::SubsystemBase {
 public:
-  VisionSubsystem(std::function<radian_t()> fnBaseRotation,
-                  std::function<radian_t()> fnShooterAngle)
-      : getBaseRotation(fnBaseRotation), getShooterAngle(fnShooterAngle){};
+  VisionSubsystem(const TurretSubsystem& turret) 
+    : turretSubsystem(turret) {};
 
   void Periodic() override;
-  bool IsHubInView();
-  Vector3<float> GetHubPosition();
+  bool IsHubInView() const;
+
+  // Vector3<float> GetHubPositioo();
+
+  /**
+   * Get the horizontal distance to the hub.
+   * @return the horizontal distance to the hub in meters. 
+   */
+  units::length::meter_t getHubHorizontalPos() const;
+
+  /**
+   * Get the vertical distance to the hub
+   * @return height in meters
+   */
+  units::length::meter_t getHubHeight() const;
+
+  /**
+   * Get the angle to the hub
+   * @return angle in radians to the hub
+   */
+  units::angle::radian_t getAngleToHub() const;
 
 private:
   nt::NetworkTableEntry baseRotation, shooterAngle;
-  std::function<radian_t()> getBaseRotation, getShooterAngle;
+  const TurretSubsystem& turretSubsystem;
   nt::NetworkTableInstance networkInstance;
 };

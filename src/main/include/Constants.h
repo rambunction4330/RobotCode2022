@@ -32,10 +32,10 @@ namespace driveSubsystemConstants {
 
 const frc::SPI::Port gyroPort = frc::SPI::kMXP;
 
-const int frontLeftID  = 1, 
-          frontRightID = 2, 
-          rearLeftID   = 3,
-          rearRightID  = 4;
+const int frontLeftID  = 11, 
+          frontRightID = 12, 
+          rearLeftID   = 13,
+          rearRightID  = 14;
 
 const frc::Translation2d frontLeftPose  = { 0.303_m, -0.299_m},
                          frontRightPose = { 0.303_m,  0.299_m}, 
@@ -73,10 +73,41 @@ const frc::ProfiledPIDController<units::radians> thetaController(0.0, 0.0, 0.0, 
 
 namespace intakeSubsystem {
 
-const static units::meters_per_second_t maxVelocity(0.0);
-const static units::radians_per_second_t maxRotVelocity(0.0);
+const int extenderID = 21, spinnerID = 23;
+
+const rmb::SparkMaxPositionController<units::meters>::Follower extenderFollower = {22, rev::CANSparkMax::MotorType::kBrushless, true};
+
+const rmb::SparkMaxPositionController<units::meters>::PIDConfig
+    extenderPIDConfig{
+        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
+        /* maxOutput */ 1.0, /* minOutput */ -1.0,
+
+        /* SmartMotion config */
+        /* usingSmartMotion */ true,
+        /* maxVelocity */ 0.2_mps, /* minVelocity */ 0.0_mps,
+        /* maxAccel */ 0.5_mps_sq,
+        /* allowedErr */ 0.001_m,
+        /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
+
+ const rmb::SimpleMotorFeedforward<units::meters>
+    extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.26336),
+                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(2.6898),
+                        rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.043975));
+
+const rmb::SparkMaxPositionController<units::meters>::ConversionUnit_t
+    extenderConvertion(/* radius */(1.3_in / 2_rad) * /* gearing */(1.0/4));
+
+const units::meter_t extenderOut = 0.24_m;
+const units::meter_t extenderIn = 0.0_m;
+
 } // namespace driveSubsystemConstants
 
+namespace storageConstants{
+  const int wheelID = 31;
+
+
+}
 
 namespace positionControllerConstants
 {
@@ -96,7 +127,7 @@ namespace positionControllerConstants
 } // namespace positionControllerConstants
 
 namespace shooterSubsystemConstants {
-  const int flywheelMotorID  = 7;
+  const int flywheelMotorID  = 43;
 
   const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     flywheelPIDConfig{
@@ -121,3 +152,60 @@ namespace shooterSubsystemConstants {
        rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(1_m / 1_rad);
 
 }
+
+
+namespace hoodSubsystemConstants {
+    const int motorID = 42;
+
+    const rmb::SparkMaxPositionController<units::radians>::PIDConfig
+            hoodPIDConfig{
+            /* p */ 16.0, /* i */ 0.0, /* d */ 4.0, /* f */ 0.0,
+            /* iZone */ 0.01, /* iMaxAccumulator */ 0.05,
+            /* maxOutput */ 1.0, /* minOutput */ -1.0,
+
+            /* SmartMotion config */
+            /* usingSmartMotion */ false,
+            /* maxVelocity */ 0_tps, /* minVelocity */ 0.0_tps,
+            /* maxAccel */ 0_rad_per_s_sq,
+            /* allowedErr */ 1.0_deg,
+            /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
+    };
+
+    const rmb::SimpleMotorFeedforward<units::radians>
+            hoodFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.15),
+                                rmb::SimpleMotorFeedforward<units::radians>::Kv_t(0.0),
+                                rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.0));
+
+    const auto hoodConversion =
+            rmb::SparkMaxVelocityController<units::radians>::ConversionUnit_t(22_rad / 32_rad);
+}
+
+namespace turretSubsystemConstants {
+  const int motorID = 41;
+
+  const units::radian_t minPosition = -90_deg;
+  const units::radian_t maxPosition = 180_deg;
+
+  const rmb::SparkMaxPositionController<units::radians>::PIDConfig
+    motorPIDConfig{
+        /* p */ 0.0000, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
+        /* maxOutput */ 1.0, /* minOutput */ -1.0,
+
+        /* SmartMotion config */
+        /* usingSmartMotion */ true,
+        /* maxVelocity */ 0.1_tps, /* minVelocity */ 0_tps,
+        /* maxAccel */ 10_rad_per_s_sq,
+        /* allowedErr */ 10_deg,
+        /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
+    };
+
+  const rmb::SimpleMotorFeedforward<units::radians>
+    motorFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.50091),
+                     rmb::SimpleMotorFeedforward<units::radians>::Kv_t(0.45084),
+                     rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.081423));
+
+  const auto motorConversion = 
+       rmb::SparkMaxPositionController<units::radians>::ConversionUnit_t(1_tr / 53.76_tr);
+}
+
