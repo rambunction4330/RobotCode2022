@@ -44,7 +44,7 @@ const frc::Translation2d frontLeftPose  = { 21.34_in/2.0, -23.59_in/2.0},
                          
 const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     motorPIDConfig{
-        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0001, /* i */ 0.00001, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
