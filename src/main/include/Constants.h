@@ -44,7 +44,7 @@ const frc::Translation2d frontLeftPose  = { 21.34_in/2.0, -23.59_in/2.0},
                          
 const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     motorPIDConfig{
-        /* p */ 0.00001, /* i */ 0.0000001, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
@@ -64,8 +64,8 @@ const rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t
     motorConvertion(/* radius */(3_in / 1_rad) * /* gearing */(12/1));
 
 const units::meters_per_second_t maxVelocity(2.5_mps);
-const units::radians_per_second_t maxRotVelocity(5000_rpm);
-const units::radians_per_second_squared_t maxRotAcceleration(5000_rad_per_s_sq);
+const units::radians_per_second_t maxRotVelocity(500_rpm);
+const units::radians_per_second_squared_t maxRotAcceleration(500_rad_per_s_sq);
 
 const frc2::PIDController xController(0.0, 0.0, 0.0), yController(0.0, 0.0, 0.0);
 const frc::ProfiledPIDController<units::radians> thetaController(0.0, 0.0, 0.0, {maxRotVelocity, maxRotAcceleration});
