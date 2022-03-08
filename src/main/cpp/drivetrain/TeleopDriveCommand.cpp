@@ -22,7 +22,7 @@ void TeleopDriveCommand::Execute() {
   double throttle = joystickSubsystem.getThrottle();
   driveSubsystem.driveCartesian(joystickSubsystem.getY() * throttle,
                                 joystickSubsystem.getX() * throttle,
-                                joystickSubsystem.getTwist());
+                                joystickSubsystem.getTwist() * throttle);
 }
 
 // Called once the command ends or is interrupted.
