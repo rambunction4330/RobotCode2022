@@ -24,26 +24,28 @@ RobotContainer::RobotContainer() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-  // Configure your button bindings here
-    // Extend Intake
-  joystickSubsystem.getButton(11).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() {
-    intakeExtenderSubsystem.extend(); 
+
+  // Extend  and pull ball in
+  joystickSubsystem.getButton(11).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() { 
+    intakeExtenderSubsystem.extend();
+    if (intakeExtenderSubsystem.isExtended()) {
+      intakeSpinnerSubsystem.spin(1.0);  
+      storageSubsystem.spinStorage(0.5);
+    }
   }, [&](bool) {
+    
+    if (intakeExtenderSubsystem.isExtended()) {
+      storageSubsystem.spinStorage(-1.0);
+    } else {
+      storageSubsystem.stop();
+    }
+
+    intakeSpinnerSubsystem.stop();
     intakeExtenderSubsystem.retract();
+
   }, [&]() {
     return storageSubsystem.hasBall();
-  }, {&intakeExtenderSubsystem}));
-
-  // Pull balls in
-  joystickSubsystem.getButton(12).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() {
-    intakeSpinnerSubsystem.spin(1.0);  
-    storageSubsystem.spinStorage(0.5);
-  }, [&](bool a) {
-    intakeSpinnerSubsystem.stop(); 
-    storageSubsystem.spinStorage(-1.0);
-  }, [&]() {
-    return !intakeExtenderSubsystem.isExtended() || storageSubsystem.hasBall();
-  }, {&intakeSpinnerSubsystem, &storageSubsystem}));
+  }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem}));
 
   // Spit balls out
   joystickSubsystem.getButton(9).WhileHeld([&]() {
