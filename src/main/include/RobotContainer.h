@@ -10,6 +10,11 @@
 #include "drivetrain/DriveSubsystem.h"
 #include "drivetrain/TeleopDriveCommand.h"
 #include "driverstation/ShuffleBoardSubsystem.h"
+
+#include "shooter/turret/TurretSubsystem.h"
+#include "shooter/turret/TurretFindCommand.h"
+#include "shooter/turret/TurretFollowCommand.h"
+#include "shooter/ManualShooterCommand.h"
 #include "storage/StorageSubsystem.h"
 
 /**
@@ -24,16 +29,30 @@ public:
   RobotContainer();
 
   TeleopDriveCommand &getTeleopDriveCommand() { return teleopDriveCommand; }
+  ManualShooterCommand* getManualShooterCommand() { return &manualShooterCommand; }
 private:
 
   void ConfigureButtonBindings();
+  void InitializeTurret();
+
+  ShooterSubsystem  shooterSubsystem{};
+  TurretSubsystem   turretSubsystem{};
+//
+//  ClimberSubsystem  climberSubsystem;
   // ShooterSubsystem  shooterSubsystem;
   // ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
+
   IntakeExtenderSubsystem intakeExtenderSubsystem;
   IntakeSpinnerSubsystem intakeSpinnerSubsystem{intakeExtenderSubsystem};
   StorageSubsystem storageSubsystem;
-  JoystickSubsystem joystickSubsystem;
+  JoystickSubsystem joystickSubsystem{0};
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
-  // ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
+  HoodSubsystem hoodSubsystem{};
+//  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
+//  VisionSubsystem   visionSubsystem{ turretSubsystem};
+//  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
+  ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem, storageSubsystem, hoodSubsystem };
+
+
 };

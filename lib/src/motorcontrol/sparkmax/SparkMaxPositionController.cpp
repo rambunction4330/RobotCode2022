@@ -22,17 +22,18 @@ template <typename U>
 rmb::SparkMaxPositionController<U>::SparkMaxPositionController(
     int deviceID, const PIDConfig &config, ConversionUnit_t conversionFactor,
     const Feedforward<U> &ff, std::initializer_list<Follower> followerList, bool alternateEncoder
-    , int ticksPerRotation)
-    : sparkMax(deviceID, rev::CANSparkMax::MotorType::kBrushless),
+    , int ticksPerRotation, rev::CANSparkMax::MotorType motorType)
+    : sparkMax(deviceID, motorType),
       sparkMaxEncoder(
         alternateEncoder ? 
-          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxAlternateEncoder>(sparkMax.GetAlternateEncoder(ticksPerRotation))) :
+          std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder(rev::SparkMaxRelativeEncoder::Type::kQuadrature, ticksPerRotation))) :
           std::unique_ptr<rev::RelativeEncoder>(std::make_unique<rev::SparkMaxRelativeEncoder>(sparkMax.GetEncoder()))
         ),
       sparkMaxPIDController(sparkMax.GetPIDController()),
       conversion(conversionFactor), feedforward(ff) {
 
-  sparkMax.RestoreFactoryDefaults();
+  CHECK_REVLIB_ERROR(sparkMax.RestoreFactoryDefaults());
+  //CHECK_REVLIB_ERROR(sparkMaxPIDController.SetFeedbackDevice(*sparkMaxEncoder));
 
   // configure pid consts
   CHECK_REVLIB_ERROR(sparkMaxPIDController.SetP(config.p));
@@ -94,7 +95,8 @@ void rmb::SparkMaxPositionController<U>::setPosition(Distance_t position) {
 
 template <typename U>
 typename rmb::SparkMaxPositionController<U>::Distance_t
-rmb::SparkMaxPositionController<U>::getPosition() {
+
+rmb::SparkMaxPositionController<U>::getPosition() const{
   RawUnit_t val = RawUnit_t(sparkMaxEncoder -> GetPosition());
   std::clamp<RawUnit_t>(val, minPosition, maxPosition);
   return Distance_t((val * conversion)) - reference;
@@ -146,7 +148,7 @@ void rmb::SparkMaxPositionController<U>::spinOffset(Distance_t position) {
 
 template <typename U>
 bool rmb::SparkMaxPositionController<U>::canSetPositionTo(Distance_t position) {
-  return position < maxPosition * conversion && position > minPosition * conversion;
+  return (position < (maxPosition * conversion)) && (position > (minPosition * conversion));
 }
 
 template <typename U>

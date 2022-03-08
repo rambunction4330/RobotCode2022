@@ -55,11 +55,12 @@ public:
    */
   virtual void setPosition(Distance_t position) = 0;
 
+
   /**
    * Get the current position of the motor.
    * @return the current position of the motor in user specified DistanceUnits
    */
-  virtual Distance_t getPosition() = 0;
+  virtual Distance_t getPosition() const = 0;
 
   /**
    * Get the current velocity of the motor

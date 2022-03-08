@@ -6,6 +6,9 @@
 #include "RobotContainer.h"
 #include <frc/TimedRobot.h>
 
+#include <shooter/hood/HoodSubsystem.h>
+#include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
+
 class Robot : public frc::TimedRobot {
 public:
   void RobotInit() override;
@@ -16,10 +19,23 @@ public:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
+  void TestInit() override;
   void TestPeriodic() override;
 
 private:
+
   RobotContainer container;
-  // ctre::phoenix::motorcontrol::can::WPI_TalonSRX storageWheel{31};
-  // frc::Joystick stick{0};
+
+  //HoodSubsystem hoodSubsystem{};
+  //rev::CANSparkMax flywheelA{43, rev::CANSparkMax::MotorType::kBrushless};
+  //rev::CANSparkMax flywheelB{44, rev::CANSparkMax::MotorType::kBrushless};
+
+
+ // TurretSubsystem turret {};
+
+  //frc::Joystick joystick{0};
+
+  units::scalar_t spinDirection = 1.0;
+
+
 };

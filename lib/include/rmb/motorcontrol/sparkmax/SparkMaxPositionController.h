@@ -8,6 +8,7 @@
 
 #include "rmb/motorcontrol/PositionController.h"
 #include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h" 
+#include <limits>
 
 namespace rmb {
 /**
@@ -102,12 +103,13 @@ public:
    * @param followers list of motors to follow this motor. The parent motor will construct the children with the given configuration
    *                  and will own the followers.
    * @param ticksPerRevolution The number of ticks per rotation of the motor
+   * @param motorType the type of motor, Can be kBrushed or kBrushless
    */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
                              ConversionUnit_t conversion = ConversionUnit_t(1), 
                              const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>,
                              std::initializer_list<Follower> followers = {}, bool alternateEncoder = false,
-                             int ticksPerRevolution = 4096);
+                             int ticksPerRevolution = 4096, rev::CANSparkMax::MotorType motorType = rev::CANSparkMax::MotorType::kBrushless);
 
   /**
    * Sets the position of the motor.
@@ -121,8 +123,7 @@ public:
    * @return the distance from the reference point in the user defined Distance. The reference point can be set with 
    *         rmb::SparkMaxPositionController< DistanceUnit >::resetRefrence(Distance_t position) 	
    */
-  Distance_t getPosition() override;
-
+  Distance_t getPosition() const override;
 
 
 
@@ -224,8 +225,8 @@ private:
 
   ConversionUnit_t conversion;
 
-  RawUnit_t maxPosition = RawUnit_t(100);
-  RawUnit_t minPosition = RawUnit_t(-100);
+  RawUnit_t minPosition = RawUnit_t(__DBL_MIN__);
+  RawUnit_t maxPosition = RawUnit_t(__DBL_MAX__);
 
   rev::CANSparkMax::ControlType controlType;
   std::vector<std::unique_ptr<rev::CANSparkMax>> followers;

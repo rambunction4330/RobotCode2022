@@ -14,7 +14,7 @@
 #include <rmb/io/log.h>
 
 void Robot::RobotInit() { 
-
+  //turretPositionController.resetRefrence(0_rad);
   // container.shuffleBoard.ShuffleBoardInit();
 }
 
@@ -27,8 +27,7 @@ void Robot::RobotInit() {
  * LiveWindow and SmartDashboard integrated updating.
  */
 void Robot::RobotPeriodic() {
-  
- frc2::CommandScheduler::GetInstance().Run();
+  frc2::CommandScheduler::GetInstance().Run();
   // container.shuffleBoard.Periodic();
   }
 
@@ -54,8 +53,10 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-  /*frc2::CommandScheduler::GetInstance().Schedule(
-      &container.getTeleopDriveCommand());*/
+   frc2::CommandScheduler::GetInstance().Schedule(
+       container.getManualShooterCommand());
+
+
 }
 
 /**
@@ -67,6 +68,10 @@ void Robot::TeleopPeriodic() {}
  * This function is called periodically during test mode.
  */
 void Robot::TestPeriodic() {}
+
+void Robot::TestInit(){}
+
+
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
