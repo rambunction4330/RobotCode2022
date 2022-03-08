@@ -30,6 +30,7 @@ public:
 
   TeleopDriveCommand &getTeleopDriveCommand() { return teleopDriveCommand; }
   ManualShooterCommand* getManualShooterCommand() { return &manualShooterCommand; }
+
 private:
 
   void ConfigureButtonBindings();
@@ -54,5 +55,8 @@ private:
 //  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
   ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem, storageSubsystem, hoodSubsystem };
 
+  // BEGIN Holonomic Trajectory Tests
+
+  // END
 
 };
