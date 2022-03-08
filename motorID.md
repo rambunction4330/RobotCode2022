@@ -12,3 +12,5 @@
 | Shooter_Hood          | 42 | SparkMax             | Brushed               |
 | Shooter_FlywheelA     | 43 | SparkMax             | Brushless             |
 | Shooter_FlywheelB     | 44 | SparkMax             | Brushless             |
+| Extender_Left         | 51 | TalonSRX             | Brushed               |
+| Extender_Right        | 52 | TalonSRX             | Brushed               |
