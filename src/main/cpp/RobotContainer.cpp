@@ -16,6 +16,8 @@ RobotContainer::RobotContainer() {
   intakeExtenderSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeExtenderSubsystem.retract(); }, {&intakeExtenderSubsystem}));
   intakeSpinnerSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeSpinnerSubsystem.stop(); }, {&intakeSpinnerSubsystem}));
   storageSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { storageSubsystem.stop(); }, {&storageSubsystem}) /*frc2::ConditionalCommand(storageSubsystem.spinStorageCommand(0.5), storageSubsystem.stopCommand(), [&]() { return intakeSpinnerSubsystem.isSpinning(); })*/);
+  climberSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { climberSubsystem.stopArm(); }, {&climberSubsystem}));
+
   // Configure the button bindings
   ConfigureButtonBindings();
 
@@ -53,6 +55,14 @@ void RobotContainer::ConfigureButtonBindings() {
     intakeSpinnerSubsystem.spin(-0.5);
     storageSubsystem.spinStorage(-1.0);
   }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem});
+
+  joystickSubsystem.getButton(8).WhileHeld([&]() {
+    climberSubsystem.extendArm();
+  }, {&climberSubsystem});
+ 
+  joystickSubsystem.getButton(7).WhileHeld([&]() {
+    climberSubsystem.retractArm();
+  }, {&climberSubsystem});
 }
 
 void RobotContainer::InitializeTurret() {
