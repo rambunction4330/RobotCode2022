@@ -183,3 +183,5 @@ docs/*
 .cache/
 
 .project.alt.json
+
+compile_commands.json
