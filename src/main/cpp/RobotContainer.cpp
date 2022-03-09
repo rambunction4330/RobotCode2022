@@ -16,6 +16,7 @@ RobotContainer::RobotContainer() {
   intakeExtenderSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeExtenderSubsystem.retract(); }, {&intakeExtenderSubsystem}));
   intakeSpinnerSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeSpinnerSubsystem.stop(); }, {&intakeSpinnerSubsystem}));
   storageSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { storageSubsystem.stop(); }, {&storageSubsystem}) /*frc2::ConditionalCommand(storageSubsystem.spinStorageCommand(0.5), storageSubsystem.stopCommand(), [&]() { return intakeSpinnerSubsystem.isSpinning(); })*/);
+  driveSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { driveSubsystem.driveCartesian(0.0, 0.0, 0.0); }, {&driveSubsystem}));
   // Configure the button bindings
   ConfigureButtonBindings();
 
