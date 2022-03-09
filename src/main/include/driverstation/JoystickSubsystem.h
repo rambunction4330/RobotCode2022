@@ -1,4 +1,4 @@
-//@notSam25
+//@notSam25. Revised by @theVerySharpFlat
 #pragma once
 
 #include <cmath>
@@ -11,68 +11,106 @@
 
 class JoystickSubsystem : public frc2::SubsystemBase {
 public:
-  JoystickSubsystem(int port = 0, float dz = 0.1f, bool sqrTwst = false)
-      : joystick(port), deadZone(dz), squareTwist(sqrTwst) {
-  } // Init constructer
 
-  double getX() const {
-      double val = std::abs(joystick.GetX()) < deadZone ? 0.0 : joystick.GetX();
-      return -1.0 * wpi::sgn(val) * rmb::map(std::abs(val),
-                                             deadZone, 0.0,
-                                             1.0, 1.0, false);
+  /**
+   * A struct that contains the multiplers for the joystick coefficients
+   */
+  struct JoystickCoefficients {
+    double x = 1.0; /**< The multiplier on the x value*/
+    double y = 1.0; /**< The multiplier on the y value*/
+    double twist = 1.0; /**< The multiplier on the twist value*/
+  };
 
-  }
+  JoystickSubsystem(int port = 0, double dz = 0.1, JoystickCoefficients joystickCoefficients = {1.0, 1.0, 1.0})
+      : joystick(port), deadZone(dz), coefficients(joystickCoefficients) {}
 
-  double getY() const {
-      double val = std::abs(joystick.GetY()) < deadZone ? 0.0 : joystick.GetY();
-      return -1.0 * wpi::sgn(val) * rmb::map(std::abs(val),
-                                             deadZone, 0.0,
-                                             1.0, 1.0, false);
-  }
+  /**
+   * Get the X value of the joystick
+   * @return the displacement about the x axis of the joystick between -1.0 and 1.0/ 
+   *         If the value is within the deadzone, it is set to zero.
+   *         If nonzero the output of this function is then mapped from 
+   *         the range [deadzone, 1.0] to [0.0, 1.0].
+   *         The rationale for this mapping comes from the fact that when not
+   *         mapped, the moment the joystick exits the deadzone, it would return
+   *         the raw position of the joystick and the motor connected to the joystick
+   *         would jump from zero to moving at a much faster speed. When it is mapped,
+   *         the joystick zeroes at the deadzone and increases linearly to 1.0
+   */
+  double getX() const;
 
-  inline double getXRaw() const { // Gets Joystick Raw values witout deadzone
+  /**
+   * Get the Y value of the joystick
+   * @return the displacement about the y axis of the joystick between -1.0 and 1.0
+   *         If the value is within the deadzone, it is set to zero.
+   * @see getX() getTwist()
+   */
+  double getY() const;
+
+  /**
+   * Get the twist value of the joystick between -1.0 and 1.0
+   * @return the displacement about the twist axis of the joystick
+   *         If the value is within the deadzone, it is set to zero.
+   * @see getX() getY()
+   */
+  double getTwist() const;
+
+  /**
+   * Get the throttle value between 0.0 and 1.0
+   * @return the throttle value on the joystick
+   */
+  double getThrottle() const;
+
+  /**
+   * Get the raw JoysticButton from the button code
+   * @param button The target button code
+   * @return the raw frc::JoystickButton with ID "button"
+   */
+  frc2::JoystickButton getButton(int button);
+  
+  /**
+   * Check if a button is pressed
+   * @param button the ID of the target button on the joystick
+   * @return whether or not the button is pressed. true if pressed.
+   */
+  bool buttonPressed(int button);
+
+
+  /**
+   * Get the raw x value directly from the joystick without parsing
+   * @return The raw x value without deadzones
+   */
+  inline double getXRaw() const {
     return joystick.GetX();
   }
 
-  inline double getYRaw() const { // Gets Joystick Raw values witout deadzone
+
+  /**
+   * Get the raw y value directly from the joystick without parsing
+   * @return The raw y value without deadzones
+   */
+  inline double getYRaw() const {
     return joystick.GetY();
   }
 
+  /**
+   * Get the raw twist value directly from the joystick without parsing
+   * @return The raw twist value without deadzones
+   */
   inline double getTwistRaw() const {
     return joystick.GetTwist();
   }
-  frc2::JoystickButton
-  getButton(int button) { // Gets the button passed through the enum
-    return frc2::JoystickButton(&joystick, button);
+
+  /**
+   * Get the raw throttle value directly from the joystick without parsing
+   * @return The raw throttle value without deadzones
+   */
+  inline double getThrottleRaw() const {
+    return joystick.GetThrottle();
   }
-  
-  bool
-  buttonPressed(int button) { // Gets the button passed through the enum
-    return joystick.GetRawButton(button);
-  }
-
-  double getTwist() const { // Gets joystick twist/rotation
-
-    double twist = std::abs(joystick.GetTwist()) < deadZone ? 0.0 : joystick.GetTwist();
-
-    wpi::outs() << "raw twist: " << twist;
-    if(squareTwist) {
-        // -1 * 0.09 -> -0.09
-        //twist = wpi::sgn(twist) * std::pow(twist, 2);
-    }
-
-    // -1 *
-    twist = wpi::sgn(twist) * rmb::map(std::abs(twist), deadZone, 0.0, 1.0, 1.0, false);
-
-
-    wpi::outs() << " twist: " << twist << wpi::endl;
-    return twist;
-  }
-
-  double getThrottle() const { return -(joystick.GetThrottle() - 1) / 2; }
 
 private:
   frc::Joystick joystick;
-  float deadZone = 0.1f;
-  bool squareTwist = false;
+  double deadZone = 0.1f;
+
+  JoystickCoefficients coefficients;
 };
