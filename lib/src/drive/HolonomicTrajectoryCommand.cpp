@@ -29,5 +29,6 @@ void HolonomicTrajectoryCommand::End(bool interrupted) { timer.Stop(); }
 
 bool HolonomicTrajectoryCommand::IsFinished() {
   return timer.HasElapsed(trajectory.TotalTime());
+
 }
 } // namespace rmb

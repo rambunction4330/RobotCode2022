@@ -6,6 +6,9 @@
 #include <frc2/command/SubsystemBase.h>
 #include <frc2/command/button/JoystickButton.h>
 
+#include <rmb/math/misc.h>
+#include <rmb/io/log.h>
+
 class JoystickSubsystem : public frc2::SubsystemBase {
 public:
   JoystickSubsystem(int port = 0, float dz = 0.1f, bool sqrTwst = false)
@@ -13,17 +16,18 @@ public:
   } // Init constructer
 
   double getX() const {
-    return std::abs(joystick.GetX()) <= deadZone
-               ? 0.0f
-               : -joystick.GetX(); // Get the Y val of the joystick, doesn't
-                                  // include values within deadzone
+      double val = std::abs(joystick.GetX()) < deadZone ? 0.0 : joystick.GetX();
+      return -1.0 * wpi::sgn(val) * rmb::map(std::abs(val),
+                                             deadZone, 0.0,
+                                             1.0, 1.0, false);
+
   }
 
   double getY() const {
-    return std::abs(joystick.GetY()) <= deadZone
-               ? 0.0f
-               : -joystick.GetY(); // Get the Y val of the joystick, doesn't
-                                  // include values within deadzone
+      double val = std::abs(joystick.GetY()) < deadZone ? 0.0 : joystick.GetY();
+      return -1.0 * wpi::sgn(val) * rmb::map(std::abs(val),
+                                             deadZone, 0.0,
+                                             1.0, 1.0, false);
   }
 
   inline double getXRaw() const { // Gets Joystick Raw values witout deadzone
@@ -48,15 +52,20 @@ public:
   }
 
   double getTwist() const { // Gets joystick twist/rotation
-    double twist = joystick.GetTwist();
-    if (std::abs(twist) <= deadZone) {
-      twist = 0.0;
-    } else {
-      if (squareTwist) {
-        twist = std::pow(twist, 2);
-        twist = (joystick.GetTwist() >= 0) ? twist : -twist;
-      }
-    } // If none, then it just returns twist
+
+    double twist = std::abs(joystick.GetTwist()) < deadZone ? 0.0 : joystick.GetTwist();
+
+    wpi::outs() << "raw twist: " << twist;
+    if(squareTwist) {
+        // -1 * 0.09 -> -0.09
+        //twist = wpi::sgn(twist) * std::pow(twist, 2);
+    }
+
+    // -1 *
+    twist = wpi::sgn(twist) * rmb::map(std::abs(twist), deadZone, 0.0, 1.0, 1.0, false);
+
+
+    wpi::outs() << " twist: " << twist << wpi::endl;
     return twist;
   }
 
