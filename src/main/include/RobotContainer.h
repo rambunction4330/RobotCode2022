@@ -47,7 +47,7 @@ private:
   IntakeExtenderSubsystem intakeExtenderSubsystem;
   IntakeSpinnerSubsystem intakeSpinnerSubsystem{intakeExtenderSubsystem};
   StorageSubsystem storageSubsystem;
-  JoystickSubsystem joystickSubsystem{0, 0.2, true};
+  JoystickSubsystem joystickSubsystem{0, 0.2, {-1.0, -1.0, 1.0}};
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
   HoodSubsystem hoodSubsystem{};
 //  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
