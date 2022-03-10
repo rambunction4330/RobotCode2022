@@ -50,16 +50,17 @@ void Robot::DisabledPeriodic() {}
  * RobotContainer} class.
  */
 void Robot::AutonomousInit() {
-  //container.getTeleopDriveCommand().Cancel();
+  container.getTeleopDriveCommand().Cancel();
+  container.getTrajectoryCommand() -> Schedule();
 }
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-//   frc2::CommandScheduler::GetInstance().Schedule(
-//       container.getManualShooterCommand());
+   frc2::CommandScheduler::GetInstance().Schedule(
+       container.getManualShooterCommand());
 
-    container.getTeleopDriveCommand().Schedule();
+   container.getTeleopDriveCommand().Schedule();
 }
 
 /**

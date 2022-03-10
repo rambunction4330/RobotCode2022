@@ -26,7 +26,7 @@ void ManualShooterCommand::Execute() {
     );
 
     if(joystickSubsystem.buttonPressed(2)) {
-        shooterSubsystem.spinTo(5_mps);
+        shooterSubsystem.spinTo(10_mps);
     } else {
         shooterSubsystem.stop();
     }
@@ -38,6 +38,8 @@ void ManualShooterCommand::Execute() {
     }
 
     hoodSubsystem.setPosition(45_deg * joystickSubsystem.getThrottle());
+
+    wpi::outs() << "hood position: " << (units::degree_t) hoodSubsystem.getPosition() << wpi::endl;
 }
 
 // Called once the command ends or is interrupted.

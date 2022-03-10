@@ -4,7 +4,9 @@
 
 #include "shooter/hood/HoodSubsystem.h"
 
-HoodSubsystem::HoodSubsystem() = default;
+HoodSubsystem::HoodSubsystem() {
+    positionController.resetRefrence(0.0_tr);
+}
 
 // This method will be called once per scheduler run
 void HoodSubsystem::Periodic() {}
