@@ -177,5 +177,11 @@ docs/*
 !docs/doxygen-awesome.css
 !docs/Doxyfile
 !docs/favicon.png
+!docs/favicon.png
 
 .idea/
+.cache/
+
+.project.alt.json
+
+compile_commands.json

@@ -30,6 +30,7 @@ public:
 
   TeleopDriveCommand &getTeleopDriveCommand() { return teleopDriveCommand; }
   ManualShooterCommand* getManualShooterCommand() { return &manualShooterCommand; }
+
 private:
 
   void ConfigureButtonBindings();
@@ -46,7 +47,7 @@ private:
   IntakeExtenderSubsystem intakeExtenderSubsystem;
   IntakeSpinnerSubsystem intakeSpinnerSubsystem{intakeExtenderSubsystem};
   StorageSubsystem storageSubsystem;
-  JoystickSubsystem joystickSubsystem{0};
+  JoystickSubsystem joystickSubsystem{0, 0.2, {-1.0, -1.0, 1.0}};
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
   HoodSubsystem hoodSubsystem{};
 //  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
@@ -54,5 +55,8 @@ private:
 //  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
   ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem, storageSubsystem, hoodSubsystem };
 
+  // BEGIN Holonomic Trajectory Tests
+
+  // END
 
 };

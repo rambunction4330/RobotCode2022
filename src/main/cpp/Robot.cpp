@@ -13,6 +13,9 @@
 
 #include <rmb/io/log.h>
 
+#include <rmb/drive/HolonomicTrajectoryCommand.h>
+#include <frc/trajectory/TrajectoryGenerator.h>
+
 void Robot::RobotInit() { 
   //turretPositionController.resetRefrence(0_rad);
   // container.shuffleBoard.ShuffleBoardInit();
@@ -53,10 +56,7 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
-   frc2::CommandScheduler::GetInstance().Schedule(
-       &container.getTeleopDriveCommand());
-
-
+    container.getTeleopDriveCommand().Schedule();
 }
 
 /**
@@ -67,9 +67,13 @@ void Robot::TeleopPeriodic() {}
 /**s
  * This function is called periodically during test mode.
  */
-void Robot::TestPeriodic() {}
+void Robot::TestPeriodic() {
+    frc2::CommandScheduler::GetInstance().Run();
+}
 
-void Robot::TestInit(){}
+void Robot::TestInit() {
+
+}
 
 
 
