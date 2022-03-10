@@ -37,10 +37,10 @@ const int frontLeftID  = 11,
           rearLeftID   = 13,
           rearRightID  = 14;
 
-const frc::Translation2d frontLeftPose  = { 0.303_m, -0.299_m},
-                         frontRightPose = { 0.303_m,  0.299_m}, 
-                         rearLeftPose   = {-0.303_m, -0.299_m},
-                         rearRightPose  = {-0.303_m,  0.299_m,};
+const frc::Translation2d frontLeftPose  = { 21.34_in/2.0, -23.59_in/2.0},
+                         frontRightPose = { 21.34_in/2.0,  23.59_in/2.0}, 
+                         rearLeftPose   = {-21.34_in/2.0, -23.59_in/2.0},
+                         rearRightPose  = {-21.34_in/2.0,  23.59_in/2.0};
                          
 const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     motorPIDConfig{
@@ -50,22 +50,22 @@ const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
 
         /* SmartMotion config */
         /* usingSmartMotion */ true,
-        /* maxVelocity */ 25_mps, /* minVelocity */ 0_mps,
-        /* maxAccel */ 10_mps_sq,
+        /* maxVelocity */ 2.5_mps, /* minVelocity */ 0_mps,
+        /* maxAccel */ 5_mps_sq,
         /* allowedErr */ 0.01_mps,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>
-    motorFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.10973),
-                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.15920),
-                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.30746));
+    motorFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.16515),
+                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.1771),
+                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.36795));
 
 const rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t
     motorConvertion(/* radius */(3_in / 1_rad) * /* gearing */(12/1));
 
 const units::meters_per_second_t maxVelocity(2.5_mps);
-const units::radians_per_second_t maxRotVelocity(5000_rpm);
-const units::radians_per_second_squared_t maxRotAcceleration(5000_rad_per_s_sq);
+const units::radians_per_second_t maxRotVelocity(500_rpm);
+const units::radians_per_second_squared_t maxRotAcceleration(500_rad_per_s_sq);
 
 const frc2::PIDController xController(0.0, 0.0, 0.0), yController(0.0, 0.0, 0.0);
 const frc::ProfiledPIDController<units::radians> thetaController(0.0, 0.0, 0.0, {maxRotVelocity, maxRotAcceleration});
