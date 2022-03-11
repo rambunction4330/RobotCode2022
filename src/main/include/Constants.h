@@ -44,7 +44,7 @@ const frc::Translation2d frontLeftPose  = { 21.34_in/2.0, -23.59_in/2.0},
                          
 const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     motorPIDConfig{
-        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
@@ -56,19 +56,19 @@ const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>
-    motorFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.16515),
-                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.1771),
-                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.36795));
+    motorFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.16754),
+                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.162),
+                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.41826));
 
 const rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t
-    motorConvertion(/* radius */(3_in / 1_rad) * /* gearing */(12/1));
+    motorConvertion(/* radius */(3.0_in / 1.0_rad) * /* gearing */(1.0/12.0));
 
 const units::meters_per_second_t maxVelocity(2.5_mps);
 const units::radians_per_second_t maxRotVelocity(500_rpm);
 const units::radians_per_second_squared_t maxRotAcceleration(500_rad_per_s_sq);
 
-const frc2::PIDController xController(0.0, 0.0, 0.0), yController(0.0, 0.0, 0.0);
-const frc::ProfiledPIDController<units::radians> thetaController(0.0, 0.0, 0.0, {maxRotVelocity, maxRotAcceleration});
+const frc2::PIDController xController(0.01, 0.0, 0.0), yController(0.01, 0.0, 0.0);
+const frc::ProfiledPIDController<units::radians> thetaController(0.00, 0.0, 0.0, {maxRotVelocity, maxRotAcceleration});
 } // namespace driveSubsystemConstants
 
 namespace intakeSubsystem {
@@ -79,26 +79,26 @@ const rmb::SparkMaxPositionController<units::meters>::Follower extenderFollower 
 
 const rmb::SparkMaxPositionController<units::meters>::PIDConfig
     extenderPIDConfig{
-        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
         /* SmartMotion config */
         /* usingSmartMotion */ true,
-        /* maxVelocity */ 0.2_mps, /* minVelocity */ 0.0_mps,
-        /* maxAccel */ 0.5_mps_sq,
-        /* allowedErr */ 0.05_m,
+        /* maxVelocity */ 0.3_mps, /* minVelocity */ 0.0_mps,
+        /* maxAccel */ 0.7_mps_sq,
+        /* allowedErr */ 0.02_m,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>
-    extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.26336),
-                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(2.6898),
-                        rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.043975));
+    extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.29583),
+                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(2.735),
+                        rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.086853));
 
 const rmb::SparkMaxPositionController<units::meters>::ConversionUnit_t
     extenderConvertion(/* radius */(1.3_in / 2_rad) * /* gearing */(1.0/4));
 
-const units::meter_t extenderOut = 0.24_m;
+const units::meter_t extenderOut = 0.20_m;
 const units::meter_t extenderIn = 0.0_m;
 
 } // namespace driveSubsystemConstants
@@ -159,7 +159,7 @@ namespace hoodSubsystemConstants {
 
     const rmb::SparkMaxPositionController<units::radians>::PIDConfig
             hoodPIDConfig{
-            /* p */ 16.0, /* i */ 0.0, /* d */ 4.0, /* f */ 0.0,
+            /* p */ 12.0, /* i */ 0.0, /* d */ 10.0, /* f */ 0.0,
             /* iZone */ 0.01, /* iMaxAccumulator */ 0.05,
             /* maxOutput */ 1.0, /* minOutput */ -1.0,
 

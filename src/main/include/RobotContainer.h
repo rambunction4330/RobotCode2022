@@ -30,6 +30,11 @@ class RobotContainer {
 public:
   RobotContainer();
 
+  void resetOdometry() {
+      driveSubsystem.resetPosition();
+      driveSubsystem.resetGyro();
+  }
+
   TeleopDriveCommand &getTeleopDriveCommand() { return teleopDriveCommand; }
   ManualShooterCommand* getManualShooterCommand() { return &manualShooterCommand; }
   std::unique_ptr<frc2::Command> getTrajectoryCommand() {
@@ -39,24 +44,28 @@ public:
       };
 
       static frc::Pose2d end {
-          0.0_m, 0.0_m, 0.0_deg
+          1.0_m, 1.0_m, 0.0_deg
       };
 
-
-//      static std::vector<frc::Translation2d> waypoints {
-//          frc::Translation2d{0.0_m, 1.0_m},
-//          frc::Translation2d{1.0_m, 0.0_m},
-//          frc::Translation2d{0.0_m, -1.0_m}
-//      };
 
       static std::vector<frc::Pose2d> waypoints {
           frc::Pose2d{0.0_m, 0.0_m, 0.0_rad},
-          frc::Pose2d{0.0_m, 1.0_m, 0.0_rad}
-      };
+          frc::Pose2d{1.0_m, 1.0_m, 0.0_rad},
+//          frc::Pose2d{1.75_m, 0.0_m, 0.0_rad},
+//          frc::Pose2d{2.5_m, -1.0_m, 0.0_rad},
+//          frc::Pose2d{3.250_m, 0.0_m, 0.0_rad},
+//          frc::Pose2d{4.0_m, 1.0_m, 0.0_rad},
+//          frc::Pose2d{5.0_m, 0.0_m, 0.0_rad}
+          };
+
+//      static std::vector<frc::Pose2d> waypoints {
+//          frc::Pose2d{0.0_m, 0.0_m, 0.0_rad},
+//          frc::Pose2d{1.0_m, 0.0_m, 0.0_rad}
+//      };
 
       static frc::TrajectoryConfig trajectoryConfig {
-          2.5_mps,
-          5_mps_sq
+          1_mps,
+          1_mps_sq
       };
 
       static
@@ -88,8 +97,9 @@ private:
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
   HoodSubsystem hoodSubsystem{};
 //  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
-//  VisionSubsystem   visionSubsystem{ turretSubsystem};
-//  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
+  VisionSubsystem   visionSubsystem;
+  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
+  TurretFollowCommand turretFollowCommand { turretSubsystem, visionSubsystem};
   ManualShooterCommand manualShooterCommand{ shooterSubsystem, turretJoystickSubsystem, turretSubsystem, storageSubsystem, hoodSubsystem };
 
   // BEGIN Holonomic Trajectory Tests

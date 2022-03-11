@@ -37,7 +37,7 @@ void ManualShooterCommand::Execute() {
         storageSubsystem.stop();
     }
 
-    hoodSubsystem.setPosition(45_deg * joystickSubsystem.getThrottle());
+    hoodSubsystem.setPosition(30_deg * joystickSubsystem.getThrottle());
 
     wpi::outs() << "hood position: " << (units::degree_t) hoodSubsystem.getPosition() << wpi::endl;
 }
