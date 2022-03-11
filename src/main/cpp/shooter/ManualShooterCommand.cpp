@@ -24,9 +24,11 @@ void ManualShooterCommand::Execute() {
                 turretSubsystemConstants::maxPosition * std::abs(twist) :
                 turretSubsystemConstants::minPosition * std::abs(twist)
     );
+    wpi::outs() << "TGT -> " << shooterSubsystemConstants::flywheelPIDConfig.maxVelocity
+    << "_mps ACTUAL -> " << shooterSubsystem.getVelocity() << "_mps" << wpi::endl;
 
     if(joystickSubsystem.buttonPressed(2)) {
-        shooterSubsystem.spinTo(10_mps);
+        shooterSubsystem.spinTo(shooterSubsystemConstants::flywheelPIDConfig.maxVelocity);
     } else {
         shooterSubsystem.stop();
     }

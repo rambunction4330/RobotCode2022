@@ -66,7 +66,7 @@ void Robot::TeleopInit() {
 //       &container.getTeleopDriveCommand());
 
    container.getTeleopDriveCommand().Schedule();
-//   container.getManualShooterCommand()->Schedule();
+   container.getManualShooterCommand()->Schedule();
 }
 
 /**

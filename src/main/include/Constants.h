@@ -56,7 +56,7 @@ const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>
-    motorFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.16754),
+    motorFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.26754),
                      rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.162),
                      rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.41826));
 
@@ -92,7 +92,7 @@ const rmb::SparkMaxPositionController<units::meters>::PIDConfig
 
  const rmb::SimpleMotorFeedforward<units::meters>
     extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.29583),
-                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(2.735),
+                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.735),
                         rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.086853));
 
 const rmb::SparkMaxPositionController<units::meters>::ConversionUnit_t
@@ -128,6 +128,7 @@ namespace positionControllerConstants
 
 namespace shooterSubsystemConstants {
   const int flywheelMotorID  = 43;
+  const int flywheelFollowerID = 44;
 
   const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     flywheelPIDConfig{
@@ -144,9 +145,9 @@ namespace shooterSubsystemConstants {
     };
 
   const rmb::SimpleMotorFeedforward<units::meters>
-    flywheelFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.10973),
-                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.15920),
-                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.30746));
+    flywheelFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.30389),
+                     rmb::SimpleMotorFeedforward<units::meters>::Kv_t(0.39575),
+                     rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.030882));
 
   const auto flywheelConversion = 
        rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(1_m / 1_rad);

@@ -31,11 +31,18 @@ class ShooterSubsystem : public frc2::SubsystemBase {
 
  private:
 
+  rmb::SparkMaxVelocityController<units::meters>::Follower follower {
+    shooterSubsystemConstants::flywheelFollowerID,
+    rev::CANSparkMaxLowLevel::MotorType::kBrushless,
+    false
+  };
+
   rmb::SparkMaxVelocityController<units::meters> flywheel{
     shooterSubsystemConstants::flywheelMotorID,
     shooterSubsystemConstants::flywheelPIDConfig,
     shooterSubsystemConstants::flywheelConversion,
-    shooterSubsystemConstants::flywheelFeedforward
+    shooterSubsystemConstants::flywheelFeedforward,
+    {follower}
   };
 
   // Components (e.g. motor controllers and sensors) should generally be
