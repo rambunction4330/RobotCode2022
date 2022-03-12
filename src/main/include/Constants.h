@@ -85,14 +85,14 @@ const rmb::SparkMaxPositionController<units::meters>::PIDConfig
 
         /* SmartMotion config */
         /* usingSmartMotion */ true,
-        /* maxVelocity */ 0.3_mps, /* minVelocity */ 0.0_mps,
+        /* maxVelocity */ 0.35_mps, /* minVelocity */ 0.0_mps,
         /* maxAccel */ 0.7_mps_sq,
         /* allowedErr */ 0.02_m,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>
-    extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.29583),
-                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(3.735),
+    extenderFeedforward(rmb::SimpleMotorFeedforward<units::meters>::Ks_t(0.39583),
+                        rmb::SimpleMotorFeedforward<units::meters>::Kv_t(4.735),
                         rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.086853));
 
 const rmb::SparkMaxPositionController<units::meters>::ConversionUnit_t

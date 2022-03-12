@@ -18,14 +18,14 @@ void ManualShooterCommand::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ManualShooterCommand::Execute() {
     double twist = joystickSubsystem.getTwist();
-    wpi::outs() << "turret -> " << twist << wpi::endl;
+    //wpi::outs() << "turret -> " << twist << wpi::endl;
     turretSubsystem.spinOffset(
             twist > 0 ?
                 turretSubsystemConstants::maxPosition * std::abs(twist) :
                 turretSubsystemConstants::minPosition * std::abs(twist)
     );
-    wpi::outs() << "TGT -> " << shooterSubsystemConstants::flywheelPIDConfig.maxVelocity
-    << "_mps ACTUAL -> " << shooterSubsystem.getVelocity() << "_mps" << wpi::endl;
+   // wpi::outs() << "TGT -> " << shooterSubsystemConstants::flywheelPIDConfig.maxVelocity
+    //<< "_mps ACTUAL -> " << shooterSubsystem.getVelocity() << "_mps" << wpi::endl;
 
     if(joystickSubsystem.buttonPressed(2)) {
         shooterSubsystem.spinTo(shooterSubsystemConstants::flywheelPIDConfig.maxVelocity);
@@ -41,7 +41,7 @@ void ManualShooterCommand::Execute() {
 
     hoodSubsystem.setPosition(30_deg * joystickSubsystem.getThrottle());
 
-    wpi::outs() << "hood position: " << (units::degree_t) hoodSubsystem.getPosition() << wpi::endl;
+    //wpi::outs() << "hood position: " << (units::degree_t) hoodSubsystem.getPosition() << wpi::endl;
 }
 
 // Called once the command ends or is interrupted.

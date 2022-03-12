@@ -18,6 +18,8 @@ void TurretFollowCommand::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void TurretFollowCommand::Execute() {
+    wpi::outs() << "turretPosition: " << turretSubsystem.getAngularPosition() << wpi::endl;
+    wpi::outs() << "angle to hub: " << visionSubsystem.getAngleToHub() << wpi::endl;
     turretSubsystem.spinOffset(visionSubsystem.getAngleToHub());
 }
 

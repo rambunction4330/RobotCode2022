@@ -42,8 +42,8 @@ DriveSubsystem::DriveSubsystem()
 // This method will be called once per scheduler run
 void DriveSubsystem::Periodic() {
     odometry.updatePose();
-    wpi::outs() << "Pose: (" << getPosition().X() << ", " << getPosition().Y() << ") Theta: "
-                << getPosition().Rotation().Degrees() << wpi::endl;
+    //wpi::outs() << "Pose: (" << getPosition().X() << ", " << getPosition().Y() << ") Theta: "
+   //             << getPosition().Rotation().Degrees() << wpi::endl;
 }
 
 void DriveSubsystem::driveCartesian(double ySpeed, double xSpeed,

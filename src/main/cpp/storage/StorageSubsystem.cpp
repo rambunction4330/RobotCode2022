@@ -27,7 +27,7 @@ void StorageSubsystem::Periodic() {
       wpi::outs() << "BLUE" << wpi::endl;
       break;
     default:
-      wpi::outs() << "NONE" << wpi::endl;
+      //wpi::outs() << "NONE" << wpi::endl;
       break;
 
   } 

@@ -52,17 +52,19 @@ void Robot::DisabledPeriodic() {}
  * RobotContainer} class.
  */
 void Robot::AutonomousInit() {
-  container.resetOdometry();
-  container.getTeleopDriveCommand().Cancel();
-  //rmb::scheduelAsSelfManagedCommand(container.getTrajectoryCommand());
-  trajectoryCommand = container.getTrajectoryCommand();
-  trajectoryCommand->Schedule();
+//  container.resetOdometry();
+//  container.getTeleopDriveCommand().Cancel();
+//  //rmb::scheduelAsSelfManagedCommand(container.getTrajectoryCommand());
+//  trajectoryCommand = container.getTrajectoryCommand();
+//  trajectoryCommand->Schedule();
+
 }
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
     container.getTeleopDriveCommand().Schedule();
+
 }
 
 /**
