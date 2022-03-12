@@ -11,16 +11,25 @@
 #include <frc2/command/SequentialCommandGroup.h>
 #include <frc2/command/ParallelRaceGroup.h>
 
+#include <rmb/command/RepeatingCommand.h>
+
+#include <memory>
+
 RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
   intakeExtenderSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeExtenderSubsystem.retract(); }, {&intakeExtenderSubsystem}));
   intakeSpinnerSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeSpinnerSubsystem.stop(); }, {&intakeSpinnerSubsystem}));
+
   storageSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { storageSubsystem.stop(); }, {&storageSubsystem}) /*frc2::ConditionalCommand(storageSubsystem.spinStorageCommand(0.5), storageSubsystem.stopCommand(), [&]() { return intakeSpinnerSubsystem.isSpinning(); })*/);
+  
+  turretSubsystem.SetDefaultCommand(TurretCommand(turretSubsystem, visionSubsystem));
+  
   // Configure the button bindings
   ConfigureButtonBindings();
 
   // Initialize turret
   InitializeTurret();
+
 }
 
 void RobotContainer::ConfigureButtonBindings() {

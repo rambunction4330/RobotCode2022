@@ -14,6 +14,8 @@
 #include "shooter/turret/TurretSubsystem.h"
 #include "shooter/turret/TurretFindCommand.h"
 #include "shooter/turret/TurretFollowCommand.h"
+#include "shooter/turret/TurretCommand.h"
+
 #include "shooter/ManualShooterCommand.h"
 #include "storage/StorageSubsystem.h"
 
