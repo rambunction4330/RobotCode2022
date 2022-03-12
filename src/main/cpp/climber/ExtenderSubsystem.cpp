@@ -2,21 +2,21 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "climber/ClimberSubsystem.h"
+#include "climber/ExtenderSubsystem.h"
 
-ClimberSubsystem::ClimberSubsystem() = default;
+ExtenderSubsystem::ExtenderSubsystem() = default;
 
-void ClimberSubsystem::climb() {
-  talon.Set(-1.0);
+void ExtenderSubsystem::extendArm()  {
+  talon.Set(-0.5);
 }
 
-void ClimberSubsystem::lower() {
+void ExtenderSubsystem::retractArm() {
   talon.Set(0.5);
 }
 
-void ClimberSubsystem::stop() {
-  talon.Set(0.0);
+void ExtenderSubsystem::stopArm() {
+  talon.Set(0.0); 
 }
 
 // This method will be called once per scheduler run
-void ClimberSubsystem::Periodic() {}
+void ExtenderSubsystem::Periodic() {}

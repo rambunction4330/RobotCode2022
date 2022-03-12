@@ -3,16 +3,16 @@
 #include <frc2/command/SubsystemBase.h>
 #include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
 
-class ClimberSubsystem : public frc2::SubsystemBase {
+class ExtenderSubsystem : public frc2::SubsystemBase {
  public:
-  ClimberSubsystem();
+  ExtenderSubsystem();
 
-  void climb();
-  void lower();
-  void stop();
+  void extendArm();
+  void retractArm();
+  void stopArm();
   void Periodic() override;
 
  private:
   using TalonSRX = ctre::phoenix::motorcontrol::can::WPI_TalonSRX;
-  TalonSRX talon{ 52 };
+  TalonSRX talon{ 51 };
 };

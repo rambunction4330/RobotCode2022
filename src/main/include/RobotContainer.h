@@ -17,6 +17,9 @@
 #include "shooter/ManualShooterCommand.h"
 #include "storage/StorageSubsystem.h"
 
+#include "climber/ClimberSubsystem.h"
+#include "climber/ExtenderSubsystem.h"
+
 /**
  * This class is where the bulk of the robot should be declared.  Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -42,6 +45,7 @@ private:
 //  ClimberSubsystem  climberSubsystem;
   // ShooterSubsystem  shooterSubsystem;
   ClimberSubsystem  climberSubsystem;
+  ExtenderSubsystem  extenderSubsystem;
   DriveSubsystem    driveSubsystem;
 
   IntakeExtenderSubsystem intakeExtenderSubsystem;

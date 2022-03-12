@@ -15,8 +15,9 @@ RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
   intakeExtenderSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeExtenderSubsystem.retract(); }, {&intakeExtenderSubsystem}));
   intakeSpinnerSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeSpinnerSubsystem.stop(); }, {&intakeSpinnerSubsystem}));
-  storageSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { storageSubsystem.stop(); }, {&storageSubsystem}) /*frc2::ConditionalCommand(storageSubsystem.spinStorageCommand(0.5), storageSubsystem.stopCommand(), [&]() { return intakeSpinnerSubsystem.isSpinning(); })*/);
-  climberSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { climberSubsystem.stopArm(); }, {&climberSubsystem}));
+  storageSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { storageSubsystem.stop(); }, {&storageSubsystem}));
+  extenderSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { extenderSubsystem.stopArm(); }, {&extenderSubsystem}));
+  climberSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { climberSubsystem.stop(); }, {&climberSubsystem}));
 
   // Configure the button bindings
   ConfigureButtonBindings();
@@ -26,8 +27,7 @@ RobotContainer::RobotContainer() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-
-  // Extend  and pull ball in
+  // Extend and pull ball in
   joystickSubsystem.getButton(11).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() { 
     intakeExtenderSubsystem.extend();
     if (intakeExtenderSubsystem.isExtended()) {
@@ -50,18 +50,26 @@ void RobotContainer::ConfigureButtonBindings() {
   }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem}));
 
   // Spit balls out
-  joystickSubsystem.getButton(9).WhileHeld([&]() {
+  joystickSubsystem.getButton(12).WhileHeld([&]() {
     intakeExtenderSubsystem.extend();
     intakeSpinnerSubsystem.spin(-0.5);
     storageSubsystem.spinStorage(-1.0);
   }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem});
 
   joystickSubsystem.getButton(8).WhileHeld([&]() {
-    climberSubsystem.extendArm();
-  }, {&climberSubsystem});
+    extenderSubsystem.extendArm();
+  }, {&extenderSubsystem});
  
   joystickSubsystem.getButton(7).WhileHeld([&]() {
-    climberSubsystem.retractArm();
+    extenderSubsystem.retractArm();
+  }, {&extenderSubsystem});
+
+  joystickSubsystem.getButton(10).WhileHeld([&]() {
+    climberSubsystem.climb();
+  }, {&climberSubsystem});
+ 
+  joystickSubsystem.getButton(9).WhileHeld([&]() {
+    climberSubsystem.lower();
   }, {&climberSubsystem});
 }
 
