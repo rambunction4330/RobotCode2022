@@ -5,6 +5,8 @@
 #pragma once
 
 #include <frc2/command/Command.h>
+#include <frc2/command/RunCommand.h>
+#include <frc2/command/ParallelRaceGroup.h>
 
 #include "driverstation/JoystickSubsystem.h"
 #include "drivetrain/DriveSubsystem.h"
@@ -30,6 +32,7 @@ public:
 
   TeleopDriveCommand &getTeleopDriveCommand() { return teleopDriveCommand; }
   ManualShooterCommand* getManualShooterCommand() { return &manualShooterCommand; }
+  frc2::Command* getAutoCommand() { return &dumbAutoCommand; }
 
 private:
 
@@ -54,6 +57,8 @@ private:
 //  VisionSubsystem   visionSubsystem{ turretSubsystem};
 //  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
   ManualShooterCommand manualShooterCommand{ shooterSubsystem, joystickSubsystem, turretSubsystem, storageSubsystem, hoodSubsystem };
+
+  frc2::ParallelRaceGroup dumbAutoCommand = frc2::RunCommand([&]() { driveSubsystem.driveCartesian(0.5, 0.0, 0.0); }).WithTimeout(1_s);
 
   // BEGIN Holonomic Trajectory Tests
 
