@@ -12,8 +12,7 @@
 #include "driverstation/ShuffleBoardSubsystem.h"
 
 #include "shooter/turret/TurretSubsystem.h"
-#include "shooter/turret/TurretFindCommand.h"
-#include "shooter/turret/TurretFollowCommand.h"
+
 #include "shooter/turret/TurretCommand.h"
 
 #include "shooter/ManualShooterCommand.h"
@@ -100,8 +99,6 @@ private:
   HoodSubsystem hoodSubsystem{};
 //  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
   VisionSubsystem   visionSubsystem;
-  TurretFindCommand turretFindCommand{ turretSubsystem, visionSubsystem };
-  TurretFollowCommand turretFollowCommand { turretSubsystem, visionSubsystem};
   ManualShooterCommand manualShooterCommand{ shooterSubsystem, turretJoystickSubsystem, turretSubsystem, storageSubsystem, hoodSubsystem };
 
   // BEGIN Holonomic Trajectory Tests
