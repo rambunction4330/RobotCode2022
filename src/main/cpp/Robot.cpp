@@ -64,7 +64,7 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
     container.getTeleopDriveCommand().Schedule();
-
+    container.getManualShooterCommand()->Schedule();
 }
 
 /**

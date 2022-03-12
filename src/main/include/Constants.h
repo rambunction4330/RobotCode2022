@@ -189,13 +189,13 @@ namespace turretSubsystemConstants {
 
   const rmb::SparkMaxPositionController<units::radians>::PIDConfig
     motorPIDConfig{
-        /* p */ 0.0000, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
         /* SmartMotion config */
         /* usingSmartMotion */ true,
-        /* maxVelocity */ 0.1_tps, /* minVelocity */ 0_tps,
+        /* maxVelocity */ 0.2_tps, /* minVelocity */ 0_tps,
         /* maxAccel */ 10_rad_per_s_sq,
         /* allowedErr */ 10_deg,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve

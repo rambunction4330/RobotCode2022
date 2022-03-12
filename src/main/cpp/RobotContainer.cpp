@@ -40,7 +40,7 @@ void RobotContainer::InitializeTurret() {
 //                    [&]() { return visionSubsystem.IsHubInView(); })
 //    );
 
-    turretSubsystem.SetDefaultCommand(TurretFollowCommand(turretSubsystem, visionSubsystem));
+    //turretSubsystem.SetDefaultCommand(TurretFollowCommand(turretSubsystem, visionSubsystem));
 }
 
 void RobotContainer::ConfigureButtonBindings() {
