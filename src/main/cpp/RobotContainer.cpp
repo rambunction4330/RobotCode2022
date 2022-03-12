@@ -21,9 +21,9 @@ RobotContainer::RobotContainer() {
   intakeSpinnerSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeSpinnerSubsystem.stop(); }, {&intakeSpinnerSubsystem}));
 
   storageSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { storageSubsystem.stop(); }, {&storageSubsystem}) /*frc2::ConditionalCommand(storageSubsystem.spinStorageCommand(0.5), storageSubsystem.stopCommand(), [&]() { return intakeSpinnerSubsystem.isSpinning(); })*/);
-  
+  driveSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { driveSubsystem.driveCartesian(0.0, 0.0, 0.0); }, {&driveSubsystem}));
   turretSubsystem.SetDefaultCommand(TurretCommand(turretSubsystem, visionSubsystem));
-  
+
   // Configure the button bindings
   ConfigureButtonBindings();
 
@@ -32,17 +32,28 @@ RobotContainer::RobotContainer() {
 
 }
 
+void RobotContainer::InitializeTurret() {
+//    turretSubsystem.SetDefaultCommand(
+//            frc2::ConditionalCommand(
+//                    TurretFollowCommand(turretSubsystem, visionSubsystem),
+//                    TurretFindCommand(turretSubsystem, visionSubsystem),
+//                    [&]() { return visionSubsystem.IsHubInView(); })
+//    );
+
+    turretSubsystem.SetDefaultCommand(TurretFollowCommand(turretSubsystem, visionSubsystem));
+}
+
 void RobotContainer::ConfigureButtonBindings() {
 
   // Extend  and pull ball in
-  joystickSubsystem.getButton(11).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() { 
+  joystickSubsystem.getButton(11).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() {
     intakeExtenderSubsystem.extend();
     if (intakeExtenderSubsystem.isExtended()) {
-      intakeSpinnerSubsystem.spin(1.0);  
+      intakeSpinnerSubsystem.spin(1.0);
       storageSubsystem.spinStorage(0.5);
     }
   }, [&](bool) {
-    
+
     if (intakeExtenderSubsystem.isExtended()) {
       storageSubsystem.spinStorage(-1.0);
     } else {
@@ -62,13 +73,6 @@ void RobotContainer::ConfigureButtonBindings() {
     intakeSpinnerSubsystem.spin(-0.5);
     storageSubsystem.spinStorage(-1.0);
   }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem});
-}
 
-void RobotContainer::InitializeTurret() {
-//  turretSubsystem.SetDefaultCommand(
-//    frc2::ConditionalCommand(
-//      TurretFollowCommand(turretSubsystem, visionSubsystem),
-//      TurretFindCommand(turretSubsystem, visionSubsystem),
-//      [&]() { return visionSubsystem.IsHubInView(); })
-//    );
+  turretJoystickSubsystem.getButton(11).ToggleWhenActive(manualShooterCommand);
 }

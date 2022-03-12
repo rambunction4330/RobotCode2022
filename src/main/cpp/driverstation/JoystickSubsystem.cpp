@@ -20,6 +20,8 @@ double JoystickSubsystem::getTwist() const {
    
     twist = coefficients.twist * wpi::sgn(twist) * rmb::map(std::abs(twist), deadZone, 1.0, 0.0, 1.0, false);
 
+    //wpi::outs() << "Twist" << joystick.GetTwist() << " -> " << twist << wpi::endl;
+
     return twist;
 }
 

@@ -16,6 +16,8 @@
 #include <rmb/drive/HolonomicTrajectoryCommand.h>
 #include <frc/trajectory/TrajectoryGenerator.h>
 
+#include <rmb/command/SelfManagedCommand.h>
+
 void Robot::RobotInit() { 
   //turretPositionController.resetRefrence(0_rad);
   // container.shuffleBoard.ShuffleBoardInit();
@@ -50,13 +52,19 @@ void Robot::DisabledPeriodic() {}
  * RobotContainer} class.
  */
 void Robot::AutonomousInit() {
-  //container.getTeleopDriveCommand().Cancel();
+//  container.resetOdometry();
+//  container.getTeleopDriveCommand().Cancel();
+//  //rmb::scheduelAsSelfManagedCommand(container.getTrajectoryCommand());
+//  trajectoryCommand = container.getTrajectoryCommand();
+//  trajectoryCommand->Schedule();
+
 }
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
     container.getTeleopDriveCommand().Schedule();
+
 }
 
 /**
