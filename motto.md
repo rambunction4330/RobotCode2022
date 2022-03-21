@@ -35,3 +35,5 @@
 > "Amongus" - Atli Digglebooglue
 >
 > "You are the 8 kg mass." - Dick Witt
+> 
+> "am I a weeb if I watch hentai" Ashmit Tekno
