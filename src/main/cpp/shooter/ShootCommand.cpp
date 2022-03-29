@@ -103,5 +103,5 @@ void ShootCommand::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool ShootCommand::IsFinished() {
-  return storageTimer.HasElapsed(3.0_s) || isCanceled;
+  return storageTimer.HasElapsed(1.0_s) || isCanceled;
 }

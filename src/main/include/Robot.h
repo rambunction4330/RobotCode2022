@@ -6,8 +6,13 @@
 #include "RobotContainer.h"
 #include <frc/TimedRobot.h>
 
+#include <memory>
 #include <shooter/hood/HoodSubsystem.h>
 #include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
+#include "frc2/command/ParallelCommandGroup.h"
+#include "intake/IntakeIntakeCommand.h"
+#include "rmb/drive/HolonomicTrajectoryCommand.h"
+#include <frc2/command//SequentialCommandGroup.h>
 
 class Robot : public frc::TimedRobot {
 public:
@@ -25,6 +30,11 @@ public:
 private:
 
   RobotContainer container;
+  frc2::SequentialCommandGroup autonomousDriveCommand{
+    container.getShootCommand(),
+    frc2::ParallelCommandGroup(*((rmb::HolonomicTrajectoryCommand*)container.getAutonomousTrajectoryCommand().get()), *((IntakeIntakeCommand*)container.getInatkeCommand().get())),
+    container.getShootCommand()
+  };
 
   //HoodSubsystem hoodSubsystem{};
   //rev::CANSparkMax flywheelA{43, rev::CANSparkMax::MotorType::kBrushless};

@@ -2,11 +2,15 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
+
 #include "Robot.h"
+#include "frc2/command/Command.h"
+#include "intake/IntakeIntakeCommand.h"
 
 #include <frc/Timer.h>
 #include <frc2/command/CommandScheduler.h>
 
+#include <memory>
 #include <units/angle.h>
 #include <units/angular_velocity.h>
 #include <units/time.h>
@@ -54,15 +58,16 @@ void Robot::DisabledPeriodic() {}
 void Robot::AutonomousInit() {
 //  container.resetOdometry();
 //  container.getTeleopDriveCommand().Cancel();
-//  //rmb::scheduelAsSelfManagedCommand(container.getTrajectoryCommand());
-//  trajectoryCommand = container.getTrajectoryCommand();
-//  trajectoryCommand->Schedule();
+//  //rmb::scheduelAsSelfManagedCommand(container.getAutonomousTrajectoryCommand());
+  //autonomousDriveCommand = std::unique_ptr<frc2::Command>(new frc2::ParallelCommandGroup({container.getAutonomousTrajectoryCommand(), container.getInatkeCommand()}));
+  autonomousDriveCommand.Schedule();
 
 }
 
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {
+    autonomousDriveCommand.Cancel();
     container.getTeleopDriveCommand().Schedule();
 //    container.getManualShooterCommand()->Schedule();
 }
