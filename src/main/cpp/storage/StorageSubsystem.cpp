@@ -19,7 +19,7 @@ StorageSubsystem::StorageSubsystem()
 
 // This method will be called once per scheduler run
 void StorageSubsystem::Periodic() {
-  switch (ballColor()) {
+  /*switch (ballColor()) {
     case RED:
       wpi::outs() << "RED" << wpi::endl;
       break;
@@ -30,7 +30,7 @@ void StorageSubsystem::Periodic() {
       //wpi::outs() << "NONE" << wpi::endl;
       break;
 
-  } 
+  }*/
 }
 
 void StorageSubsystem::spinStorage(double speed) { storageWheel.Set(speed); }
@@ -49,7 +49,7 @@ std::unique_ptr<frc2::Command> StorageSubsystem::stopCommand() {
 }
 
 bool StorageSubsystem::hasBall() const {
-  const static uint32_t threshold = 600 ;
+  const static uint32_t threshold = 700 ;
   return (const_cast<rev::ColorSensorV3 *>(&colorSensor))->GetProximity() >
          threshold;
 }

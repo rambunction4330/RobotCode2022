@@ -21,7 +21,7 @@ using namespace units; // we are lazy
 
 class VisionSubsystem : public frc2::SubsystemBase {
 public:
-  VisionSubsystem() {
+  VisionSubsystem(const TurretSubsystem& turret) : turretSubsystem(turret) {
       networkInstance = nt::NetworkTableInstance::GetDefault();
   }
 
@@ -51,4 +51,6 @@ public:
 private:
   nt::NetworkTableEntry baseRotation, shooterAngle;
   nt::NetworkTableInstance networkInstance;
+
+  const TurretSubsystem& turretSubsystem;
 };

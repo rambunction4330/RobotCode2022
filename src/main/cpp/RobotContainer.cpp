@@ -12,6 +12,7 @@
 #include <frc2/command/ParallelRaceGroup.h>
 
 #include <rmb/command/RepeatingCommand.h>
+#include <shooter/ShootCommand.h>
 
 #include <memory>
 
@@ -21,7 +22,7 @@ RobotContainer::RobotContainer() {
   intakeSpinnerSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { intakeSpinnerSubsystem.stop(); }, {&intakeSpinnerSubsystem}));
 
   storageSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { storageSubsystem.stop(); }, {&storageSubsystem}) /*frc2::ConditionalCommand(storageSubsystem.spinStorageCommand(0.5), storageSubsystem.stopCommand(), [&]() { return intakeSpinnerSubsystem.isSpinning(); })*/);
-  driveSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { driveSubsystem.driveCartesian(0.0, 0.0, 0.0); }, {&driveSubsystem}));
+  driveSubsystem.SetDefaultCommand(getTeleopDriveCommand());
   turretSubsystem.SetDefaultCommand(TurretCommand(turretSubsystem, visionSubsystem));
 
   // Configure the button bindings
@@ -48,6 +49,7 @@ void RobotContainer::ConfigureButtonBindings() {
   // Extend  and pull ball in
   joystickSubsystem.getButton(11).ToggleWhenPressed(frc2::FunctionalCommand([&]() {}, [&]() {
     intakeExtenderSubsystem.extend();
+    wpi::outs() << "extending!" << wpi::endl;
     if (intakeExtenderSubsystem.isExtended()) {
       intakeSpinnerSubsystem.spin(1.0);
       storageSubsystem.spinStorage(0.5);
@@ -74,5 +76,16 @@ void RobotContainer::ConfigureButtonBindings() {
     storageSubsystem.spinStorage(-1.0);
   }, {&intakeExtenderSubsystem, &intakeSpinnerSubsystem, &storageSubsystem});
 
-  turretJoystickSubsystem.getButton(11).ToggleWhenActive(manualShooterCommand);
+   turretJoystickSubsystem.getButton(11).ToggleWhenActive(manualShooterCommand);
+
+  joystickSubsystem.getButton(1).WhenPressed(
+          ShootCommand(
+                  turretSubsystem,
+                  shooterSubsystem,
+                  hoodSubsystem,
+                  driveSubsystem,
+                  storageSubsystem,
+                  visionSubsystem
+                  ).WithTimeout(6_s)
+              );
 }

@@ -21,7 +21,9 @@ IntakeExtenderSubsystem::IntakeExtenderSubsystem()
 }
 
 // This method will be called once per scheduler run
-void IntakeExtenderSubsystem::Periodic() {}
+void IntakeExtenderSubsystem::Periodic() {
+    //wpi::outs() << extender.getPosition() << ::wpi::endl;
+}
 
 void IntakeExtenderSubsystem::extend() {
   extender.setPosition(intakeSubsystem::extenderOut);

@@ -44,6 +44,10 @@ public:
     odometry.resetPose(position);
   }
 
+  inline void stop() {
+      driveCartesian(0.0, 0.0, 0.0);
+  }
+
 private:
   rmb::SparkMaxVelocityController<units::meters> frontLeft;
   rmb::SparkMaxVelocityController<units::meters> frontRight;

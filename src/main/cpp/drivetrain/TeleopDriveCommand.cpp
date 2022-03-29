@@ -26,13 +26,7 @@ void TeleopDriveCommand::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void TeleopDriveCommand::End(bool interrupted) {
-  if (!interrupted) {
-    wpi::outs() << "Command exited cleanly!" << wpi::endl;
-  } else {
-    wpi::outs() << "Command was interrupted..." << wpi::endl;
-  }
-}
+void TeleopDriveCommand::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool TeleopDriveCommand::IsFinished() { return false; }

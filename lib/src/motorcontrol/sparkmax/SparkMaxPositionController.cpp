@@ -110,7 +110,7 @@ rmb::SparkMaxPositionController<U>::getVelocity() {
 
 template <typename U>
 void rmb::SparkMaxPositionController<U>::resetRefrence(Distance_t distance) {
-  reference = (RawUnit_t(sparkMaxEncoder -> GetPosition()) * conversion) + distance;
+  reference = (RawUnit_t(sparkMaxEncoder -> GetPosition()) * conversion) - distance;
 }
 
 template <typename U>

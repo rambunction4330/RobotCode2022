@@ -96,7 +96,7 @@ const rmb::SparkMaxPositionController<units::meters>::PIDConfig
                         rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.086853));
 
 const rmb::SparkMaxPositionController<units::meters>::ConversionUnit_t
-    extenderConvertion(/* radius */(1.3_in / 2_rad) * /* gearing */(1.0/4));
+    extenderConvertion(/* radius */(1.3_in / 2_rad) * /* gearing */(1.0/4.0));
 
 const units::meter_t extenderOut = 0.20_m;
 const units::meter_t extenderIn = 0.0_m;
@@ -132,7 +132,7 @@ namespace shooterSubsystemConstants {
 
   const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
     flywheelPIDConfig{
-        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
@@ -150,7 +150,7 @@ namespace shooterSubsystemConstants {
                      rmb::SimpleMotorFeedforward<units::meters>::Ka_t(0.030882));
 
   const auto flywheelConversion = 
-       rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(1_m / 1_rad);
+       rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t(2.0_in / 1.0_rad);
 
 }
 
@@ -160,7 +160,7 @@ namespace hoodSubsystemConstants {
 
     const rmb::SparkMaxPositionController<units::radians>::PIDConfig
             hoodPIDConfig{
-            /* p */ 12.0, /* i */ 0.0, /* d */ 10.0, /* f */ 0.0,
+            /* p */ 20.0, /* i */ 0.0, /* d */ 8.0, /* f */ 0.0,
             /* iZone */ 0.01, /* iMaxAccumulator */ 0.05,
             /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
@@ -168,7 +168,7 @@ namespace hoodSubsystemConstants {
             /* usingSmartMotion */ false,
             /* maxVelocity */ 0_tps, /* minVelocity */ 0.0_tps,
             /* maxAccel */ 0_rad_per_s_sq,
-            /* allowedErr */ 1.0_deg,
+            /* allowedErr */ 5.0_deg,
             /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve
     };
 
@@ -178,7 +178,7 @@ namespace hoodSubsystemConstants {
                                 rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.0));
 
     const auto hoodConversion =
-            rmb::SparkMaxVelocityController<units::radians>::ConversionUnit_t(22_rad / 32_rad);
+            rmb::SparkMaxVelocityController<units::radians>::ConversionUnit_t(22.0_rad / 32.0_rad);
 }
 
 namespace turretSubsystemConstants {
@@ -189,7 +189,7 @@ namespace turretSubsystemConstants {
 
   const rmb::SparkMaxPositionController<units::radians>::PIDConfig
     motorPIDConfig{
-        /* p */ 0.0001, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
+        /* p */ 0.0, /* i */ 0.0, /* d */ 0.0, /* f */ 0.0,
         /* iZone */ 0.0, /* iMaxAccumulator */ 0.0,
         /* maxOutput */ 1.0, /* minOutput */ -1.0,
 
@@ -202,9 +202,9 @@ namespace turretSubsystemConstants {
     };
 
   const rmb::SimpleMotorFeedforward<units::radians>
-    motorFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.50091),
-                     rmb::SimpleMotorFeedforward<units::radians>::Kv_t(0.45084),
-                     rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.081423));
+    motorFeedforward(rmb::SimpleMotorFeedforward<units::radians>::Ks_t(0.30135),
+                     rmb::SimpleMotorFeedforward<units::radians>::Kv_t(0.63326),
+                     rmb::SimpleMotorFeedforward<units::radians>::Ka_t(0.0612));
 
   const auto motorConversion = 
        rmb::SparkMaxPositionController<units::radians>::ConversionUnit_t(1_tr / 53.76_tr);

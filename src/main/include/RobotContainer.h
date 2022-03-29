@@ -98,7 +98,7 @@ private:
   TeleopDriveCommand teleopDriveCommand{ driveSubsystem, joystickSubsystem };
   HoodSubsystem hoodSubsystem{};
 //  ShuffleBoardSubsystem  shuffleBoard{ shooterSubsystem, joystickSubsystem, climberSubsystem, driveSubsystem, intakeExtenderSubsystem, intakeSpinnerSubsystem };
-  VisionSubsystem   visionSubsystem;
+  VisionSubsystem   visionSubsystem {turretSubsystem};
   ManualShooterCommand manualShooterCommand{ shooterSubsystem, turretJoystickSubsystem, turretSubsystem, storageSubsystem, hoodSubsystem };
 
   // BEGIN Holonomic Trajectory Tests
