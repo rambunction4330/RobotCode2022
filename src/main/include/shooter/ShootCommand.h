@@ -7,6 +7,13 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 
+#include <drivetrain/DriveSubsystem.h>
+#include <vision/VisionSubsystem.h>
+#include <shooter/turret/TurretSubsystem.h>
+#include <shooter/ShooterSubsystem.h>
+#include <shooter/hood/HoodSubsystem.h>
+#include <storage/StorageSubsystem.h>
+
 /**
  * An example command.
  *
@@ -17,7 +24,14 @@
 class ShootCommand
     : public frc2::CommandHelper<frc2::CommandBase, ShootCommand> {
  public:
-  ShootCommand();
+  ShootCommand(
+          TurretSubsystem& turret,
+          ShooterSubsystem& shooter,
+          HoodSubsystem& hood,
+          DriveSubsystem& drive,
+          StorageSubsystem& storage,
+          const VisionSubsystem& vision
+      );
 
   void Initialize() override;
 
@@ -26,4 +40,19 @@ class ShootCommand
   void End(bool interrupted) override;
 
   bool IsFinished() override;
+private:
+
+    const units::radian_t turretAngleErrorMargin = 10.0_deg; /**< Has to be between positive and negative this value */
+
+    frc::Timer storageTimer {};
+
+    TurretSubsystem& turretSubsystem;
+    ShooterSubsystem& shooterSubsystem;
+    HoodSubsystem& hoodSubsystem;
+    DriveSubsystem& driveSubsystem;
+    StorageSubsystem& storageSubsystem;
+    const VisionSubsystem& visionSubsystem;
+
+    units::radian_t turretPosition = 0.0_rad;
+    bool isCanceled = false;
 };

@@ -5,8 +5,6 @@
 #include "shooter/turret/TurretSubsystem.h"
 #include <frc2/command/ConditionalCommand.h>
 
-#include "shooter/turret/TurretFindCommand.h"
-#include "shooter/turret/TurretFollowCommand.h"
 
 TurretSubsystem::TurretSubsystem() {
   positionController.setMaxPosition(turretSubsystemConstants::maxPosition);

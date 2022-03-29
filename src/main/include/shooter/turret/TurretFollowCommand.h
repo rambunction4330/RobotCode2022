@@ -22,7 +22,7 @@ class TurretFollowCommand
    * @param turretSubsystem the turretSubsystem that will spin towards the target
    * @param visionSubsystem the visionSubsystem that will track the target
    */
-  TurretFollowCommand(TurretSubsystem& turretSubsystem, VisionSubsystem& visionSubsystem);
+  TurretFollowCommand(TurretSubsystem& turretSubsystem, const VisionSubsystem& visionSubsystem);
 
   /**
    * Called when the command is ran by the CommandScheduler
@@ -47,5 +47,5 @@ class TurretFollowCommand
 
 private:
   TurretSubsystem& turretSubsystem;
-  VisionSubsystem& visionSubsystem;
+  const VisionSubsystem& visionSubsystem;
 };

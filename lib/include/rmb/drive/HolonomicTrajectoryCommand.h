@@ -21,7 +21,7 @@ class HolonomicTrajectoryCommand
                                  HolonomicTrajectoryCommand> {
 public:
   HolonomicTrajectoryCommand(
-      const frc::Trajectory &trajectory, HolonomicDrive &drive,
+      frc::Trajectory  trajectory, HolonomicDrive &drive,
       const DriveOdometry &odometry,
       frc::HolonomicDriveController &driveController,
       std::initializer_list<frc2::Subsystem *> requirements);
@@ -57,10 +57,10 @@ public:
    * @see Execute()
    * @see End()
    */
-  bool IsFinished();
+  bool IsFinished() override;
 
 private:
-  const frc::Trajectory &trajectory;
+  const frc::Trajectory trajectory;
   HolonomicDrive &drive;
   const DriveOdometry &odometry;
   frc::HolonomicDriveController &driveController;

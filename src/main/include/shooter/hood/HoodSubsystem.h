@@ -8,6 +8,8 @@
 #include <rmb/motorcontrol/sparkmax/SparkMaxPositionController.h>
 #include <Constants.h>
 
+#include <rmb/math/misc.h>
+
 class HoodSubsystem : public frc2::SubsystemBase {
  public:
   HoodSubsystem();
@@ -21,6 +23,10 @@ class HoodSubsystem : public frc2::SubsystemBase {
   units::angle::radian_t getPosition();
   double getRawPosition() {
       return positionController.getRawPosition();
+  }
+
+  bool isAtPosition(units::angle::radian_t position) {
+      return positionController.atPosition(position);
   }
 
   void zero() {

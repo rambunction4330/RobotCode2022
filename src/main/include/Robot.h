@@ -37,5 +37,7 @@ private:
 
   units::scalar_t spinDirection = 1.0;
 
+  std::unique_ptr<frc2::Command> trajectoryCommand;
+
 
 };

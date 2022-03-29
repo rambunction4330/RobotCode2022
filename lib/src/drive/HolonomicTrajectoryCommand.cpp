@@ -1,13 +1,15 @@
 #include "rmb/drive/HolonomicTrajectoryCommand.h"
 
-#include <units/time.h>
+#include <utility>
+#include "rmb/io/log.h"
+#include <units/math.h>
 
 namespace rmb {
 HolonomicTrajectoryCommand::HolonomicTrajectoryCommand(
-    const frc::Trajectory &t, HolonomicDrive &d,
+    frc::Trajectory  t, HolonomicDrive &d,
     const DriveOdometry &o, frc::HolonomicDriveController &dc,
     std::initializer_list<frc2::Subsystem*> requirements)
-    : trajectory(t), drive(d), odometry(o), driveController(dc) {
+    : trajectory(std::move(t)), drive(d), odometry(o), driveController(dc) {
       AddRequirements(requirements);
     }
 
@@ -17,7 +19,7 @@ void HolonomicTrajectoryCommand::Initialize() {
 }
 
 void HolonomicTrajectoryCommand::Execute() {
-  units::time::second_t currentTime = units::second_t(timer.Get());
+  units::time::second_t currentTime = timer.Get();
   frc::Trajectory::State desiredState = trajectory.Sample(currentTime);
   auto targetChassisSpeeds =
       driveController.Calculate(odometry.getPose(), desiredState,
@@ -25,10 +27,11 @@ void HolonomicTrajectoryCommand::Execute() {
   drive.driveChassisSpeeds(targetChassisSpeeds);
 }
 
-void HolonomicTrajectoryCommand::End(bool interrupted) { timer.Stop(); }
+void HolonomicTrajectoryCommand::End(bool interrupted) {
+    timer.Stop();
+}
 
 bool HolonomicTrajectoryCommand::IsFinished() {
   return timer.HasElapsed(trajectory.TotalTime());
-
 }
 } // namespace rmb

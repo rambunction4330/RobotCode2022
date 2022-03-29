@@ -4,7 +4,7 @@ namespace rmb {
 namespace trajectory {
 
 Trajectory trajectoryFromEntryAngle(units::meter_t px, units::meter_t py, units::radian_t entryAngle) {
-    Trajectory trajectory;
+    Trajectory trajectory{};
 
     // slope of entry -> units::dimensionless:scalar_t
     auto se = units::math::tan(-1 * entryAngle);
