@@ -7,7 +7,7 @@
 
 ManualShooterCommand::ManualShooterCommand(ShooterSubsystem& shooter, JoystickSubsystem& joystick, TurretSubsystem& turret, StorageSubsystem& storage, HoodSubsystem& hood) :
    shooterSubsystem(shooter), joystickSubsystem(joystick), turretSubsystem(turret), storageSubsystem(storage), hoodSubsystem(hood) {
-  AddRequirements({&shooterSubsystem, &joystickSubsystem, &turretSubsystem, &storageSubsystem, &hoodSubsystem});
+  AddRequirements({&shooterSubsystem, &turretSubsystem, &storageSubsystem, &hoodSubsystem});
 }
 
 // Called when the command is initially scheduled.
@@ -17,7 +17,7 @@ void ManualShooterCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ManualShooterCommand::Execute() {
-    double twist = joystickSubsystem.getTwist();
+    double twist = 0.5 * joystickSubsystem.getTwist();
     //wpi::outs() << "turret -> " << twist << wpi::endl;
     turretSubsystem.spinOffset(
             twist > 0 ?

@@ -24,7 +24,6 @@ void TurretCommand::Execute() {
     //wpi::outs() << "hub " << (visionSubsystem.IsHubInView() ? "is " : "is not ") << "in view" << wpi::endl;
     if(!visionSubsystem.IsHubInView()) {
         turretSubsystem.spinTo(spinDirection < 0.0 ? turretSubsystemConstants::minPosition : turretSubsystemConstants::maxPosition);
-
         if(turretSubsystem.isAtPosition(turretSubsystemConstants::minPosition) || turretSubsystem.isAtPosition(turretSubsystemConstants::maxPosition)) {
             spinDirection *= -1;
         }

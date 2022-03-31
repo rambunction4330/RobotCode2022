@@ -19,14 +19,14 @@ void IntakeIntakeCommand::Execute() {
    intakeExtenderSubsystem.extend();
     if (intakeExtenderSubsystem.isExtended()) {
       intakeSpinnerSubsystem.spin(1.0);
-      storageSubsystem.spinStorage(0.5);
+      storageSubsystem.spinStorage(0.7);
     }
 }
 
 // Called once the command ends or is interrupted.
 void IntakeIntakeCommand::End(bool interrupted) {
      if (intakeExtenderSubsystem.isExtended()) {
-      storageSubsystem.spinStorage(-0.2);
+      storageSubsystem.spinStorage(-0.3);
     } else {
       storageSubsystem.stop();
     }

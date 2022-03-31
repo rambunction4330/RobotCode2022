@@ -13,6 +13,7 @@
 #include "intake/IntakeIntakeCommand.h"
 #include "rmb/drive/HolonomicTrajectoryCommand.h"
 #include <frc2/command//SequentialCommandGroup.h>
+#include <frc2/command/WaitCommand.h>
 
 class Robot : public frc::TimedRobot {
 public:
@@ -31,8 +32,10 @@ private:
 
   RobotContainer container;
   frc2::SequentialCommandGroup autonomousDriveCommand{
+      frc2::WaitCommand(5.0_s),
     container.getShootCommand(),
     frc2::ParallelCommandGroup(*((rmb::HolonomicTrajectoryCommand*)container.getAutonomousTrajectoryCommand().get()), *((IntakeIntakeCommand*)container.getInatkeCommand().get())),
+    frc2::WaitCommand(1.0_s),
     container.getShootCommand()
   };
 

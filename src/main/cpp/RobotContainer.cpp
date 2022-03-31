@@ -29,6 +29,7 @@ RobotContainer::RobotContainer() {
   turretSubsystem.SetDefaultCommand(TurretCommand(turretSubsystem, visionSubsystem));
 
   hoodSubsystem.SetDefaultCommand(frc2::RunCommand([this](){hoodSubsystem.setPosition(21.0_deg);}, {&hoodSubsystem}));
+  shooterSubsystem.SetDefaultCommand(frc2::RunCommand([this]() { shooterSubsystem.stop(); }));
 
   // Configure the button bindings
   ConfigureButtonBindings();
