@@ -105,7 +105,7 @@ private:
 //
 //  ClimberSubsystem  climberSubsystem;
   // ShooterSubsystem  shooterSubsystem;
-  // ClimberSubsystem  climberSubsystem;
+  ClimberSubsystem  climberSubsystem;
   DriveSubsystem    driveSubsystem;
 
   IntakeExtenderSubsystem intakeExtenderSubsystem;

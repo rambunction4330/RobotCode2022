@@ -30,6 +30,7 @@ RobotContainer::RobotContainer() {
 
   hoodSubsystem.SetDefaultCommand(frc2::RunCommand([this](){hoodSubsystem.setPosition(21.0_deg);}, {&hoodSubsystem}));
   shooterSubsystem.SetDefaultCommand(frc2::RunCommand([this]() { shooterSubsystem.stop(); }));
+  climberSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { climberSubsystem.stopArm(); }, {&climberSubsystem}));
 
   // Configure the button bindings
   ConfigureButtonBindings();
