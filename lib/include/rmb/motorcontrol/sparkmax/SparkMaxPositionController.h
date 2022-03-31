@@ -7,7 +7,7 @@
 #include <rev/CANSparkMax.h>
 
 #include "rmb/motorcontrol/PositionController.h"
-#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h" 
+#include "rmb/motorcontrol/feedforward/SimpleMotorFeedforward.h"
 #include <limits>
 
 namespace rmb {
@@ -30,7 +30,7 @@ public:
 
   /**
    * The distance units that the SparkMax takes in by default is rotations. The conversion here
-   * is one rotation to 2pi radians.   
+   * is one rotation to 2pi radians.
    */
   using RawUnit =
       typename units::unit<std::ratio<2>, units::radians, std::ratio<1>>;
@@ -42,9 +42,9 @@ public:
   using RawVelocity =
       typename units::compound_unit<RawUnit, units::inverse<units::minutes>>;
   using RawVelocity_t = typename units::unit_t<RawVelocity>;
-  
+
   /**
-   * The SparkMax takes in acceleration in rpm/second. 
+   * The SparkMax takes in acceleration in rpm/second.
    */
   using RawAccel =
       typename units::compound_unit<RawVelocity,
@@ -76,7 +76,7 @@ public:
   };
 
   /**
-   * Type definition for the Follower functionality that the SparkMaxes provide. A follower is a motor that Will "follow" the specified motor. 
+   * Type definition for the Follower functionality that the SparkMaxes provide. A follower is a motor that Will "follow" the specified motor.
    * You can specify followers in the constructor.
    */
   struct Follower {
@@ -96,9 +96,9 @@ public:
    * @param deviceID The ID of the target SparkMax motorcontroller
    * @param pidConfig configuration constants for the SparkMax PID controller. These constants will help you tune
    *                  your motor such that it runs smooth within the desired bounds.
-   * @param conversion The conversion from the user provided DistanceUnits to radians. 
+   * @param conversion The conversion from the user provided DistanceUnits to radians.
    *                   See SparkMaxPositionController<DistanceUnit>::ConversionUnit
-   * 
+   *
    * @param feedForward The Feedforward to be passed to the motor. rmb::noFeedforward<DistanceUnit> is the default
    * @param followers list of motors to follow this motor. The parent motor will construct the children with the given configuration
    *                  and will own the followers.
@@ -106,29 +106,29 @@ public:
    * @param motorType the type of motor, Can be kBrushed or kBrushless
    */
   SparkMaxPositionController(int deviceID, const PIDConfig &pidConfig,
-                             ConversionUnit_t conversion = ConversionUnit_t(1), 
+                             ConversionUnit_t conversion = ConversionUnit_t(1),
                              const Feedforward<DistanceUnit>& feedForward = noFeedforward<DistanceUnit>,
                              std::initializer_list<Follower> followers = {}, bool alternateEncoder = false,
                              int ticksPerRevolution = 4096, rev::CANSparkMax::MotorType motorType = rev::CANSparkMax::MotorType::kBrushless);
 
   /**
    * Sets the position of the motor.
-   * @param position The distance from the reference, or "zero" point to set the motor to in user provided Distance_t. \n 
+   * @param position The distance from the reference, or "zero" point to set the motor to in user provided Distance_t. \n
    *                 See SparkMaxPositionController<DistanceUnit>::resetReference(Distance_t position)
    */
   void setPosition(Distance_t position) override;
 
   /**
    * Gets the position of the motor according to the SparkMax encoder
-   * @return the distance from the reference point in the user defined Distance. The reference point can be set with 
-   *         rmb::SparkMaxPositionController< DistanceUnit >::resetRefrence(Distance_t position) 	
+   * @return the distance from the reference point in the user defined Distance. The reference point can be set with
+   *         rmb::SparkMaxPositionController< DistanceUnit >::resetRefrence(Distance_t position)
    */
   Distance_t getPosition() const override;
 
 
 
   /**
-   * Get the raw position(in rotations) of the motor. This is for debug purposes or advanced 
+   * Get the raw position(in rotations) of the motor. This is for debug purposes or advanced
    * users who want to bypass all of the code @theVerySharpFlat has written.
    * @return raw position(in rotations) of the motor according to the encoder
    */
@@ -158,14 +158,14 @@ public:
 
   /**
    * Resets the reference point to the provided postiion.
-   * @param position The desired reference point. This point will be treated as the 
-   *                 "0" for the SparkMaxPositionController<DistanceUnit>::getPosition() 
+   * @param position The desired reference point. This point will be treated as the
+   *                 "0" for the SparkMaxPositionController<DistanceUnit>::getPosition()
    *                 and SparkMaxPositionController<DistanceUnit>::setPosition(Distance_t position) calls
    */
   void resetRefrence(Distance_t position) override;
 
   /**
-   * Sets the max allowed position of the motor. If the user attempts to move the motor beyond the maximum position, 
+   * Sets the max allowed position of the motor. If the user attempts to move the motor beyond the maximum position,
    * the motor will be set to the maximum position.
    * @param max The maximum position in user defined DistanceUnits
    */
@@ -178,7 +178,7 @@ public:
   Distance_t getMaxPosition() override;
 
   /**
-   * Sets the minimum allowed position of the motor. If the user attempts to move the motor beyond the maximum position, 
+   * Sets the minimum allowed position of the motor. If the user attempts to move the motor beyond the maximum position,
    * the motor will be set to the minimum position.
    * @param min The minimum position in user defined distance units
    */
@@ -194,13 +194,13 @@ public:
    * Check if the motor is at the specified position within the allowed error-bounds
    * specified in the PIDConfig struct passed in the constructor.
    * @param The setpoint
-   * @return true if the motor is at the specified position. 
+   * @return true if the motor is at the specified position.
    */
   bool atPosition(Distance_t position);
 
   /**
    * Spins to an offset of the current position
-   * @param position the offset from the current position 
+   * @param position the offset from the current position
    */
   void spinOffset(Distance_t position);
 
@@ -214,9 +214,16 @@ public:
   /**
    * Check if the motor position can offset to the specified value.
    * @param offset The theoretical offset
-   * @return If the motor can spin to the offset. Returns true if it can.  
+   * @return If the motor can spin to the offset. Returns true if it can.
    */
   bool canSpinOffsetOf(Distance_t offset);
+
+  /**
+   * Stops the motor
+   */
+  void stop() {
+      sparkMax.StopMotor();
+  }
 
 private:
   rev::CANSparkMax sparkMax;

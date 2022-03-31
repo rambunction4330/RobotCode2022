@@ -28,8 +28,8 @@ RobotContainer::RobotContainer() {
   driveSubsystem.SetDefaultCommand(getTeleopDriveCommand());
   turretSubsystem.SetDefaultCommand(TurretCommand(turretSubsystem, visionSubsystem));
 
-  hoodSubsystem.SetDefaultCommand(frc2::RunCommand([this](){hoodSubsystem.setPosition(21.0_deg);}, {&hoodSubsystem}));
-  shooterSubsystem.SetDefaultCommand(frc2::RunCommand([this]() { shooterSubsystem.stop(); }));
+  hoodSubsystem.SetDefaultCommand(frc2::RunCommand([this](){hoodSubsystem.stop();}, {&hoodSubsystem}));
+  shooterSubsystem.SetDefaultCommand(frc2::RunCommand([this]() { shooterSubsystem.stop(); }, {&shooterSubsystem}));
   climberSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { climberSubsystem.stopArm(); climberSubsystem.winchStop(); }, {&climberSubsystem}));
 
   // Configure the button bindings
