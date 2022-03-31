@@ -9,11 +9,14 @@ class ClimberSubsystem : public frc2::SubsystemBase {
 
   void extendArm();
   void retractArm();
+  void winchTighten();
+  void winchRelease();
+  void winchStop();
   void stopArm();
   void Periodic() override;
 
  private:
   using TalonSRX = ctre::phoenix::motorcontrol::can::WPI_TalonSRX;
-  TalonSRX leftTalon{ 51 };
-  TalonSRX rightTalon{ 52 };
+  TalonSRX armTalon{ 51 };
+  TalonSRX winchTalon{ 52 };
 };

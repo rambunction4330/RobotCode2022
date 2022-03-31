@@ -7,18 +7,27 @@
 ClimberSubsystem::ClimberSubsystem() = default;
 
 void ClimberSubsystem::extendArm()  {
-  leftTalon.Set(0.5);
-  rightTalon.Set(-0.5);
+    armTalon.Set(1.0);
 }
 
 void ClimberSubsystem::retractArm() {
-  leftTalon.Set(-1.0);
-  rightTalon.Set(1.0);
+    armTalon.Set(-1.0);
 }
 
 void ClimberSubsystem::stopArm() {
-  leftTalon.Set(0.0);
-  rightTalon.Set(0.0);  
+  armTalon.Set(0.0);
+}
+
+void ClimberSubsystem::winchTighten() {
+    winchTalon.Set(1.0);
+}
+
+void ClimberSubsystem::winchRelease() {
+    winchTalon.Set(-1.0);
+}
+
+void ClimberSubsystem::winchStop() {
+    winchTalon.Set(0.0);
 }
 
 // This method will be called once per scheduler run

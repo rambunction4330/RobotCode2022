@@ -30,7 +30,7 @@ RobotContainer::RobotContainer() {
 
   hoodSubsystem.SetDefaultCommand(frc2::RunCommand([this](){hoodSubsystem.setPosition(21.0_deg);}, {&hoodSubsystem}));
   shooterSubsystem.SetDefaultCommand(frc2::RunCommand([this]() { shooterSubsystem.stop(); }));
-  climberSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { climberSubsystem.stopArm(); }, {&climberSubsystem}));
+  climberSubsystem.SetDefaultCommand(frc2::RunCommand([&]() { climberSubsystem.stopArm(); climberSubsystem.winchStop(); }, {&climberSubsystem}));
 
   // Configure the button bindings
   ConfigureButtonBindings();
@@ -50,7 +50,7 @@ void RobotContainer::ConfigureButtonBindings() {
   // Extend  and pull ball in
   joystickSubsystem.getButton(11).ToggleWhenPressed(IntakeIntakeCommand(intakeExtenderSubsystem, intakeSpinnerSubsystem, storageSubsystem));
 
-   turretJoystickSubsystem.getButton(11).ToggleWhenActive(manualShooterCommand);
+  turretJoystickSubsystem.getButton(11).ToggleWhenActive(manualShooterCommand);
 
   joystickSubsystem.getButton(1).WhenPressed(
           ShootCommand(
@@ -62,4 +62,31 @@ void RobotContainer::ConfigureButtonBindings() {
                   visionSubsystem
                   ).WithTimeout(6_s)
               );
+  // arm up
+  joystickSubsystem.getButton(6).WhileHeld(
+          frc2::RunCommand(
+                  [this](){
+                     climberSubsystem.extendArm();
+                  },
+                  {&climberSubsystem}
+                  )
+          );
+
+  joystickSubsystem.getButton(4).WhileHeld(
+          frc2::RunCommand(
+                  [this]() {
+                     climberSubsystem.retractArm();
+                  },
+                  {&climberSubsystem}
+                  )
+          );
+
+    joystickSubsystem.getButton(3).WhileHeld(
+            frc2::RunCommand(
+                    [this](){
+                        climberSubsystem.winchTighten();
+                    },
+                    {&climberSubsystem}
+            )
+    );
 }
