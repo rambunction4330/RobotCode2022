@@ -28,7 +28,7 @@ var NAVTREE =
     [ "pancakerecipe", "md_docs_additional_pancakerecipe.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace List", "namespaces.html", null ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
@@ -54,8 +54,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_arm_feedforward_8h_source.html",
-"classrmb_1_1_spark_max_velocity_controller.html#a8184fafcf6b0d12865bc87cc2663f708"
+"_arm_feedforward_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
