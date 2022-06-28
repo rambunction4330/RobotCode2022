@@ -7,7 +7,7 @@
 namespace rmb {
 HolonomicTrajectoryCommand::HolonomicTrajectoryCommand(
     frc::Trajectory  t, HolonomicDrive &d,
-    const DriveOdometry &o, frc::HolonomicDriveController &dc,
+    DriveOdometry &o, frc::HolonomicDriveController &dc,
     std::initializer_list<frc2::Subsystem*> requirements)
     : trajectory(std::move(t)), drive(d), odometry(o), driveController(dc) {
       AddRequirements(requirements);
@@ -16,6 +16,7 @@ HolonomicTrajectoryCommand::HolonomicTrajectoryCommand(
 void HolonomicTrajectoryCommand::Initialize() {
   timer.Reset();
   timer.Start();
+  odometry.resetPose();
 }
 
 void HolonomicTrajectoryCommand::Execute() {

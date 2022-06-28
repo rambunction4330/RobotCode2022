@@ -33,6 +33,10 @@ class HoodSubsystem : public frc2::SubsystemBase {
       positionController.resetRefrence(0.0_rad);
   }
 
+  void stop() {
+      positionController.stop();
+  }
+
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.

@@ -63,7 +63,7 @@ const rmb::SparkMaxVelocityController<units::meters>::PIDConfig
 const rmb::SparkMaxVelocityController<units::meters>::ConversionUnit_t
     motorConvertion(/* radius */(3.0_in / 1.0_rad) * /* gearing */(1.0/12.0));
 
-const units::meters_per_second_t maxVelocity(2.5_mps);
+const units::meters_per_second_t maxVelocity(3.5_mps);
 const units::radians_per_second_t maxRotVelocity(500_rpm);
 const units::radians_per_second_squared_t maxRotAcceleration(500_rad_per_s_sq);
 
@@ -86,8 +86,8 @@ const rmb::SparkMaxPositionController<units::meters>::PIDConfig
         /* SmartMotion config */
         /* usingSmartMotion */ true,
         /* maxVelocity */ 0.35_mps, /* minVelocity */ 0.0_mps,
-        /* maxAccel */ 0.7_mps_sq,
-        /* allowedErr */ 0.02_m,
+        /* maxAccel */ 0.4_mps_sq,
+        /* allowedErr */ 0.1_m,
         /* accelStrategy */ rev::SparkMaxPIDController::AccelStrategy::kSCurve};
 
  const rmb::SimpleMotorFeedforward<units::meters>

@@ -22,7 +22,7 @@ class HolonomicTrajectoryCommand
 public:
   HolonomicTrajectoryCommand(
       frc::Trajectory  trajectory, HolonomicDrive &drive,
-      const DriveOdometry &odometry,
+      DriveOdometry &odometry,
       frc::HolonomicDriveController &driveController,
       std::initializer_list<frc2::Subsystem *> requirements);
   /**
@@ -62,7 +62,7 @@ public:
 private:
   const frc::Trajectory trajectory;
   HolonomicDrive &drive;
-  const DriveOdometry &odometry;
+  DriveOdometry &odometry;
   frc::HolonomicDriveController &driveController;
   frc::Timer timer;
 };

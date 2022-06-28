@@ -39,6 +39,7 @@ void ShootCommand::Initialize() {
         isCanceled = true;
     } else {
         turretPosition = turretSubsystem.getAngularPosition();
+        turretPosition -= 5.0_deg*units::math::sin(turretPosition);
         return;
     }
     wpi::outs() << "turret position: " << (units::degree_t) turretSubsystem.getAngularPosition() << wpi::endl;
@@ -61,6 +62,7 @@ void ShootCommand::Execute() {
 
     trajectory.angle = 90_deg - (units::degree_t)trajectory.angle;
     trajectory.velocity *= 3.0;
+    trajectory.velocity += 0.75_mps * units::math::sin(turretPosition/2);
 
     //wpi::outs() << "TGT VELOCITY: " << trajectory.velocity << " TGT ANGLE: " << (units::degree_t)trajectory.angle << wpi::endl;
     //wpi::outs() << "Actual Velocity: " << shooterSubsystem.getVelocity() << wpi::endl;
@@ -103,5 +105,5 @@ void ShootCommand::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool ShootCommand::IsFinished() {
-  return storageTimer.HasElapsed(3.0_s) || isCanceled;
+  return storageTimer.HasElapsed(1.0_s) || isCanceled;
 }
