@@ -48,7 +48,8 @@ wpi.sim.addDriverstation()
 
 model {
     components {
-        frcUserProgram(NativeExecutableSpec) {
+
+        rmbLib(NativeLibrarySpec) {
             targetPlatform wpi.platforms.roborio
             if (includeDesktopSupport) {
                 targetPlatform wpi.platforms.desktop
@@ -56,14 +57,45 @@ model {
 
             sources.cpp {
                 source {
+                    include '**/*.cpp', '**/*.cc'
+
+                    srcDir 'lib/src'
+                }
+                exportedHeaders {
+                    srcDir 'lib/include'
+                }
+            }
+
+            // Set deploy task to deploy this component
+            //deployArtifact.component = it
+
+            // Enable run tasks for this component
+            wpi.cpp.enableExternalTasks(it)
+
+            // Enable simulation for this component
+            wpi.sim.enable(it)
+            // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
+            wpi.cpp.vendor.cpp(it)
+            wpi.cpp.deps.wpilib(it)
+        }
+
+        frcUserProgram(NativeExecutableSpec) {
+            targetPlatform wpi.platforms.roborio
+            if (includeDesktopSupport) {
+                targetPlatform wpi.platforms.desktop
+            }
+
+            sources.cpp {
+                lib library: "rmbLib", linkage: "static"
+                source {
                     srcDir 'src/main/cpp'
                     include '**/*.cpp', '**/*.cc'
 
-                    srcDir 'lib/src' 
+                    //srcDir 'lib/src'
                 }
                 exportedHeaders {
                     srcDir 'src/main/include'
-                    srcDir 'lib/include'
+                    //srcDir 'lib/include'
                 }
             }
 
