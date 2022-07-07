@@ -6,7 +6,7 @@
 
 namespace rmb {
 NavxAccelerometerOdometry::NavxAccelerometerOdometry(frc::SPI::Port port, const frc::Pose2d& initialPosition) :
-                                                     accelerometer(port), refrence(initialPosition), pose(initialPosition) {}
+                                                     accelerometer(port), reference(initialPosition), pose(initialPosition) {}
 
 const frc::Pose2d &NavxAccelerometerOdometry::getPose() const { 
   return pose; 
@@ -17,7 +17,7 @@ const frc::Pose2d &NavxAccelerometerOdometry::updatePose() {
 }
 
 void NavxAccelerometerOdometry::resetPose(const frc::Pose2d &newPose) {
-  refrence = newPose;
+  reference = newPose;
   pose = newPose;
 }
 }
